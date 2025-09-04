@@ -1,0 +1,520 @@
+% Actualizacion 04/09/2025
+% Autor: Said Polanco-Martagón
+
+
+\documentclass[12pt]{article}
+\usepackage[left=2.5cm,top=2.0cm,right=2.5cm,bottom=3.0cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+%\usepackage[english, american]{babel}
+%\usepackage[spanish,es-tabla]{babel}
+\usepackage[linguistics]{forest}
+\usepackage{amssymb, amsmath, amsbsy} % simbolitos
+\usepackage{longtable} % para tablas largas
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{parskip}
+\usepackage[skip=12pt plus1pt]{parskip}
+\usepackage{pdfpages} % Incluir PDF en documento en LATEX
+\usepackage{verbatim} % comentarios
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{pdflscape}
+\usepackage{multirow}
+\usepackage{afterpage}
+\usepackage{array,booktabs,ragged2e}
+%\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\listalgorithmname}{Lista de algoritmos}
+\renewcommand{\algorithmicrequire}{\textbf{Entrada:}}
+\renewcommand{\algorithmicensure}{\textbf{Salida:}}
+
+% Comentario con respecto a las referencias:
+% Por defecto este documento utiliza el formato IEEEtr para formatear las referencias. Si algun asesor requiere formato APA, solo comente la siguiente linea y descomente la linea debajo. Tambien para que las citas funcionen de manera adecuada, el paquete label debe tener las opciones mostradas, o en su defecto, el año en el listado no lo muestra correctamente \usepackage[english, american]{babel}
+
+% Para utilizar el formato de citas IEEE y comentar los dos parrafos siguientes
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+% Para utilizar el formato APA, sugiero comentar la linea anterior y descomentar las dos proximas lineas
+%\usepackage[backend=biber,style=apa]{biblatex}
+%\DeclareLanguageMapping{english}{american-apa}
+
+\makeatletter
+\DefineBibliographyExtras{spanish}{%
+  \setcounter{smartand}{1}%
+  \let\lbx@finalnamedelim=\lbx@es@smartand
+  \let\lbx@finallistdelim=\lbx@es@smartand
+}
+\renewbibmacro*{name:delim:apa:family-given}[1]{%
+  \ifnumgreater{\value{listcount}}{\value{liststart}}
+    {\ifboolexpr{
+       test {\ifnumless{\value{listcount}}{\value{liststop}}}
+       or
+       test \ifmorenames
+     }
+       {\printdelim{multinamedelim}}
+       {\lbx@finalnamedelim{#1}}}
+    {}}
+\makeatother
+
+
+% Estas lineas permiten romper los hipervinculos muy largos en las referencias!!!!
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\addbibresource{x.bib} % ARCHIVO DE BIBLIOGRAFÍA
+
+
+%\usepackage{url}
+\usepackage[bookmarks=true,breaklinks=true,bookmarksopen=false,colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage[hyphenbreaks]{breakurl}
+% Regla que define explicitamente que caracteres rompen los hipervinculos para separar las lineas
+%https://es.overleaf.com/11089898rhgykrqyqytx
+% Actualiza en automático la fecha de las citas de internet a la fecha de la compilación del documento
+\usepackage{datetime}
+\newdateformat{specialdate}{\twodigit{\THEDAY}-\twodigit{\THEMONTH}-\THEYEAR}
+%\newdateformat{specialdate}{\twodigit{\THEDAY}-\THEYEAR}
+\date{\specialdate\today}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.25mm}}
+
+
+% CONSTANTES NECESARIAS PARA EL DOCUMENTO ---> MODIFIQUEN A SU CRITERIO
+\newcommand{\ncarrera}            {Ingeniería en Tecnologías de la Información}
+\newcommand{\nasesorinstitucional}{Dr. Marco Aurelio Nuño Maganda}
+\newcommand{\NombreAlumno}{Luis Gerardo Perales Torres}
+%Hombres cambien LA por EL
+\newcommand{\elolaNombreAlumno}{el}  
+\newcommand{\OA}           {o}  %Hombres cambien A por O
+\newcommand{\Matricula}           {1730505}  %SU MATRICULA
+\newcommand{\NombreProyecto}{Notificación de actualizaciones de la información en un sistema de información web de pacientes hospitalizados a sus familiares del Sagrado Corazón de Jesus.}
+\newcommand{\fechacarta}{26 de Abril de 2021}
+\newcommand{\ncuatrimestre}{Mayo-agosto 2021}
+\newcommand{\nevalador}{Dr. Hiram Herrera Rivas}
+\newcommand{\FechaExposicion}{11 de Agosto de 2021}
+\newcommand{\HoraExposionFormatoVenticuatroHoras}{10:00}
+\newcommand{\elolaNombreEmpresa}{la}  %Si la empresa es femenino (por ejemplo universidad, usen la) o masculino (el instituto) pongan el
+\newcommand{\organismoreceptor}   {Universidad Politécnica de Victoria}
+
+% NOTA: Dos diagonales juntas (\\) indican un saldo de linea. En este caso particular hay 2 (el titulo se ajusta a tres lineas, porque es muy largo. Hacer las adecuaciones pertinentes
+\newcommand{\NombreProyectoheader}     {Notificación de actualizaciones de la información \\en un sistema de información web de pacientes\\ hospitalizados a sus familiares del Sagrado Corazón de Jesus  }
+\newcommand{\nasesorempresaria}   {MSI. José Fidencio López Luna}
+\newcommand{\fechaPortada}               {Junio de 2021}
+
+
+
+
+
+\newcommand{\separacionCorta}{0.0cm}
+\newcommand{\separacionLarga}{0.5cm}
+
+\usepackage[overload]{textcase}
+\newcommand{\iemph}[1]{\MakeTextUppercase{#1}}
+
+\pagestyle{fancy}
+\headheight 45pt
+\fancyhead{} % Clear all header fields
+\fancyhead[L]{\includegraphics[height=1.00cm]{logos/UTYP.png}}%
+%\fancyhead[C]{\begin{center}\NombreProyectoheader\end{center}}%
+\fancyhead[C]{\begin{center}\scriptsize{\NombreProyectoheader}\end{center}}%
+%\fancyhead[R]{\includegraphics[height=1.5cm]{LogoUPV_2019.png}}%
+\fancyhead[R]{\includegraphics[height=1.25cm]{logos/LogoUPV_2023.png}}%
+\fancyfoot[R]{\thepage} % Clear all footer fields 
+\fancyfoot[C]{}
+\fancyfoot[L]{}
+
+\DefineBibliographyStrings{english}{%
+  references = {Referencias},% replace "references" with "bibliography"  for `book`/`report`
+}
+
+\addto\captionsenglish{%
+  \renewcommand{\figurename}{Figura}%
+  \renewcommand{\tablename}{Tabla}%
+} 
+
+\usepackage{wallpaper}
+ 
+ 
+%\renewcommand{\figurename}{Figura}
+%\renewcommand{\tablename}{Tabla}
+
+ 
+\begin{document}
+
+%-----------------------------------------------------------------------------------------------------------------
+% PAGINA 1 - PORTADA
+\setcounter{page}{1}
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\begin{center}
+
+\begin{tabular}{cp{5cm}c}
+\includegraphics[height=2.25cm]{logos/UTYP.png} & 
+& \includegraphics[height=2.25cm]{logos/LogoUPV_2023.png}   \\
+\end{tabular}
+
+\Large \textbf{UNIVERSIDAD POLITÉCNICA DE VICTORIA}
+\vspace{0.5cm}
+\hrule
+\vspace{0.1cm} 
+\hrule
+\vspace{0.5cm}
+
+
+%\HRule \\[\separacionCorta]
+\textbf{\iemph{\NombreProyecto}} \\[\separacionLarga]
+%\Large \textbf{TESINA}
+%\HRule \\[\separacionLarga]
+T E S I N A \\
+QUE PARA OBTENER EL GRADO DE \\
+\textbf{\iemph{\ncarrera}} \\[\separacionLarga]
+
+PRESENTA: \\[\separacionCorta]
+%\textbf{\Capitalize{\NombreAlumno}\\[\separacionLarga]
+\textbf{\iemph{\NombreAlumno}}\\[\separacionLarga]
+%EN CUMPLIMIENTO DE \\[\separacionCorta]
+%LA ESTADÍA DE LA CARRERA DE \\[\separacionCorta]
+
+
+DIRECTOR \\[\separacionCorta]
+\textbf{\iemph{\nasesorinstitucional}} \\[\separacionCorta]
+
+CO-DIRECTOR \\[\separacionCorta]
+\textbf{\iemph{\nasesorempresaria}} \\[\separacionCorta]
+
+ORGANISMO RECEPTOR \\[\separacionCorta]
+\textbf{\iemph{\organismoreceptor}} \\[\separacionLarga]
+
+\end{center}
+\begin{flushright}
+\iemph{Ciudad Victoria, Tamaulipas, \fechaPortada}
+\end{flushright}
+
+\HRule 
+
+
+
+% En las siguientes 3 paginas, debe incluir una digitalización de calidad de sus respectivas cartaas, no una fotografia toda cucha tomada con su celular de Coppel
+% Pagina 1: Digitalización de la carta de presentación (sustituir por una original en el empastado)
+\clearpage
+\thispagestyle{fancy}
+\pagenumbering{roman}
+\setcounter{page}{1}
+\includepdf[pages={1}]{cartas/CartaPresentacion.pdf}
+
+% Pagina 2: Digitalización de la carta de aceptación (sustituir por una original en el empastado)
+\clearpage
+\thispagestyle{fancy}
+\includepdf[pages={1}]{cartas/CartaAceptacion.pdf}
+
+% Pagina 3: Digitalización de la carta de liberación (sustituir por una original en el empastado)
+\clearpage
+\thispagestyle{fancy}
+\includepdf[pages={1}]{cartas/CartaLiberacion.pdf}
+
+% Pagina 4: Carta de aceptación del ASESOR INSTITUCIONAL(sustituir por una original en el empastado)
+\clearpage
+\ULCornerWallPaper{1}{membretes/membrete_UPV_08May25.pdf}
+\thispagestyle{empty}
+
+\vspace*{1.5cm}
+\large
+
+\begin{center}
+\textbf{CARTA DE ACEPTACIÓN DEL DOCUMENTO PARA SU IMPRESIÓN}\\[\separacionLarga]
+\end{center}
+
+\begin{flushright}
+Cd. Victoria, Tamaulipas a \fechacarta \\[\separacionLarga]
+\end{flushright}
+
+\parindent=0mm
+
+\NombreAlumno \\
+PRESENTE \\[\separacionCorta]
+
+Le comunico que  el Programa Académico de \ncarrera\ \ le ha otorgado la autorización para la impresión de su Tesina de Estadía Práctica cuyo título es: \\[\separacionCorta]
+
+\begin{center}
+\textbf{\NombreProyecto} \\[\separacionLarga]
+\end{center}
+
+\begin{center}	
+\begin{tabular}{ccc}
+\centering
+& ATENTAMENTE & \\ 
+& & \\
+& & \\
+& & \\ \hline
+& \nasesorinstitucional & \\
+& ASESOR INSTITUCIONAL & \\
+\end{tabular}
+\end{center} 
+\vspace{2cm}
+c.c.p Director de programa académico
+
+
+%-----------------------------------------------------------------------------------------------------------------
+\clearpage
+\ClearWallPaper
+\thispagestyle{empty}
+\newgeometry{left=1.5cm,top=1.0cm,right=1.5cm,bottom=2.0cm}             
+\begin{landscape}
+
+%\afterpage{\restoregeometry}
+
+
+\begin{tabular}{p{3cm}p{16cm}p{3cm}}
+\multirow{4}{*}{\includegraphics[width=3.0cm]{logos/UTYP.png}} &  & \multirow{4}{*}{\includegraphics[width=3.0cm]{logos/LogoUPV_2023.png}} \\
+   & \multicolumn{1}{c}{\textbf{EVALUACIÓN DE ESTADÍA}} &  \\ %\cline{2-2}
+& \multicolumn{1}{c}{\textbf{Rúbrica para evaluación de la presentación y el reporte de estadía}} & \\ 
+& & \\ 
+\end{tabular}
+
+\normalsize
+\begin{tabular}{p{13cm}R{10cm}}
+\multicolumn{1}{l}{Nombre del alumno: \underline{\textbf{\iemph{\NombreAlumno}}}}  & 
+Calificación final: \underline{\hspace{3cm}}    \\ %\cline{2-2}
+\multicolumn{2}{c}{Periodo: \underline{\textbf{\iemph{\ncuatrimestre}}}}    \\ %\cline{2-2}
+& \\
+\end{tabular}
+
+\scriptsize 
+%\begin{center}
+%\resizebox{\linewidth}{!}{%
+\begin{tabular}{C{2.0cm}|C{2.0cm}|C{4.5cm}|C{4.5cm}|C{4.5cm}|C{4.5cm}}
+\hline
+\multirow{2}{*}{Ponderación} & Aspecto a  & Competente & Independiente & Básico Avanzado & No Competente \\
+ & Evaluar & 10 & 9 & 8 & 5 \\ 
+\hline
+40 & Resultados y Actividades & Estrechamente relacionados al perfil de
+egreso de su programa académico & Parcialmente relacionados al perfil de
+egreso de su programa académico & Escasamente relacionados al perfil de egreso de su programa académico & Escasamente relacionados al perfil de egreso de su programa académico \\  \hline
+
+30 & Exposición de las actividades de la estadía  & Detalladas y sustentadas con respecto a los resultados que se obtuvieron & Detalladas y sustentadas parcialmente con respecto a los resultados que se obtuvieron & Detalladas parcialmente con respecto a los resultados que se obtuvieron & Detalladas escazamente con respecto a los resultados que se obtuvieron \\  \hline 
+
+10 & Material visual Lenguaje
+verbal & Uso el lenguaje y la terminología
+apropiadas; El material visual está organizado,
+adecuado y suficiente
+ & 
+Uso el lenguaje y la terminología apropiadas
+El material visual está parcialmente
+organizado y es suficiente
+& 
+Uso el lenguaje y la terminología son parcialmente apropiadas; El material visual está parcialmente
+organizado y es suficiente
+ & 
+Uso el lenguaje y terminología es inapropiado; El material visual no está organizado y es insuficiente
+ \\  \hline
+10 & Exposición en Idioma Inglés &
+
+Pronunciation is clear so language is easily understood (2.5) Uses fluent connected speech, occasionally disrupted by search for correct form of expression (2.5) Uses topic related vocabulary without problems (2.5) Responds to questions using varied and descriptive vocabulary and language structures (2.5) & 
+
+Pronunciation is understandable, but there are slight errors (2.25)
+Speech is connected but frequently disrupted by search for correct form of
+expression (2.25) Uses some topic related vocabulary sufficient to communicate ideas (2.25) Responds to questions using simple but accurate vocabulary and language structures (2.25 & 
+
+Pronunciation is understandable most of the time, marked native accent and many errors
+(2) Speaks with simple sentences, sometimes not connected, but is understood (2) Uses basic vocabulary to communicate ideas
+(2) Partly responds to simple questions, with limited vocabulary and language structures (2)  &
+
+Pronunciation makes language very difficult to understand (1) Uses one-word/two-word utterances (1) Unable to communicate ideas due to lack of vocabulary (1) Uses isolated words or sentence fragments to respond to questions (1) 
+\\  \hline
+
+5 & Respuesta a los cuestionamientos de los evaluadores & 
+Clara y satisfactoria & 
+Clara y parcialmente satisfactoria & 
+Clara e insuficiente & 
+Confusa e insuficiente 
+\\  \hline
+5 & Autorización de tesina en tiempo y forma & 
+Presenta en tiempo y forma 
+\tikz[overlay, remember picture,anchor=base]  \node (Mark){}; 
+ & 
+Presenta en tiempo y forma con la mayoría de requerimientos solicitados & 
+Presenta en tiempo y con algunas limitantes  de los requerimientos solicitados. &
+Presenta fuera de tiempo y con los mínimos requerimientos solicitados.
+ \\  % Una linea en Blanco para poner la marca del ASESOR INSTITUCIONAL
+&
+&
+%\tikz[overlay, remember picture,anchor=base] \node (Center){};
+
+&
+ \\  \hline
+
+\end{tabular}
+
+%\begin{tikzpicture}[remember picture, overlay, note/.style={rectangle callout, fill=#1}]
+%\node [note=red!80, callout absolute pointer={(Mark)}] at (Center) {COMPETENTE!};
+%\end{tikzpicture}
+
+%}
+%\end{center}
+
+\normalsize
+
+
+%\begin{center}
+%\begin{tabular}{ccc}
+%\includegraphics[scale=0.10]{FirmaMANM2.png} & & \\
+%\hline 
+%\nasesorinstitucional & \nevalador & \\
+%ASESOR INSTITUCIONAL & EVALUADOR & EVALUADOR INGLÉS \\
+%\end{tabular}
+%\end{center}
+
+\begin{center}
+\begin{tabular}{cp{1cm}cp{1cm}c}
+%\includegraphics[scale=0.10]{ArchivoFirmaASESOR.png} & & & & \\
+ & & & & \\
+  & & & & \\
+\hline 
+\nasesorinstitucional & & \nevalador & & \\
+ASESOR INSTITUCIONAL & &EVALUADOR & &EVALUADOR DE INGLÉS \\
+\end{tabular}
+\end{center}
+
+
+\end{landscape} 
+\restoregeometry
+
+%-----------------------------------------------------------------------------------------------------------------
+% Pagina 5: Registro de Evaluación de Estadía
+\clearpage
+\pagestyle{empty}
+\ULCornerWallPaper{1}{membretes/membrete_UPV_08May25.pdf}
+
+\vspace*{0.5cm}
+
+
+
+\large
+\begin{center}
+\textbf{REGISTRO DE EVALUACIÓN DE EXPOSICIÓN DE ESTADÍA}
+\\[\separacionLarga]
+\end{center}
+
+
+Siendo las \HoraExposionFormatoVenticuatroHoras \ \ horas del día \FechaExposicion, \elolaNombreAlumno\ \ alumn\OA\ \ \textbf{\NombreAlumno}, del programa académico \textbf{\ncarrera}, con matricula \textbf{\Matricula}, presentó la exposición de la estadía realizada durante el cuatrimestre \textbf{\ncuatrimestre}, en \elolaNombreEmpresa\ \ \textbf{\organismoreceptor}, con el proyecto titulado \textbf{\NombreProyecto}.\\
+
+Una vez concluido el proceso de evaluación, y con base a la rúbrica establecida para éste propósito, se determina que la calificación de la estadía es \underline{\hspace{2cm}}. %\hrulefill.
+
+\begin{center}
+\begin{tabular}{ccc}
+& & \\
+& & \\
+& & \\
+%& \includegraphics[scale=0.10]{FirmaAsesorPro.png} & \\
+\hline 
+%& \underline{\hspace{8cm}}& \\
+& \nasesorinstitucional & \\
+& ASESOR INSTITUCIONAL & \\
+& & \\
+& & \\
+& & \\
+%& \underline{\hspace{8cm}}& \\
+\hline 
+& \nevalador & \\
+& EVALUADOR & \\
+& & \\
+& & \\
+%& & \\
+\hline 
+& & \\
+& EVALUADOR DE INGLÉS & \\
+\end{tabular}
+\end{center}
+
+\normalsize
+
+%-----------------------------------------------------------------------------------------------------------------
+% PAGINA 4 - AGRADECIMIENTOS
+\clearpage
+\ClearWallPaper
+\pagestyle{fancy}
+\section*{\centering Agradecimientos}
+\addcontentsline{toc}{section}{Agradecimientos}
+%\input{Agradecimientos.tex}
+
+%-----------------------------------------------------------------------------------------------------------------
+% PAGINA 5 - RESUMEN EN ESPAÑOL
+
+\clearpage
+\section*{\centering Resumen}
+\addcontentsline{toc}{section}{Resumen}
+%\input{Resumen.tex}
+\textbf{Palabras clave:} Tecnología, Sistema web, Desarrollar, Implementar, Empresas, Modulo.
+
+%-----------------------------------------------------------------------------------------------------------------
+% PAGINA 6 - RESUMEN EN INGLES
+
+\clearpage
+\section*{\centering Summary}
+\addcontentsline{toc}{section}{Summary}
+%\input{Summary.tex}
+\textbf{Keywords}: Technology, Web system, Develop, Implement, Companies, Module.
+
+%-----------------------------------------------------------------------------------------------------------------
+% PAGINA 7 - INDICE
+
+\clearpage
+\addcontentsline{toc}{section}{Índice}
+\renewcommand\contentsname{Índice}
+\tableofcontents
+
+%-----------------------------------------------------------------------------------------------------------------
+% CAPITULOS
+
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+%\input{Capitulo1.tex}
+
+\clearpage
+%\input{Capitulo2.tex}
+
+\clearpage
+\input{introduccion.tex}
+
+\clearpage
+\input{estado_del_arte.tex}
+
+\clearpage
+\addcontentsline{toc}{section}{Índice de figuras}
+\renewcommand\listfigurename{Índice de figuras}
+
+\listoffigures
+
+\clearpage
+\addcontentsline{toc}{section}{Índice de cuadros}
+\renewcommand\listtablename{Índice de cuadros}
+\listoftables
+
+\clearpage
+\addcontentsline{toc}{section}{Índice de algoritmos}
+\renewcommand\listalgorithmname{Índice de algoritmos}
+\listofalgorithms
+
+%-----------------------------------------------------------------------------------------------------------------
+% REFERENCIAS
+
+
+\clearpage
+%Let's cite! The Einstein's journal paper \cite{dirac} and the Dirac's 
+%book \cite{einstein} are physics related items. 
+
+%\Urlmuskip=0mu plus 1mu\relax
+\addcontentsline{toc}{section}{Referencias} 
+\printbibliography
+ 
+\end{document}
