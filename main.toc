@@ -1,0 +1,28 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{Agradecimientos}{\es@scroman {vii}}{section*.1}%
+\contentsline {section}{Resumen}{\es@scroman {viii}}{section*.2}%
+\contentsline {section}{Summary}{\es@scroman {ix}}{section*.3}%
+\contentsline {section}{Índice}{\es@scroman {x}}{section*.3}%
+\contentsline {section}{\numberline {1}Introducción}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Antecedentes}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Definición del Problema}{1}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Objetivos}{1}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Objetivo General}{1}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Objetivos Específicos}{1}{subsubsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.4}Justificación}{2}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Alcances y Limitaciones}{2}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Alcances}{2}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Limitaciones}{2}{subsubsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.6}Ejemplos de Tablas e Inclusión de Imágenes}{2}{subsection.1.6}%
+\contentsline {subsubsection}{\numberline {1.6.1}Inclusión de Tablas}{2}{subsubsection.1.6.1}%
+\contentsline {subsubsection}{\numberline {1.6.2}Inclusión de Imágenes}{3}{subsubsection.1.6.2}%
+\contentsline {section}{\numberline {2}Estado del Arte y Trabajos Relacionados}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}El Estado del Arte}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Trabajos Relacionados}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Ejemplos de Tablas}{6}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Tabla Informativa}{6}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Tabla Comparativa}{6}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Diferencia entre Tablas y Cuándo Utilizarlas}{6}{subsection.2.4}%
+\contentsline {section}{Índice de figuras}{8}{subsection.2.4}%
+\contentsline {section}{Índice de cuadros}{9}{section*.10}%
+\contentsline {section}{Índice de algoritmos}{10}{section*.11}%
