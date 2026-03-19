@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.15)  20 JAN 2026 09:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.15)  9 MAR 2026 15:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -672,35 +672,76 @@ rs
 \f@nch@O@olf=\skip65
 \f@nch@O@orf=\skip66
 )
+(/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen275
+\lightrulewidth=\dimen276
+\cmidrulewidth=\dimen277
+\belowrulesep=\dimen278
+\belowbottomsep=\dimen279
+\aboverulesep=\dimen280
+\abovetopsep=\dimen281
+\cmidrulesep=\dimen282
+\cmidrulekern=\dimen283
+\defaultaddspace=\dimen284
+\@cmidla=\count342
+\@cmidlb=\count343
+\@aboverulesep=\dimen285
+\@belowrulesep=\dimen286
+\@thisruleclass=\count344
+\@lastruleclass=\count345
+\@thisrulewidth=\dimen287
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
+Package: array 2024/06/14 v2.6d Tabular extension package (FMi)
+\col@sep=\dimen288
+\ar@mcellbox=\box93
+\extrarowheight=\dimen289
+\NC@list=\toks56
+\extratabsurround=\skip67
+\backup@length=\skip68
+\ar@cellbox=\box94
+)
+\TX@col@width=\dimen290
+\TX@old@table=\dimen291
+\TX@old@col=\dimen292
+\TX@target=\dimen293
+\TX@delta=\dimen294
+\TX@cols=\count346
+\TX@ftn=\toks57
+)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip67
-\multirow@cntb=\count342
-\multirow@dima=\skip68
-\bigstrutjot=\dimen275
+\multirow@colwidth=\skip69
+\multirow@cntb=\count347
+\multirow@dima=\skip70
+\bigstrutjot=\dimen295
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count343
-\lst@gtempboxa=\box93
-\lst@token=\toks56
-\lst@length=\count344
-\lst@currlwidth=\dimen276
-\lst@column=\count345
-\lst@pos=\count346
-\lst@lostspace=\dimen277
-\lst@width=\dimen278
-\lst@newlines=\count347
-\lst@lineno=\count348
-\lst@maxwidth=\dimen279
+\lst@mode=\count348
+\lst@gtempboxa=\box95
+\lst@token=\toks58
+\lst@length=\count349
+\lst@currlwidth=\dimen296
+\lst@column=\count350
+\lst@pos=\count351
+\lst@lostspace=\dimen297
+\lst@width=\dimen298
+\lst@newlines=\count352
+\lst@lineno=\count353
+\lst@maxwidth=\dimen299
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/05/25 1.10b (Carsten Heinz)
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/05/25 1.10b (Carsten Heinz)
-\c@lstnumber=\count349
-\lst@skipnumbers=\count350
-\lst@framebox=\box94
+\c@lstnumber=\count354
+\lst@skipnumbers=\count355
+\lst@framebox=\box96
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/05/25 1.10b listings configuration
@@ -712,18 +753,18 @@ Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen280
-\captionmargin=\dimen281
-\caption@leftmargin=\dimen282
-\caption@rightmargin=\dimen283
-\caption@width=\dimen284
-\caption@indent=\dimen285
-\caption@parindent=\dimen286
-\caption@hangindent=\dimen287
+\caption@tempdima=\dimen300
+\captionmargin=\dimen301
+\caption@leftmargin=\dimen302
+\caption@rightmargin=\dimen303
+\caption@width=\dimen304
+\caption@indent=\dimen305
+\caption@parindent=\dimen306
+\caption@hangindent=\dimen307
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count351
-\c@continuedfloat=\count352
+\c@caption@flags=\count356
+\c@continuedfloat=\count357
 Package caption Info: listings package is loaded.
 Package caption Info: longtable package is loaded.
 
@@ -733,9 +774,17 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count353
+\c@subfigure=\count358
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count354
+\c@subtable=\count359
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count360
+\float@exts=\toks59
+\float@box=\box97
+\@float@everytoks=\toks60
+\@floatcapt=\box98
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
@@ -757,42 +806,42 @@ Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count355
-\calc@Bcount=\count356
-\calc@Adimen=\dimen288
-\calc@Bdimen=\dimen289
-\calc@Askip=\skip69
-\calc@Bskip=\skip70
+\calc@Acount=\count361
+\calc@Bcount=\count362
+\calc@Adimen=\dimen308
+\calc@Bdimen=\dimen309
+\calc@Askip=\skip71
+\calc@Bskip=\skip72
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count357
-\calc@Cskip=\skip71
+\calc@Ccount=\count363
+\calc@Cskip=\skip73
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
-\ESO@tempdima=\dimen290
-\ESO@tempdimb=\dimen291
+\ESO@tempdima=\dimen310
+\ESO@tempdimb=\dimen311
 )
-\AM@pagewidth=\dimen292
-\AM@pageheight=\dimen293
-\AM@fboxrule=\dimen294
+\AM@pagewidth=\dimen312
+\AM@pageheight=\dimen313
+\AM@fboxrule=\dimen314
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/pdfpages/pppdftex.def
 File: pppdftex.def 2024/05/29 v0.6a Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count358
-\AM@pagebox=\box95
-\AM@global@opts=\toks57
-\AM@pagecnt=\count359
-\AM@toc@title=\toks58
-\AM@lof@heading=\toks59
-\c@AM@survey=\count360
-\AM@templatesizebox=\box96
+\pdfpages@includegraphics@status=\count364
+\AM@pagebox=\box99
+\AM@global@opts=\toks61
+\AM@pagecnt=\count365
+\AM@toc@title=\toks62
+\AM@lof@heading=\toks63
+\c@AM@survey=\count366
+\AM@templatesizebox=\box100
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks60
-\verbatim@line=\toks61
+\every@verbatim=\toks64
+\verbatim@line=\toks65
 \verbatim@in@stream=\read5
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
@@ -802,32 +851,23 @@ Package: algpseudocode
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count361
-\c@ALG@rem=\count362
-\c@ALG@nested=\count363
-\ALG@tlm=\skip72
-\ALG@thistlm=\skip73
-\c@ALG@Lnr=\count364
-\c@ALG@blocknr=\count365
-\c@ALG@storecount=\count366
-\c@ALG@tmpcounter=\count367
-\ALG@tmplength=\skip74
+\c@ALG@line=\count367
+\c@ALG@rem=\count368
+\c@ALG@nested=\count369
+\ALG@tlm=\skip74
+\ALG@thistlm=\skip75
+\c@ALG@Lnr=\count370
+\c@ALG@blocknr=\count371
+\c@ALG@storecount=\count372
+\c@ALG@tmpcounter=\count373
+\ALG@tmplength=\skip76
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count368
-\float@exts=\toks62
-\float@box=\box97
-\@float@everytoks=\toks63
-\@floatcapt=\box98
-)
-\@float@every@algorithm=\toks64
-\c@algorithm=\count369
+\@float@every@algorithm=\toks66
+\c@algorithm=\count374
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
@@ -843,39 +883,9 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/afterpage.sty
 Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
-\AP@output=\toks65
-\AP@partial=\box99
-\AP@footins=\box100
-)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
-Package: array 2024/06/14 v2.6d Tabular extension package (FMi)
-\col@sep=\dimen295
-\ar@mcellbox=\box101
-\extrarowheight=\dimen296
-\NC@list=\toks66
-\extratabsurround=\skip75
-\backup@length=\skip76
-\ar@cellbox=\box102
-)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen297
-\lightrulewidth=\dimen298
-\cmidrulewidth=\dimen299
-\belowrulesep=\dimen300
-\belowbottomsep=\dimen301
-\aboverulesep=\dimen302
-\abovetopsep=\dimen303
-\cmidrulesep=\dimen304
-\cmidrulekern=\dimen305
-\defaultaddspace=\dimen306
-\@cmidla=\count370
-\@cmidlb=\count371
-\@aboverulesep=\dimen307
-\@belowrulesep=\dimen308
-\@thisruleclass=\count372
-\@lastruleclass=\count373
-\@thisrulewidth=\dimen309
+\AP@output=\toks67
+\AP@partial=\box101
+\AP@footins=\box102
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/ragged2e/ragged2e.sty
 Package: ragged2e 2023/06/22 v3.6 ragged2e Package
@@ -910,7 +920,7 @@ Package pdftexcmds Info: \pdfdraftmode found.
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count374
+\lrq@indent=\count375
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
@@ -919,49 +929,49 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@tabx@nest=\count375
-\c@listtotal=\count376
-\c@listcount=\count377
-\c@liststart=\count378
-\c@liststop=\count379
-\c@citecount=\count380
-\c@citetotal=\count381
-\c@multicitecount=\count382
-\c@multicitetotal=\count383
-\c@instcount=\count384
-\c@maxnames=\count385
-\c@minnames=\count386
-\c@maxitems=\count387
-\c@minitems=\count388
-\c@citecounter=\count389
-\c@maxcitecounter=\count390
-\c@savedcitecounter=\count391
-\c@uniquelist=\count392
-\c@uniquename=\count393
-\c@refsection=\count394
-\c@refsegment=\count395
-\c@maxextratitle=\count396
-\c@maxextratitleyear=\count397
-\c@maxextraname=\count398
-\c@maxextradate=\count399
-\c@maxextraalpha=\count400
-\c@abbrvpenalty=\count401
-\c@highnamepenalty=\count402
-\c@lownamepenalty=\count403
-\c@maxparens=\count404
-\c@parenlevel=\count405
-\blx@tempcnta=\count406
-\blx@tempcntb=\count407
-\blx@tempcntc=\count408
-\c@blx@maxsection=\count409
-\blx@maxsegment@0=\count410
-\blx@notetype=\count411
-\blx@parenlevel@text=\count412
-\blx@parenlevel@foot=\count413
-\blx@sectionciteorder@0=\count414
-\blx@sectionciteorderinternal@0=\count415
-\blx@entrysetcounter=\count416
-\blx@biblioinstance=\count417
+\c@tabx@nest=\count376
+\c@listtotal=\count377
+\c@listcount=\count378
+\c@liststart=\count379
+\c@liststop=\count380
+\c@citecount=\count381
+\c@citetotal=\count382
+\c@multicitecount=\count383
+\c@multicitetotal=\count384
+\c@instcount=\count385
+\c@maxnames=\count386
+\c@minnames=\count387
+\c@maxitems=\count388
+\c@minitems=\count389
+\c@citecounter=\count390
+\c@maxcitecounter=\count391
+\c@savedcitecounter=\count392
+\c@uniquelist=\count393
+\c@uniquename=\count394
+\c@refsection=\count395
+\c@refsegment=\count396
+\c@maxextratitle=\count397
+\c@maxextratitleyear=\count398
+\c@maxextraname=\count399
+\c@maxextradate=\count400
+\c@maxextraalpha=\count401
+\c@abbrvpenalty=\count402
+\c@highnamepenalty=\count403
+\c@lownamepenalty=\count404
+\c@maxparens=\count405
+\c@parenlevel=\count406
+\blx@tempcnta=\count407
+\blx@tempcntb=\count408
+\blx@tempcntc=\count409
+\c@blx@maxsection=\count410
+\blx@maxsegment@0=\count411
+\blx@notetype=\count412
+\blx@parenlevel@text=\count413
+\blx@parenlevel@foot=\count414
+\blx@sectionciteorder@0=\count415
+\blx@sectionciteorderinternal@0=\count416
+\blx@entrysetcounter=\count417
+\blx@biblioinstance=\count418
 \labelnumberwidth=\skip91
 \labelalphawidth=\skip92
 \biblabelsep=\skip93
@@ -973,9 +983,9 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \blx@bcfin=\read6
 \blx@bcfout=\write5
 \blx@langwohyphens=\language90
-\c@mincomprange=\count418
-\c@maxcomprange=\count419
-\c@mincompwidth=\count420
+\c@mincomprange=\count419
+\c@maxcomprange=\count420
+\c@mincompwidth=\count421
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -984,74 +994,74 @@ File: blx-dm.def 2024/03/21 v3.20 biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count421
-\c@savedafterword=\count422
-\c@annotator=\count423
-\c@savedannotator=\count424
-\c@author=\count425
-\c@savedauthor=\count426
-\c@bookauthor=\count427
-\c@savedbookauthor=\count428
-\c@commentator=\count429
-\c@savedcommentator=\count430
-\c@editor=\count431
-\c@savededitor=\count432
-\c@editora=\count433
-\c@savededitora=\count434
-\c@editorb=\count435
-\c@savededitorb=\count436
-\c@editorc=\count437
-\c@savededitorc=\count438
-\c@foreword=\count439
-\c@savedforeword=\count440
-\c@holder=\count441
-\c@savedholder=\count442
-\c@introduction=\count443
-\c@savedintroduction=\count444
-\c@namea=\count445
-\c@savednamea=\count446
-\c@nameb=\count447
-\c@savednameb=\count448
-\c@namec=\count449
-\c@savednamec=\count450
-\c@translator=\count451
-\c@savedtranslator=\count452
-\c@shortauthor=\count453
-\c@savedshortauthor=\count454
-\c@shorteditor=\count455
-\c@savedshorteditor=\count456
-\c@labelname=\count457
-\c@savedlabelname=\count458
-\c@institution=\count459
-\c@savedinstitution=\count460
-\c@lista=\count461
-\c@savedlista=\count462
-\c@listb=\count463
-\c@savedlistb=\count464
-\c@listc=\count465
-\c@savedlistc=\count466
-\c@listd=\count467
-\c@savedlistd=\count468
-\c@liste=\count469
-\c@savedliste=\count470
-\c@listf=\count471
-\c@savedlistf=\count472
-\c@location=\count473
-\c@savedlocation=\count474
-\c@organization=\count475
-\c@savedorganization=\count476
-\c@origlocation=\count477
-\c@savedoriglocation=\count478
-\c@origpublisher=\count479
-\c@savedorigpublisher=\count480
-\c@publisher=\count481
-\c@savedpublisher=\count482
-\c@language=\count483
-\c@savedlanguage=\count484
-\c@origlanguage=\count485
-\c@savedoriglanguage=\count486
-\c@pageref=\count487
-\c@savedpageref=\count488
+\c@afterword=\count422
+\c@savedafterword=\count423
+\c@annotator=\count424
+\c@savedannotator=\count425
+\c@author=\count426
+\c@savedauthor=\count427
+\c@bookauthor=\count428
+\c@savedbookauthor=\count429
+\c@commentator=\count430
+\c@savedcommentator=\count431
+\c@editor=\count432
+\c@savededitor=\count433
+\c@editora=\count434
+\c@savededitora=\count435
+\c@editorb=\count436
+\c@savededitorb=\count437
+\c@editorc=\count438
+\c@savededitorc=\count439
+\c@foreword=\count440
+\c@savedforeword=\count441
+\c@holder=\count442
+\c@savedholder=\count443
+\c@introduction=\count444
+\c@savedintroduction=\count445
+\c@namea=\count446
+\c@savednamea=\count447
+\c@nameb=\count448
+\c@savednameb=\count449
+\c@namec=\count450
+\c@savednamec=\count451
+\c@translator=\count452
+\c@savedtranslator=\count453
+\c@shortauthor=\count454
+\c@savedshortauthor=\count455
+\c@shorteditor=\count456
+\c@savedshorteditor=\count457
+\c@labelname=\count458
+\c@savedlabelname=\count459
+\c@institution=\count460
+\c@savedinstitution=\count461
+\c@lista=\count462
+\c@savedlista=\count463
+\c@listb=\count464
+\c@savedlistb=\count465
+\c@listc=\count466
+\c@savedlistc=\count467
+\c@listd=\count468
+\c@savedlistd=\count469
+\c@liste=\count470
+\c@savedliste=\count471
+\c@listf=\count472
+\c@savedlistf=\count473
+\c@location=\count474
+\c@savedlocation=\count475
+\c@organization=\count476
+\c@savedorganization=\count477
+\c@origlocation=\count478
+\c@savedoriglocation=\count479
+\c@origpublisher=\count480
+\c@savedorigpublisher=\count481
+\c@publisher=\count482
+\c@savedpublisher=\count483
+\c@language=\count484
+\c@savedlanguage=\count485
+\c@origlanguage=\count486
+\c@savedoriglanguage=\count487
+\c@pageref=\count488
+\c@savedpageref=\count489
 \shorthandwidth=\skip99
 \shortjournalwidth=\skip100
 \shortserieswidth=\skip101
@@ -1087,19 +1097,19 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
-\c@textcitecount=\count489
-\c@textcitetotal=\count490
-\c@textcitemaxnames=\count491
-\c@biburlbigbreakpenalty=\count492
-\c@biburlbreakpenalty=\count493
-\c@biburlnumpenalty=\count494
-\c@biburlucpenalty=\count495
-\c@biburllcpenalty=\count496
+\c@textcitecount=\count490
+\c@textcitetotal=\count491
+\c@textcitemaxnames=\count492
+\c@biburlbigbreakpenalty=\count493
+\c@biburlbreakpenalty=\count494
+\c@biburlnumpenalty=\count495
+\c@biburlucpenalty=\count496
+\c@biburllcpenalty=\count497
 \biburlbigskip=\muskip19
 \biburlnumskip=\muskip20
 \biburlucskip=\muskip21
 \biburllcskip=\muskip22
-\c@smartand=\count497
+\c@smartand=\count498
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
@@ -1111,8 +1121,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count498
-\c@bbx:relatedtotal=\count499
+\c@bbx:relatedcount=\count499
+\c@bbx:relatedtotal=\count500
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
@@ -1173,14 +1183,14 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count500
+\c@section@level=\count501
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen310
-\Hy@linkcounter=\count501
-\Hy@pagecounter=\count502
+\@linkdim=\dimen315
+\Hy@linkcounter=\count502
+\Hy@pagecounter=\count503
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-07-10 v7.01j Hyperref: PDFDocEncoding definition (HO)
@@ -1190,7 +1200,7 @@ Now handling font encoding PD1 ...
 (/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count503
+\Hy@SavedSpaceFactor=\count504
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-07-10 v7.01j Hyperref: PDF Unicode definition (HO)
@@ -1208,9 +1218,9 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count504
+\c@Hy@tempcnt=\count505
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen311
+\XeTeXLinkMargin=\dimen316
 
 (/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -1219,9 +1229,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count505
-\Field@Width=\dimen312
-\Fld@charsize=\dimen313
+\Fld@menulength=\count506
+\Field@Width=\dimen317
+\Fld@charsize=\dimen318
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -1234,9 +1244,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count506
-\c@Item=\count507
-\c@Hfootnote=\count508
+\Hy@abspage=\count507
+\c@Item=\count508
+\c@Hfootnote=\count509
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -1248,8 +1258,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count509
-\c@bookmark@seq@number=\count510
+\Fld@listcount=\count510
+\c@bookmark@seq@number=\count511
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
@@ -1269,10 +1279,10 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
 (/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks67
-\XKV@tempa@toks=\toks68
+\XKV@toks=\toks68
+\XKV@tempa@toks=\toks69
 )
-\XKV@depth=\count511
+\XKV@depth=\count512
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifpdf.sty
@@ -1295,46 +1305,46 @@ Package: fcprefix 2012/09/28
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/fmtcount/fcnumparser.sty
 Package: fcnumparser 2017/06/15
-\fc@digit@counter=\count512
+\fc@digit@counter=\count513
 ))
-\c@padzeroesN=\count513
-\fc@tmpcatcode=\count514
-\@DT@modctr=\count515
-\@ordinalctr=\count516
-\@orgargctr=\count517
-\@strctr=\count518
-\@tmpstrctr=\count519
-\@DT@loopN=\count520
-\@DT@X=\count521
+\c@padzeroesN=\count514
+\fc@tmpcatcode=\count515
+\@DT@modctr=\count516
+\@ordinalctr=\count517
+\@orgargctr=\count518
+\@strctr=\count519
+\@tmpstrctr=\count520
+\@DT@loopN=\count521
+\@DT@X=\count522
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/datetime/datetime-defaults.sty
 Package: datetime-defaults 2013/09/10
 )
-\@day=\count522
-\@month=\count523
-\@year=\count524
-\c@HOUR=\count525
-\c@HOURXII=\count526
-\c@MINUTE=\count527
-\c@TOHOUR=\count528
-\c@TOMINUTE=\count529
-\c@SECOND=\count530
-\currenthour=\count531
-\currentminute=\count532
-\currentsecond=\count533
+\@day=\count523
+\@month=\count524
+\@year=\count525
+\c@HOUR=\count526
+\c@HOURXII=\count527
+\c@MINUTE=\count528
+\c@TOHOUR=\count529
+\c@TOMINUTE=\count530
+\c@SECOND=\count531
+\currenthour=\count532
+\currentminute=\count533
+\currentsecond=\count534
 Package datetime Info: No datetime.cfg file found, using default settings on in
 put line 308.
-\@dtctr=\count534
-\dayofyear=\count535
-\dayofweek=\count536
+\@dtctr=\count535
+\dayofyear=\count536
+\dayofweek=\count537
 LaTeX Info: Redefining \today on input line 736.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/datetime/dt-spanish.def
 File: dt-spanish.def 2013/09/10
 LaTeX Info: Redefining \datespanish on input line 85.
 )
-\dt@a=\toks69
-\dt@b=\toks70
+\dt@a=\toks70
+\dt@b=\toks71
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2023/07/27 v1.04 Text only upper/lower case changing (DPC)
@@ -1355,29 +1365,33 @@ Package: wallpaper 2005/01/18, v1.01 easy wallpaper formatting (MHFW)
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count537
-\@quotereset=\count538
-No file main.aux.
+\@quotelevel=\count538
+\@quotereset=\count539
+(./main.aux
+LaTeX Info: Redefining \. on input line 12.
+LaTeX Info: Redefining \% on input line 12.
+)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1412,21 +1426,21 @@ LaTeX Font Info:    ... okay on input line 149.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \. on input line 149.
-LaTeX Info: Redefining \% on input line 149.
+LaTeX Info: Redefining \. on input line 147.
+LaTeX Info: Redefining \% on input line 147.
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count539
-\scratchdimen=\dimen314
+\scratchcounter=\count540
+\scratchdimen=\dimen319
 \scratchbox=\box103
-\nofMPsegments=\count540
-\nofMParguments=\count541
-\everyMPshowfont=\toks71
-\MPscratchCnt=\count542
-\MPscratchDim=\dimen315
-\MPnumerator=\count543
-\makeMPintoPDFobject=\count544
-\everyMPtoPDFconversion=\toks72
+\nofMPsegments=\count541
+\nofMParguments=\count542
+\everyMPshowfont=\toks72
+\MPscratchCnt=\count543
+\MPscratchDim=\dimen320
+\MPnumerator=\count544
+\makeMPintoPDFobject=\count545
+\everyMPtoPDFconversion=\toks73
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1436,7 +1450,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count545
+\c@lstlisting=\count546
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -1456,35 +1470,37 @@ Package biblatex Info: Data encoding 'utf8' specified.
 \openout5 = `main-blx.bib'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'main.bbl' not found.
+Package biblatex Info: ... file 'main.bbl' found.
 
-No file main.bbl.
-Package biblatex Info: Reference section=0 on input line 149.
-Package biblatex Info: Reference segment=0 on input line 149.
-Package hyperref Info: Link coloring ON on input line 149.
+(./main.bbl)
+Package biblatex Info: Reference section=0 on input line 147.
+Package biblatex Info: Reference segment=0 on input line 147.
+Package hyperref Info: Link coloring ON on input line 147.
+ (./main.out) (./main.out)
 \@outlinefile=\write6
 \openout6 = `main.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 159
+LaTeX Font Info:    Trying to load font information for U+msa on input line 157
 .
+
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 159
+LaTeX Font Info:    Trying to load font information for U+msb on input line 157
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<logos/UTYP.png, id=7, 301.125pt x 156.585pt>
+<logos/UTYP.png, id=201, 301.125pt x 156.585pt>
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 160.
+Package pdftex.def Info: logos/UTYP.png  used on input line 158.
 (pdftex.def)             Requested size: 123.11743pt x 64.01869pt.
-<logos/LogoUPV_2023.png, id=9, 438.9198pt x 166.7028pt>
+<logos/LogoUPV_2023.png, id=203, 438.9198pt x 166.7028pt>
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 161.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 159.
 (pdftex.def)             Requested size: 168.55936pt x 64.01869pt.
 
 
@@ -1492,36 +1508,36 @@ Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 161.
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logos
 /UTYP.png> <./logos/LogoUPV_2023.png>]
-<cartas/CartaPresentacion.pdf, id=19, 614.295pt x 794.97pt>
+<cartas/CartaPresentacion.pdf, id=214, 597.23125pt x 844.15375pt>
 File: cartas/CartaPresentacion.pdf Graphic file (type pdf)
 <use cartas/CartaPresentacion.pdf>
-Package pdftex.def Info: cartas/CartaPresentacion.pdf  used on input line 211.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+Package pdftex.def Info: cartas/CartaPresentacion.pdf  used on input line 209.
+(pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
 File: cartas/CartaPresentacion.pdf Graphic file (type pdf)
 <use cartas/CartaPresentacion.pdf>
-Package pdftex.def Info: cartas/CartaPresentacion.pdf  used on input line 211.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-<cartas/CartaPresentacion.pdf, id=22, page=1, 614.295pt x 794.97pt>
+Package pdftex.def Info: cartas/CartaPresentacion.pdf  used on input line 209.
+(pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
+<cartas/CartaPresentacion.pdf, id=217, page=1, 597.23125pt x 844.15375pt>
 File: cartas/CartaPresentacion.pdf Graphic file (type pdf)
 <use cartas/CartaPresentacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaPresentacion.pdf , page1 used on input lin
-e 211.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+e 209.
+(pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
 File: cartas/CartaPresentacion.pdf Graphic file (type pdf)
 <use cartas/CartaPresentacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaPresentacion.pdf , page1 used on input lin
-e 211.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+e 209.
+(pdftex.def)             Requested size: 562.52745pt x 795.10185pt.
 File: cartas/CartaPresentacion.pdf Graphic file (type pdf)
 <use cartas/CartaPresentacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaPresentacion.pdf , page1 used on input lin
-e 211.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+e 209.
+(pdftex.def)             Requested size: 562.52745pt x 795.10185pt.
 File: cartas/CartaPresentacion.pdf Graphic file (type pdf)
 <use cartas/CartaPresentacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaPresentacion.pdf , page1 used on input lin
-e 211.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+e 209.
+(pdftex.def)             Requested size: 562.52745pt x 795.10185pt.
 
 
 
@@ -1529,105 +1545,105 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.I}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.211 ...[pages={1}]{cartas/CartaPresentacion.pdf}
+l.209 ...[pages={1}]{cartas/CartaPresentacion.pdf}
                                                   
 File: cartas/CartaPresentacion.pdf Graphic file (type pdf)
 <use cartas/CartaPresentacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaPresentacion.pdf , page1 used on input lin
-e 211.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+e 209.
+(pdftex.def)             Requested size: 562.52745pt x 795.10185pt.
  [1
 
 
  <./cartas/CartaPresentacion.pdf>]
-<cartas/CartaAceptacion.pdf, id=35, 614.295pt x 794.97pt>
+<cartas/CartaAceptacion.pdf, id=224, 597.23125pt x 844.15375pt>
 File: cartas/CartaAceptacion.pdf Graphic file (type pdf)
 <use cartas/CartaAceptacion.pdf>
-Package pdftex.def Info: cartas/CartaAceptacion.pdf  used on input line 216.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+Package pdftex.def Info: cartas/CartaAceptacion.pdf  used on input line 214.
+(pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
 File: cartas/CartaAceptacion.pdf Graphic file (type pdf)
 <use cartas/CartaAceptacion.pdf>
-Package pdftex.def Info: cartas/CartaAceptacion.pdf  used on input line 216.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-<cartas/CartaAceptacion.pdf, id=38, page=1, 614.295pt x 794.97pt>
+Package pdftex.def Info: cartas/CartaAceptacion.pdf  used on input line 214.
+(pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
+<cartas/CartaAceptacion.pdf, id=227, page=1, 597.23125pt x 844.15375pt>
 File: cartas/CartaAceptacion.pdf Graphic file (type pdf)
 <use cartas/CartaAceptacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaAceptacion.pdf , page1 used on input line 
-216.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+214.
+(pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
 File: cartas/CartaAceptacion.pdf Graphic file (type pdf)
 <use cartas/CartaAceptacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaAceptacion.pdf , page1 used on input line 
-216.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+214.
+(pdftex.def)             Requested size: 562.52745pt x 795.10185pt.
 File: cartas/CartaAceptacion.pdf Graphic file (type pdf)
 <use cartas/CartaAceptacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaAceptacion.pdf , page1 used on input line 
-216.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+214.
+(pdftex.def)             Requested size: 562.52745pt x 795.10185pt.
 File: cartas/CartaAceptacion.pdf Graphic file (type pdf)
 <use cartas/CartaAceptacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaAceptacion.pdf , page1 used on input line 
-216.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+214.
+(pdftex.def)             Requested size: 562.52745pt x 795.10185pt.
 
 
 File: cartas/CartaAceptacion.pdf Graphic file (type pdf)
 <use cartas/CartaAceptacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaAceptacion.pdf , page1 used on input line 
-216.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+214.
+(pdftex.def)             Requested size: 562.52745pt x 795.10185pt.
 [2
 
 
  <./cartas/CartaAceptacion.pdf>]
-<cartas/CartaLiberacion.pdf, id=50, 614.295pt x 794.97pt>
+<cartas/CartaLiberacion.pdf, id=235, 614.295pt x 794.97pt>
 File: cartas/CartaLiberacion.pdf Graphic file (type pdf)
 <use cartas/CartaLiberacion.pdf>
-Package pdftex.def Info: cartas/CartaLiberacion.pdf  used on input line 221.
+Package pdftex.def Info: cartas/CartaLiberacion.pdf  used on input line 219.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: cartas/CartaLiberacion.pdf Graphic file (type pdf)
 <use cartas/CartaLiberacion.pdf>
-Package pdftex.def Info: cartas/CartaLiberacion.pdf  used on input line 221.
+Package pdftex.def Info: cartas/CartaLiberacion.pdf  used on input line 219.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-<cartas/CartaLiberacion.pdf, id=53, page=1, 614.295pt x 794.97pt>
+<cartas/CartaLiberacion.pdf, id=238, page=1, 614.295pt x 794.97pt>
 File: cartas/CartaLiberacion.pdf Graphic file (type pdf)
 <use cartas/CartaLiberacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaLiberacion.pdf , page1 used on input line 
-221.
+219.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: cartas/CartaLiberacion.pdf Graphic file (type pdf)
 <use cartas/CartaLiberacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaLiberacion.pdf , page1 used on input line 
-221.
+219.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: cartas/CartaLiberacion.pdf Graphic file (type pdf)
 <use cartas/CartaLiberacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaLiberacion.pdf , page1 used on input line 
-221.
+219.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: cartas/CartaLiberacion.pdf Graphic file (type pdf)
 <use cartas/CartaLiberacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaLiberacion.pdf , page1 used on input line 
-221.
+219.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 
 
 File: cartas/CartaLiberacion.pdf Graphic file (type pdf)
 <use cartas/CartaLiberacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaLiberacion.pdf , page1 used on input line 
-221.
+219.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 [3
 
 
  <./cartas/CartaLiberacion.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 241--243
+Underfull \hbox (badness 10000) in paragraph at lines 239--241
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--245
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
 
  []
 
@@ -1635,13 +1651,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 244--245
 
 
 
-pdfTeX warning: pdflatex (file ./membretes/membrete_UPV_08May25.pdf): PDF inclu
-sion: found PDF version <1.7>, but at most version <1.5> allowed
-<membretes/membrete_UPV_08May25.pdf, id=65, 614.295pt x 794.97pt>
+pdfTeX warning: /usr/local/bin/pdflatex (file ./membretes/membrete_UPV_08May25.
+pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+
+<membretes/membrete_UPV_08May25.pdf, id=252, 614.295pt x 794.97pt>
 File: membretes/membrete_UPV_08May25.pdf Graphic file (type pdf)
 <use membretes/membrete_UPV_08May25.pdf>
 Package pdftex.def Info: membretes/membrete_UPV_08May25.pdf  used on input line
- 266.
+ 264.
 (pdftex.def)             Requested size: 614.31223pt x 794.99231pt.
 [4
 
@@ -1680,11 +1697,11 @@ Package pdftex.def Info: membretes/membrete_UPV_08May25.pdf  used on input line
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 276.
+Package pdftex.def Info: logos/UTYP.png  used on input line 274.
 (pdftex.def)             Requested size: 85.35826pt x 44.38586pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 276.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 274.
 (pdftex.def)             Requested size: 85.35826pt x 32.41914pt.
 
 
@@ -1693,7 +1710,7 @@ Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 276.
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 407--408
+Underfull \hbox (badness 10000) in paragraph at lines 405--406
 
  []
 
@@ -1702,7 +1719,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 407--408
 File: membretes/membrete_UPV_08May25.pdf Graphic file (type pdf)
 <use membretes/membrete_UPV_08May25.pdf>
 Package pdftex.def Info: membretes/membrete_UPV_08May25.pdf  used on input line
- 441.
+ 439.
 (pdftex.def)             Requested size: 614.31223pt x 794.99231pt.
 [6
 
@@ -1712,171 +1729,86 @@ Package pdftex.def Info: membretes/membrete_UPV_08May25.pdf  used on input line
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 451.
+Package pdftex.def Info: logos/UTYP.png  used on input line 449.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 451.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 449.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
 [7
 
 ]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 460.
+Package pdftex.def Info: logos/UTYP.png  used on input line 465.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 460.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 465.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
 [8
 
 ]
+Overfull \hbox (6.6793pt too wide) in paragraph at lines 476--479
+[]\OT1/cmr/bx/n/12 Keywords: \OT1/cmr/m/n/12 Pro-ba-bi-lis-tic Lo-gic Pro-gram-
+ming, MDP-ProbLog, An-no-ta-ted Dis-jun-ctions, Multi-
+ []
+
+
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 469.
+Package pdftex.def Info: logos/UTYP.png  used on input line 480.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 469.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 480.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
 [9
 
-]
-No file main.toc.
+] (./main.toc
+LaTeX Info: Redefining \sptext on input line 1.
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
+(Font)              using `OT1/cmr/bx/n' instead on input line 2.
+
+
+Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
+(spanish)                faked small caps on input line 2.
+
+
+Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
+(spanish)                faked small caps on input line 3.
+
+
+Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
+(spanish)                faked small caps on input line 4.
+
+
+Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
+(spanish)                faked small caps on input line 5.
+
+
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 41.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 41.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[10
+
+])
 \tf@toc=\write7
 \openout7 = `main.toc'.
 
 
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 478.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 478.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
-[10
-
-] (./introduccion.tex
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 34.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 34.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
-[1
-
-
-
-]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 81.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 81.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
-[2]
-
-LaTeX Warning: Reference `tab:sensores_comunes' on page 3 undefined on input li
-ne 81.
-
-<img/diagrama_proceso.png, id=143, 1431.3475pt x 1028.84375pt>
-File: img/diagrama_proceso.png Graphic file (type png)
-<use img/diagrama_proceso.png>
-Package pdftex.def Info: img/diagrama_proceso.png  used on input line 88.
-(pdftex.def)             Requested size: 330.42041pt x 237.49252pt.
-<img/grafico_datos1.jpg, id=144, 803.0pt x 451.6875pt>
-File: img/grafico_datos1.jpg Graphic file (type jpg)
-<use img/grafico_datos1.jpg>
-Package pdftex.def Info: img/grafico_datos1.jpg  used on input line 97.
-(pdftex.def)             Requested size: 212.41261pt x 119.48296pt.
-<img/grafico_datos2.jpg, id=145, 702.625pt x 326.21875pt>
-File: img/grafico_datos2.jpg Graphic file (type jpg)
-<use img/grafico_datos2.jpg>
-Package pdftex.def Info: img/grafico_datos2.jpg  used on input line 103.
-(pdftex.def)             Requested size: 212.41261pt x 98.618pt.
-
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 110.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 110.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
-[3 <./img/diagrama_proceso.png>]
-
-LaTeX Warning: Reference `fig:comparacion_datos' on page 4 undefined on input l
-ine 110.
-
-)
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -1886,197 +1818,242 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 489.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
-[4 <./img/grafico_datos1.jpg> <./img/grafico_datos2.jpg>]
-(./estado_del_arte.tex
+[11] (./introduccion.tex
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 44.
+Package pdftex.def Info: logos/UTYP.png  used on input line 17.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 44.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 17.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[1
 
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
 
+]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 40.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 40.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[2]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 65.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 65.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[3])
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 500.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 500.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[4] (./estado_del_arte.tex
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 27.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 27.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
 [5
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 54--54
-[]|\OT1/cmr/bx/n/12 Autor
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 56--56
-[]|\OT1/cmr/m/n/12 P^^Serez
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 56--56
-[]|\OT1/cmr/m/n/12 Detecci^^Son
- []
-
-
-Underfull \hbox (badness 5022) in paragraph at lines 56--56
-\OT1/cmr/m/n/12 de grie-tas
- []
-
-
-Underfull \hbox (badness 1365) in paragraph at lines 56--56
-\OT1/cmr/m/n/12 en con-cre-
- []
-
-
-Underfull \hbox (badness 3884) in paragraph at lines 56--56
-[]|\OT1/cmr/m/n/12 Visi^^Son ar-ti-fi-cial
- []
-
-
-Underfull \hbox (badness 2503) in paragraph at lines 56--57
-\OT1/cmr/m/n/12 ra iden-ti-fi-car grie-tas con
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 58--58
-[]|\OT1/cmr/m/n/12 G^^Somez
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 58--58
-\OT1/cmr/m/n/12 y L^^Sopez
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 58--58
-[]|\OT1/cmr/m/n/12 Monitoreo
- []
-
-
-Underfull \hbox (badness 1286) in paragraph at lines 58--58
-[]|\OT1/cmr/m/n/12 Sensores de vi-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 60--60
-[]|\OT1/cmr/m/n/12 Mart^^S^^Pnez
- []
-
-
-Overfull \hbox (11.63545pt too wide) in paragraph at lines 60--60
-[]|\OT1/cmr/m/n/12 Optimizaci^^Son
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 60--60
-\OT1/cmr/m/n/12 de ru-tas
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 60--60
-[]|\OT1/cmr/m/n/12 Algoritmos
- []
-
-
-Overfull \hbox (30.7848pt too wide) in paragraph at lines 76--76
-[]|\OT1/cmr/bx/n/12 Algoritmo/Autor| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 80--80
-[]|\OT1/cmr/m/n/12 G^^Somez y
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 82--82
-[]|\OT1/cmr/m/n/12 **Propuesta
- []
-
-
-Overfull \hbox (56.96027pt too wide) in paragraph at lines 74--85
- [][] 
- []
-
-
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 94.
+Package pdftex.def Info: logos/UTYP.png  used on input line 42.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 94.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 42.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
-[6])
+[6]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 492.
+Package pdftex.def Info: logos/UTYP.png  used on input line 56.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 492.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 56.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
 [7]
-No file main.lof.
-\tf@lof=\write8
-\openout8 = `main.lof'.
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 115.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 115.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[8]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 124.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 124.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[9]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 173.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 173.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[10]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 183.
+
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 199.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 199.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[11]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 228.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 228.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[12]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 229.
+
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 269.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 269.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[13]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 303.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 303.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[14]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 337.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 337.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[15]
+
+LaTeX Warning: Citation 'sutton2018reinforcement' on page 16 undefined on input
+ line 364.
 
 
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 498.
+Package pdftex.def Info: logos/UTYP.png  used on input line 372.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 498.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 372.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[16]
 
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
-[8
-
-]
-No file main.lot.
-\tf@lot=\write9
-\openout9 = `main.lot'.
+LaTeX Warning: Command \textbullet invalid in math mode on input line 393.
 
 
+LaTeX Warning: Command \textbullet invalid in math mode on input line 393.
+
+Missing character: There is no ˆ in font cmr12!
+
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 399.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 399.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[17]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 437.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 437.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[18]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 475.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 475.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[19]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 513.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 513.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[20]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 538.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 538.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[21])
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -2086,18 +2063,47 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 503.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[22] (./main.lof
+LaTeX Info: Redefining \sptext on input line 1.
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lof=\write8
+\openout8 = `main.lof'.
 
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
 
-[9
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 509.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 509.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[23
 
-]
-No file main.loa.
+] (./main.lot
+LaTeX Info: Redefining \sptext on input line 1.
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lot=\write9
+\openout9 = `main.lot'.
+
+
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 514.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 514.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[24
+
+] (./main.loa)
 \tf@loa=\write10
 \openout10 = `main.loa'.
 
@@ -2105,27 +2111,37 @@ No file main.loa.
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 512.
+Package pdftex.def Info: logos/UTYP.png  used on input line 523.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 512.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 523.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-
-Package fancyhdr Warning: \headheight is too small (45.0pt): 
-(fancyhdr)                Make it at least 47.35004pt, for example:
-(fancyhdr)                \setlength{\headheight}{47.35004pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.35004pt}.
-
-[10
+[25
 
 ]
 
-LaTeX Warning: Empty bibliography on input line 518.
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 529.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 529.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[26
 
-(./main.aux
+]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 531.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 531.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[27] (./main.aux
 LaTeX Info: Redefining \sptext on input line 12.
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -2136,19 +2152,16 @@ L3 programming layer <2024-07-20>
  ***********
 
 
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  35932BA3641CDF749ABF6507D07B34B9;4156.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: DAEF2F56A598E948E7F3195E4C1D2FCE;9095.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                main
@@ -2159,26 +2172,42 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44974 strings out of 473579
- 944275 string characters out of 5728234
- 1956957 words of memory out of 5000000
- 67202 multiletter control sequences out of 15000+600000
- 567948 words of font info for 75 fonts, out of 8000000 for 9000
+ 45837 strings out of 473579
+ 958763 string characters out of 5728234
+ 2091957 words of memory out of 5000000
+ 67899 multiletter control sequences out of 15000+600000
+ 572494 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,17n,121p,1850b,1812s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/lo
-cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/
-texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb>
-Output written on main.pdf (21 pages, 691481 bytes).
+ 116i,17n,121p,1850b,2240s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></us
+r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/tex
+mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024
+/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb>
+Output written on main.pdf (39 pages, 1114958 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 170 compressed objects within 2 object streams
- 53 named destinations out of 1000 (max. 500000)
- 103 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 850 PDF objects out of 1000 (max. 8388607)
+ 699 compressed objects within 7 object streams
+ 190 named destinations out of 1000 (max. 500000)
+ 480 words of extra memory for PDF output out of 10000 (max. 10000000)
 

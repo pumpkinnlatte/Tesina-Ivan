@@ -1,4 +1,2 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {table}{\numberline {1}{\ignorespaces Clasificación de Sensores Comunes en Ingeniería.}}{3}{table.caption.5}%
-\contentsline {table}{\numberline {2}{\ignorespaces Ejemplo de Tabla Informativa de Trabajos Previos}}{6}{table.caption.8}%
-\contentsline {table}{\numberline {3}{\ignorespaces Ejemplo de Tabla Comparativa de Algoritmos}}{6}{table.caption.9}%
+\contentsline {table}{\numberline {1}{\ignorespaces Análisis comparativo del estado del arte. Se evalúan cuatro dimensiones para cada trabajo: el tipo de variables de estado soportadas, el mecanismo de inferencia, la capacidad relacional del lenguaje, y la garantía de exclusión mutua entre valores de una misma variable.}}{9}{table.caption.5}%

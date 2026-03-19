@@ -1,7 +1,3 @@
-% Actualizacion 04/09/2025
-% Autor: Said Polanco-Martagón
-
-
 \documentclass[12pt]{article}
 \usepackage[left=2.5cm,top=2.0cm,right=2.5cm,bottom=3.0cm]{geometry}
 \usepackage[utf8]{inputenc}
@@ -13,11 +9,15 @@
 \usepackage{longtable} % para tablas largas
 \usepackage{graphicx}
 \usepackage{fancyhdr}
+ \usepackage{amsmath}
+ \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage{xcolor}
 \usepackage{multirow}
 \usepackage{listings}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{float}
 %\usepackage{parskip}
 \usepackage[skip=12pt plus1pt]{parskip}
 \usepackage{pdfpages} % Incluir PDF en documento en LATEX
@@ -69,7 +69,7 @@
 % Estas lineas permiten romper los hipervinculos muy largos en las referencias!!!!
 \setcounter{biburllcpenalty}{7000}
 \setcounter{biburlucpenalty}{8000}
-\addbibresource{x.bib} % ARCHIVO DE BIBLIOGRAFÍA
+\addbibresource{referencias/x.bib} % ARCHIVO DE BIBLIOGRAFÍA
 
 
 %\usepackage{url}
@@ -94,7 +94,7 @@
 \newcommand{\elolaNombreAlumno}{el}  
 \newcommand{\OA}           {o}  %Hombres cambien A por O
 \newcommand{\Matricula}           {2230343}  %SU MATRICULA
-\newcommand{\NombreProyecto}{Implementación de fluentes de estado multivaluados al framework MDP-ProbLog mediante disyunciones anotadas.}
+\newcommand{\NombreProyecto}{Implementación de fluentes de estado multivaluados en MDP-ProbLog mediante disyunciones anotadas.}
 \newcommand{\fechacarta}{x}
 \newcommand{\ncuatrimestre}{x}
 \newcommand{\nevalador}{X}
@@ -107,8 +107,6 @@
 \newcommand{\NombreProyectoheader}     {Implementación de fluentes de estado multivaluados \\al framework MDP-ProbLog mediante disyunciones anotadas.}
 \newcommand{\nasesorempresaria}   {Dr. Héctor Hugo Avilés-Arriaga}
 \newcommand{\fechaPortada}               {Febrero de 2026}
-
-
 
 
 
@@ -451,8 +449,15 @@ Una vez concluido el proceso de evaluación, y con base a la rúbrica establecid
 \clearpage
 \section*{\centering Resumen}
 \addcontentsline{toc}{section}{Resumen}
-%\input{Resumen.tex}
-\textbf{Palabras clave:} Tecnología, Sistema web, Desarrollar, Implementar, Empresas, Modulo.
+
+La Programación Lógica Probabilística (PLP) es un paradigma que combina la capacidad de representación de la lógica de primer orden con la teoría de la probabilidad para el manejo de la incertidumbre. Este paradigma permite modelar una amplia variedad de dominios que abarcan situaciones de la vida real en donde existen interaccciones complejas entre conjuntos de elementos heterogeneos y distintos niveles de incertidumbre. Dentro de este contexto, destaca el framework MDP-ProbLog, el cual utiliza las capacidades del lenguaje ProbLog para la especificación y resolución de Procesos de Decisión de Markov (MDPs) de horizonte infinito utilizando una representación factorizada, lógica y relacional.
+
+Sin embargo, la arquitectura base de este sistema presenta una limitación estructural: la representación de los fluentes de estado se restringe exclusivamente a variables de Bernoulli independientes (booleanas). Debido a esto, para modelar variables que por naturaleza son multivaluadas, el usuario se ve obligado a utilizar técnicas para descomponerlas en múltiples predicados binarios. En el caso de MDP-ProbLog, esta restricción resulta en un proceso de modelado tedioso, propenso a inconsistencias semánticas y poco natural.
+
+La presente tesina reporta el desarrollo de una extensión al núcleo del framework MDP-ProbLog para solucionar esta problemática. El trabajo abarca la revisión de la arquitectura del código fuente, el planteamiento y diseño de la extensión, la programación, la ejecución de pruebas y su respectiva documentación. Mediante modificaciones a los módulos de gestión de estados y del motor de inferencia, se integró el soporte para fluentes de estado multivaluados utilizando el mecanismo nativo de las Disyunciones Anotadas (Annotated Disjunctions). Como resultado de este desarrollo, el modelado de MDPs que requieren variables con dominios multivaluados se convierte en un proceso semánticamente íntegro, mucho más directo y natural para el usuario.
+
+\vspace{1cm}
+\textbf{Palabras clave:} Programación Lógica Probabilística, MDP-ProbLog, Disyunciones Anotadas, Fluentes Multivaluados, Espacio de Estados.
 
 %-----------------------------------------------------------------------------------------------------------------
 % PAGINA 6 - RESUMEN EN INGLES
@@ -460,9 +465,15 @@ Una vez concluido el proceso de evaluación, y con base a la rúbrica establecid
 \clearpage
 \section*{\centering Summary}
 \addcontentsline{toc}{section}{Summary}
-%\input{Summary.tex}
-\textbf{Keywords}: Technology, Web system, Develop, Implement, Companies, Module.
 
+Probabilistic Logic Programming (PLP) is a paradigm that combines the representational power of first-order logic with probability theory to handle uncertainty. This paradigm allows for the modeling of a wide variety of domains encompassing real-world situations where complex interactions exist among sets of heterogeneous elements and varying levels of uncertainty. Within this context, the MDP-ProbLog framework stands out, leveraging the capabilities of the ProbLog language for the specification and resolution of infinite-horizon Markov Decision Processes (MDPs) using a factored, logical, and relational representation.
+
+However, the base architecture of this system presents a structural limitation: the representation of state fluents is restricted exclusively to independent Bernoulli (Boolean) variables. Due to this, to model variables that are naturally multi-valued, the user is forced to use techniques to decompose them into multiple binary predicates. In the case of MDP-ProbLog, this restriction results in a modeling process that is tedious, prone to semantic inconsistencies, and unnatural.
+
+This thesis reports the development of an extension to the core of the MDP-ProbLog framework to address this problem. The work encompasses the review of the source code architecture, the planning and design of the extension, programming, testing, and its respective documentation. Through modifications to the state management modules and the inference engine, support for multi-valued state fluents was integrated using the native mechanism of Annotated Disjunctions. As a result of this development, the modeling of MDPs requiring variables with multi-valued domains becomes a semantically sound, much more direct, and natural process for the user.
+
+\vspace{1cm}
+\textbf{Keywords:} Probabilistic Logic Programming, MDP-ProbLog, Annotated Disjunctions, Multi-valued Fluents, State Space.
 %-----------------------------------------------------------------------------------------------------------------
 % PAGINA 7 - INDICE
 

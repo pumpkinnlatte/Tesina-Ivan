@@ -5,24 +5,46 @@
 \contentsline {section}{Índice}{\es@scroman {x}}{section*.3}%
 \contentsline {section}{\numberline {1}Introducción}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Antecedentes}{1}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Definición del Problema}{1}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Objetivos}{1}{subsection.1.3}%
-\contentsline {subsubsection}{\numberline {1.3.1}Objetivo General}{1}{subsubsection.1.3.1}%
-\contentsline {subsubsection}{\numberline {1.3.2}Objetivos Específicos}{1}{subsubsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.4}Justificación}{2}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Alcances y Limitaciones}{2}{subsection.1.5}%
-\contentsline {subsubsection}{\numberline {1.5.1}Alcances}{2}{subsubsection.1.5.1}%
-\contentsline {subsubsection}{\numberline {1.5.2}Limitaciones}{2}{subsubsection.1.5.2}%
-\contentsline {subsection}{\numberline {1.6}Ejemplos de Tablas e Inclusión de Imágenes}{2}{subsection.1.6}%
-\contentsline {subsubsection}{\numberline {1.6.1}Inclusión de Tablas}{2}{subsubsection.1.6.1}%
-\contentsline {subsubsection}{\numberline {1.6.2}Inclusión de Imágenes}{3}{subsubsection.1.6.2}%
-\contentsline {section}{\numberline {2}Estado del Arte y Trabajos Relacionados}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}El Estado del Arte}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Trabajos Relacionados}{5}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Ejemplos de Tablas}{6}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}Tabla Informativa}{6}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Tabla Comparativa}{6}{subsubsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.4}Diferencia entre Tablas y Cuándo Utilizarlas}{6}{subsection.2.4}%
-\contentsline {section}{Índice de figuras}{8}{subsection.2.4}%
-\contentsline {section}{Índice de cuadros}{9}{section*.10}%
-\contentsline {section}{Índice de algoritmos}{10}{section*.11}%
+\contentsline {subsection}{\numberline {1.2}Definición del Problema}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Objetivos}{3}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Objetivo General}{3}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Objetivos Específicos}{3}{subsubsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.4}Justificación}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Alcances y Limitaciones}{4}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Alcances}{4}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Limitaciones}{4}{subsubsection.1.5.2}%
+\contentsline {section}{\numberline {2}Estado del Arte}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}MDPs Factorizados y el Problema de la Representación de Estados}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Programación Lógica Probabilística para la Resolución de MDPs}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Disyunciones Anotadas y Compilación de Conocimiento}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Análisis Comparativo}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Conclusión del Estado del Arte}{9}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Marco Teórico}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Programación Lógica}{10}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Términos, átomos y literales}{11}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Hechos, reglas y consultas}{11}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Universo de Herbrand e interpretaciones}{11}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}Resolución SLD y grounding}{11}{subsubsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.2}Programación Lógica Probabilística}{12}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Semántica de distribución}{12}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Relevancia para MDP-ProbLog}{13}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}El lenguaje ProbLog}{14}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}Conteo de Modelos Ponderados}{14}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Procesos de Decisión de Markov}{15}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Definición formal}{15}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Algoritmo de Iteración de Valor}{16}{subsubsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.5}MDPs Factorizados}{16}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Fluentes de estado}{17}{subsubsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.6}El Framework MDP-ProbLog}{17}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Disyunciones Anotadas}{18}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}Definición formal de LPADs}{19}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.2}Semántica: selecciones e instancias}{19}{subsubsection.3.7.2}%
+\contentsline {subsubsection}{\numberline {3.7.3}Exclusión mutua nativa}{20}{subsubsection.3.7.3}%
+\contentsline {subsubsection}{\numberline {3.7.4}Interpretación causal}{21}{subsubsection.3.7.4}%
+\contentsline {subsection}{\numberline {3.8}Compilación de Conocimiento}{21}{subsection.3.8}%
+\contentsline {subsubsection}{\numberline {3.8.1}El mapa de compilación de conocimiento}{21}{subsubsection.3.8.1}%
+\contentsline {subsubsection}{\numberline {3.8.2}Impacto de la representación en el tamaño del circuito}{22}{subsubsection.3.8.2}%
+\contentsline {section}{Índice de figuras}{23}{subsubsection.3.8.2}%
+\contentsline {section}{Índice de cuadros}{24}{section*.6}%
+\contentsline {section}{Índice de algoritmos}{25}{section*.7}%
+\contentsline {section}{Referencias}{26}{section*.8}%

@@ -1,57 +1,227 @@
-% Notas Imporantes:
-% Poner una diagonal investida antes de los siguientes caracteres: #, $, %, ^, &, {, }, ~, [, ], <, >, _
-% Caso Particuloar: Diagonal Invertida (\) sustituir por (\textbackslash) y dejar un espacio
-% Ver enlace:
+% ======================================================================
+% Bibliografía actualizada para la tesina
+% Nuevas entradas marcadas con % NUEVO
+% Entradas corregidas marcadas con % CORREGIDO
+% Entradas eliminadas: kiran2021deep, kuutti2020survey, yurtsever2020survey
+% ======================================================================
 
-@misc{Sistema:2018:Ivan,
-author = {Ivan Garcia},
-title = {¿Que es un sistema de información?-Definición de sistema de información},
-year = {2018},
-howpublished = "\url{https://www.emprendepyme.net/que-es-un-sistema-de-informacion.html}",
-urldate = {28-11-2018}
+% --- Referencias centrales del proyecto ---
+
+@inproceedings{bueno2016mdp,
+  title={Markov decision processes specified by probabilistic logic programming: Representation and solution},
+  author={Bueno, Thiago P and Mau{\'a}, Denis D and de Barros, Leliane N and Cozman, Fabio G},
+  booktitle={2016 5th Brazilian Conference on Intelligent Systems (BRACIS)},
+  pages={337--342},
+  year={2016},
+  organization={IEEE}
 }
 
-@misc{Sistema:2016:Senso,
-author = {Jose A. Senso.},
-year = {2016},
-title = {Los sistemas de informacion basados en la web – Tecnologias web para
-servicios de informacion.},
-howpublished = "\url{https://www.emprendepyme.net/que-es-un-sistema-de-informacion.html}",
-urldate = {28-11-2016}
+@inproceedings{deraedt2007problog,
+  title={ProbLog: A probabilistic prolog and its application in link discovery},
+  author={De Raedt, Luc and Kimmig, Angelika and Toivonen, Hannu},
+  booktitle={IJCAI},
+  volume={7},
+  pages={2462--2467},
+  year={2007}
 }
 
-@misc{DSS:2018:Concepto,
-author = {Jose},
-year = {2018},
-title = {Sistema de information - Concepto, tipos, elementos y ejemplos},
-howpublished = "\url{https://concepto.de/sistema-de-informacion/}",
+@inproceedings{vennekens2004lpads,
+  title={Logic programs with annotated disjunctions},
+  author={Vennekens, Joost and Verbaeten, Sofie and Bruynooghe, Maurice},
+  booktitle={International Conference on Logic Programming},
+  pages={431--445},
+  year={2004},
+  publisher={Springer}
 }
 
-@misc{neurikblog:2018:Concepto,
-author = {neurikblog},
-year = {2018},
-title = {Ventajas y desventajas de un sistema web a la medida — Neurik - Sistemas y Gestión},
-howpublished = "\url{https://www.neurik.com/blog/2018/04/10/ventajas-y-desventajas-de-implementar-un-sistema-web-a-la-medida-en-tu-negocio/}",
+% --- MDPs: fundamentos ---
+
+@book{puterman2014markov,
+  title={Markov decision processes: discrete stochastic dynamic programming},
+  author={Puterman, Martin L},
+  year={2014},
+  publisher={John Wiley \& Sons}
 }
 
-@misc{Yeeply:2020:Concepto,
-author = {Yeeply},
-year = {2020},
-title = {Desarrollo de aplicaciones web: 5 tipos que debes conocer.},
-howpublished = "\url{https://www.yeeply.com/blog/6-tipos-desarrollo-de-aplicaciones-web/}",
+@book{bellman1957dynamic,
+  title={Dynamic Programming},
+  author={Bellman, Richard},
+  year={1957},
+  publisher={Princeton University Press}
 }
 
-@misc{AnnaPerez:2016:Concepto,
-author = {Anna Perez},
-year = {2016},
-title = {Pros y contras de la metodología en cascada — OBS Business School},
-howpublished = "\url{https://www.obsbusiness.school/blog/pros-y-contras-de-la-metodologia-en-cascada}",
+% --- Semántica de distribución ---
+
+@inproceedings{sato1995statistical,
+  title={A statistical learning method for logic programs with distribution semantics},
+  author={Sato, Taisuke},
+  booktitle={Proceedings of the 12th International Conference on Logic Programming (ICLP'95)},
+  year={1995},
+  publisher={Citeseer}
 }
 
-@misc{Microsoft:Concepto,
-author = {Microsoft},
-year = {2016},
-title = {Visual Studio Code - Code Editing. Redefined.},
-howpublished = "\url{https://code.visualstud
-io.com/.}",
+% --- WMC e inferencia en PLP ---
+
+@article{fierens2015inference,
+  title={Inference and learning in probabilistic logic programs using weighted Boolean formulas},
+  author={Fierens, Daan and Van den Broeck, Guy and Renkens, Joris and Shterionov, Dimitar and Gutmann, Bernd and Thon, Ingo and Janssens, Gerda and De Raedt, Luc},
+  journal={Theory and Practice of Logic Programming},
+  volume={15},
+  number={3},
+  pages={358--401},
+  year={2015},
+  publisher={Cambridge University Press}
+}
+
+% --- PLP: conceptos unificadores ---
+
+@article{deraedt2015probabilistic,
+  title={Probabilistic (logic) programming concepts},
+  author={De Raedt, Luc and Kimmig, Angelika},
+  journal={Machine Learning},
+  volume={100},
+  number={1},
+  pages={5--47},
+  year={2015},
+  publisher={Springer}
+}
+
+% --- PLP para planificación (muestreo) ---
+
+@article{nitti2016planning,
+  title={Planning in discrete and continuous Markov decision processes by probabilistic programming},
+  author={Nitti, Davide and Belle, Vaishak and De Raedt, Luc},
+  journal={Machine Learning},
+  volume={104},
+  number={2-3},
+  pages={327--342},
+  year={2016},
+  publisher={Springer}
+}
+
+% --- Compilación de conocimiento ---
+
+@article{darwiche2002knowledge,
+  title={A knowledge compilation map},
+  author={Darwiche, Adnan and Marquis, Pierre},
+  journal={Journal of Artificial Intelligence Research},
+  volume={17},
+  pages={229--264},
+  year={2002}
+}
+
+@article{vlasselaer2016problog2,
+  title={ProbLog2: Inference and learning in a probabilistic logic programming language},
+  author={Vlasselaer, Jonas and Renkens, Joris and Van den Broeck, Guy and De Raedt, Luc},
+  journal={Theory and Practice of Logic Programming},
+  volume={16},
+  number={5-6},
+  pages={673--689},
+  year={2016},
+  publisher={Cambridge University Press}
+}
+
+% --- CP-Logic (semántica causal de ADs) ---
+% CORREGIDO: año corregido a 2009, clave renombrada para consistencia
+@article{vennekens2009cplogic,
+  title={CP-logic: A language of causal probabilistic events and its relation to logic programming},
+  author={Vennekens, Joost and Denecker, Marc and Bruynooghe, Maurice},
+  journal={Theory and Practice of Logic Programming},
+  volume={9},
+  number={3},
+  pages={245--308},
+  year={2009},
+  publisher={Cambridge University Press}
+}
+
+% --- MDPs factorizados (Boutilier) ---
+% CORREGIDO: datos completos de la versión journal
+@article{boutilier2000stochastic,
+  title={Stochastic dynamic programming with factored representations},
+  author={Boutilier, Craig and Dearden, Richard and Goldszmidt, Mois{\'e}s},
+  journal={Artificial Intelligence},
+  volume={121},
+  number={1-2},
+  pages={49--107},
+  year={2000},
+  publisher={Elsevier}
+}
+
+% NUEVO: survey de MDPs factorizados (ya lo tenías pero con datos incompletos)
+@article{boutilier1999decision,
+  title={Decision-theoretic planning: Structural assumptions and computational leverage},
+  author={Boutilier, Craig and Dean, Thomas and Hanks, Steve},
+  journal={Journal of Artificial Intelligence Research},
+  volume={11},
+  pages={1--94},
+  year={1999}
+}
+
+% --- NUEVAS REFERENCIAS ---
+
+% DTProbLog - predecesor directo de MDP-ProbLog
+@inproceedings{vandenbroeck2010dtproblog,
+  title={DTProbLog: A Decision-Theoretic Probabilistic Prolog},
+  author={Van den Broeck, Guy and Thon, Ingo and van Otterlo, Martijn and De Raedt, Luc},
+  booktitle={Proceedings of the Twenty-Fourth AAAI Conference on Artificial Intelligence (AAAI-10)},
+  pages={1217--1222},
+  year={2010},
+  publisher={AAAI Press}
+}
+
+% SPUDD - ADDs para MDPs factorizados
+@inproceedings{hoey1999spudd,
+  title={SPUDD: Stochastic Planning using Decision Diagrams},
+  author={Hoey, Jesse and St-Aubin, Robert and Hu, Alan and Boutilier, Craig},
+  booktitle={Proceedings of the 15th Conference on Uncertainty in Artificial Intelligence (UAI-99)},
+  pages={279--288},
+  year={1999}
+}
+
+% SDDs - estructura de compilación de ProbLog2
+@inproceedings{darwiche2011sdd,
+  title={SDD: A New Canonical Representation of Propositional Knowledge Bases},
+  author={Darwiche, Adnan},
+  booktitle={Proceedings of the 22nd International Joint Conference on Artificial Intelligence (IJCAI)},
+  pages={819--826},
+  year={2011}
+}
+
+% RDDL - lenguaje de planificación con fluentes multivaluados
+@unpublished{sanner2010rddl,
+  title={Relational Dynamic Influence Diagram Language (RDDL): Language Description},
+  author={Sanner, Scott},
+  note={Unpublished Manuscript, Australian National University},
+  year={2010}
+}
+
+% ICL - equivalencia con LPADs
+@article{poole1997independent,
+  title={The Independent Choice Logic for Modelling Multiple Agents under Uncertainty},
+  author={Poole, David},
+  journal={Artificial Intelligence},
+  volume={94},
+  number={1-2},
+  pages={7--56},
+  year={1997},
+  publisher={Elsevier}
+}
+
+% NO usadas aun
+@book{sutton2018reinforcement,
+  title={Reinforcement learning: An introduction},
+  author={Sutton, Richard S and Barto, Andrew G},
+  year={2018},
+  publisher={MIT press}
+}
+
+@article{riguzzi2013well,
+  title={Well-definedness and efficient inference for probabilistic logic programming under the distribution semantics},
+  author={Riguzzi, Fabrizio and Swift, Terrance},
+  journal={Theory and Practice of Logic Programming},
+  volume={13},
+  number={2},
+  pages={279--302},
+  year={2013},
+  publisher={Cambridge University Press}
 }

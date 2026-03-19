@@ -1,45 +1,58 @@
 \section{Introducción}
 \label{ch:introduccion}
 
-La introducción es la primera sección sustantiva de la tesis y tiene como propósito principal guiar al lector a través del contexto y la relevancia del estudio. En ella, se presenta el problema de investigación, se establecen los objetivos, se justifica la realización del trabajo y se delinean los alcances y limitaciones. Debe ser escrita de forma clara y concisa, capturando el interés del lector y proporcionando una visión general de lo que se abordará en los capítulos subsiguientes.
+Dentro del ámbito de la Inteligencia Artificial, la Programación Lógica Probabilística se ha consolidado como uno de los paradigmas fundacionales el cual combina la expresividad de la lógica de primer orden con el manejo formal de la incertidumbre mediante la teoría de la probabilidaqued \cite{deraedt2007problog}. Dentro de los desarrollos apegados a este paradigma se encuentra \textit{ProbLog}, un lenguaje que extiende Prolog mediante la introducción de hechos probabilísticos y cuya semántica se basa en la distribución sobre los mundos posibles \cite{sato1995statistical}. ProbLog permite calcular la probabilidad de que una consulta lógica sea verdadera dado un conjunto de evidencias, utilizando técnicas de inferencia como el Conteo de Modelos Ponderados (Weighted Model Counting), transformando el problema de inferencia en una evaluación eficiente sobre circuitos lógicos compilados \cite{fierens2015inference}.
+    
+Paralelamente, en el campo de la toma de decisiones secuenciales, los Procesos de Decisión de Markov se han establecido como el estándar matemático para modelar agentes que actúan en entornos estocásticos. Formalizados rigurosamente a mediados del siglo XX con los trabajos de Richard Bellman sobre programación dinámica \cite{bellman1957dynamic}, los MDPs proporcionan un marco formal para optimizar una función de utilidad a lo largo del tiempo. Sin embargo, su representación clásica mediante matrices de estados atómicos presenta serias limitaciones de escalabilidad. A medida que aumenta el número de variables que describen el estado del sistema, el tamaño del espacio de estados crece de manera exponencial, un fenómeno acuñado por Bellman como la ``maldición de la dimensionalidad'' \cite{bellman1957dynamic}. Esta explosión combinatoria hace que los métodos de resolución clásicos sean computacionalmente intratables para problemas del mundo real con múltiples variables interrelacionadas \cite{puterman2014markov}.
+
+Integrando la expresividad lógica de ProbLog y la capacidad de decisión de los MDPs, Bueno et al. propusieron el framework \textbf{MDP-ProbLog} \cite{bueno2016mdp}. Esta herramienta integra los conceptos de estados, acciones y recompensas dentro de la sintaxis de la programación lógica, permitiendo representar MDPs de horizonte infinito de manera relacional y compacta. Al utilizar una representación factorizada, MDP-ProbLog mitiga parcialmente la problemática de la dimensionalidad al descomponer el estado global en un conjunto de características o fluentes. Actualmente, este programa es la base tecnológica del equipo de investigación liderado por el Dr. Héctor Hugo Avilés-Arriaga, quienes lo utilizan para el desarrollo de sistemas de navegación y toma de decisiones en vehículos autónomos.
+
+El presente trabajo aborda el diseño e implementación de fluentes de estado multivaluados en el núcleo de MDP-ProbLog mediante el uso de Disyunciones Anotadas (ADs) \cite{vennekens2004lpads}, con el objetivo de extender las capacidades de representación del sistema, garantizando la integridad semántica de los modelos y sentando las bases para analizar el impacto computacional de esta expresividad.
 
 \subsection{Antecedentes}
 \label{sec:antecedentes}
 
-En esta sección, se presenta una revisión concisa y pertinente de investigaciones previas, literatura existente y el estado del arte relacionado con el tema de la tesis. El objetivo es situar el trabajo actual dentro del conocimiento acumulado, identificar vacíos en la investigación y demostrar la originalidad y la necesidad del estudio propuesto. Se deben citar adecuadamente las fuentes, mostrando cómo el trabajo se construye sobre cimientos previos o cómo aborda aspectos no resueltos.
+\textbf{MDP-ProbLog} fue propuesto en 2016 por Bueno et al. como una extensión del lenguaje ProbLog orientada a representar y resolver Procesos de Decisión de Markov (MDPs) de horizonte infinito \cite{bueno2016mdp}. Su principal innovación frente a lenguajes de planificación contemporáneos (como RDDL o PPDDL) fue la capacidad de aprovechar la programación lógica para modelar dependencias simétricas, transitivas y relaciones cíclicas entre variables.
+
+Para lograr esto, MDP-ProbLog establece convenciones sintácticas específicas que operan sobre la base de ProbLog: los componentes del MDP se definen explícitamente mediante predicados reservados como \texttt{state\_fluent/1} para variables de estado, \texttt{action\_fluent/1} para acciones y \texttt{utility/2} para utilidades. Por su parte, la dinámica del sistema se modela vinculando el estado actual en el tiempo $t$ con el estado futuro en el tiempo $t+1$. Para encontrar la política óptima, el \textit{solver} compila el programa en fórmulas proposicionales ponderadas (WMC) y ejecuta el algoritmo clásico de Iteración de Valor.
+
+A pesar de la solidez de sus fundamentos teóricos, la herramienta no ha recibido actualizaciones estructurales en su núcleo de representación desde su publicación hace casi una década. En consecuencia, el framework conserva su diseño original, el cual restringe la definición del mundo a lógica estrictamente binaria; es decir, todos los fluentes de estado definidos deben ser variables de Bernoulli independientes \cite{bueno2016mdp}. 
+
+Actualmente, este framework constituye la base tecnológica del equipo de investigación liderado por el Dr. Héctor Hugo Avilés-Arriaga, quienes lo utilizan para el modelado de toma de decisiones en vehículos autónomos. El uso de MDP-ProbLog les permite contar con modelos explicables y reglas de comportamiento auditables. Sin embargo, debido a la restricción binaria del framework, el proceso de modelado exige una adaptación forzada de la información del entorno. 
+
+En la práctica, para que el equipo pueda representar características del entorno que son naturalmente multivaluadas, se requiere realizar un proceso de discretización y binarización en el código. Por ejemplo, para representar la posición de un vehículo en una vía de tres carriles, en lugar de utilizar una variable única \texttt{carril(izquierdo|central|derecho)}, el modelador debe declarar tres fluentes booleanos independientes: \texttt{carril\_izquierdo}, \texttt{carril\_central} y \texttt{carril\_derecho}. De igual forma, el estado de un semáforo debe dividirse en predicados separados para sus luces verde, amarilla y roja.
 
 \subsection{Definición del Problema}
 \label{sec:problema}
 
-Aquí se describe de manera clara y precisa el problema que la tesis busca resolver. Es fundamental articular el problema de forma que sea comprensible, relevante y factible de investigar. Esta sección debe responder a preguntas como: ¿Qué situación actual es insatisfactoria o genera una necesidad? ¿Qué aspectos de este problema no han sido abordados adecuadamente por investigaciones anteriores? La definición del problema puede ser formulada como una pregunta de investigación o una declaración clara de la brecha de conocimiento.
+La arquitectura actual de MDP-ProbLog carece de un mecanismo nativo para representar y evaluar variables de estado que posean más de dos valores mutuamente excluyentes. Esta restricción a fluentes booleanos independientes genera una desconexión fundamental entre la naturaleza multivaluada de los fenómenos físicos del mundo real y su representación computacional.
+
+Esta limitación delega en el usuario la responsabilidad de mantener la consistencia semántica mediante la escritura exhaustiva de reglas lógicas adicionales. La ausencia de soporte para fluentes multivaluados resulta en un proceso de modelado tedioso y poco natural, aumentando la propensión a errores humanos en la definición de las políticas de decisión y generando un espacio de estados artificialmente inflado con combinaciones semánticamente imposibles.
 
 \subsection{Objetivos}
 \label{sec:objetivos}
 
-Los objetivos son las metas que se esperan alcanzar con la realización de la investigación. Deben ser claros, medibles, alcanzables, relevantes y con un tiempo definido (SMART, por sus siglas en inglés). Se dividen en un objetivo general y varios objetivos específicos.
-
 \subsubsection{Objetivo General}
 \label{subsec:objetivo_general}
 
-El objetivo general expresa el propósito fundamental del estudio en términos amplios. Es la meta principal que se busca lograr y generalmente abarca la totalidad de la investigación. Debe ser coherente con la definición del problema.
-\begin{itemize}
-    \item \textbf{Ejemplo:} Desarrollar un sistema automatizado para la detección temprana de fallas en turbinas eólicas utilizando técnicas de aprendizaje automático.
-\end{itemize}
+Diseñar e integrar un mecanismo de representación de fluentes de estado multivaluados en el núcleo del framework MDP-ProbLog utilizando Disyunciones Anotadas (Annotated Disjunctions), con el fin de proveer una sintaxis de modelado más natural, asegurar la consistencia semántica en los procesos de decisión estocásticos y evaluar el impacto computacional derivado de esta nueva expresividad.
 
 \subsubsection{Objetivos Específicos}
 \label{subsec:objetivos_especificos}
 
-Los objetivos específicos detallan los pasos o las acciones concretas que se llevarán a cabo para alcanzar el objetivo general. Son tareas más pequeñas y desglosadas que, al ser cumplidas, permiten la consecución del objetivo principal.
 \begin{itemize}
-    \item \textbf{Ejemplo 1:} Recopilar y preprocesar un conjunto de datos de vibraciones y parámetros operativos de turbinas eólicas.
-    \item \textbf{Ejemplo 2:} Implementar y evaluar diferentes algoritmos de aprendizaje automático para la clasificación de estados operativos (normal, pre-falla, falla).
-    \item \textbf{Ejemplo 3:} Diseñar una interfaz de usuario para la visualización de alertas y el monitoreo en tiempo real del estado de las turbinas.
+    \item Analizar la arquitectura interna actual de MDP-ProbLog, identificando los módulos críticos encargados de la gestión del espacio de estados y la inferencia probabilística para determinar los puntos de extensión.
+    \item Desarrollar una estructura de datos y adaptar la lógica de instanciación (\textit{grounding}) que permita procesar fluentes multivaluados frente a los fluentes binarios tradicionales.
+    \item Implementar el soporte para Disyunciones Anotadas en la definición de las transiciones de estado, garantizando matemáticamente la exclusión mutua nativa de los valores de una variable sin necesidad de reglas de restricción externas.
+    \item Evaluar el comportamiento de la extensión propuesta, contrastando la simplificación cualitativa del proceso de modelado con las implicaciones cuantitativas generadas en el tamaño de los modelos compilados y los tiempos de inferencia.
 \end{itemize}
 
 \subsection{Justificación}
 \label{sec:justificacion}
 
-La justificación explica por qué es importante y relevante llevar a cabo la investigación. Se deben argumentar los beneficios y la utilidad del estudio desde diferentes perspectivas: teórica, práctica, social, económica, tecnológica, etc. Responde a la pregunta: ¿Por qué vale la pena invertir tiempo y recursos en esta investigación? Aquí se resaltan los aportes que la tesis generará al campo del conocimiento o a la solución de problemas específicos.
+El trabajo abarca un paso necesario para la maduración de la herramienta. Desde una perspectiva práctica y operativa, la integración de fluentes multivaluados impacta directamente en el flujo de trabajo del equipo de investigación del Dr. Avilés-Arriaga. Al automatizar la exclusión mutua mediante Disyunciones Anotadas, se elimina la necesidad de crear reglas manuales restrictivas, reduciendo drásticamente la carga cognitiva del modelador, acortando los tiempos de desarrollo y mitigando la propensión a errores de diseño.
+
+Desde una perspectiva científica, esta extensión democratiza el uso de la Programación Lógica Probabilística al facilitar su adopción en problemas de ingeniería que requieren representar variables complejas de manera directa. Adicionalmente, al exponer y documentar los desafíos inherentes al crecimiento de los circuitos lógicos generados por las Disyunciones Anotadas, este trabajo sienta un precedente crítico y abre nuevas líneas de investigación enfocadas en la optimización de la compilación de conocimiento para MDPs relacionales.
 
 \subsection{Alcances y Limitaciones}
 \label{sec:alcances_limitaciones}
@@ -47,66 +60,9 @@ La justificación explica por qué es importante y relevante llevar a cabo la in
 \subsubsection{Alcances}
 \label{subsec:alcances}
 
-Los alcances definen claramente hasta dónde llegará el estudio, qué aspectos cubrirá y cuáles serán sus fronteras. Establecen qué elementos, variables, poblaciones o contextos serán incluidos en la investigación. Es esencial para evitar expectativas irrealistas y para mantener el enfoque del trabajo.
+El proyecto abarca la modificación del núcleo del software MDP-ProbLog, específicamente en los módulos de definición de estados y el puente de comunicación hacia el motor de inferencia. Se incluye el diseño de nuevas estructuras de datos para el manejo de variables multivaluadas, la adaptación de los algoritmos de instanciación y la validación funcional mediante casos de estudio en escenarios de navegación autónoma. El desarrollo garantizará la retrocompatibilidad, asegurando que los modelos booleanos existentes sigan funcionando sin alteraciones.
 
 \subsubsection{Limitaciones}
 \label{subsec:limitaciones}
 
-Las limitaciones son los factores externos o internos que podrían restringir la validez, generalización o profundidad de los resultados de la investigación. Es importante identificarlas honestamente, ya que demuestran un pensamiento crítico por parte del investigador. Pueden incluir restricciones de tiempo, recursos, acceso a datos, metodológicas, etc.
-
-\subsection{Ejemplos de Tablas e Inclusión de Imágenes}
-\label{sec:ejemplos_elementos}
-
-Para ilustrar el uso de elementos visuales en su tesis, a continuación se presentan ejemplos básicos de cómo incluir tablas e imágenes en LaTeX.
-
-\subsubsection{Inclusión de Tablas}
-
-Las tablas son herramientas fundamentales para presentar datos de manera organizada y comprensible.
-\begin{table}[H]
-    \centering
-    \caption{Clasificación de Sensores Comunes en Ingeniería.}
-    \label{tab:sensores_comunes}
-    \begin{tabular}{|l|c|c|}
-        \hline
-        \textbf{Tipo de Sensor} & \textbf{Magnitud Medida} & \textbf{Principio de Funcionamiento} \\
-        \hline
-        Termopar & Temperatura & Efecto Seebeck \\
-        Extensómetro & Deformación & Resistencia eléctrica \\
-        Acelerómetro & Aceleración & Efecto piezoeléctrico \\
-        Encoder rotatorio & Posición angular & Óptico/Magnético \\
-        \hline
-    \end{tabular}
-    \caption*{Nota: Esta tabla es un ejemplo para demostrar la estructura básica de una tabla en LaTeX.}
-\end{table}
-Como se puede observar en la Tabla \ref{tab:sensores_comunes}, la información se presenta de forma clara y estructurada. Es importante añadir un \verb|`\caption`|  para describir la tabla y un  \verb|`\label`|  para referenciarla en el texto.
-
-\subsubsection{Inclusión de Imágenes}
-
-Las imágenes, gráficos o diagramas son cruciales para complementar la explicación textual y facilitar la comprensión de conceptos complejos o resultados visuales.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/diagrama_proceso}
-    \caption{Diagrama de un proceso de control automático.}
-    \label{fig:diagrama_control}
-\end{figure}
-% La Figura \ref{fig:diagrama_control} ilustra un ejemplo de un diagrama de un proceso de control. Para incluir una imagen, se utiliza el entorno `figure` y el comando `\includegraphics`. Es fundamental especificar la ruta de la imagen (en este caso, `images/diagrama_proceso.png`) y un `width` para controlar su tamaño. Al igual que con las tablas, un `\caption` y un `\label` son indispensables. Es crucial que cada imagen tenga una calidad adecuada y que sea relevante para el texto.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/grafico_datos1}
-        \caption{Datos de Temperatura.}
-        \label{fig:subfig_temp}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/grafico_datos2}
-        \caption{Datos de Presión.}
-        \label{fig:subfig_pres}
-    \end{subfigure}
-    \caption{Comparación de datos operativos de un sistema (Temperatura vs. Presión).}
-    \label{fig:comparacion_datos}
-\end{figure}
-Incluso es posible combinar varias imágenes en una sola figura, como se muestra en la Figura \ref{fig:comparacion_datos}, utilizando el paquete `subcaption`.
-
-Asegúrense de que todas las figuras y tablas estén debidamente referenciadas en el texto y que su contenido sea autoexplicativo, utilizando los pies de figura y títulos de tabla de manera efectiva.
+El desarrollo se limita a MDPs de horizonte infinito con espacios de estados discretos. Esta investigación se enfoca exclusivamente en la capa de representación y modelado lógico. Por lo tanto, no pretende modificar, optimizar ni reescribir los algoritmos subyacentes de inferencia exacta (Weighted Model Counting) ni los compiladores de circuitos lógicos internos (SDD/d-DNNF) utilizados por ProbLog, los cuales dictan en última instancia la complejidad espacial y temporal de la evaluación. Asimismo, las pruebas funcionales y de rendimiento se realizarán en entornos de simulación y no en vehículos físicos en tiempo real.
