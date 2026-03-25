@@ -429,43 +429,6 @@
     \field{year}{2010}
   \endentry
 
-  \entry{nitti2016planning}{article}{}{}
-    \name{author}{3}{}{%
-      {{hash=ND}{%
-         family={Nitti},
-         familyi={N\bibinitperiod},
-         given={Davide},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=BV}{%
-         family={Belle},
-         familyi={B\bibinitperiod},
-         given={Vaishak},
-         giveni={V\bibinitperiod},
-      }}%
-      {{hash=DRL}{%
-         family={De\bibnamedelima Raedt},
-         familyi={D\bibinitperiod\bibinitdelim R\bibinitperiod},
-         given={Luc},
-         giveni={L\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Springer}%
-    }
-    \strng{namehash}{NDBVDRL1}
-    \strng{fullhash}{NDBVDRL1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{2-3}
-    \field{pages}{327\bibrangedash 342}
-    \field{title}{Planning in discrete and continuous Markov decision processes
-  by probabilistic programming}
-    \field{volume}{104}
-    \field{journaltitle}{Machine Learning}
-    \field{year}{2016}
-  \endentry
-
   \entry{vennekens2009cplogic}{article}{}{}
     \name{author}{3}{}{%
       {{hash=VJ}{%
@@ -653,6 +616,43 @@
     \field{year}{1999}
   \endentry
 
+  \entry{nitti2016planning}{article}{}{}
+    \name{author}{3}{}{%
+      {{hash=ND}{%
+         family={Nitti},
+         familyi={N\bibinitperiod},
+         given={Davide},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=BV}{%
+         family={Belle},
+         familyi={B\bibinitperiod},
+         given={Vaishak},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=DRL}{%
+         family={De\bibnamedelima Raedt},
+         familyi={D\bibinitperiod\bibinitdelim R\bibinitperiod},
+         given={Luc},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{NDBVDRL1}
+    \strng{fullhash}{NDBVDRL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{2-3}
+    \field{pages}{327\bibrangedash 342}
+    \field{title}{Planning in discrete and continuous Markov decision processes
+  by probabilistic programming}
+    \field{volume}{104}
+    \field{journaltitle}{Machine Learning}
+    \field{year}{2016}
+  \endentry
+
   \entry{riguzzi2013well}{article}{}{}
     \name{author}{2}{}{%
       {{hash=RF}{%
@@ -682,6 +682,32 @@
     \field{volume}{13}
     \field{journaltitle}{Theory and Practice of Logic Programming}
     \field{year}{2013}
+  \endentry
+
+  \entry{sutton2018reinforcement}{book}{}{}
+    \name{author}{2}{}{%
+      {{hash=SRS}{%
+         family={Sutton},
+         familyi={S\bibinitperiod},
+         given={Richard\bibnamedelima S},
+         giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=BAG}{%
+         family={Barto},
+         familyi={B\bibinitperiod},
+         given={Andrew\bibnamedelima G},
+         giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MIT press}%
+    }
+    \strng{namehash}{SRSBAG1}
+    \strng{fullhash}{SRSBAG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Reinforcement learning: An introduction}
+    \field{year}{2018}
   \endentry
 \enddatalist
 \endinput
