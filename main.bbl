@@ -44,8 +44,7 @@
     \field{labeltitlesource}{title}
     \field{booktitle}{IJCAI}
     \field{pages}{2462\bibrangedash 2467}
-    \field{title}{ProbLog: A probabilistic prolog and its application in link
-  discovery}
+    \field{title}{ProbLog: A probabilistic prolog and its application in link discovery}
     \field{volume}{7}
     \field{year}{2007}
   \endentry
@@ -66,10 +65,8 @@
     \strng{fullhash}{ST1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the 12th International Conference on Logic
-  Programming (ICLP'95)}
-    \field{title}{A statistical learning method for logic programs with
-  distribution semantics}
+    \field{booktitle}{Proceedings of the 12th International Conference on Logic Programming (ICLP'95)}
+    \field{title}{A statistical learning method for logic programs with distribution semantics}
     \field{year}{1995}
   \endentry
 
@@ -135,8 +132,7 @@
     \field{labeltitlesource}{title}
     \field{number}{3}
     \field{pages}{358\bibrangedash 401}
-    \field{title}{Inference and learning in probabilistic logic programs using
-  weighted Boolean formulas}
+    \field{title}{Inference and learning in probabilistic logic programs using weighted Boolean formulas}
     \field{volume}{15}
     \field{journaltitle}{Theory and Practice of Logic Programming}
     \field{year}{2015}
@@ -178,8 +174,7 @@
     \strng{fullhash}{PML1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{Markov decision processes: discrete stochastic dynamic
-  programming}
+    \field{title}{Markov decision processes: discrete stochastic dynamic programming}
     \field{year}{2014}
   \endentry
 
@@ -219,11 +214,9 @@
     \strng{fullhash}{BTPMDDBLNdCFG1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{2016 5th Brazilian Conference on Intelligent Systems
-  (BRACIS)}
+    \field{booktitle}{2016 5th Brazilian Conference on Intelligent Systems (BRACIS)}
     \field{pages}{337\bibrangedash 342}
-    \field{title}{Markov decision processes specified by probabilistic logic
-  programming: Representation and solution}
+    \field{title}{Markov decision processes specified by probabilistic logic programming: Representation and solution}
     \field{year}{2016}
   \endentry
 
@@ -328,8 +321,7 @@
     \strng{fullhash}{HJSARHABC1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the 15th Conference on Uncertainty in
-  Artificial Intelligence (UAI-99)}
+    \field{booktitle}{Proceedings of the 15th Conference on Uncertainty in Artificial Intelligence (UAI-99)}
     \field{pages}{279\bibrangedash 288}
     \field{title}{SPUDD: Stochastic Planning using Decision Diagrams}
     \field{year}{1999}
@@ -349,8 +341,7 @@
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{note}{Unpublished Manuscript, Australian National University}
-    \field{title}{Relational Dynamic Influence Diagram Language (RDDL):
-  Language Description}
+    \field{title}{Relational Dynamic Influence Diagram Language (RDDL): Language Description}
     \field{year}{2010}
   \endentry
 
@@ -422,8 +413,7 @@
     \strng{fullhash}{BGVdTIOMvDRL1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the Twenty-Fourth AAAI Conference on
-  Artificial Intelligence (AAAI-10)}
+    \field{booktitle}{Proceedings of the Twenty-Fourth AAAI Conference on Artificial Intelligence (AAAI-10)}
     \field{pages}{1217\bibrangedash 1222}
     \field{title}{DTProbLog: A Decision-Theoretic Probabilistic Prolog}
     \field{year}{2010}
@@ -459,8 +449,7 @@
     \field{labeltitlesource}{title}
     \field{number}{3}
     \field{pages}{245\bibrangedash 308}
-    \field{title}{CP-logic: A language of causal probabilistic events and its
-  relation to logic programming}
+    \field{title}{CP-logic: A language of causal probabilistic events and its relation to logic programming}
     \field{volume}{9}
     \field{journaltitle}{Theory and Practice of Logic Programming}
     \field{year}{2009}
@@ -484,8 +473,7 @@
     \field{labeltitlesource}{title}
     \field{number}{1-2}
     \field{pages}{7\bibrangedash 56}
-    \field{title}{The Independent Choice Logic for Modelling Multiple Agents
-  under Uncertainty}
+    \field{title}{The Independent Choice Logic for Modelling Multiple Agents under Uncertainty}
     \field{volume}{94}
     \field{journaltitle}{Artificial Intelligence}
     \field{year}{1997}
@@ -530,11 +518,9 @@
     \strng{fullhash}{DA1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the 22nd International Joint Conference on
-  Artificial Intelligence (IJCAI)}
+    \field{booktitle}{Proceedings of the 22nd International Joint Conference on Artificial Intelligence (IJCAI)}
     \field{pages}{819\bibrangedash 826}
-    \field{title}{SDD: A New Canonical Representation of Propositional
-  Knowledge Bases}
+    \field{title}{SDD: A New Canonical Representation of Propositional Knowledge Bases}
     \field{year}{2011}
   \endentry
 
@@ -576,8 +562,7 @@
     \field{labeltitlesource}{title}
     \field{number}{5-6}
     \field{pages}{673\bibrangedash 689}
-    \field{title}{ProbLog2: Inference and learning in a probabilistic logic
-  programming language}
+    \field{title}{ProbLog2: Inference and learning in a probabilistic logic programming language}
     \field{volume}{16}
     \field{journaltitle}{Theory and Practice of Logic Programming}
     \field{year}{2016}
@@ -609,8 +594,7 @@
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{pages}{1\bibrangedash 94}
-    \field{title}{Decision-theoretic planning: Structural assumptions and
-  computational leverage}
+    \field{title}{Decision-theoretic planning: Structural assumptions and computational leverage}
     \field{volume}{11}
     \field{journaltitle}{Journal of Artificial Intelligence Research}
     \field{year}{1999}
@@ -646,8 +630,7 @@
     \field{labeltitlesource}{title}
     \field{number}{2-3}
     \field{pages}{327\bibrangedash 342}
-    \field{title}{Planning in discrete and continuous Markov decision processes
-  by probabilistic programming}
+    \field{title}{Planning in discrete and continuous Markov decision processes by probabilistic programming}
     \field{volume}{104}
     \field{journaltitle}{Machine Learning}
     \field{year}{2016}
@@ -677,8 +660,7 @@
     \field{labeltitlesource}{title}
     \field{number}{2}
     \field{pages}{279\bibrangedash 302}
-    \field{title}{Well-definedness and efficient inference for probabilistic
-  logic programming under the distribution semantics}
+    \field{title}{Well-definedness and efficient inference for probabilistic logic programming under the distribution semantics}
     \field{volume}{13}
     \field{journaltitle}{Theory and Practice of Logic Programming}
     \field{year}{2013}

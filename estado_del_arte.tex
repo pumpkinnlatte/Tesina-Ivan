@@ -123,8 +123,7 @@ En segundo lugar, la Programación Lógica Probabilística ofrece ventajas signi
 
 En tercer lugar, las Disyunciones Anotadas constituyen un mecanismo formal que garantiza la exclusión mutua de eventos probabilísticos a nivel semántico \cite{vennekens2009cplogic, poole1997independent}. Este constructo ya forma parte del lenguaje ProbLog y es utilizado internamente por su motor de inferencia \cite{vlasselaer2016problog2}, pero su integración en la capa de representación de fluentes de estado dentro de MDP-ProbLog no ha sido explorada ni implementada.
 
-En consecuencia, la presente tesina se posiciona en la intersección de estos tres ejes al proponer la extensión del núcleo de MDP-ProbLog para soportar fluentes de estado multivaluados mediante Disyunciones Anotadas. Esta integración busca preservar las garantías de inferencia exacta del sistema, eliminar la necesidad de binarización manual, y habilitar una representación del espacio de estados que sea tanto más compacta como semánticamente íntegra.
-
+En consecuencia, la presente tesina se posiciona en la intersección de estos tres ejes al proponer la extensión de MDP-ProbLog para soportar fluentes de estado multivaluados mediante Disyunciones Anotadas. Esta integración busca preservar las garantías de inferencia exacta del sistema, eliminar la necesidad de binarización manual, y habilitar una representación del espacio de estados que sea tanto más compacta como semánticamente íntegra. El siguiente capítulo establece los fundamentos formales --- desde la programación lógica hasta la compilación de conocimiento --- que el lector necesitará para comprender el diseño de la extensión propuesta.
 
 % ======================================================================
 % MARCO TEÓRICO
@@ -154,22 +153,18 @@ En consecuencia, la presente tesina se posiciona en la intersección de estos tr
 }
 
 \section{Marco Teórico}
-\label{ch:marco-teorico}`'
+\label{ch:marco-teorico}
 
-En este capítulo se establecen los fundamentos teóricos y formales que sustentan la extensión propuesta al framework MDP-ProbLog. Inicialmente, se introducen los conceptos básicos de la programación lógica, la semántica de distribución y las características del lenguaje ProbLog. Posteriormente, se formalizan los Procesos de Decisión de Markov (MDPs) y se explica la importancia de su representación factorizada. Finalmente, se presentan las Disyunciones Anotadas como mecanismo de exclusión mutua, así como las técnicas de compilación de conocimiento que hacen posible la inferencia probabilística exacta.
+En el capítulo anterior se estableció que MDP-ProbLog carece de soporte nativo para variables de estado multivaluadas, y que las Disyunciones Anotadas constituyen un mecanismo candidato para resolver esta limitación. El presente capítulo examina los antecedentes científicos que sustentan esta propuesta desde tres ejes: la representación factorizada de MDPs y el problema de la binarización forzada de variables, el uso de la Programación Lógica Probabilística como lenguaje de especificación para la toma de decisiones secuenciales, y los mecanismos de exclusión mutua que permiten la inferencia eficiente. El análisis de estos trabajos permite identificar el vacío de investigación que la presente tesina aborda.
 
 
 % ==================================================================
 \subsection{Programación Lógica}
 \label{sec:mt-pl}
 
-La programación lógica es un paradigma de computación donde los programas se expresan como conjuntos de sentencias lógicas y la ejecución consiste en realizar inferencias sobre dichas sentencias. A diferencia de los lenguajes imperativos, donde el programador especifica \textit{cómo} resolver un problema mediante una secuencia de instrucciones, en la programación lógica se especifica \textit{qué} es verdadero en el dominio, y el motor de inferencia se encarga de derivar las consecuencias.
+Dado que MDP-ProbLog está construido sobre el lenguaje Prolog, es necesario establecer los fundamentos de la programación lógica que sustentan tanto la representación del conocimiento como el proceso de inferencia del sistema. La programación lógica es un paradigma de computación donde los programas se expresan como conjuntos de sentencias lógicas y la ejecución consiste en realizar inferencias sobre dichas sentencias.
 
-\subsubsection{Términos, átomos y literales}
-
-El vocabulario de un programa lógico se construye a partir de tres elementos primitivos: \textit{constantes} (valores concretos como \texttt{rojo}, \texttt{a}, \texttt{3}), \textit{variables} (denotadas con mayúscula inicial, como \texttt{X}, \texttt{Color}) y \textit{functores} (nombres de predicados o funciones con una aridad asociada). Un \textit{término} es una constante, una variable, o un functor aplicado a una lista de términos. Un \textit{átomo} es un predicado aplicado a sus argumentos, por ejemplo \texttt{color(carro, rojo)} o \texttt{conectado(a, b)}. Un \textit{literal} es un átomo o su negación.
-
-\subsubsection{Hechos, reglas y consultas}
+El vocabulario de un programa lógico se construye a partir de \textit{constantes} (valores concretos como \texttt{rojo}, \texttt{a}), \textit{variables} (denotadas con mayúscula inicial, como \texttt{X}) y \textit{functores} (nombres de predicados con aridad asociada). Un \textit{término} es una constante, variable o functor aplicado a términos; un \textit{átomo} es un predicado aplicado a sus argumentos (e.g., \texttt{color(carro, rojo)}); y un \textit{literal} es un átomo o su negación. A partir de estos elementos se construyen las cláusulas que componen un programa lógico.
 
 Un programa lógico se compone de \textit{cláusulas}, que pueden ser de tres tipos:
 
@@ -200,7 +195,7 @@ El proceso de \textit{grounding} (aterrizado o instanciación) consiste en reemp
 \subsection{Programación Lógica Probabilística}
 \label{sec:mt-plp}
 
-La Programación Lógica Probabilística (PLP) extiende la programación lógica con la capacidad de manejar incertidumbre de manera formal. Mientras que un programa lógico clásico afirma que ciertos hechos son verdaderos de manera determinista, un programa lógico probabilístico permite que los hechos sean verdaderos con una cierta probabilidad.
+La semántica de distribución define el marco probabilístico bajo el cual opera el motor de inferencia de MDP-ProbLog y constituye la base formal para el cálculo de las probabilidades de transición entre estados. La Programación Lógica Probabilística (PLP) extiende la programación lógica con la capacidad de manejar incertidumbre de manera formal.
 
 \subsubsection{Semántica de distribución}
 
@@ -251,7 +246,7 @@ La probabilidad de \texttt{se\_moja} es la suma de las probabilidades de los mun
 
 \subsubsection{Relevancia para MDP-ProbLog}
 
-La semántica de distribución es el fundamento teórico sobre el cual opera todo el mecanisno de inferencia de MDP-ProbLog. Cuando el sistema evalúa una transición $P(x'_i = 1 \mid s, a)$, lo que hace internamente es:
+La semántica de distribución es el fundamento teórico sobre el cual opera todo el mecanismo de inferencia de MDP-ProbLog. Cuando el sistema evalúa una transición $P(x'_i = 1 \mid s, a)$, lo que hace internamente es:
 
 \begin{enumerate}
     \item \textit{Fijar evidencia}: Los fluentes de estado actual y la acción se inyectan como hechos con probabilidad 1.0 (verdadero) o 0.0 (falso), colapsando los mundos posibles a aquellos consistentes con el estado y acción observados.
@@ -295,7 +290,7 @@ Un aspecto fundamental es que los hechos probabilísticos son estocásticamente 
 \subsection{Conteo de Modelos Ponderados}
 \label{sec:mt-wmc}
 
-El cálculo directo de la Ecuación~\ref{eq:success-probability} requiere enumerar exponencialmente muchos mundos posibles, lo cual es computacionalmente intratable en general. ProbLog aborda este problema transformando la inferencia probabilística en un problema de \textit{Conteo de Modelos Ponderados} (WMC, por \textit{Weighted Model Counting}) \cite{fierens2015inference}.
+El Conteo de Modelos Ponderados es la operación computacional central que MDP-ProbLog ejecuta en cada iteración del algoritmo de Bellman para calcular las probabilidades de transición. El cálculo directo de la Ecuación~\ref{eq:success-prob} requiere enumerar exponencialmente muchos mundos posibles, lo cual es computacionalmente intratable en general.
 
 El procedimiento consta de tres pasos. Primero, se realiza el \textit{grounding} relevante del programa respecto a la consulta, obteniendo un programa proposicional que contiene solo las cláusulas que pueden influir en el resultado. Segundo, este programa aterrizado se transforma en una fórmula booleana ponderada, donde cada variable proposicional tiene un peso asociado derivado de su probabilidad. Tercero, se calcula el conteo ponderado de los modelos de la fórmula:
 
@@ -368,6 +363,8 @@ lo cual garantiza que la política \textit{greedy} resultante es $\epsilon$-ópt
 
 En la formulación clásica, el espacio de estados $\mathcal{S}$ se trata como un conjunto plano de $|\mathcal{S}|$ elementos. Sin embargo, en la mayoría de los dominios prácticos, el estado del sistema se describe naturalmente mediante un conjunto de variables $\mathbf{x} = (x_1, x_2, \ldots, x_n)$, donde cada variable $x_i$ toma valores en un dominio finito $\text{Dom}(x_i)$. El espacio de estados resultante es el producto cartesiano $\mathcal{S} = \text{Dom}(x_1) \times \text{Dom}(x_2) \times \cdots \times \text{Dom}(x_n)$, cuyo tamaño crece exponencialmente con $n$.
 
+La factorización del espacio de estados es la estrategia central que permite a MDP-ProbLog operar sin enumerar explícitamente todas las combinaciones posibles, y es el contexto en el que la distinción entre fluentes booleanos y multivaluados adquiere relevancia práctica. En la formulación clásica, el espacio de estados $\mathcal{S}$ se trata como un conjunto plano de $|\mathcal{S}|$ elementos.
+
 En un MDP factorizado, la función de transición se descompone aprovechando las independencias condicionales entre las variables de estado. Bajo el supuesto de que el valor futuro de cada variable $x'_i$ depende solo de un subconjunto de las variables actuales y de la acción, la probabilidad de transición se factoriza como \cite{boutilier2000stochastic}:
 
 \begin{equation}
@@ -387,9 +384,7 @@ En la arquitectura original de MDP-ProbLog, cada fluente es una variable de Bern
 
 
 % ==================================================================
-\subsection{El Framework MDP-ProbLog}\begin{equation}
-•
-\end{equation}
+\subsection{El Framework MDP-ProbLog}
 \label{sec:mt-mdpproblog}
 
 MDP-ProbLog es un framework que combina la expresividad de ProbLog con la resolución de MDPs de horizonte infinito \cite{bueno2016mdp}. Su sintaxis extiende la de ProbLog con tres tipos de predicados reservados que definen los componentes del MDP. Para ilustrar esto, consideremos un ejemplo clásico de mantenimiento donde un agente debe gestionar el estado de un servidor:
@@ -426,7 +421,7 @@ La equivalencia formal entre ejecutar el programa probabilístico de MDP-ProbLog
 \subsection{Disyunciones Anotadas}
 \label{sec:mt-ads}
 
-Las Disyunciones Anotadas (ADs) son un constructo sintáctico y semántico de la PLP que permite representar elecciones probabilísticas entre múltiples alternativas mutuamente excluyentes de manera nativa \cite{vennekens2004lpads}.
+Las Disyunciones Anotadas constituyen el mecanismo formal central de la extensión propuesta en esta tesina. Su capacidad de codificar la exclusión mutua a nivel semántico --- sin restricciones externas --- es precisamente la propiedad que permite representar fluentes de estado multivaluados de forma nativa en MDP-ProbLog. Las Disyunciones Anotadas (ADs) son un constructo sintáctico y semántico de la PLP que permite representar elecciones probabilísticas entre múltiples alternativas mutuamente excluyentes de manera nativa \cite{vennekens2004lpads}.
 
 \subsubsection{Definición formal de LPADs}
 
@@ -516,7 +511,7 @@ Es importante distinguir entre las probabilidades \textit{causales} de las ADs y
 \subsection{Compilación de Conocimiento}
 \label{sec:mt-compilacion}
 
-El cálculo del WMC (Ecuación~\ref{eq:wmc}) sobre una fórmula booleana arbitraria es un problema \#P-completo en general. Sin embargo, si la fórmula se transforma previamente en ciertas representaciones canónicas --- conocidas como \textit{lenguajes de compilación} --- el conteo ponderado puede realizarse en tiempo polinomial respecto al tamaño de la representación compilada \cite{darwiche2002knowledge}.
+La compilación de conocimiento determina la eficiencia computacional de la inferencia en MDP-ProbLog y es directamente afectada por la forma en que se representan las variables de estado --- lo cual hace de esta sección un complemento necesario para evaluar el impacto de la extensión propuesta. El cálculo del WMC (Ecuación~\ref{eq:wmc}) sobre una fórmula booleana arbitraria es un problema \#P-completo en general.
 
 \subsubsection{El mapa de compilación de conocimiento}
 

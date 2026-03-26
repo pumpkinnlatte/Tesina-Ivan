@@ -4,47 +4,45 @@
 \contentsline {section}{Summary}{\es@scroman {ix}}{section*.3}%
 \contentsline {section}{Índice}{\es@scroman {x}}{section*.3}%
 \contentsline {section}{\numberline {1}Introducción}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Antecedentes}{1}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Definición del Problema}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.1}Antecedentes locales}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Definición del Problema}{3}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Objetivos}{3}{subsection.1.3}%
 \contentsline {subsubsection}{\numberline {1.3.1}Objetivo General}{3}{subsubsection.1.3.1}%
 \contentsline {subsubsection}{\numberline {1.3.2}Objetivos Específicos}{3}{subsubsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.4}Justificación}{3}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Alcances y Limitaciones}{4}{subsection.1.5}%
-\contentsline {subsubsection}{\numberline {1.5.1}Alcances}{4}{subsubsection.1.5.1}%
-\contentsline {subsubsection}{\numberline {1.5.2}Limitaciones}{4}{subsubsection.1.5.2}%
-\contentsline {section}{\numberline {2}Estado del Arte}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}MDPs Factorizados y el Problema de la Representación de Estados}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Programación Lógica Probabilística para la Resolución de MDPs}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Disyunciones Anotadas y Compilación de Conocimiento}{7}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Análisis Comparativo}{8}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Conclusión del Estado del Arte}{9}{subsection.2.5}%
-\contentsline {section}{\numberline {3}Marco Teórico}{9}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Programación Lógica}{10}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Términos, átomos y literales}{10}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Hechos, reglas y consultas}{10}{subsubsection.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.1.3}Universo de Herbrand e interpretaciones}{10}{subsubsection.3.1.3}%
-\contentsline {subsubsection}{\numberline {3.1.4}Resolución SLD y grounding}{11}{subsubsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.2}Programación Lógica Probabilística}{11}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Semántica de distribución}{11}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Relevancia para MDP-ProbLog}{12}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}El lenguaje ProbLog}{13}{subsubsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.3}Conteo de Modelos Ponderados}{14}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Procesos de Decisión de Markov}{14}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Definición formal}{15}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Algoritmo de Iteración de Valor}{15}{subsubsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.5}MDPs Factorizados}{16}{subsection.3.5}%
-\contentsline {subsubsection}{\numberline {3.5.1}Fluentes de estado}{16}{subsubsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.6}El Framework MDP-ProbLog}{17}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Disyunciones Anotadas}{18}{subsection.3.7}%
-\contentsline {subsubsection}{\numberline {3.7.1}Definición formal de LPADs}{18}{subsubsection.3.7.1}%
-\contentsline {subsubsection}{\numberline {3.7.2}Semántica: selecciones e instancias}{18}{subsubsection.3.7.2}%
-\contentsline {subsubsection}{\numberline {3.7.3}Exclusión mutua nativa}{19}{subsubsection.3.7.3}%
-\contentsline {subsubsection}{\numberline {3.7.4}Interpretación causal}{20}{subsubsection.3.7.4}%
-\contentsline {subsection}{\numberline {3.8}Compilación de Conocimiento}{20}{subsection.3.8}%
-\contentsline {subsubsection}{\numberline {3.8.1}El mapa de compilación de conocimiento}{20}{subsubsection.3.8.1}%
-\contentsline {subsubsection}{\numberline {3.8.2}Impacto de la representación en el tamaño del circuito}{21}{subsubsection.3.8.2}%
-\contentsline {section}{Índice de figuras}{22}{subsubsection.3.8.2}%
-\contentsline {section}{Índice de cuadros}{23}{section*.6}%
-\contentsline {section}{Índice de algoritmos}{24}{section*.7}%
-\contentsline {section}{Referencias}{25}{section*.8}%
+\contentsline {subsection}{\numberline {1.4}Justificación}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Alcances y Limitaciones}{5}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Alcances}{5}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Limitaciones}{6}{subsubsection.1.5.2}%
+\contentsline {section}{\numberline {2}Estado del Arte}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}MDPs Factorizados y el Problema de la Representación de Estados}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Programación Lógica Probabilística para la Resolución de MDPs}{8}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Disyunciones Anotadas y Compilación de Conocimiento}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Análisis Comparativo}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Conclusión del Estado del Arte}{11}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Marco Teórico}{11}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Programación Lógica}{12}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Universo de Herbrand e interpretaciones}{12}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Resolución SLD y grounding}{13}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}Programación Lógica Probabilística}{13}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Semántica de distribución}{13}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Relevancia para MDP-ProbLog}{14}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}El lenguaje ProbLog}{15}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}Conteo de Modelos Ponderados}{16}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Procesos de Decisión de Markov}{16}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Definición formal}{17}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Algoritmo de Iteración de Valor}{17}{subsubsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.5}MDPs Factorizados}{18}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Fluentes de estado}{18}{subsubsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.6}El Framework MDP-ProbLog}{19}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Disyunciones Anotadas}{20}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}Definición formal de LPADs}{20}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.2}Semántica: selecciones e instancias}{20}{subsubsection.3.7.2}%
+\contentsline {subsubsection}{\numberline {3.7.3}Exclusión mutua nativa}{21}{subsubsection.3.7.3}%
+\contentsline {subsubsection}{\numberline {3.7.4}Interpretación causal}{22}{subsubsection.3.7.4}%
+\contentsline {subsection}{\numberline {3.8}Compilación de Conocimiento}{22}{subsection.3.8}%
+\contentsline {subsubsection}{\numberline {3.8.1}El mapa de compilación de conocimiento}{22}{subsubsection.3.8.1}%
+\contentsline {subsubsection}{\numberline {3.8.2}Impacto de la representación en el tamaño del circuito}{23}{subsubsection.3.8.2}%
+\contentsline {section}{Índice de figuras}{24}{subsubsection.3.8.2}%
+\contentsline {section}{Índice de cuadros}{25}{section*.6}%
+\contentsline {section}{Índice de algoritmos}{26}{section*.7}%
+\contentsline {section}{Referencias}{27}{section*.8}%

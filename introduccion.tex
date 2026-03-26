@@ -1,26 +1,22 @@
 \section{Introducción}
 \label{ch:introduccion}
 
-Dentro del ámbito de la Inteligencia Artificial, la Programación Lógica Probabilística se ha consolidado como uno de los paradigmas fundacionales el cual combina la expresividad de la lógica de primer orden con el manejo formal de la incertidumbre mediante la teoría de la probabilidaqued \cite{deraedt2007problog}. Dentro de los desarrollos apegados a este paradigma se encuentra \textit{ProbLog}, un lenguaje que extiende Prolog mediante la introducción de hechos probabilísticos y cuya semántica se basa en la distribución sobre los mundos posibles \cite{sato1995statistical}. ProbLog permite calcular la probabilidad de que una consulta lógica sea verdadera dado un conjunto de evidencias, utilizando técnicas de inferencia como el Conteo de Modelos Ponderados (Weighted Model Counting), transformando el problema de inferencia en una evaluación eficiente sobre circuitos lógicos compilados \cite{fierens2015inference}.
+Dentro del ámbito de la Inteligencia Artificial, la Programación Lógica Probabilística se ha consolidado como uno de los paradigmas fundacionales el cual combina la expresividad de la lógica de primer orden con el manejo formal de la incertidumbre mediante la teoría de la probabilidad \cite{deraedt2007problog}. Dentro de los desarrollos apegados a este paradigma se encuentra \textit{ProbLog}, un lenguaje que extiende Prolog mediante la introducción de hechos probabilísticos y cuya semántica se basa en la distribución sobre los mundos posibles \cite{sato1995statistical}. ProbLog permite calcular la probabilidad de que una consulta lógica sea verdadera dado un conjunto de evidencias, utilizando técnicas de inferencia como el Conteo de Modelos Ponderados (Weighted Model Counting), transformando el problema de inferencia en una evaluación eficiente sobre circuitos lógicos compilados \cite{fierens2015inference}.
     
 Paralelamente, en el campo de la toma de decisiones secuenciales, los Procesos de Decisión de Markov se han establecido como el estándar matemático para modelar agentes que actúan en entornos estocásticos. Formalizados rigurosamente a mediados del siglo XX con los trabajos de Richard Bellman sobre programación dinámica \cite{bellman1957dynamic}, los MDPs proporcionan un marco formal para optimizar una función de utilidad a lo largo del tiempo. Sin embargo, su representación clásica mediante matrices de estados atómicos presenta serias limitaciones de escalabilidad. A medida que aumenta el número de variables que describen el estado del sistema, el tamaño del espacio de estados crece de manera exponencial, un fenómeno acuñado por Bellman como la ``maldición de la dimensionalidad'' \cite{bellman1957dynamic}. Esta explosión combinatoria hace que los métodos de resolución clásicos sean computacionalmente intratables para problemas del mundo real con múltiples variables interrelacionadas \cite{puterman2014markov}.
 
 Integrando la expresividad lógica de ProbLog y la capacidad de decisión de los MDPs, Bueno et al. propusieron el framework \textbf{MDP-ProbLog} \cite{bueno2016mdp}. Esta herramienta integra los conceptos de estados, acciones y recompensas dentro de la sintaxis de la programación lógica, permitiendo representar MDPs de horizonte infinito de manera relacional y compacta. Al utilizar una representación factorizada, MDP-ProbLog mitiga parcialmente la problemática de la dimensionalidad al descomponer el estado global en un conjunto de características o fluentes. Actualmente, este programa es la base tecnológica del equipo de investigación liderado por el Dr. Héctor Hugo Avilés-Arriaga, quienes lo utilizan para el desarrollo de sistemas de navegación y toma de decisiones en vehículos autónomos.
 
-El presente trabajo aborda el diseño e implementación de fluentes de estado multivaluados en el núcleo de MDP-ProbLog mediante el uso de Disyunciones Anotadas (ADs) \cite{vennekens2004lpads}, con el objetivo de extender las capacidades de representación del sistema, garantizando la integridad semántica de los modelos y sentando las bases para analizar el impacto computacional de esta expresividad.
+\clearpage
 
-\subsection{Antecedentes}
+\subsection{Antecedentes locales}
 \label{sec:antecedentes}
 
-\textbf{MDP-ProbLog} fue propuesto en 2016 por Bueno et al. como una extensión del lenguaje ProbLog orientada a representar y resolver Procesos de Decisión de Markov (MDPs) de horizonte infinito \cite{bueno2016mdp}. Su principal innovación frente a lenguajes de planificación contemporáneos (como RDDL o PPDDL) fue la capacidad de aprovechar la programación lógica para modelar dependencias simétricas, transitivas y relaciones cíclicas entre variables.
+Actualmente, MDP-ProbLog constituye la base tecnológica del equipo de investigación liderado por el Dr. Héctor Hugo Avilés-Arriaga, quienes lo utilizan para el desarrollo de sistemas de navegación y toma de decisiones en vehículos autónomos. Sin embargo, el framework conserva desde su publicación una restricción que limita la naturalidad del modelado. Todos los fluentes de estado se definen exclusivamente como variables de Bernoulli independientes, lo que obliga al usuario a representar variables multivaluadas mediante múltiples predicados booleanos. Para modelar la posición de un vehículo en una vía de tres carriles, por ejemplo, se requieren tres fluentes binarios separados en lugar de una única variable con tres valores. Esta codificación forzada produce un proceso de modelado tedioso, propenso a inconsistencias semánticas, y genera un espacio de estados artificialmente inflado.
 
-Para lograr esto, MDP-ProbLog establece convenciones sintácticas específicas que operan sobre la base de ProbLog: los componentes del MDP se definen explícitamente mediante predicados reservados como \texttt{state\_fluent/1} para variables de estado, \texttt{action\_fluent/1} para acciones y \texttt{utility/2} para utilidades. Por su parte, la dinámica del sistema se modela vinculando el estado actual en el tiempo $t$ con el estado futuro en el tiempo $t+1$. Para encontrar la política óptima, el \textit{solver} compila el programa en fórmulas proposicionales ponderadas (WMC) y ejecuta el algoritmo clásico de Iteración de Valor.
+El presente trabajo aborda el diseño e implementación de fluentes de estado multivaluados en el núcleo de MDP-ProbLog mediante el uso de Disyunciones Anotadas (ADs) \cite{vennekens2004lpads}, con el objetivo de extender las capacidades de representación del sistema, garantizando la integridad semántica de los modelos y sentando las bases para analizar el impacto computacional de esta expresividad.
 
-A pesar de la solidez de sus fundamentos teóricos, la herramienta no ha recibido actualizaciones estructurales en su núcleo de representación desde su publicación hace casi una década. En consecuencia, el framework conserva su diseño original, el cual restringe la definición del mundo a lógica estrictamente binaria; es decir, todos los fluentes de estado definidos deben ser variables de Bernoulli independientes \cite{bueno2016mdp}. 
-
-Actualmente, este framework constituye la base tecnológica del equipo de investigación liderado por el Dr. Héctor Hugo Avilés-Arriaga, quienes lo utilizan para el modelado de toma de decisiones en vehículos autónomos. El uso de MDP-ProbLog les permite contar con modelos explicables y reglas de comportamiento auditables. Sin embargo, debido a la restricción binaria del framework, el proceso de modelado exige una adaptación forzada de la información del entorno. 
-
-En la práctica, para que el equipo pueda representar características del entorno que son naturalmente multivaluadas, se requiere realizar un proceso de discretización y binarización en el código. Por ejemplo, para representar la posición de un vehículo en una vía de tres carriles, en lugar de utilizar una variable única \texttt{carril(izquierdo|central|derecho)}, el modelador debe declarar tres fluentes booleanos independientes: \texttt{carril\_izquierdo}, \texttt{carril\_central} y \texttt{carril\_derecho}. De igual forma, el estado de un semáforo debe dividirse en predicados separados para sus luces verde, amarilla y roja.
+\clearpage
 
 \subsection{Definición del Problema}
 \label{sec:problema}
@@ -47,12 +43,18 @@ Diseñar e integrar un mecanismo de representación de fluentes de estado multiv
     \item Evaluar el comportamiento de la extensión propuesta, contrastando la simplificación cualitativa del proceso de modelado con las implicaciones cuantitativas generadas en el tamaño de los modelos compilados y los tiempos de inferencia.
 \end{itemize}
 
+\clearpage
+
 \subsection{Justificación}
 \label{sec:justificacion}
 
-El trabajo abarca un paso necesario para la maduración de la herramienta. Desde una perspectiva práctica y operativa, la integración de fluentes multivaluados impacta directamente en el flujo de trabajo del equipo de investigación del Dr. Avilés-Arriaga. Al automatizar la exclusión mutua mediante Disyunciones Anotadas, se elimina la necesidad de crear reglas manuales restrictivas, reduciendo drásticamente la carga cognitiva del modelador, acortando los tiempos de desarrollo y mitigando la propensión a errores de diseño.
+El trabajo abarca un paso necesario para la maduración de la herramienta. Desde una perspectiva práctica y operativa, la integración de fluentes multivaluados impacta directamente la manera en la que se modelan y describen los MDPs. Al automatizar la exclusión mutua mediante Disyunciones Anotadas, se elimina la necesidad de crear reglas manuales restrictivas, reduciendo drásticamente la carga cognitiva del modelador, acortando los tiempos de desarrollo y mitigando la propensión a errores de diseño. 
 
-Desde una perspectiva científica, esta extensión democratiza el uso de la Programación Lógica Probabilística al facilitar su adopción en problemas de ingeniería que requieren representar variables complejas de manera directa. Adicionalmente, al exponer y documentar los desafíos inherentes al crecimiento de los circuitos lógicos generados por las Disyunciones Anotadas, este trabajo sienta un precedente crítico y abre nuevas líneas de investigación enfocadas en la optimización de la compilación de conocimiento para MDPs relacionales.
+Para dimensionar el problema: una variable con $k$ valores posibles requiere, bajo la codificación booleana actual, $k$ predicados independientes que generan $2^k$ combinaciones, de las cuales solo $k$ son semánticamente válidas. Por ejemplo, un semáforo de tres colores produce $2^3 = 8$ estados de los cuales 5 son imposibles por definicion; un fluente con 5 valores genera $2^5 = 32$ combinaciones en donde únicamente 5 son válidas. Con la extensión propuesta, la representación se reduce exactamente a los $k$ estados legítimos.
+
+[Diagrama o figura en donde se muestre la diferencia entre la representación actual y la propuesta, destacando la reducción del espacio de estados y la simplificación del modelado.]
+
+\clearpage
 
 \subsection{Alcances y Limitaciones}
 \label{sec:alcances_limitaciones}
@@ -60,9 +62,102 @@ Desde una perspectiva científica, esta extensión democratiza el uso de la Prog
 \subsubsection{Alcances}
 \label{subsec:alcances}
 
-El proyecto abarca la modificación del núcleo del software MDP-ProbLog, específicamente en los módulos de definición de estados y el puente de comunicación hacia el motor de inferencia. Se incluye el diseño de nuevas estructuras de datos para el manejo de variables multivaluadas, la adaptación de los algoritmos de instanciación y la validación funcional mediante casos de estudio en escenarios de navegación autónoma. El desarrollo garantizará la retrocompatibilidad, asegurando que los modelos booleanos existentes sigan funcionando sin alteraciones.
+El proyecto abarca el diseño, la implementación y la validación de una
+extensión al núcleo del framework MDP-ProbLog que incorpora soporte para
+fluentes de estado multivaluados. El desarrollo comprende los siguientes
+elementos:
+
+\begin{enumerate}
+    \item \textbf{Representación factorizada del espacio de estados.}
+    Se diseñaron las estructuras de datos necesarias para que el espacio
+    de estados admita factores con más de dos valores posibles, preservando
+    la capacidad de iteración y la indexación eficiente sobre el conjunto
+    completo de estados.
+
+    \item \textbf{Clasificación automática de fluentes.} Se implementó un
+    mecanismo que determina automáticamente si un fluente declarado por el
+    usuario es booleano o multivaluado, a partir del análisis de las
+    Disyunciones Anotadas presentes en el programa. El usuario también
+    puede especificar el tipo de forma explícita.
+
+    \item \textbf{Integración con el motor de inferencia.} Se adaptó la
+    interfaz entre MDP-ProbLog y el motor de inferencia de ProbLog para
+    soportar la inyección y el manejo de Disyunciones Anotadas como
+    representación nativa de los fluentes multivaluados.
+
+    \item \textbf{Adaptación del algoritmo de resolución.} Se reestructuró
+    el flujo de evaluación de transiciones y el algoritmo de Iteración de
+    Valor para operar sobre transiciones agrupadas por factor, de modo que
+    cada variable de estado se evalúa de acuerdo con su cardinalidad real.
+
+    \item \textbf{Herramientas de inspección.} Se desarrollaron utilidades
+    para exportar las matrices de transición, las tablas de recompensas y
+    el historial de convergencia, facilitando la verificación y el análisis
+    de los modelos resueltos.
+
+    \item \textbf{Retrocompatibilidad.} La extensión preserva el
+    funcionamiento de los modelos booleanos existentes sin requerir
+    modificaciones por parte del usuario.
+\end{enumerate}
+
+La validación funcional se realiza sobre dominios de referencia basados en
+grids, específicamente la grid de Mitchell y la grid de Russell, que
+constituyen problemas canónicos en la literatura de MDPs con soluciones
+óptimas conocidas. En cada dominio se contrastan dos formulaciones del
+mismo problema, una con codificación booleana manual y otra con fluentes
+multivaluados, evaluando la simplificación del proceso de modelado, la
+corrección de la política resultante y el comportamiento del solver en
+términos de convergencia y tamaño del espacio de estados.
+
+\clearpage
 
 \subsubsection{Limitaciones}
 \label{subsec:limitaciones}
 
-El desarrollo se limita a MDPs de horizonte infinito con espacios de estados discretos. Esta investigación se enfoca exclusivamente en la capa de representación y modelado lógico. Por lo tanto, no pretende modificar, optimizar ni reescribir los algoritmos subyacentes de inferencia exacta (Weighted Model Counting) ni los compiladores de circuitos lógicos internos (SDD/d-DNNF) utilizados por ProbLog, los cuales dictan en última instancia la complejidad espacial y temporal de la evaluación. Asimismo, las pruebas funcionales y de rendimiento se realizarán en entornos de simulación y no en vehículos físicos en tiempo real.
+El desarrollo se circunscribe a MDPs de horizonte infinito con espacios de
+estados discretos y completamente observables. Las siguientes restricciones
+delimitan el alcance técnico de la extensión:
+
+\begin{enumerate}
+    \item \textbf{Enumeración explícita del espacio de estados.} El algoritmo
+    de Iteración de Valor recorre todos los pares estado-acción en cada
+    iteración. La extensión modifica la forma en que se representan y se
+    evalúan los estados, pero no altera la estrategia de recorrido. El costo
+    por iteración permanece proporcional al producto del número total de
+    estados por el número de acciones disponibles. Esta restricción no es
+    introducida por el presente trabajo, sino heredada del diseño original
+    de MDP-ProbLog, y constituye la frontera principal de escalabilidad
+    del sistema. Dominios con un número elevado de variables de estado o
+    con variables de cardinalidad alta producen espacios de estados cuya
+    enumeración completa se vuelve computacionalmente costosa.
+
+    \item \textbf{Capa de representación exclusivamente.} El trabajo no
+    modifica los algoritmos de inferencia exacta ni los compiladores de
+    circuitos lógicos utilizados internamente por ProbLog. El efecto de
+    las Disyunciones Anotadas sobre el tamaño de los circuitos compilados
+    es un resultado emergente del compilador subyacente, no una
+    optimización introducida por esta extensión.
+
+    \item \textbf{Convención de declaración de fluentes.} Todos los valores
+    posibles de un fluente multivaluado deben declararse bajo el mismo nombre
+    de predicado. Esta convención permite que el sistema identifique
+    automáticamente los grupos mutuamente excluyentes, pero impide
+    representar un fluente cuyos valores se distribuyan entre predicados
+    distintos.
+
+    \item \textbf{Independencia entre variables de estado.} Las reglas de
+    transición del programa deben respetar independencia entre las variables
+    de estado. El sistema evalúa la probabilidad de transición de cada
+    variable por separado y combina los resultados asumiendo que los
+    factores son estocásticamente independientes. Si las reglas del usuario
+    introducen dependencias entre variables que violan este supuesto, el
+    sistema no lo detecta ni emite advertencias.
+
+    \item \textbf{Dominios de evaluación.} Las pruebas se ejecutan sobre
+    dominios de grid discretos de dimensión reducida, seleccionados por
+    la disponibilidad de soluciones de referencia en la literatura. Los
+    resultados no se extrapolan a dominios de gran escala ni a entornos
+    físicos en tiempo real.
+\end{enumerate}
+
+Una vez delimitado el problema, los objetivos y los alcances de este trabajo, el siguiente capítulo analiza los antecedentes científicos que sustentan la propuesta, revisando los enfoques existentes para la representación factorizada de MDPs y el papel de la Programación Lógica Probabilística en la toma de decisiones secuenciales.
