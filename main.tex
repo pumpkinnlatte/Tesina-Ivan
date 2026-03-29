@@ -38,6 +38,32 @@
 \renewcommand{\algorithmicrequire}{\textbf{Entrada:}}
 \renewcommand{\algorithmicensure}{\textbf{Salida:}}
 
+% PARA CODIGOS QUE NO SON NECESARIAMENTE ALGORITMOS
+\renewcommand{\lstlistingname}{Código} % Lo llamamos "Código" con rigor técnico
+\renewcommand{\lstlistlistingname}{Índice de códigos} % Creamos su propio índice
+
+\lstdefinelanguage{ProbLog}{
+  morekeywords={not, true, false, query, evidence},
+  sensitive=true,
+  morecomment=[l]{\%},
+  morestring=[b]",
+  literate={:-}{{\textbf{:-}}}2 {::}{{\textbf{::}}}2,
+}
+\lstset{
+  language=ProbLog,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries,
+  commentstyle=\itshape\color{gray},
+  frame=single,
+  framesep=6pt,
+  xleftmargin=12pt,
+  numbers=none,
+  breaklines=true,
+  captionpos=t, % Se mantiene arriba
+  aboveskip=10pt,
+  belowskip=10pt,
+}
+
 % Comentario con respecto a las referencias:
 % Por defecto este documento utiliza el formato IEEEtr para formatear las referencias. Si algun asesor requiere formato APA, solo comente la siguiente linea y descomente la linea debajo. Tambien para que las citas funcionen de manera adecuada, el paquete label debe tener las opciones mostradas, o en su defecto, el año en el listado no lo muestra correctamente \usepackage[english, american]{babel}
 
@@ -499,6 +525,9 @@ This thesis reports the development of an extension to the core of the MDP-ProbL
 
 \clearpage
 \input{estado_del_arte.tex}
+
+\clearpage
+\input{capitulo4.tex}
 
 \clearpage
 \addcontentsline{toc}{section}{Índice de figuras}
