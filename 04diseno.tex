@@ -1,0 +1,346 @@
+% ======================================================================
+% DISEÑO E IMPLEMENTACIÓN
+% ======================================================================
+\section{Diseño e Implementación}
+\label{ch:diseno-implementacion}
+
+Una vez establecidos los fundamentos teóricos de la Programación Lógica Probabilística, los Procesos de Decisión de Markov factorizados y las Disyunciones Anotadas, el presente capítulo aborda el diseño y la construcción de la extensión al núcleo de MDP-ProbLog. Se analiza primero la arquitectura original del sistema para identificar sus limitaciones estructurales en la representación del espacio de estados. A partir de esta evaluación, se detalla el diseño de las nuevas estructuras de datos y los mecanismos de inferencia de tipos, seguido por las modificaciones al motor de inferencia y al algoritmo de resolución. Finalmente, se demuestra cómo la extensión preserva la retrocompatibilidad con los modelos booleanos preexistentes.
+
+% ------------------------------------------------------------------
+\subsection{Análisis de la arquitectura original}
+\label{sec:di-analisis-arquitectura}
+
+Para determinar los puntos de intervención de la extensión propuesta, es necesario examinar cómo el framework MDP-ProbLog procesaba la información en su diseño original \cite{bueno2016mdp}. El sistema opera bajo una arquitectura modular que actúa como capa intermedia entre el motor de inferencia probabilística de ProbLog y un algoritmo de resolución numérica.
+
+\subsubsection{Componentes del sistema original}
+\label{sec:di-arquitectura-base}
+
+% TODO: Insertar Figura — Diagrama de arquitectura original con los cuatro módulos
+% y sus relaciones de dependencia. Puede basarse en el diagrama ASCII del documento
+% de arquitectura (sección 1.1).
+
+La arquitectura original se compone de cuatro módulos con responsabilidades delimitadas:
+
+\begin{description}
+    \item[\texttt{engine.py}] Implementa un adaptador sobre el motor interno de ProbLog (\texttt{DefaultEngine}). Encapsula la Base de Datos de Cláusulas (\textit{ClauseDB}) y expone métodos para añadir hechos lógicos, ejecutar el grounding relevante y compilar circuitos evaluables para el Conteo de Modelos Ponderados.
+    
+    \item[\texttt{fluent.py}] Define las abstracciones del estado del mundo. Las clases \texttt{Fluent} y \texttt{StateSpace} generan e indexan las configuraciones posibles del sistema, asumiendo un espacio factorizado puramente booleano.
+    
+    \item[\texttt{mdp.py}] Actúa como entidad coordinadora del framework. Interroga la base de datos de cláusulas buscando predicados reservados (\texttt{state\_fluent/1}, \texttt{action/1}, \texttt{utility/2}), coordina la incorporacion de hechos y traduce las relaciones lógicas en una semántica de transiciones de Markov.
+    
+    \item[\texttt{value\_iteration.py}] Implementa el algoritmo de Iteración de Valor. Opera sobre índices enteros y distribuciones marginales para aproximar la ecuación de optimalidad de Bellman (Ecuación~\ref{eq:value-iteration}).
+\end{description}
+
+\clearpage
+
+\subsubsection{Flujo de ejecución}
+\label{sec:di-flujo-ejecucion}
+
+La interacción entre estos componentes sigue un flujo secuencial de cinco fases:
+
+\begin{enumerate}
+    \item \textbf{Análisis y carga.} El módulo \texttt{engine.py} realiza el \textit{parsing} del archivo Prolog proporcionado por el usuario y lo inyecta en la \texttt{ClauseDB}.
+    
+    \item \textbf{Descubrimiento del dominio.} El coordinador (\texttt{mdp.py}) interroga la base de datos para identificar los fluentes de estado y las acciones, e instancia los iteradores correspondientes en \texttt{fluent.py}.
+    
+    \item \textbf{Inyección temporal.} Para modelar la dinámica secuencial, \texttt{mdp.py} transforma las declaraciones abstractas agregando estampas de tiempo ($t=0$ para el estado actual, $t=1$ para el siguiente estado). Simultáneamente, introduce hechos probabilísticos neutrales en $t=0$ para permitir la sustitución posterior de evidencia durante la evaluación.
+    
+    \item \textbf{Aterrizado y compilación.} Se ejecuta un \textit{grounding} relevante respecto a las consultas de interés. Las reglas de transición se compilan en un circuito proposicional tratable (SDD o d-DNNF).
+    
+    \item \textbf{Resolución.} El módulo \texttt{value\_iteration.py} recorre el espacio de estados, inyecta cada par estado-acción como evidencia determinista en el motor, y solicita el cálculo de las probabilidades marginales $P(s' \mid s, a)$ mediante WMC para actualizar la función de valor $V(s)$.
+\end{enumerate}
+
+Esta separación de responsabilidades facilitó la tarea de realizar modificaciones y constuir sobre el un solver funcional y matemáticamente correcto.
+
+\subsubsection{Limitaciones en la gestión de fluentes}
+\label{sec:di-limitaciones-gestion}
+
+Aunque MDP-ProbLog permite modelar variables de estado relacionales mediante el predicado \texttt{state\_fluent/1}, su diseño interno asume que cada instancia aterrizada (\textit{ground atom}) opera como una variable de Bernoulli estocásticamente independiente.
+
+El módulo \texttt{fluent.py} original implementaba la clase \texttt{StateSpace} como un iterador combinatorio plano. Dado un conjunto de $n$ fluentes booleanos, el sistema generaba el producto cartesiano completo, produciendo un espacio de estados de tamaño $2^n$. Esta arquitectura resulta funcional para dominios puramente binarios, pero genera un desajuste al modelar fenómenos con estados representados con variables categoricas o multivaluadas.
+
+% TODO: Insertar ejemplo concreto. Se busca ilustrar con un dominio de 4 estados
+% mutuamente excluyentes (e.g., posición en un grid o estado de un objeto en una
+% línea de producción) mostrando que 2^4 = 16 combinaciones se generan cuando
+% solo 4 son válidas. Considerar usar el mismo dominio que se usará en el Cap. 5
+% para mantener consistencia.
+
+Esta divergencia entre la semántica del dominio y la representación computacional genera dos consecuencias negativas. Por un lado, delega en el usuario la responsabilidad de escribir reglas lógicas adicionales para bloquear transiciones hacia los estados inválidos, lo que aumenta la complejidad del modelado y la propensión a errores. Por otro lado, el algoritmo de Iteración de Valor calcula respaldos de Bellman para estados inalcanzables, consumiendo recursos computacionales sin contribuir a la solución.
+
+
+\subsubsection{Identificación de puntos de extensión}
+\label{sec:di-puntos-extension}
+
+El análisis de las limitaciones expuestas revela que la solución no requiere alterar el motor de inferencia probabilística subyacente de ProbLog. La compilación a circuitos lógicos y el WMC permanecen como la estrategia de evaluación del framework. La intervención se localiza en la capa intermedia donde las declaraciones lógicas se transforman en variables de estado evaluables para el solver. Se identificaron tres puntos de extensión:
+
+\begin{enumerate}
+    \item \textbf{Representación del espacio de estados.} Reemplazar la representación por una estructura factorizada que admita factores de cardinalidad arbitraria.
+    
+    \item \textbf{Inyección de hechos en la ClauseDB.} Adaptar el mecanismo de inyección temporal para que los fluentes multivaluados se representen como Disyunciones Anotadas en lugar de hechos probabilísticos independientes.
+    
+    \item \textbf{Cálculo del valor esperado.} Reestructurar la evaluación del valor futuro en la Iteración de Valor para que recorra los factores del esquema en lugar de enumerar combinaciones binarias.
+\end{enumerate}
+
+Al acotar las modificaciones a estos tres puntos, se preservan las garantías de inferencia exacta de ProbLog. La siguiente sección detalla el diseño formal de cada componente de la extensión.
+
+
+% ------------------------------------------------------------------
+\subsection{Diseño de la extensión}
+\label{sec:di-diseno-extension}
+
+Esta sección detalla el diseño conceptual de la extensión propuesta. El objetivo es transitar de un modelo de variables booleanas independientes hacia una estructura factorizada que soporte fluentes de estado multivaluados de forma nativa. Para lograrlo, se diseñaron dos componentes centrales: una estructura de datos factorizada (\texttt{FluentSchema}) y un mecanismo de clasificación automática (\texttt{FluentClassifier}).
+
+
+\subsubsection{FluentSchema: estructura factorizada del espacio de estados}
+\label{sec:di-fluentschema}
+
+El primer componente del rediseño reemplaza el almacenamiento de fluentes basado en listas planas por una estructura de datos centralizada denominada \texttt{FluentSchema}. Esta clase define el espacio de estados como el producto cartesiano de factores lógicamente independientes, donde cada factor pertenece a una de dos categorías:
+
+\begin{itemize}
+    \item \textbf{Booleano (base 2).} Una variable binaria independiente que toma valores en $\{0, 1\}$. Corresponde a los fluentes tradicionales de MDP-ProbLog.
+    
+    \item \textbf{Multivaluado (base $N$).} Un grupo de $N$ opciones mutuamente excluyentes donde exactamente una está activa en cada estado. La codificación interna utiliza representación \textit{one-hot} sobre las opciones del grupo.
+\end{itemize}
+
+El esquema mantiene internamente tres estructuras de datos: la lista ordenada de factores (donde cada factor es una lista de términos atemporales), la lista de bases correspondientes, y una lista aplanada de todos los términos en orden de registro. Los strides para la indexación mixed-radix se calculan bajo demanda y se almacenan en caché.
+
+Para gestionar los factores multivaluados, el esquema implementa un mecanismo de agrupamiento basado en el nombre del predicado (\textit{functor}). Al instanciar el programa, el sistema agrupa los términos multivaluados evaluando su functor. Esto garantiza, por ejemplo, que los valores \texttt{pos(a)}, \texttt{pos(b)} y \texttt{pos(c)} se agrupen como alternativas excluyentes del mismo factor. Esta convención constituye una de las limitaciones documentadas en la sección de Alcances (\ref{subsec:limitaciones}): todos los valores de un fluente multivaluado deben compartir el mismo nombre de predicado.
+
+% TODO: Insertar tabla — Ejemplo comparativo de un FluentSchema con factores
+% booleanos y multivaluados. Mostrar factores, bases, strides y tamaño total
+% del espacio para un caso concreto (e.g., 1 bool + 1 multivaluado de 3 opciones
+% = 2 × 3 = 6 estados vs. 2^4 = 16 estados en la codificación booleana equivalente).
+
+
+\subsubsection{FluentClassifier: mecanismo de clasificación automática}
+\label{sec:di-fluentclassifier}
+
+Para que el esquema factorizado se construya correctamente sin obligar al usuario a declarar manualmente el tipo de cada fluente en todos los casos, se diseñó el módulo \texttt{FluentClassifier}. Este componente ejecuta un proceso de clasificación en tres etapas: validación estática de las declaraciones, registro e inferencia de tipos, y ensamblaje del esquema. 
+
+El clasificador admite dos modos de declaración complementarios:
+\begin{itemize}
+    \item \textbf{Modo implícito (\texttt{state\_fluent/1}):} El \textit{framework} infiere automáticamente el tipo del fluente analizando el origen de sus valores aterrizados (\textit{grounded values}).
+    \item \textbf{Modo explícito (\texttt{state\_fluent/2}):} El usuario especifica directamente una etiqueta de tipo (\texttt{bool} o \texttt{multivalued}), otorgando control total sobre la clasificación e ignorando la inferencia automática.
+\end{itemize}
+
+\begin{algorithm}[H]
+\caption{Inferencia de tipo por intersección de orígenes estocásticos}\label{alg:infer-type}
+\begin{algorithmic}[1]
+\Require Conjunto de términos aterrizados $G$ de aridad $a$; índice invertido $\mathcal{I}: \Sigma \to \mathcal{P}(\Gamma)$ que mapea valores $\Sigma$ a conjuntos de grupos AD $\Gamma$.
+\Ensure Clasificación de tipo: \texttt{bool} o \texttt{multivalued}.
+
+\If{$a = 0$}
+    \Return \texttt{bool} \Comment{Los fluentes proposicionales son siempre booleanos.}
+\EndIf
+
+\For{$p \gets 1$ \textbf{a} $a$}
+    \State $V_p \gets \{ \text{arg}_p(g) \mid g \in G \}$ \Comment{Extraer conjunto de valores en la posición $p$.}
+    \State $C \gets \bigcap_{v \in V_p} \mathcal{I}(v)$ \Comment{Intersección de grupos AD para todos los valores.}
+    \If{$C \neq \emptyset$}
+        \Return \texttt{multivalued} \Comment{Todos los valores provienen de la misma AD.}
+    \EndIf
+\EndFor
+
+\Return \texttt{bool} \Comment{Ninguna posición proviene íntegramente de una AD.}
+\end{algorithmic}
+\end{algorithm}
+
+Durante el análisis estático, el clasificador aplica reglas de validación estrictas para prevenir errores de modelado. Por ejemplo, si un grupo multivaluado resulta con una cardinalidad inferior a dos opciones, se interrumpe la ejecución con un \texttt{FluentCardinalityError}, ya que un grupo mutuamente excluyente requiere al menos dos estados válidos para contribuir al espacio mixed-radix. Si un fluente se declara en ambos modos, el sistema emite una advertencia de duplicidad y prioriza la declaración explícita.
+
+\paragraph{Reglas de inferencia implícita.}
+En el modo implícito, la decisión de clasificación depende directamente de la aridad del término lógico y de la estructura de la Base de Datos de Cláusulas:
+\begin{enumerate}
+    \item \textbf{Aridad 0:} Los fluentes proposicionales carecen de argumentos para generar un dominio de valores; por lo tanto, siempre se clasifican como booleanos .
+    \item \textbf{Aridad $\ge 1$:} El clasificador verifica si los valores aterrizados en alguna posición argumental provienen íntegramente de una Disyunción Anotada (AD). Si la intersección de estos valores con el vocabulario de alguna AD declarada es exhaustiva, el fluente se clasifica como \texttt{multivalued}; en caso contrario, si provienen de hechos estáticos ordinarios, se clasifica como \texttt{bool}.
+\end{enumerate}
+El Algoritmo~\ref{alg:infer-type} formaliza esta lógica de decisión por intersección.
+
+% TODO: INFER TYPE
+
+\paragraph{Agrupamiento y el problema del Colapso Estructural.}
+Una vez que un conjunto de términos implícitos es identificado como multivaluado, el sistema consolida el factor basándose exclusivamente en el nombre del predicado (\textit{functor}) . Bajo esta convención, el framework interpreta los fluentes como una única variable categórica global por cada nombre de predicado. 
+
+Si bien este comportamiento es eficiente para dominios simples, introduce un riesgo documentado como \textit{Colapso Estructural} . Este fenómeno ocurre cuando el modelador intenta representar familias de variables indexadas por entidad (por ejemplo, \texttt{pos(robot1, a)} y \texttt{pos(robot2, b)}) utilizando el modo implícito. Al compartir el mismo \textit{functor} (\texttt{pos}), el clasificador las agrupa erróneamente dentro de un único factor mutuamente excluyente, destruyendo la independencia estocástica entre los distintos robots e invalidando la semántica del dominio .
+
+\paragraph{Justificación del modo explícito.}
+Es precisamente el riesgo de colapso estructural lo que fundamenta la necesidad arquitectónica del predicado \texttt{state\_fluent/2} con la etiqueta \texttt{multivalued}. El modo explícito desactiva el agrupamiento ciego por functor, permitiendo al modelador definir reglas parametrizadas que instancien múltiples factores multivaluados verdaderamente independientes. Esta dualidad de diseño garantiza que el framework mantenga una sintaxis ligera para variables globales, sin sacrificar la expresividad relacional necesaria para dominios multi-agente complejos.
+
+\subsubsection{Codificación \textit{mixed-radix} del espacio de estados}
+\label{sec:di-mixed-radix}
+
+Con los fluentes correctamente clasificados y agrupados en el \texttt{FluentSchema}, el sistema debe iterar y enumerar el nuevo espacio de estados sin generar combinaciones inválidas. En la arquitectura original, la enumeración utilizaba un contador binario que asignaba un índice entero a cada combinación asumiendo base 2 para todos los factores. Al introducir variables con cardinalidad mayor a 2, se requiere un sistema de numeración capaz de manejar bases heterogéneas.
+
+La clase \texttt{FactorSpace} (de la cual heredan \texttt{StateSpace} y \texttt{ActionSpace}) implementa una codificación de base mixta (\textit{mixed-radix}). Bajo este esquema, el espacio de estados se define como el producto cartesiano de $m$ factores independientes, donde cada factor $k$ posee una base $b_k$ correspondiente a su cardinalidad.
+
+El tamaño total del espacio de estados se define como el producto de todas las bases:
+\begin{equation}
+    |\mathcal{S}| = \prod_{k=1}^{m} b_k
+\end{equation}
+
+Para mapear cada estado a un índice entero $I \in [0, |\mathcal{S}| - 1]$, se calcula un stride $S_k$ para cada factor, definido como el producto de las bases de los factores precedentes:
+\begin{equation}
+    S_k = \prod_{i=1}^{k-1} b_i \quad \text{con } S_1 = 1
+\end{equation}
+
+Dada una configuración donde cada factor $k$ toma un valor local $v_k \in [0, b_k - 1]$, el índice global se calcula como:
+\begin{equation}
+    I = \sum_{k=1}^{m} (v_k \times S_k)
+\end{equation}
+
+La operación inversa (decodificación de un índice a una valuación) se realiza extrayendo sucesivamente el residuo módulo la base de cada factor:
+\begin{equation}
+    v_k = I \bmod b_k, \quad I \leftarrow \left\lfloor \frac{I}{b_k} \right\rfloor
+\end{equation}
+
+Ambas operaciones eliminan la generación de estados imposibles, ya que el espacio iterado corresponde exactamente a las combinaciones semánticamente válidas del modelo.
+
+% TODO: Insertar tabla — Ejemplo de codificación mixed-radix para un esquema
+% con bases [2, 3, 2] mostrando los 12 estados, sus valores por factor y sus
+% índices. (Puede reutilizarse la tabla del Marco Teórico §3.5 o referenciarla.)
+
+
+\subsubsection{Sintaxis de usuario para fluentes multivaluados}
+\label{sec:di-nueva-sintaxis}
+
+El propósito último de reestructurar la representación interna del \textit{framework} es proporcionar al modelador una interfaz declarativa más natural, robusta y matemáticamente segura. La extensión permite declarar variables categóricas y especificar sus transiciones estocásticas directamente mediante la sintaxis nativa de las Disyunciones Anotadas (AD) de ProbLog, eliminando la necesidad de gestionar la exclusión mutua de forma manual.
+
+Para ilustrar el impacto de este rediseño a nivel de código, considérese un dominio [Pensar bien que dominio presentar, algo sencillo]
+
+\begin{lstlisting}[language=Prolog, caption={Modelado de posición en la arquitectura original.}, label={lst:sintaxis-booleana}]
+
+\end{lstlisting}
+
+En el Código~\ref{lst:sintaxis-booleana}, la semántica del dominio diverge severamente de su representación computacional. Al tratar cada posición como una variable de Bernoulli independiente, el motor de inferencia asume un espacio de estados de tamaño $2^4 = 16$ combinaciones, de las cuales solo $4$ son semánticamente válidas . El modelador asume la carga de escribir reglas lógicas adyacentes para asegurar que la probabilidad fluya correctamente y evitar transiciones hacia configuraciones imposibles (por ejemplo, el agente existiendo simultáneamente en \texttt{pos(a)} y \texttt{pos(b)}).
+
+Con la extensión desarrollada, el mismo modelo se especifica explotando la semántica de las Disyunciones Anotadas.
+
+\begin{lstlisting}[language=Prolog, caption={Modelado de posición utilizando fluentes multivaluados.}, label={lst:sintaxis-multivaluada}]
+% 1. Declaracion unificada (Genera 4 estados bajo codificacion one-hot)
+state_fluent(pos(X), multivalued) :- loc(X).
+loc(a). loc(b). loc(c). loc(d).
+
+% 2. Transicion estocastica nativa (Garantiza suma de probabilidades = 1.0)
+0.8::pos(b, 1); 0.2::pos(a, 1) :- pos(a, 0), move_right.
+
+% 3. (No se requieren reglas de exclusion mutua)
+\end{lstlisting}
+
+Como se observa en el Código~\ref{lst:sintaxis-multivaluada}, la nueva arquitectura permite una declaración explícita parametrizada que colapsa las cuatro posiciones en un único factor de cardinalidad 4. Las reglas de transición codifican directamente la dinámica de Markov utilizando las cabezas múltiples de la Disyunción Anotada. 
+
+Este enfoque presenta tres ventajas arquitectónicas fundamentales:
+\begin{enumerate}
+    \item \textbf{Precisión dimensional:} El espacio de estados se reduce de $2^N$ a $N$ combinaciones por factor, iterando exclusivamente sobre configuraciones válidas mediante la codificación \textit{mixed-radix}.
+    \item \textbf{Seguridad probabilística:} La restricción estocástica $\sum \alpha_i = 1$ es garantizada por construcción por el analizador de ProbLog para las ADs.
+    \item \textbf{Mantenibilidad:} Se elimina la necesidad de redactar y depurar reglas manuales de exclusión mutua, reduciendo drásticamente la verbosidad del programa lógico.
+\end{enumerate}
+
+
+% ------------------------------------------------------------------
+\subsection{Implementación}
+\label{sec:di-implementacion}
+
+Esta sección describe las modificaciones realizadas sobre los módulos del framework para materializar el diseño expuesto en la sección anterior. Las adaptaciones se concentran en tres componentes: el adaptador al motor de inferencia, el coordinador central del MDP, y el algoritmo de resolución.
+
+
+\subsubsection{Adaptador al motor de inferencia}
+\label{sec:di-engine}
+
+La clase \texttt{Engine} actúa como la interfaz entre MDP-ProbLog y el núcleo de ProbLog. Para soportar fluentes multivaluados, se incorporaron dos métodos nuevos.
+
+\paragraph{Inyección de Disyunciones Anotadas.}
+El método \texttt{add\_annotated\_disjunction} permite añadir dinámicamente una AD en la \texttt{ClauseDB}. Recibe un grupo de hechos mutuamente excluyentes junto con sus probabilidades, construye internamente un objeto \texttt{AnnotatedDisjunction} de ProbLog, y lo incorpora a la base de datos. El método retorna los identificadores de los nodos \texttt{choice} resultantes, que representan las ramas estocásticas de la disyunción dentro del circuito.
+
+\paragraph{Construcción del índice invertido.}
+El método \texttt{get\_ads\_inverted\_index} recorre linealmente la tabla de instrucciones de la \texttt{ClauseDB}, identificando todos los nodos de tipo \texttt{choice}. Para cada nodo detectado, extrae el término lógico contenido en la estructura interna del nodo y registra sus argumentos en un diccionario que mapea cada valor concreto (como cadena de texto) al conjunto de identificadores de grupo de la AD que lo generó. El resultado es un índice invertido con la estructura:
+
+\begin{center}
+    \texttt{\{valor\_string $\rightarrow$ \{group\_id\_1, group\_id\_2, ...\}\}}
+\end{center}
+
+Este índice es consumido por el \texttt{FluentClassifier} durante la fase de inferencia de tipos, como se describió en \ref{sec:di-fluentclassifier}. La construcción del índice se apoya en atributos internos de los nodos \texttt{choice} de ProbLog (específicamente \texttt{node.functor.args[2]} y \texttt{node.group}), lo cual constituye una dependencia sobre la representación interna de ProbLog documentada como limitación conocida.
+
+
+\subsubsection{Coordinador central del MDP}
+\label{sec:di-mdp}
+
+La clase \texttt{MDP} coordina el flujo completo que transforma el programa lógico del usuario en un problema de optimización resoluble. Para integrar el esquema factorizado, el método de inicialización \texttt{\_\_prepare()} se reestructuró en cinco etapas secuenciales:
+
+\begin{enumerate}
+    \item \textbf{Clasificación de fluentes.} Se instancia el \texttt{FluentClassifier}, que consume las declaraciones del programa y el índice invertido de ADs para construir el \texttt{FluentSchema}.
+    
+    \item \textbf{Inyección del estado actual ($t=0$).} Para cada factor del esquema, se inyectan hechos que representan el estado actual. Los factores booleanos se inyectan como hechos probabilísticos con probabilidad neutral de 0.5 mediante \texttt{add\_fact}. Los factores multivaluados se inyectan como Disyunciones Anotadas con probabilidades uniformes $1/N$ mediante \texttt{add\_annotated\_disjunction}. En ambos casos, las probabilidades son neutrales y serán sustituidas por los valores de evidencia (0 o 1) durante la evaluación.
+    
+    \item \textbf{Inyección de acciones.} Las acciones declaradas en el programa se inyectan como una única Disyunción Anotada con distribución uniforme, siguiendo el mismo principio de exclusión mutua nativa.
+    
+    \item \textbf{Grounding relevante.} Se construye la lista de consultas combinando las utilidades, los fluentes de siguiente estado ($t=1$), las acciones y los fluentes del estado actual ($t=0$). La inclusión de los fluentes $t=0$ en esta lista es una decisión técnica que garantiza que ProbLog preserve sus identificadores durante el proceso de optimización del grounding, permitiendo localizarlos posteriormente al sustituir evidencia.
+    
+    \item \textbf{Compilación.} Los fluentes de siguiente estado y las utilidades se compilan en nodos del circuito evaluable, generando los mapas término$\rightarrow$nodo que se reutilizan en cada evaluación posterior.
+\end{enumerate}
+
+% TODO: Insertar Figura — Diagrama de flujo de las 5 etapas del pipeline
+% de preparación. Puede ser un diagrama vertical con las etapas numeradas
+% y flechas indicando el flujo de datos entre ellas.
+
+
+\subsubsection{Adaptaciones al algoritmo de resolución}
+\label{sec:di-value-iteration}
+
+La adopción de una representación mixed-radix exige que el cálculo del valor esperado futuro durante las actualizaciones de Bellman sea capaz de navegar la estructura factorizada. En la implementación original, este cálculo enumeraba las combinaciones binarias posibles. La nueva implementación ejecuta un recorrido recursivo sobre los factores del esquema.
+
+\begin{algorithm}[H]
+\caption{Cálculo Expected Value}\label{alg:expected-value}
+\begin{algorithmic}[1]
+\Require Profundidad $k$, índice global acumulado $I$, probabilidad conjunta $P_{joint}$.
+\Require Secuencia de factores estructurados $\mathcal{F}$, vector de strides $S$, función de valor $V$.
+\Require Umbral de filtrado probabilístico $\epsilon$.
+\Ensure Valor esperado escalar $E$ para el subárbol.
+
+\Function{ExpectedValue}{$k, I, P_{joint}$}
+    \If{$k = |\mathcal{F}|$} \Comment{Caso base: Se han procesado todos los factores.}
+        \Return $P_{joint} \times V[I]$
+    \EndIf
+    
+    \State $E \gets 0$
+    \For{\textbf{cada} tupla $(v, p) \in \mathcal{F}_k$} \Comment{Iterar ramas activas del factor actual.}
+        \If{$p > \epsilon$} \Comment{Filtrado de ramas irrelevantes .}
+            \State $i_{local} \gets \text{IndexLocal}(\mathcal{F}_k, v)$ \Comment{Decodificación del índice local.}
+            \State $I_{next} \gets I + (i_{local} \times S_k)$ \Comment{Acumulación posicional mixed-radix.}
+            \State $P_{next} \gets P_{joint} \times p$ \Comment{Acumulación de probabilidad conjunta.}
+            \State $E \gets E + \Call{ExpectedValue}{k+1, I_{next}, P_{next}}$ \Comment{Llamada recursiva.}
+        \EndIf
+    \EndFor
+    
+    \Return $E$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+En cada nivel de recursión $k$, correspondiente a un factor del \texttt{FluentSchema}, el algoritmo extrae las ramas activas del factor (los posibles valores futuros con sus probabilidades marginales). Para cada rama, calcula el índice global del estado sucesor acumulando el producto del índice local por el stride posicional del factor $k$, y multiplica la probabilidad conjunta del camino. Al alcanzar el nivel base (todos los factores procesados), el índice acumulado identifica unívocamente el estado destino y se retorna el producto de la probabilidad conjunta por el valor almacenado $V[\text{índice}]$.
+
+Adicionalmente, el método \texttt{structured\_transition} del MDP aplica un filtro previo sobre cada factor, descartando las ramas cuya probabilidad sea inferior a un umbral configurable ($10^{-6}$ por defecto). Esto reduce el número de ramas activas por factor y, en consecuencia, la profundidad efectiva del árbol recursivo. En transiciones deterministas o cuasi-deterministas, donde un solo valor concentra la totalidad de la masa probabilística, el recorrido se reduce a una sola rama por factor.
+
+
+\subsubsection{Herramientas de verificación y exportación}
+\label{sec:di-herramientas}
+
+Para facilitar la verificación de los modelos resueltos, se desarrollaron dos módulos complementarios.
+
+El \texttt{CSVExporter} permite exportar las estructuras del MDP y los resultados de la Iteración de Valor a archivos CSV. Las exportaciones disponibles incluyen la matriz de transición $P(s' \mid s, a)$ expandida a partir de las transiciones factorizadas, la función de recompensa $R(s, a)$, la función de valor óptima $V^*(s)$, la política óptima $\pi^*(s)$, la tabla de valores Q (si fue calculada), y el historial de convergencia (si fue registrado). La expansión de las transiciones factorizadas a formato plano se realiza mediante una recursión análoga a la del cálculo del valor esperado, generando el producto cartesiano de las ramas activas por factor.
+
+El \texttt{Simulator} permite ejecutar trayectorias de simulación a partir de un estado inicial, siguiendo la política calculada. En cada paso de tiempo, el simulador selecciona la acción prescrita por la política, obtiene la distribución de transición factorizada del motor, y muestrea el siguiente estado mediante selección categórica ponderada sobre cada factor del esquema.
+
+Ambas herramientas operan sobre la misma representación factorizada que utiliza el solver, garantizando consistencia entre la resolución y la inspección del modelo.
+
+
+% ------------------------------------------------------------------
+\subsection{Retrocompatibilidad}
+\label{sec:di-retrocompatibilidad}
+
+La extensión fue diseñada para preservar el funcionamiento de los modelos booleanos existentes sin requerir modificaciones por parte del usuario. Esta garantía se sustenta en el comportamiento del \texttt{FluentClassifier} ante programas que no contienen Disyunciones Anotadas.
+
+Cuando el clasificador procesa un programa Prolog que define fluentes mediante \texttt{state\_fluent/1} sin que existan ADs en el programa, el índice invertido no contiene entradas relevantes y la inferencia de tipos no detecta ninguna posición estocástica. En consecuencia, todos los fluentes se clasifican como booleanos (base 2). Bajo esta clasificación, el cálculo de strides produce la serie de potencias binarias $\{1, 2, 4, 8, \ldots\}$, la incorporacion temporal recurre a hechos probabilísticos individuales con probabilidad neutral $0.5$, y el espacio de estados se enumera como el producto cartesiano binario. El comportamiento resultante es idéntico al de la arquitectura original.
+
+Esta propiedad permite al usuario adoptar la sintaxis multivaluada de manera incremental, incorporando fluentes multivaluados en modelos existentes sin necesidad de reescribir las partes booleanas del programa.
+
+\vspace{0.5cm}
+Con la arquitectura, los algoritmos y la implementación definidos, el sistema cuenta con la capacidad de modelar y resolver MDPs con fluentes multivaluados de manera nativa. El siguiente capítulo somete esta extensión a una evaluación empírica mediante casos de estudio que cuantifican el impacto de la reestructuración tanto en la simplificación del modelado como en el comportamiento computacional del solver.

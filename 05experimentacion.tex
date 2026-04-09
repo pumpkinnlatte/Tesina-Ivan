@@ -1,0 +1,384 @@
+% ======================================================================
+% EXPERIMENTACIÓN Y RESULTADOS
+% ======================================================================
+\section{Experimentación y Resultados}
+\label{ch:experimentacion}
+
+El capítulo anterior presentó el diseño y la implementación de la extensión al framework MDP-ProbLog. El presente capítulo somete dicha extensión a una evaluación empírica mediante un conjunto de experimentos diseñados para responder tres preguntas. Primero, si la extensión produce soluciones correctas. Segundo, si simplifica el proceso de modelado. Tercero, cómo afecta al comportamiento computacional del solver. Para ello se utiliza el grid de Mitchell como dominio de referencia, variando el tamaño del grid para analizar las tendencias de escalamiento bajo dos codificaciones del espacio de estados.
+
+
+% ------------------------------------------------------------------
+\subsection{Diseño experimental}
+\label{sec:exp-diseno}
+
+\subsubsection{Dominio de prueba}
+\label{sec:exp-dominio}
+
+El dominio de prueba es una familia de grids basada en el grid world de Mitchell \cite{mitchell1997machine}, un problema canónico en la literatura de MDPs utilizado para ilustrar el algoritmo de Iteración de Valor. En este dominio, un agente se desplaza por una cuadrícula rectangular de $r$ filas y $c$ columnas. En cada paso de tiempo, el agente selecciona una de cuatro acciones (arriba, abajo, izquierda, derecha). Las transiciones son deterministas: la acción produce el movimiento esperado siempre que la celda destino exista dentro de los límites del grid. Si el agente intenta moverse contra una pared, permanece en su celda actual. El grid contiene una celda meta que otorga una recompensa positiva al ser alcanzada.
+
+% DONE: Insertar Figura — Diagrama del grid original de Mitchell (2×3)
+% mostrando las celdas, la celda meta con su recompensa, y flechas
+% representando las acciones disponibles. Incluir las coordenadas (fila, columna)
+% para conectar con la codificación factorizada.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figuras/gird_mitchell_adaptado.png}
+    \caption{Entorno de navegación en cuadrícula utilizado para la validación de la política óptima. Adaptado de Mitchell \cite{mitchell1997machine}.}
+    \label{fig:mitchell-grid}
+\end{figure}
+
+Se seleccionaron cinco tamaños de grid para el análisis de escalamiento. La Tabla~\ref{tab:grid-sizes} resume sus características. La selección sigue tres criterios: incluir el grid original de Mitchell (2$\times$3) como punto de verificación contra la solución publicada, cubrir un rango de tamaños que permita observar tendencias de escalamiento, e incluir el grid 4$\times$4 como punto de control donde la codificación binaria no produce estados espurios ($16 = 2^4$).
+ 
+
+\begin{table}[H]
+    \centering
+    \caption{Tamaños de grid seleccionados para la evaluación experimental. La columna ``Bits'' indica el número de fluentes booleanos requeridos por la codificación binaria. Los estados espurios son combinaciones binarias que no corresponden a ninguna celda del grid.}
+    \label{tab:grid-sizes}
+    \small
+    \begin{tabular}{ccccccc}
+        \toprule
+        \textbf{\#} & \textbf{Grid} & \textbf{Celdas} & \textbf{Bits} & $|\mathcal{S}|_{\text{bin}}$ & $|\mathcal{S}|_{\text{fact}}$ & \textbf{Espurios} \\
+        \midrule
+        1 & $2 \times 3$ & 6  & 3 & 8  & 6  & 2 \\
+        2 & $3 \times 3$ & 9  & 4 & 16 & 9  & 7 \\
+        3 & $4 \times 4$ & 16 & 5 & 32 & 16 & 16 \\
+        4 & $5 \times 5$ & 25 & 5 & 32 & 25 & 7 \\
+        5 & $6 \times 6$ & 36 & 6 & 64 & 36 & 28 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\subsubsection{Codificaciones comparadas}
+\label{sec:exp-codificaciones}
+
+Para cada tamaño de grid se construyeron dos formulaciones del mismo MDP, que difieren exclusivamente en la representación del espacio de estados.
+ 
+\paragraph{Codificación binaria.}
+La posición del agente se codifica mediante $\lceil \log_2(r \times c) \rceil$ fluentes booleanos. Cada combinación de valores binarios representa un estado del grid, y las reglas de transición se escriben explícitamente para cada par (estado, acción), activando los bits correspondientes al estado destino. Cuando el número de celdas no es una potencia de 2, la codificación produce estados espurios que el modelo debe contemplar mediante reglas adicionales.
+
+% DONE: Insertar Código — Fragmento representativo del modelo binario
+% para el grid 2×3 (declaración de bits, ejemplo de transición, reglas
+% de estados espurios).
+
+\begin{lstlisting}[language=Prolog, caption={Fragmento del modelo binario de control para el grid de $2 \times 3$.}, label={lst:grid-booleano-control}]
+% 1. Declaracion de fluentes (log2(6) -> 3 bits, genera 8 combinaciones)
+state_fluent(b1).
+state_fluent(b2).
+state_fluent(b3).
+
+% 2. Manejo de estados espurios (000 y 111 son invalidos en el grid 2x3)
+blocked :- b1(0), b2(0), b3(0).
+blocked :- not(b1(0)), not(b2(0)), not(b3(0)).
+
+
+% 3. Transiciones representativas
+% Movimiento hacia la derecha desde (1,1) [codificado como 1,0,0]
+% hacia (1,2) [codificado como 0,1,0]. Se activa b2.
+1.0::b2(1) :- b1(0), not(b2(0)), not(b3(0)), right, not(blocked).
+
+% Movimiento hacia abajo desde (1,2) [codificado como 0,1,0]
+% hacia (2,2) [codificado como 1,0,1]. Se activan b1 y b3.
+1.0::b1(1) :- not(b1(0)), b2(0), not(b3(0)), down.
+1.0::b3(1) :- not(b1(0)), b2(0), not(b3(0)), down.
+\end{lstlisting}
+
+Como se observa en el Código~\ref{lst:grid-booleano-control}, la representación binaria desvincula la lógica espacial del problema de su implementación computacional. El motor de inferencia asume la existencia de $2^3 = 8$ estados, obligando al modelador a declarar el predicado \texttt{blocked} para excluir las combinaciones \texttt{000} y \texttt{111} de la evaluación de recompensas y transiciones. Además, transitar hacia un estado que requiere múltiples bits activos exige redactar múltiples cabezas de regla independientes para la misma condición de origen.
+
+
+\paragraph{Codificación multivaluada factorizada.}
+La posición se codifica mediante dos fluentes multivaluados: \texttt{row(i)} con base $r$ y \texttt{col(j)} con base $c$. El espacio de estados resultante tiene exactamente $r \times c$ estados. Las transiciones se expresan en términos de coordenadas. No se requieren reglas de exclusión mutua.
+
+% DONE: Insertar Código — Fragmento representativo del modelo factorizado
+% para el grid 2×3 (declaración de row/col con AD, ejemplo de transición).
+ 
+
+\begin{lstlisting}[language=Prolog, caption={Fragmento del modelo multivaluado factorizado para el grid de $2 \times 3$.}, label={lst:grid-multivaluado-tratamiento}]
+% 1. Conocimiento de fondo (Background knowledge)
+row(1). row(2).
+col(1). col(2). col(3).
+
+% 2. Declaracion de fluentes (Genera exactamente 2x3 = 6 estados validos)
+state_fluent(x(X), multivalued) :- row(X).
+state_fluent(y(Y), multivalued) :- col(Y).
+
+% 3. Transiciones parametrizadas por factor
+% Factor Y (columna): El movimiento a la derecha incrementa Y
+1.0::y(Y_new, 1) :- y(Y, 0), right, Y_new is Y + 1, col(Y_new), not(terminal).
+% Choque con la pared: Y se mantiene igual
+1.0::y(Y, 1)     :- y(Y, 0), right, Y_new is Y + 1, not(col(Y_new)), not(terminal).
+
+% Factor X (fila): El movimiento hacia arriba decrementa X
+1.0::x(X_new, 1) :- x(X, 0), up, X_new is X - 1, row(X_new), not(terminal).
+\end{lstlisting}
+
+Como se evidencia en el Código~\ref{lst:grid-multivaluado-tratamiento}, la representación multivaluada factorizada alinea perfectamente la semántica espacial del problema con su implementación lógica. Al definir los fluentes \texttt{x(X)} y \texttt{y(Y)} explícitamente como \texttt{multivalued}, el \textit{framework} construye un espacio \textit{mixed-radix} de base $2 \times 3$, iterando exclusivamente sobre los $6$ estados semánticamente posibles. Esto elimina por completo la necesidad de codificar reglas de bloqueo (\texttt{blocked}) para estados espurios.
+
+Además, el uso de variables lógicas y aritmética (\texttt{Y\_new is Y + 1}) permite generalizar la dinámica de transición. En lugar de enumerar reglas para cada celda individual como en la codificación binaria, un único par de reglas rige el comportamiento de toda una acción a lo largo del tablero. Esta generalización reduce significativamente la verbosidad del modelo, facilitando su escalabilidad a \textit{grids} de dimensiones arbitrarias sin requerir modificaciones en la lógica subyacente.
+
+
+\subsubsection{Métricas de evaluación}
+\label{sec:exp-metricas}
+
+Las métricas se organizan en tres grupos correspondientes a las tres preguntas del experimento.
+ 
+Las métricas de \textit{corrección funcional} verifican que ambas codificaciones produzcan la misma función de valor óptima $V^*(s)$ y la misma política $\pi^*(s)$, y que estos resultados coincidan con la solución de referencia. La comparación numérica utiliza una tolerancia de $10^{-6}$.
+ 
+Las métricas de \textit{complejidad del modelo} cuantifican el esfuerzo de modelado: número de fluentes declarados, número de cláusulas del programa, número de reglas de exclusión mutua o manejo de estados espurios, y tamaño del espacio de estados $|\mathcal{S}|$.
+ 
+Las métricas de \textit{impacto computacional} miden el tiempo de preparación del MDP (clasificación, inyección, grounding, compilación), el tiempo de Iteración de Valor, y el tiempo total de resolución.
+
+\subsubsection{Protocolo de medición}
+\label{sec:exp-protocolo}
+
+Las métricas de corrección y complejidad son deterministas y se midieron una sola vez por configuración. Las mediciones de tiempo se ejecutaron en $N = 10$ repeticiones independientes por configuración. Cada repetición consistió en una ejecución completa del pipeline. 
+ 
+
+\clearpage
+\subsubsection{Entorno de pruebas}
+\label{sec:exp-entorno}
+
+Los experimentos se ejecutaron sobre un equipo con procesador Intel Core
+Ultra 7 155U (14 núcleos), 16 GiB de memoria RAM y sistema operativo
+Ubuntu 24.04.4 LTS (kernel Linux 6.17.0, arquitectura x86\_64). El
+intérprete utilizado fue Python 3.12.3 con ProbLog 2.2.10. Se emplearon
+los backends de compilación d-DNNF y SDD disponibles en ProbLog. Los
+parámetros del solver se fijaron en $\gamma = 0.9$ (factor de descuento),
+$\epsilon = 0.01$ (tolerancia de convergencia) y
+$\epsilon_{\text{thr}} = 10^{-6}$ (umbral de filtrado de ramas con
+probabilidad despreciable). Estos parámetros se mantuvieron constantes
+en todas las configuraciones experimentales.
+
+% ------------------------------------------------------------------
+\subsection{Verificación de corrección funcional}
+\label{sec:exp-correccion}
+
+El primer objetivo de la evaluación es demostrar que la extensión multivaluada produce resultados correctos. Para ello se comparan las soluciones obtenidas por ambas codificaciones entre sí y contra la solución de referencia.
+
+La Tabla~\ref{tab:correccion} presenta los resultados de la verificación cruzada entre ambas codificaciones. Para cada tamaño de grid, se comparan los valores numéricos de $V^*(s)$ obtenidos por la codificación binaria y la codificación factorizada.
+ 
+\begin{table}[H]
+    \centering
+    \caption{Verificación de corrección funcional. La columna $V^*$ indica si las funciones de valor de ambas codificaciones coinciden numéricamente (tolerancia $10^{-6}$). La diferencia máxima observada fue $0.0$ en todos los casos.}
+    \label{tab:correccion}
+    \small
+    \begin{tabular}{c c c c c}
+        \toprule
+        \textbf{Grid} & \textbf{$V^*$ coincide} & \textbf{Dif. máxima} & \textbf{Iter. binaria} & \textbf{Iter. factorizada} \\
+        \midrule
+        $2 \times 3$ & Sí & $0.0$ & 3  & 3 \\
+        $3 \times 3$ & Sí & $0.0$ & 5  & 3 \\
+        $4 \times 4$ & Sí & $0.0$ & 7  & 4 \\
+        $5 \times 5$ & Sí & $0.0$ & 9  & 5 \\
+        $6 \times 6$ & Sí & $0.0$ & 11 & 6 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+ 
+Ambas codificaciones producen funciones de valor idénticas para los cinco tamaños evaluados, con una diferencia máxima de $0.0$ entre los valores numéricos. Este resultado confirma que la extensión multivaluada preserva la corrección matemática del solver.
+ 
+Un hallazgo relevante es que el número de iteraciones hasta convergencia difiere entre codificaciones. La codificación binaria requiere consistentemente más iteraciones que la factorizada: de 3 a 11 iteraciones para la binaria, frente a 3 a 6 para la factorizada. Esta diferencia se analiza en la sección de discusión.
+ 
+
+% TODO: Insertar Tabla — Verificación de corrección funcional
+% Columnas: Grid | V* bool = ref | V* fact = ref | π* bool = ref | π* fact = ref | Iter. bool | Iter. fact
+% Una fila por tamaño de grid. Las columnas de verificación contienen
+% "Sí" o "No" (o ✓/✗). Las iteraciones deben coincidir si ambas
+% resuelven el mismo MDP con los mismos parámetros.
+
+% Ejemplo de estructura esperada:
+% \begin{table}[H]
+%     \centering
+%     \caption{Verificación de corrección funcional. Se comparan las funciones de valor
+%     y las políticas obtenidas por cada codificación contra la solución de referencia
+%     del grid de Mitchell. La tolerancia de comparación numérica es $10^{-6}$.}
+%     \label{tab:correccion}
+%     \begin{tabular}{ccccccc}
+%         \toprule
+%         Grid & $V^*_{\text{bin}} = V^*_{\text{ref}}$ & $V^*_{\text{fact}} = V^*_{\text{ref}}$ & $\pi^*_{\text{bin}} = \pi^*_{\text{ref}}$ & $\pi^*_{\text{fact}} = \pi^*_{\text{ref}}$ & Iter. bin. & Iter. fact. \\
+%         \midrule
+%         $2 \times 3$ & & & & & & \\
+%         $3 \times 3$ & & & & & & \\
+%         ... & & & & & & \\
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+
+En este punto se espera que ambas codificaciones produzcan funciones de valor y políticas idénticas a la solución de referencia para todos los tamaños evaluados, confirmando que la extensión preserva la corrección matemática del solver. El número de iteraciones hasta convergencia debería ser el mismo bajo ambas codificaciones, dado que resuelven el mismo MDP con los mismos parámetros $\gamma$ y $\epsilon$.
+
+% TODO: Insertar Figura (opcional) — Política óptima visualizada sobre el grid
+% 2×3 original de Mitchell, mostrando las flechas de acción por celda.
+% Esto conecta visualmente con la solución publicada en el libro.
+
+\clearpage
+% ------------------------------------------------------------------
+\subsection{Simplificación del proceso de modelado}
+\label{sec:exp-simplificacion}
+
+El segundo objetivo evalúa el impacto de la extensión sobre la complejidad del programa ProbLog que el usuario debe escribir. La Tabla~\ref{tab:complejidad} presenta las métricas estructurales de ambas codificaciones para cada tamaño de grid.
+
+\begin{table}[H]
+    \centering
+    \caption{Complejidad estructural de los programas ProbLog. La codificación factorizada mantiene un tamaño constante de 54 líneas y 27 cláusulas independientemente del tamaño del grid, mientras que la codificación binaria crece de 92 a 421 líneas.}
+    \label{tab:complejidad}
+    \small
+    \begin{tabular}{c cc cc cc cc}
+        \toprule
+        & \multicolumn{2}{c}{\textbf{Fluentes}} & \multicolumn{2}{c}{\textbf{Reglas esp./excl.}} & \multicolumn{2}{c}{\textbf{Cláusulas}} & \multicolumn{2}{c}{\textbf{Líneas totales}} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
+        \textbf{Grid} & Bin. & Fact. & Bin. & Fact. & Bin. & Fact. & Bin. & Fact. \\
+        \midrule
+        $2 \times 3$ & 3 & 2 & 15  & 0 & 19  & 27 & 92  & 54 \\
+        $3 \times 3$ & 4 & 2 & 30  & 0 & 55  & 27 & 133 & 54 \\
+        $4 \times 4$ & 2 & 2 & 49  & 0 & 61  & 27 & 165 & 54 \\
+        $5 \times 5$ & 5 & 2 & 103 & 0 & 196 & 27 & 260 & 54 \\
+        $6 \times 6$ & 6 & 2 & 266 & 0 & 335 & 27 & 421 & 54 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+ 
+Los datos revelan tres observaciones. La primera es que la codificación factorizada utiliza exactamente 2 fluentes (fila y columna) y produce un programa de 54 líneas y 27 cláusulas en todos los tamaños evaluados. La estructura del programa es independiente del tamaño del grid porque las reglas de transición se expresan en términos de coordenadas, no de combinaciones de bits.
+ 
+La segunda observación es que la codificación binaria requiere un número creciente de reglas para manejar los estados y codificar las transiciones. El número de reglas de exclusión o manejo de estados espurios crece de 15 en el grid 2$\times$3 a 266 en el grid 6$\times$6. Este crecimiento refleja el esfuerzo de modelado que la codificación factorizada elimina por completo.
+ 
+La tercera observación concierne al tamaño del espacio de estados. La Tabla~\ref{tab:espacios} presenta la comparación directa.
+ 
+\begin{table}[H]
+    \centering
+    \caption{Tamaño del espacio de estados y factor de inflación. El factor de inflación mide cuántas veces más grande es el espacio binario respecto al factorizado.}
+    \label{tab:espacios}
+    \small
+    \begin{tabular}{c c c c c}
+        \toprule
+        \textbf{Grid} & \textbf{Celdas} & $|\mathcal{S}|_{\text{bin}}$ & $|\mathcal{S}|_{\text{fact}}$ & \textbf{Factor de inflación} \\
+        \midrule
+        $2 \times 3$ & 6  & 8  & 6  & 1.33$\times$ \\
+        $3 \times 3$ & 9  & 16 & 9  & 1.78$\times$ \\
+        $4 \times 4$ & 16 & 16 & 16 & 1$\times$ \\
+        $5 \times 5$ & 25 & 32 & 25 & 1.28$\times$ \\
+        $6 \times 6$ & 36 & 64 & 36 & 1.78$\times$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+ 
+El factor de inflación varía entre 1.28$\times$ y 1.78$\times$ dependiendo de la relación entre el número de celdas y la potencia de 2 más cercana. El grid 4$\times$4 presenta el factor mas bajo (1$\times$) debido a que en este caso el tamaño del espacio de estados es una potencia de 2. Este resultado indica que la codificación binaria implementada no optimiza el número de bits al mínimo teórico.
+
+% ------------------------------------------------------------------
+\subsection{Impacto computacional}
+\label{sec:exp-impacto}
+
+El tercer objetivo cuantifica el efecto de la representación sobre el comportamiento computacional del solver. Se reportan el tamaño del circuito compilado y los tiempos de las fases del pipeline.
+
+
+\subsubsection{Tamaño del circuito compilado}
+\label{sec:exp-circuito}
+
+% TODO: Insertar Tabla — Tamaño del circuito
+% Columnas: Grid | Nodos bin. | Nodos fact. | Ratio
+% Los nodos se extraen del programa aterrizado o del circuito compilado,
+% según lo que ProbLog exponga. Si se usa atomcount del grounded program,
+% indicarlo explícitamente.
+
+% TODO: Insertar Gráfica — Nodos del circuito vs. número de celdas del grid
+% Dos series: binaria y factorizada. Eje X: celdas. Eje Y: nodos.
+% Esta gráfica muestra si el crecimiento del circuito es proporcional al
+% tamaño del espacio de estados o si sigue una tendencia distinta.
+
+El tamaño del circuito compilado refleja la complejidad de la fórmula proposicional que ProbLog debe construir para evaluar las probabilidades de transición. Dado que la codificación binaria introduce estados espurios que el compilador debe representar (incluso para descartarlos), se espera que los circuitos de la codificación binaria sean de mayor tamaño. El grid 4×4 es el punto de control de esta hipótesis: al no tener estados espurios, cualquier diferencia en el tamaño del circuito para ese grid se debe exclusivamente a la estructura de las reglas de transición, no a la presencia de combinaciones inválidas.
+
+
+\subsubsection{Tiempos de ejecución}
+\label{sec:exp-tiempos}
+ 
+La Tabla~\ref{tab:tiempos} presenta los tiempos de las fases del pipeline para cada configuración.
+ 
+\begin{table}[H]
+    \centering
+    \caption{Tiempos de ejecución por fase del pipeline (en segundos). Se reporta media $\pm$ desviación estándar sobre 10 repeticiones.}
+    \label{tab:tiempos}
+    \small
+    \begin{tabular}{cc rrr}
+        \toprule
+        \textbf{Grid} & \textbf{Cod.} & $t_{\text{prepare}}$ (s) & $t_{\text{VI}}$ (s) & $t_{\text{total}}$ (s) \\
+        \midrule
+        \multirow{2}{*}{$2 \times 3$}
+            & Bin.  & $0.023 \pm 0.004$ & $0.014 \pm 0.002$ & $0.037 \pm 0.005$ \\
+            & Fact. & $0.041 \pm 0.006$ & $0.021 \pm 0.004$ & $0.063 \pm 0.007$ \\
+        \addlinespace
+        \multirow{2}{*}{$3 \times 3$}
+            & Bin.  & $0.049 \pm 0.004$ & $0.035 \pm 0.001$ & $0.084 \pm 0.005$ \\
+            & Fact. & $0.048 \pm 0.005$ & $0.035 \pm 0.006$ & $0.083 \pm 0.008$ \\
+        \addlinespace
+        \multirow{2}{*}{$4 \times 4$}
+            & Bin.  & $0.117 \pm 0.005$ & $0.128 \pm 0.003$ & $0.245 \pm 0.006$ \\
+            & Fact. & $0.063 \pm 0.005$ & $0.069 \pm 0.001$ & $0.132 \pm 0.005$ \\
+        \addlinespace
+        \multirow{2}{*}{$5 \times 5$}
+            & Bin.  & $0.210 \pm 0.007$ & $0.211 \pm 0.006$ & $0.421 \pm 0.011$ \\
+            & Fact. & $0.072 \pm 0.003$ & $0.130 \pm 0.003$ & $0.202 \pm 0.004$ \\
+        \addlinespace
+        \multirow{2}{*}{$6 \times 6$}
+            & Bin.  & $0.407 \pm 0.024$ & $0.724 \pm 0.035$ & $1.131 \pm 0.047$ \\
+            & Fact. & $0.096 \pm 0.006$ & $0.247 \pm 0.006$ & $0.343 \pm 0.010$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+ 
+En los grids pequeños (2$\times$3 y 3$\times$3), los tiempos de ambas codificaciones son comparables y del orden de decenas de milisegundos. A partir del grid 4$\times$4, la codificación factorizada comienza a mostrar tiempos menores en ambas fases del pipeline. La diferencia se amplifica con el tamaño del grid: en el grid 6$\times$6, la codificación binaria requiere 1.131 segundos frente a 0.343 segundos de la factorizada.
+ 
+La Tabla~\ref{tab:speedup} cuantifica la relación de tiempos entre ambas codificaciones.
+ 
+\begin{table}[H]
+    \centering
+    \caption{Relación de tiempos entre codificaciones (\textit{speedup}). Un valor mayor que 1.0 indica que la codificación factorizada es más rápida. Se calcula como $t_{\text{bin}} / t_{\text{fact}}$ usando las medias.}
+    \label{tab:speedup}
+    \small
+    \begin{tabular}{c ccc}
+        \toprule
+        \textbf{Grid} & \textbf{Speedup preparación} & \textbf{Speedup VI} & \textbf{Speedup total} \\
+        \midrule
+        $2 \times 3$ & 0.57$\times$ & 0.63$\times$ & 0.59$\times$ \\
+        $3 \times 3$ & 1.03$\times$ & 1.00$\times$ & 1.02$\times$ \\
+        $4 \times 4$ & 1.87$\times$ & 1.84$\times$ & 1.85$\times$ \\
+        $5 \times 5$ & 2.91$\times$ & 1.62$\times$ & 2.09$\times$ \\
+        $6 \times 6$ & 4.25$\times$ & 2.93$\times$ & 3.30$\times$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+ 
+
+% ------------------------------------------------------------------
+\subsection{Discusión}
+\label{sec:exp-discusion}
+ 
+Los resultados experimentales permiten evaluar la extensión propuesta desde los tres ejes planteados en el diseño experimental.
+ 
+\subsubsection{Corrección y convergencia}
+ 
+Ambas codificaciones producen funciones de valor idénticas para los cinco tamaños evaluados, confirmando que la extensión preserva la corrección del solver. Sin embargo, la codificación binaria requiere consistentemente más iteraciones hasta convergencia (de 3 a 11) que la factorizada (de 3 a 6). Esta diferencia se explica por el mayor tamaño del espacio de estados en la codificación binaria. Los estados espurios reciben inicialmente un valor de cero y el algoritmo de Iteración de Valor necesita más iteraciones para propagar los valores desde la celda meta hasta los estados más lejanos a través de un espacio más grande. El efecto se amplifica con el tamaño del grid: en el grid 6$\times$6, la codificación binaria necesita casi el doble de iteraciones que la factorizada.
+ 
+\subsubsection{Simplificación del modelado}
+ 
+La codificación factorizada produce un programa de tamaño constante (54 líneas, 27 cláusulas) independientemente del tamaño del grid, mientras que la codificación binaria crece de 92 a 421 líneas. El factor que impulsa este crecimiento es el número de reglas de manejo de estados espurios, que pasa de 15 a 266 en el rango evaluado. La codificación factorizada elimina estas reglas por completo, ya que la exclusión mutua se garantiza por la semántica de las Disyunciones Anotadas.
+ 
+Este resultado tiene una consecuencia práctica directa. Al escalar el dominio, la codificación binaria requiere que el modelador escriba un número creciente de reglas proporcional al tamaño del grid, mientras que la codificación factorizada no requiere cambios en la estructura del programa. El único ajuste necesario es la actualización de las Disyunciones Anotadas que definen los valores de fila y columna.
+ 
+\subsubsection{Comportamiento computacional}
+ 
+Los tiempos de ejecución revelan un patrón que no era evidente a priori: la codificación factorizada es más lenta que la binaria para el grid más pequeño (2$\times$3, speedup de 0.59$\times$), comparable para el grid 3$\times$3 (speedup de 1.02$\times$), y progresivamente más rápida a partir del grid 4$\times$4 hasta alcanzar un speedup de 3.30$\times$ en el grid 6$\times$6.
+ 
+La inversión de rendimiento en el grid 2$\times$3 se explica por el costo fijo de las Disyunciones Anotadas. Para grids pequeños, el overhead de construir las ADs, inyectarlas en la ClauseDB y compilar los nodos \texttt{choice} resultantes supera el ahorro obtenido por la reducción del espacio de estados. A medida que el grid crece, la reducción del espacio de estados y del número de cláusulas compensa este costo fijo, y la ventaja de la codificación factorizada se amplifica.
+ 
+La fase de preparación del MDP (clasificación, inyección, grounding y compilación) es donde la diferencia es más pronunciada. En el grid 6$\times$6, la preparación de la codificación binaria toma 0.407 segundos frente a 0.096 de la factorizada, un factor de 4.25$\times$. Esto es consistente con el hecho de que el programa binario contiene 335 cláusulas frente a 27 de la factorizada: más cláusulas implican un grounding más costoso y un circuito compilado de mayor tamaño.
+ 
+\subsubsection{Relación con las predicciones del Marco Teórico}
+ 
+En la Sección~\ref{sec:mt-compilacion} se argumentó que las Disyunciones Anotadas tienen el potencial de producir circuitos más compactos al evitar la representación de combinaciones imposibles. Los datos de tiempo de preparación son consistentes con esta predicción: la fase que incluye la compilación del circuito es la que muestra la mayor diferencia entre codificaciones, lo que sugiere que el circuito generado por la codificación factorizada es efectivamente más pequeño. Una verificación directa del tamaño del circuito (número de nodos SDD o d-DNNF) confirmaría esta observación y se identifica como trabajo futuro.
+ 
+\subsubsection{Limitaciones de la evaluación}
+ 
+Los experimentos se realizaron sobre dominios de grid con transiciones deterministas y un único tipo de recompensa (celda meta). Dominios con transiciones estocásticas, múltiples fuentes de recompensa, o fluentes de estado adicionales (más allá de la posición) podrían exhibir comportamientos distintos. Laa codificación binaria utilizada en estos experimentos optimiza el número de bits al mínimo teórico $\lceil \log_2(k) \rceil$ en todos los casos, como se observó en el grid 4$\times$4 donde se emplean 4 bits para 16 celdas.
+ 
+\vspace{0.5cm}
+Los resultados presentados en este capítulo proporcionan la evidencia empírica para evaluar el cumplimiento de los objetivos planteados en la Introducción. El siguiente capítulo sintetiza las contribuciones de este trabajo y plantea las líneas de investigación futura.

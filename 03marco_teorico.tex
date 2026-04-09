@@ -1,0 +1,358 @@
+
+% ======================================================================
+% MARCO TEÓRICO
+% ======================================================================
+
+% Configuración de listings para ProbLog (colocar en el preámbulo o al inicio del archivo)
+\lstdefinelanguage{ProbLog}{
+  morekeywords={not, true, false, query, evidence},
+  sensitive=true,
+  morecomment=[l]{\%},
+  morestring=[b]",
+  literate={:-}{{\textbf{:-}}}2 {::}{{\textbf{::}}}2,
+}
+\lstset{
+  language=ProbLog,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries,
+  commentstyle=\itshape\color{gray},
+  frame=none,
+  framesep=6pt,
+  xleftmargin=18pt,
+  numbers=none,
+  breaklines=true,
+  captionpos=b,
+  aboveskip=12pt,
+  belowskip=12pt,
+}
+% ======================================================================
+% MARCO TEÓRICO
+% ======================================================================
+
+\section{Marco Teórico}
+\label{ch:marco-teorico}
+
+Una vez identificada la brecha en la literatura, el presente capítulo establece los fundamentos teóricos y formales que el lector necesitará para comprender el diseño de la extensión propuesta. La exposición sigue un orden ascendente de abstracción: se parte de los conceptos básicos de la programación lógica (\S\ref{sec:mt-pl}), se incorpora la incertidumbre mediante la semántica de distribución y el lenguaje ProbLog (\S\ref{sec:mt-plp}), se introduce el Conteo de Modelos Ponderados como mecanismo de inferencia (\S\ref{sec:mt-wmc}), se formalizan los MDPs y su representación factorizada (\S\ref{sec:mt-mdps}--\S\ref{sec:mt-factorizados}), se describe la mecánica operativa de MDP-ProbLog (\S\ref{sec:mt-mdpproblog}), y se concluye con las Disyunciones Anotadas (\S\ref{sec:mt-ads}) y la compilación de conocimiento (\S\ref{sec:mt-compilacion}), los dos pilares formales sobre los que se construye la extensión.
+
+
+% ==================================================================
+\subsection{Programación Lógica}
+\label{sec:mt-pl}
+
+Dado que MDP-ProbLog está construido sobre el lenguaje Prolog, es necesario establecer los fundamentos de la programación lógica que sustentan tanto la representación del conocimiento como el proceso de inferencia del sistema. La programación lógica es un paradigma donde los programas se expresan como conjuntos de sentencias lógicas y la ejecución consiste en realizar inferencias sobre ellas. El vocabulario se construye a partir de \textit{constantes} (valores concretos como \texttt{rojo}), \textit{variables} (denotadas con mayúscula inicial, como \texttt{X}) y \textit{functores} (nombres de predicados con aridad asociada). Un \textit{término} es una constante, variable o functor aplicado a otros términos; un \textit{átomo} es un predicado aplicado a sus argumentos (e.g., \texttt{color(carro, rojo)}); y un \textit{literal} es un átomo o su negación. A partir de estos elementos se construyen las cláusulas del programa, las cuales pueden ser \textit{hechos} (afirmaciones incondicionales que declaran verdades absolutas, e.g., \texttt{padre(tom, bob).}), \textit{reglas} (implicaciones condicionales donde la cabeza es verdadera si el cuerpo se satisface, e.g., \texttt{abuelo(X,Z) :- padre(X,Y), padre(Y,Z).}), y \textit{consultas}, las cuales consisten en preguntas al sistema sobre qué es inferible.
+
+
+
+% ==================================================================
+\subsection{Programación Lógica Probabilística}
+\label{sec:mt-plp}
+
+La semántica de distribución define el marco probabilístico bajo el cual opera el motor de inferencia de MDP-ProbLog y constituye la base formal para el cálculo exacto de las probabilidades de transición entre estados. La Programación Lógica Probabilística (PLP) extiende la programación lógica clásica con la capacidad de manejar incertidumbre de manera formal. Mientras que un programa lógico clásico afirma que ciertos hechos son verdaderos de manera determinista, un programa lógico probabilístico permite que los hechos sean verdaderos con una cierta probabilidad.
+
+\subsubsection{Semántica de distribución}
+
+La base semántica de la PLP fue establecida por Sato mediante la \textit{semántica de distribución} (\textit{distribution semantics}) \cite{sato1995statistical}. Su formulación parte de una observación elegante: si se asigna una distribución de probabilidad a los hechos de un programa lógico, las reglas del programa propagan esa incertidumbre de manera determinista, induciendo una distribución sobre el conjunto de todos los modelos mínimos posibles.
+
+Formalmente, considérese un programa $DB = F \cup R$, donde $F = \{f_1, f_2, \ldots, f_k\}$ es un conjunto de hechos probabilísticos y $R$ es un conjunto de reglas. Cada hecho $f_i$ tiene asociada una probabilidad $\theta_i \in [0, 1]$ y se asume independencia estocástica entre todos los hechos. Una \textit{realización total} (\textit{total choice}) es una asignación de valores de verdad a todos los hechos de $F$: cada $f_i$ es verdadero o falso. Dado que hay $k$ hechos independientes, existen $2^k$ realizaciones posibles. La probabilidad de una realización $L$ que incluye los hechos $f_i$ como verdaderos y excluye los restantes es:
+
+\begin{equation}
+    P(L \mid DB) = \prod_{f_i \in L} \theta_i \prod_{f_i \in F \setminus L} (1 - \theta_i)
+    \label{eq:total-choice}
+\end{equation}
+
+Cada realización $L$ determina un subconjunto de hechos verdaderos que, combinado con las reglas $R$, produce un programa lógico definido $L \cup R$ con un modelo mínimo único $M_{DB}(L)$. De esta forma, la distribución sobre realizaciones induce una distribución sobre modelos mínimos. Sato demostró que, bajo condiciones razonables (la \textit{condición de soporte finito}), la masa de probabilidad se concentra exclusivamente en estos modelos derivados: $P_{DB}(\text{fix}(DB)) = 1$ \cite{sato1995statistical}.
+
+La probabilidad de éxito (\textit{success probability}) de una consulta $q$ se define como la suma de las probabilidades de todas las realizaciones cuyo modelo mínimo satisface $q$:
+
+\begin{equation}
+    P(q \mid DB) = \sum_{L : M_{DB}(L) \models q} P(L \mid DB)
+    \label{eq:success-probability}
+\end{equation}
+
+Para ilustrar este mecanismo de manera concreta, considérese el siguiente programa mínimo con dos hechos probabilísticos y una regla:
+
+\begin{lstlisting}[caption={Programa ProbLog mínimo para ilustrar la semántica de distribución.}]
+0.3::llueve.
+0.5::tiene_paraguas.
+se_moja :- llueve, \+tiene_paraguas.
+query(se_moja).
+\end{lstlisting}
+
+Este programa define cuatro mundos posibles ($2^2 = 4$ realizaciones de los dos hechos). La Tabla~\ref{tab:mundos_posibles_problog} detalla cada una de estas realizaciones junto con su probabilidad calculada (Ecuación~\ref{eq:total-choice}) y su modelo mínimo resultante.
+
+\begin{table}[H]
+    \centering
+    \caption{Mundos posibles y modelos mínimos inducidos por la semántica de distribución. Cada fila representa una realización total de los hechos probabilísticos independientes, su probabilidad conjunta y las consecuencias lógicas derivadas.}
+    \label{tab:mundos_posibles_problog}
+    \small
+    \begin{tabular}{ccccl}
+        \toprule
+        \texttt{llueve} & \texttt{tiene\_paraguas} & $P(\text{mundo})$ & \texttt{se\_moja} & Modelo mínimo \\
+        \midrule
+        falso & falso & $0.7 \times 0.5 = 0.35$ & falso & $\emptyset$ \\
+        falso & verdadero & $0.7 \times 0.5 = 0.35$ & falso & $\{\texttt{tiene\_paraguas}\}$ \\
+        verdadero & falso & $0.3 \times 0.5 = 0.15$ & verdadero & $\{\texttt{llueve}, \texttt{se\_moja}\}$ \\
+        verdadero & verdadero & $0.3 \times 0.5 = 0.15$ & falso & $\{\texttt{llueve}, \texttt{tiene\_paraguas}\}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+La probabilidad de \texttt{se\_moja} es la suma de las probabilidades de los mundos donde la consulta es verdadera: $P(\texttt{se\_moja}) = 0.15$. Nótese cómo la regla lógica \texttt{se\_moja :- llueve, $\backslash$+tiene\_paraguas.} propaga la incertidumbre de los hechos hacia la consulta de manera determinista dentro de cada mundo.
+
+\subsubsection{El lenguaje ProbLog}
+
+ProbLog es un lenguaje de programación lógica probabilística que implementa la semántica de distribución \cite{deraedt2007problog, deraedt2015probabilistic}. Su extensión sintáctica respecto a Prolog es mínima: se introduce el concepto de \textit{hecho probabilístico}, denotado por la anotación \texttt{p::hecho.}, que indica que el hecho es verdadero con probabilidad $p$ e independiente de todos los demás hechos probabilísticos.
+
+Para ilustrar la sintaxis, el siguiente programa, adaptado del dominio de marketing viral utilizado por Bueno \textit{et al.} \cite{bueno2016mdp} y Van den Broeck \textit{et al.} \cite{vandenbroeck2010dtproblog}, modela una red social simple donde las personas compran un producto ya sea por marketing directo o por influencia de sus contactos:
+
+\begin{lstlisting}[caption={Programa ProbLog para un dominio de marketing viral (adaptado de \cite{bueno2016mdp}).}]
+% Hechos probabilisticos (independientes)
+0.3::compra_por_marketing(X) :- persona(X).
+0.2::compra_por_influencia(X) :- persona(X).
+
+% Hechos deterministas
+persona(ana).  persona(bob).
+confia(ana, bob).
+
+% Reglas logicas
+compra(X) :- compra_por_marketing(X).
+compra(X) :- confia(X, Y), compra(Y),
+             compra_por_influencia(X).
+
+% Consulta
+query(compra(ana)).
+\end{lstlisting}
+
+En este programa, \texttt{compra\_por\_marketing(X)} es verdadero con probabilidad 0.3 de forma independiente para cada persona \texttt{X}. Las reglas determinan las consecuencias lógicas de estas realizaciones. ProbLog calcula $P(\texttt{compra(ana)})$ sumando sobre todos los mundos posibles en los que \texttt{compra(ana)} es derivable.
+
+Un aspecto fundamental es que los hechos probabilísticos son estocásticamente independientes entre sí. Esto no es una limitación expresiva, ya que las dependencias entre variables se codifican mediante las reglas lógicas del programa \cite{deraedt2015probabilistic}.
+
+\subsubsection{Relevancia para MDP-ProbLog}
+
+La semántica de distribución es el fundamento teórico sobre el cual opera todo el mecanismo de inferencia de MDP-ProbLog. Cuando el sistema evalúa una transición $P(x'_i = 1 \mid s, a)$, lo que hace internamente es:
+
+\begin{enumerate}
+    \item \textit{Fijar evidencia}: Los fluentes de estado actual y la acción se inyectan como hechos con probabilidad 1.0 (verdadero) o 0.0 (falso), colapsando los mundos posibles a aquellos consistentes con el estado y acción observados.
+    \item \textit{Calcular la probabilidad de éxito}: El fluente de siguiente estado $x'_i(1)$ se trata como una consulta cuya probabilidad se computa sumando sobre los mundos posibles restantes (los que aún tienen incertidumbre, proveniente de los hechos probabilísticos en las reglas de transición).
+\end{enumerate}
+
+De esta manera, la sustitución de evidencia en el circuito compilado es matemáticamente equivalente a calcular la probabilidad condicional $P(x'_i \mid s, a)$ bajo la semántica de distribución, sin necesidad de aplicar explícitamente la regla de Bayes. Esta equivalencia, demostrada formalmente por Bueno \textit{et al.} \cite{bueno2016mdp}, es lo que permite que cada evaluación del programa ProbLog corresponda a un \textit{backup} de Bellman (Ecuación~\ref{eq:value-iteration}).
+
+Aunque la semántica de distribución proporciona el marco teórico para definir estas probabilidades, el cálculo directo sumando sobre mundos posibles crece exponencialmente con el número de hechos. Para resolver este problema en la práctica, ProbLog transforma la inferencia probabilística en un problema de evaluación de fórmulas booleanas ponderadas, mecanismo que se detalla a continuación.
+
+
+% ==================================================================
+\subsection{Conteo de Modelos Ponderados}
+\label{sec:mt-wmc}
+
+El Conteo de Modelos Ponderados es la operación computacional central que MDP-ProbLog ejecuta en cada iteración del algoritmo de Bellman para calcular las probabilidades de transición. El cálculo directo de la Ecuación~\ref{eq:success-probability} requiere enumerar exponencialmente muchos mundos posibles, lo cual es computacionalmente intratable en general. ProbLog aborda este problema transformando la inferencia probabilística en un problema de \textit{Conteo de Modelos Ponderados} (WMC, por \textit{Weighted Model Counting}) \cite{fierens2015inference}.
+
+El procedimiento consta de tres pasos. Primero, se realiza el \textit{grounding} relevante del programa respecto a la consulta, obteniendo un programa proposicional que contiene solo las cláusulas que pueden influir en el resultado. Segundo, este programa aterrizado se transforma en una fórmula booleana ponderada, donde cada variable proposicional tiene un peso asociado derivado de su probabilidad. Tercero, se calcula el conteo ponderado de los modelos de la fórmula:
+
+\begin{equation}
+    \text{WMC}(\Delta) = \sum_{\omega \models \Delta} \prod_{l \in \omega} w(l)
+    \label{eq:wmc}
+\end{equation}
+
+donde $\Delta$ es la fórmula booleana, $\omega$ recorre los modelos (asignaciones de verdad que satisfacen $\Delta$), y $w(l)$ es el peso del literal $l$. Para un hecho probabilístico con probabilidad $p$, el peso del literal positivo es $p$ y el del literal negativo es $1 - p$.
+
+La probabilidad de la consulta se obtiene entonces como:
+
+\begin{equation}
+    P(q) = \frac{\text{WMC}(\Delta_q)}{\text{WMC}(\Delta)}
+    \label{eq:prob-wmc}
+\end{equation}
+
+donde $\Delta_q$ es la fórmula que incorpora la restricción de que $q$ es verdadera. En la práctica, cuando no hay evidencia adicional, el denominador es 1 y la probabilidad se reduce al numerador.
+
+
+% ==================================================================
+\subsection{Procesos de Decisión de Markov}
+\label{sec:mt-mdps}
+
+Los Procesos de Decisión de Markov formalizan el problema de decisión secuencial estocástica que MDP-ProbLog está diseñado para resolver. Hasta este punto se han descrito las herramientas lógicas y probabilísticas para evaluar el estado estático de un sistema. Sin embargo, para modelar agentes que interactúan, toman decisiones y modifican su entorno a lo largo del tiempo, es necesario incorporar este paradigma matemático.
+
+En cada paso de tiempo, un agente observa el estado actual del sistema, ejecuta una acción, recibe una recompensa y transita a un nuevo estado según una distribución de probabilidad que depende únicamente del estado actual y la acción ejecutada \cite{puterman2014markov}.
+
+\subsubsection{Algoritmo de Iteración de Valor}
+
+La \textit{Iteración de Valor} (\textit{Value Iteration}) es un algoritmo de programación dinámica que calcula $V^*$ mediante aproximaciones sucesivas. Partiendo de una función de valor inicial arbitraria $V^{(0)}$, se construye la secuencia:
+
+\begin{equation}
+    V^{(k+1)}(s) = \max_{a \in \mathcal{A}} \left[ R(s, a) + \gamma \sum_{s'} P(s' \mid s, a) \, V^{(k)}(s') \right]
+    \label{eq:value-iteration}
+\end{equation}
+
+La secuencia $\{V^{(k)}\}$ converge a $V^*$ bajo la norma supremo. Un criterio de convergencia comúnmente utilizado es detenerse cuando el residuo máximo satisface:
+
+\begin{equation}
+    \max_{s \in \mathcal{S}} \left| V^{(k+1)}(s) - V^{(k)}(s) \right| \leq \frac{2 \epsilon (1 - \gamma)}{\gamma}
+    \label{eq:convergence}
+\end{equation}
+
+lo cual garantiza que la política \textit{greedy} resultante es $\epsilon$-óptima \cite{puterman2014markov, sutton2018reinforcement}.
+
+Como se observa en la Ecuación~\ref{eq:value-iteration}, el cálculo requiere iterar sobre cada estado $s \in \mathcal{S}$ del sistema. En dominios complejos, representar este espacio como un conjunto plano e indivisible resulta computacionalmente inviable debido a la explosión combinatoria. Para mitigar este problema, se recurre a la factorización del espacio de estados, concepto que se detalla en la siguiente sección y que constituye el entorno estructural donde la distinción entre variables booleanas y multivaluadas adquiere su relevancia práctica.
+
+
+% ==================================================================
+\subsection{MDPs Factorizados}
+\label{sec:mt-factorizados}
+
+La factorización del espacio de estados es la estrategia central que permite a MDP-ProbLog operar sin enumerar explícitamente todas las combinaciones posibles, y es el contexto en el que la distinción entre fluentes booleanos y multivaluados adquiere relevancia práctica. En la formulación clásica, el espacio de estados $\mathcal{S}$ se trata como un conjunto plano de $|\mathcal{S}|$ elementos. Sin embargo, en la mayoría de los dominios prácticos, el estado del sistema se describe naturalmente mediante un conjunto de variables $\mathbf{x} = (x_1, x_2, \ldots, x_n)$, donde cada variable $x_i$ toma valores en un dominio finito $\text{Dom}(x_i)$. El espacio de estados resultante es el producto cartesiano $\mathcal{S} = \text{Dom}(x_1) \times \text{Dom}(x_2) \times \cdots \times \text{Dom}(x_n)$, cuyo tamaño crece exponencialmente con $n$.
+
+En un MDP factorizado, la función de transición se descompone aprovechando las independencias condicionales entre las variables de estado. Bajo el supuesto de que el valor futuro de cada variable $x'_i$ depende solo de un subconjunto de las variables actuales y de la acción, la probabilidad de transición se factoriza como \cite{boutilier2000stochastic}:
+
+\begin{equation}
+    P(s' \mid s, a) = \prod_{i=1}^{n} P(x'_i \mid \text{Pa}(x'_i), a)
+    \label{eq:factored-transition}
+\end{equation}
+
+donde $\text{Pa}(x'_i) \subseteq \{x_1, \ldots, x_n\}$ denota los padres de $x'_i$ en la Red Bayesiana Dinámica (DBN) que codifica las transiciones.
+
+Esta factorización es la que permite a algoritmos como SPUDD \cite{hoey1999spudd} y a MDP-ProbLog \cite{bueno2016mdp} operar sin enumerar explícitamente todo el espacio de estados.
+
+\subsubsection{Fluentes de estado}
+
+En el contexto de MDP-ProbLog, las variables de estado se denominan \textit{fluentes}, un término heredado del cálculo de situaciones que denota propiedades del mundo que pueden cambiar a lo largo del tiempo. Cada fluente se estampa temporalmente mediante un argumento adicional: el fluente \texttt{vivo} en el tiempo $t$ se representa como \texttt{vivo(t)}, y su valor en el siguiente paso temporal como \texttt{vivo(t+1)}.
+
+En la arquitectura original de MDP-ProbLog, cada fluente es una variable de Bernoulli que toma valores en $\{0, 1\}$. Para un dominio con $n$ fluentes booleanos, el espacio de estados tiene $2^n$ estados posibles. La limitación de esta representación se manifiesta cuando el dominio contiene variables con más de dos valores mutuamente excluyentes. Por ejemplo, para representar la posición de un robot en una cuadrícula de tres celdas, se requieren tres fluentes booleanos (\texttt{en\_celda1}, \texttt{en\_celda2}, \texttt{en\_celda3}).
+
+% TODO: Agregar una representación visual del grid y la codificación de los fluentes para ilustrar este punto.
+% TODO: Citar las fuentes de los modelos de grids (Mitchell, Russell).
+
+
+% ==================================================================
+\subsection{El Framework MDP-ProbLog}
+\label{sec:mt-mdpproblog}
+
+Esta sección describe la mecánica operativa del framework que será extendido en el Capítulo~\ref{ch:diseno-implementacion}. MDP-ProbLog es un framework que combina la expresividad de ProbLog con la resolución de MDPs de horizonte infinito \cite{bueno2016mdp}.
+
+El solver de MDP-ProbLog implementa la Iteración de Valor (Ecuación~\ref{eq:value-iteration}) ejecutando los siguientes pasos en cada iteración: (1) para cada par estado-acción, construye un vector de evidencia que fija los valores de los fluentes actuales y la acción; (2) evalúa las probabilidades marginales de los fluentes en $t=1$ mediante WMC sobre el circuito compilado; (3) calcula la recompensa inmediata y el valor esperado futuro; y (4) actualiza la función de valor. Este proceso se repite hasta alcanzar la convergencia.
+
+La equivalencia formal entre ejecutar el programa probabilístico de MDP-ProbLog y realizar un \textit{backup} de Bellman (Ecuación~\ref{eq:value-iteration}) fue demostrada por Bueno \textit{et al.} \cite{bueno2016mdp}, garantizando que el solver produce políticas óptimas.
+
+
+% ==================================================================
+\subsection{Disyunciones Anotadas}
+\label{sec:mt-ads}
+
+Las Disyunciones Anotadas constituyen el mecanismo formal central de la extensión propuesta en esta tesina. Su capacidad de codificar la exclusión mutua a nivel semántico, sin restricciones externas, es precisamente la propiedad que permite representar fluentes de estado multivaluados de forma nativa en MDP-ProbLog. Las Disyunciones Anotadas (ADs) son un constructo sintáctico y semántico de la PLP que permite representar elecciones probabilísticas entre múltiples alternativas mutuamente excluyentes de manera nativa \cite{vennekens2004lpads}.
+
+\subsubsection{Definición formal de LPADs}
+
+Un \textit{Logic Program with Annotated Disjunctions} (LPAD) es un conjunto de reglas de la forma:
+
+\begin{equation}
+    (h_1 : \alpha_1) \vee (h_2 : \alpha_2) \vee \cdots \vee (h_n : \alpha_n) \leftarrow b_1, \ldots, b_m
+    \label{eq:lpad-rule}
+\end{equation}
+
+donde los $h_i$ son átomos, los $b_j$ son literales que conforman el cuerpo de la regla, y los $\alpha_i \in [0, 1]$ son probabilidades tales que $\sum_{i=1}^{n} \alpha_i = 1$. Cada regla expresa que, cuando el cuerpo es verdadero, exactamente uno de los disyuntos $h_i$ se hace verdadero, con probabilidad $\alpha_i$.
+
+En la sintaxis de ProbLog, una AD se escribe de la siguiente manera:
+
+\begin{lstlisting}[caption={Ejemplo de Disyunción Anotada en ProbLog.}]
+% El semaforo cambia de color con cierta probabilidad
+0.4::color(verde, 1) ; 0.25::color(amarillo, 1) ;
+    0.35::color(rojo, 1) :- color(verde, 0).
+\end{lstlisting}
+
+Esta cláusula establece que si el semáforo está en verde en el tiempo $t=0$, entonces en $t=1$ estará en verde con probabilidad 0.4, en amarillo con probabilidad 0.25, o en rojo con probabilidad 0.35. La exclusión mutua (exactamente un color activo) está garantizada por construcción.
+
+\subsubsection{Semántica: selecciones e instancias}
+
+La semántica de un LPAD se define mediante el concepto de \textit{selección} \cite{vennekens2004lpads}. Una selección $\sigma$ es una función que, para cada regla $r$ del programa aterrizado, elige exactamente un par $(h_i : \alpha_i)$ de la cabeza de $r$. Cada selección produce una \textit{instancia} $P_\sigma$: un programa lógico normal (sin disyunciones) donde solo el disyunto seleccionado permanece en la cabeza de cada regla.
+
+La probabilidad de una selección se calcula asumiendo independencia entre las elecciones de distintas reglas:
+
+\begin{equation}
+    C_\sigma = \prod_{r \in P} \sigma_{\text{prob}}(r)
+    \label{eq:selection-probability}
+\end{equation}
+
+donde $\sigma_{\text{prob}}(r)$ es la probabilidad del disyunto seleccionado por $\sigma$ para la regla $r$.
+
+La probabilidad de una interpretación $I$ bajo el programa $P$ es la suma de las probabilidades de todas las selecciones cuya instancia tiene a $I$ como modelo bien fundado:
+
+\begin{equation}
+    \pi^*_P(I) = \sum_{\sigma \in S(I)} C_\sigma
+    \label{eq:interpretation-probability}
+\end{equation}
+
+donde $S(I) = \{\sigma \mid \text{WFM}(P_\sigma) = I\}$ es el conjunto de selecciones que conducen a la interpretación $I$.
+
+\subsubsection{Exclusión mutua nativa}
+
+La propiedad más relevante de las ADs para este trabajo es que la exclusión mutua entre los disyuntos es una \textit{consecuencia directa de la semántica}, no una restricción que deba imponerse externamente. Dado que cada selección elige exactamente un disyunto por regla, es imposible que dos disyuntos de la misma cláusula sean simultáneamente verdaderos en una misma instancia. Esto contrasta radicalmente con la codificación mediante hechos booleanos independientes, donde la exclusión mutua debe garantizarse mediante reglas lógicas adicionales escritas por el usuario.
+
+Para ilustrar esta diferencia, considérese la representación de una variable con tres valores (por ejemplo, el color de un semáforo) bajo ambos enfoques:
+
+\begin{lstlisting}[caption={Codificación booleana. MDP-ProbLog original.}]
+% Tres fluentes booleanos independientes
+state_fluent(verde).
+state_fluent(amarillo).
+state_fluent(rojo).
+
+% Restricciones manuales de exclusion mutua
+% (el usuario debe escribirlas explicitamente)
+falso :- verde(0), amarillo(0).
+falso :- verde(0), rojo(0).
+falso :- amarillo(0), rojo(0).
+falso :- not verde(0), not(amarillo(0)), not(rojo(0)).
+\end{lstlisting}
+
+Como se observa, bajo este enfoque clásico el modelador está obligado a definir reglas explícitas para invalidar las combinaciones semánticamente imposibles. Específicamente, es imperativo podar del espacio de estados aquellos escenarios donde el semáforo exhiba múltiples colores de forma simultánea (e.g., verde y amarillo) o, por el contrario, aquellos donde carezca de color por completo. Esta carga representacional no solo es propensa a errores, sino que delega enteramente en el usuario la responsabilidad de mantener la coherencia lógica del modelo.
+
+\begin{lstlisting}[caption={Codificación con Disyunciones Anotadas. Extensión propuesta}]
+% Un unico fluente multivaluado con exclusion mutua nativa
+state_fluent(semaforo(X)).
+
+% La transicion se expresa como una AD:
+0.5::semaforo(verde, 1); 0.45::semaforo(amarillo, 1);
+    0.05::semaforo(rojo, 1) :- semaforo(verde, 0).
+% No se requieren restricciones adicionales.
+\end{lstlisting}
+
+En contraste, la codificación basada en Disyunciones Anotadas encapsula esta lógica de manera natural. Al declarar el fluente de estado parametrizado mediante una variable lógica (\texttt{semaforo(X)}), se agrupan las alternativas bajo una misma entidad semántica. La regla de transición emplea una AD explícita donde la suma de las probabilidades de los disyuntos es 1. Esta sintaxis delega al motor de inferencia la garantía matemática de que, dado el estado previo, se seleccionará exactamente un color para el siguiente paso temporal. 
+
+Como resultado de esta integridad representacional, mientras que la codificación booleana genera $2^3 = 8$ combinaciones posibles de las cuales solo 3 son válidas, la codificación con ADs define un espacio exacto de 3 estados, erradicando las combinaciones espurias desde la formulación misma del modelo.
+
+\subsubsection{Interpretación causal}
+
+Vennekens, Denecker y Bruynooghe extendieron la semántica de los LPADs mediante \textit{CP-Logic} (\textit{Causal Probabilistic Logic}), formalizando una interpretación causal de las ADs \cite{vennekens2009cplogic}. Bajo esta interpretación, el cuerpo de cada regla representa una \textit{causa} y los disyuntos en la cabeza son sus posibles \textit{efectos}, cada uno con una probabilidad de ocurrencia asociada. Esta perspectiva causal mapea de manera natural al concepto de transición estocástica en un MDP: dado un estado y una acción (la causa), el siguiente valor de un fluente es uno de varios resultados mutuamente excluyentes (los efectos).
+
+Es importante distinguir entre las probabilidades \textit{causales} de las ADs y las probabilidades \textit{condicionales} clásicas. Como señalan Vennekens \textit{et al.}, si un mismo efecto puede ser producido por múltiples causas no excluyentes, la probabilidad causal de que una causa particular produzca el efecto no coincide con la probabilidad condicional del efecto dado la causa \cite{vennekens2004lpads}. Las ADs modelan la primera, no la segunda.
+
+
+% ==================================================================
+\subsection{Compilación de Conocimiento}
+\label{sec:mt-compilacion}
+
+La compilación de conocimiento determina la eficiencia computacional de la inferencia probabilística y es directamente afectada por la forma en que se representan las variables de estado. El cálculo del WMC (Ecuación~\ref{eq:wmc}) sobre una fórmula booleana arbitraria es un problema \#P-completo en general \cite{darwiche2002knowledge}, por lo que transformar el programa lógico en una estructura tratable es un requisito ineludible para el framework.
+
+\subsubsection{Mapa de compilación de conocimiento}
+
+Darwiche y Marquis clasificaron los principales lenguajes de compilación según sus propiedades de sucintez y las operaciones que soportan en tiempo polinomial \cite{darwiche2002knowledge}. Para la inferencia probabilística mediante WMC, las representaciones más relevantes son:
+
+\begin{itemize}
+    \item \textbf{d-DNNF} (\textit{Deterministic Decomposable Negation Normal Form}): Un circuito booleano en forma normal de negación donde los nodos AND tienen hijos que no comparten variables (descomponibilidad) y los nodos OR tienen hijos mutuamente excluyentes (determinismo). Sobre esta estructura, el WMC se computa en un único recorrido ascendente (\textit{bottom-up}) del circuito.
+
+    \item \textbf{SDD} (\textit{Sentential Decision Diagram}): Introducidos por Darwiche \cite{darwiche2011sdd}, los SDDs generalizan los Diagramas de Decisión Binarios Ordenados (OBDDs) al permitir decisiones sobre fórmulas en lugar de variables individuales. Los SDDs son canónicos (dado un \textit{vtree}, la representación es única), soportan todas las operaciones booleanas en tiempo polinomial, y son estrictamente más sucintos que los OBDDs.
+\end{itemize}
+
+ProbLog utiliza los d-DNNF como su estructura de compilación principal \cite{vlasselaer2016problog2}.
+
+\subsubsection{Impacto de la representación en el tamaño del circuito}
+
+Un aspecto fundamental para este trabajo es que el tamaño del circuito compilado depende no solo de la complejidad intrínseca del problema, sino también de \textit{cómo} se formula el programa lógico. Dos programas que describen el mismo MDP pero con diferentes codificaciones pueden producir circuitos de tamaños muy distintos.
+
+En particular, codificar una variable de $k$ valores mediante $k$ hechos probabilísticos booleanos independientes introduce $2^k$ posibles asignaciones de verdad en el espacio de búsqueda del compilador, de las cuales solo $k$ son semánticamente válidas. Las restricciones de exclusión mutua, aunque eliminan los modelos inválidos durante la inferencia, no necesariamente reducen el tamaño de la estructura compilada, ya que el compilador puede necesitar representar explícitamente la estructura lógica que descarta esas combinaciones.
+
+En contraste, una Disyunción Anotada con $k$ disyuntos codifica directamente las $k$ alternativas válidas con la restricción $\sum \alpha_i = 1$ integrada en la semántica. ProbLog implementa las ADs internamente mediante nodos \texttt{choice} que garantizan estructuralmente la exclusión mutua, lo cual tiene el potencial de producir circuitos más compactos al evitar la representación de combinaciones imposibles desde el origen.
+
+El impacto real de esta transición representacional sobre el tamaño de los circuitos generados y los tiempos de inferencia constituye una de las preguntas centrales de esta investigación. Este comportamiento se analizará y cuantificará empíricamente en el Capítulo de Experimentación y Resultados.
+
+\vspace{0.5cm}
+
+En síntesis, este capítulo ha establecido la cadena completa de conceptos formales que sustenta la extensión propuesta. La programación lógica proporciona el lenguaje de representación, la semántica de distribución y el WMC proporcionan el mecanismo de inferencia, los MDPs factorizados definen el problema que se resuelve, y las Disyunciones Anotadas ofrecen la herramienta formal para codificar la exclusión mutua de manera nativa. MDP-ProbLog integra todos estos elementos en un framework operativo cuya única limitación estructural pendiente, la restricción a fluentes booleanos, es precisamente el objeto de la extensión que se detalla en el siguiente capítulo.

@@ -1,0 +1,87 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{Agradecimientos}{\es@scroman {vii}}{section*.1}%
+\contentsline {section}{Resumen}{\es@scroman {viii}}{section*.2}%
+\contentsline {section}{Summary}{\es@scroman {ix}}{section*.3}%
+\contentsline {section}{Índice}{\es@scroman {x}}{section*.3}%
+\contentsline {section}{\numberline {1}Introducción}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Antecedentes locales}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Definición del Problema}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Objetivos}{3}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Objetivo General}{3}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Objetivos Específicos}{3}{subsubsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.4}Justificación}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Alcances y Limitaciones}{5}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Alcances}{5}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Limitaciones}{6}{subsubsection.1.5.2}%
+\contentsline {section}{\numberline {2}Estado del Arte}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}MDPs Factorizados y el Problema de la Representación de Estados}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Programación Lógica Probabilística para la Resolución de MDPs}{8}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Disyunciones Anotadas y Compilación de Conocimiento}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Análisis Comparativo}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Conclusión del Estado del Arte}{11}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Marco Teórico}{12}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Programación Lógica}{12}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Programación Lógica Probabilística}{12}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Semántica de distribución}{12}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}El lenguaje ProbLog}{14}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Relevancia para MDP-ProbLog}{15}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}Conteo de Modelos Ponderados}{15}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Procesos de Decisión de Markov}{16}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Algoritmo de Iteración de Valor}{16}{subsubsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.5}MDPs Factorizados}{17}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Fluentes de estado}{18}{subsubsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.6}El Framework MDP-ProbLog}{18}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Disyunciones Anotadas}{18}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}Definición formal de LPADs}{18}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.2}Semántica: selecciones e instancias}{19}{subsubsection.3.7.2}%
+\contentsline {subsubsection}{\numberline {3.7.3}Exclusión mutua nativa}{20}{subsubsection.3.7.3}%
+\contentsline {subsubsection}{\numberline {3.7.4}Interpretación causal}{21}{subsubsection.3.7.4}%
+\contentsline {subsection}{\numberline {3.8}Compilación de Conocimiento}{21}{subsection.3.8}%
+\contentsline {subsubsection}{\numberline {3.8.1}Mapa de compilación de conocimiento}{21}{subsubsection.3.8.1}%
+\contentsline {subsubsection}{\numberline {3.8.2}Impacto de la representación en el tamaño del circuito}{22}{subsubsection.3.8.2}%
+\contentsline {section}{\numberline {4}Diseño e Implementación}{23}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Análisis de la arquitectura original}{23}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Componentes del sistema original}{23}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Flujo de ejecución}{24}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Limitaciones en la gestión de fluentes}{24}{subsubsection.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.4}Identificación de puntos de extensión}{25}{subsubsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.2}Diseño de la extensión}{25}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}FluentSchema: estructura factorizada del espacio de estados}{25}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}FluentClassifier: mecanismo de clasificación automática}{26}{subsubsection.4.2.2}%
+\contentsline {paragraph}{Reglas de inferencia implícita.}{27}{section*.7}%
+\contentsline {paragraph}{Agrupamiento y el problema del Colapso Estructural.}{27}{section*.8}%
+\contentsline {paragraph}{Justificación del modo explícito.}{27}{section*.9}%
+\contentsline {subsubsection}{\numberline {4.2.3}Codificación \textit {mixed-radix} del espacio de estados}{27}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Sintaxis de usuario para fluentes multivaluados}{28}{subsubsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.3}Implementación}{30}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Adaptador al motor de inferencia}{30}{subsubsection.4.3.1}%
+\contentsline {paragraph}{Inyección de Disyunciones Anotadas.}{30}{section*.10}%
+\contentsline {paragraph}{Construcción del índice invertido.}{30}{section*.11}%
+\contentsline {subsubsection}{\numberline {4.3.2}Coordinador central del MDP}{30}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Adaptaciones al algoritmo de resolución}{31}{subsubsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.4}Herramientas de verificación y exportación}{32}{subsubsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.4}Retrocompatibilidad}{32}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Experimentación y Resultados}{34}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Diseño experimental}{34}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Dominio de prueba}{34}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Codificaciones comparadas}{35}{subsubsection.5.1.2}%
+\contentsline {paragraph}{Codificación binaria.}{35}{section*.14}%
+\contentsline {paragraph}{Codificación multivaluada factorizada.}{36}{section*.15}%
+\contentsline {subsubsection}{\numberline {5.1.3}Métricas de evaluación}{37}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.4}Protocolo de medición}{37}{subsubsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.5}Entorno de pruebas}{38}{subsubsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.2}Verificación de corrección funcional}{38}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Simplificación del proceso de modelado}{39}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Impacto computacional}{40}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Tamaño del circuito compilado}{40}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Tiempos de ejecución}{40}{subsubsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.5}Discusión}{41}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1}Corrección y convergencia}{41}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2}Simplificación del modelado}{41}{subsubsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.3}Comportamiento computacional}{42}{subsubsection.5.5.3}%
+\contentsline {subsubsection}{\numberline {5.5.4}Relación con las predicciones del Marco Teórico}{42}{subsubsection.5.5.4}%
+\contentsline {subsubsection}{\numberline {5.5.5}Limitaciones de la evaluación}{42}{subsubsection.5.5.5}%
+\contentsline {section}{Índice de figuras}{43}{subsubsection.5.5.5}%
+\contentsline {section}{Índice de cuadros}{44}{section*.21}%
+\contentsline {section}{Índice de algoritmos}{45}{section*.22}%
+\contentsline {section}{Referencias}{46}{section*.23}%
