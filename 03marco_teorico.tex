@@ -214,7 +214,7 @@ Esta factorización es la que permite a algoritmos como SPUDD \cite{hoey1999spud
 
 \subsubsection{Fluentes de estado}
 
-En el contexto de MDP-ProbLog, las variables de estado se denominan \textit{fluentes}, un término heredado del cálculo de situaciones que denota propiedades del mundo que pueden cambiar a lo largo del tiempo. Cada fluente se estampa temporalmente mediante un argumento adicional: el fluente \texttt{vivo} en el tiempo $t$ se representa como \texttt{vivo(t)}, y su valor en el siguiente paso temporal como \texttt{vivo(t+1)}.
+En MDP-ProbLog, las variables de estado se denominan \textit{fluentes}, un término heredado del cálculo de situaciones que denota propiedades del mundo que pueden cambiar a lo largo del tiempo. Cada fluente se estampa temporalmente mediante un argumento adicional: el fluente \texttt{vivo} en el tiempo $t$ se representa como \texttt{vivo(t)}, y su valor en el siguiente paso temporal como \texttt{vivo(t+1)}.
 
 En la arquitectura original de MDP-ProbLog, cada fluente es una variable de Bernoulli que toma valores en $\{0, 1\}$. Para un dominio con $n$ fluentes booleanos, el espacio de estados tiene $2^n$ estados posibles. La limitación de esta representación se manifiesta cuando el dominio contiene variables con más de dos valores mutuamente excluyentes. Por ejemplo, para representar la posición de un robot en una cuadrícula de tres celdas, se requieren tres fluentes booleanos (\texttt{en\_celda1}, \texttt{en\_celda2}, \texttt{en\_celda3}).
 

@@ -10,68 +10,71 @@
 \section{Estado del Arte}
 \label{ch:estado-del-arte}
 
-El presente capítulo revisa la literatura científica relacionada con la sustentación técnica de esta tesina: la representación factorizada de MDPs y el problema de las variables de estado, el uso de la Programación Lógica Probabilística como lenguaje de especificación para la toma de decisiones secuenciales, y los mecanismos de exclusión mutua y compilación de conocimiento que permiten la inferencia eficiente. El análisis de estos trabajos permite trazar la trayectoria que conduce al vacío de investigación que la presente tesina aborda: la ausencia de soporte nativo para fluentes de estado multivaluados en frameworks de resolución exacta de MDPs basados en PLP.
+El presente capítulo rastrea la evolución de las tres líneas de investigación cuya intersección define el problema que esta tesina aborda: (1) la representación factorizada de los MDPs y el problema de las variables de estado; (2) el uso de la Programación Lógica Probabilística (PLP) como lenguaje de especificación para la toma de decisiones secuenciales; y (3) los mecanismos de exclusión mutua y compilación de conocimiento para la inferencia eficiente. El recorrido muestra cómo cada una de estas líneas aporta los elementos necesarios para fundamentar la extensión propuesta: representaciones eficientes del espacio de estados, expresividad relacional para la dinámica del dominio, y mecanismos formales de exclusión mutua. Estos trabajos, en conjunto, proveen la base sobre la cual esta tesina construye una extensión fundamentada del framework.
 
 % ------------------------------------------------------------------
 \subsection{MDPs Factorizados y el Problema de la Representación de Estados}
 \label{sec:ea-factorizados}
 
-En la formulación clásica de un MDP, el espacio de estados se trata como un conjunto plano donde cada estado es una entidad atómica e indivisible \cite{puterman2014markov}. Esta representación se vuelve poco práctica conforme aumenta el número de variables descritas: si un dominio involucra $n$ variables binarias, el número total de estados crece como $2^n$, lo que Bellman denominó la \textit{maldición de la dimensionalidad} \cite{bellman1957dynamic}.
+A medida que los dominios de planificación crecían en complejidad, quedó claro que ningún método que operara sobre estados individuales podría escalar ya que el tamaño del espacio de estados crece exponencialmente con el número de variables, y los algoritmos clásicos de programación dinámica requieren iterar sobre cada estado \cite{puterman2014markov}. Este crecimiento fue reconocido por la como el obstáculo central que debía resolverse para hacer los MDPs aplicables a problemas reales, y motivó una línea de investigación dedicada a explotar la estructura interna del dominio para eludir la enumeración explícita.
 
-Para mitigar este crecimiento exponencial, Boutilier, Dearden y Goldszmidt propusieron la representación factorizada de MDPs, donde las transiciones se codifican mediante Redes Bayesianas Dinámicas (DBNs) y las funciones de valor se manipulan como árboles de decisión \cite{boutilier2000stochastic}. En esta representación, cada variable de estado posee su propia tabla de probabilidad condicional, y los algoritmos de programación dinámica operan sobre agregaciones de estados en lugar de iterar sobre cada estado individual. Su algoritmo \textit{Structured Policy Iteration} (SPI) demostró que era posible resolver MDPs sin enumerar explícitamente el espacio de estados, siempre que la estructura del problema exhibiera independencias condicionales aprovechables.
+Con este objetivo, Boutilier, Dearden y Goldszmidt propusieron la representación factorizada de MDPs, donde las transiciones se codifican mediante Redes Bayesianas Dinámicas (DBNs) y las funciones de valor se manipulan como árboles de decisión \cite{boutilier2000stochastic}. En esta representación, cada variable de estado posee su propia tabla de probabilidad condicional, y los algoritmos de programación dinámica operan sobre agregaciones de estados en lugar de iterar sobre cada estado individual. Su algoritmo \textit{Structured Policy Iteration} (SPI) demostró que era posible resolver MDPs sin enumerar explícitamente el espacio de estados, siempre que la estructura del problema exhibiera independencias condicionales aprovechables.
 
 En la misma línea, Hoey \textit{et al.} desarrollaron SPUDD, un algoritmo de iteración de valor que reemplaza los árboles de decisión por Diagramas de Decisión Algebraicos (ADDs) \cite{hoey1999spudd}. Los ADDs, al ser grafos dirigidos acíclicos en lugar de árboles, permiten compartir subgrafos isomorfos, logrando reducciones de hasta 30 veces en el número de nodos respecto a las representaciones arbóreas. SPUDD demostró la resolución exacta de MDPs con hasta 63 millones de estados.
 
-Tanto SPI como SPUDD comparten una restricción, ya que operan exclusivamente sobre variables booleanas. Cuando el dominio contiene variables con más de dos valores, el modelador debe descomponer cada variable multivaluada en múltiples variables binarias. Hoey \textit{et al.} reconocen explícitamente esta limitación al señalar que variables ternarias deben expandirse en dos binarias, lo cual agranda el espacio de estados por un factor de $4/3$ por cada variable expandida e introduce estados semánticamente imposibles \cite{hoey1999spudd}. Este problema de la binarización forzada es precisamente la limitación que la presente tesina aborda en el contexto de MDP-ProbLog.
+Tanto SPI como SPUDD operan exclusivamente sobre variables booleanas debido a la descomposición de Shannon que subyace a ambas estructuras. Cada nodo interno ramifica sobre una variable binaria \cite{hoey1999spudd}. Cuando el dominio contiene variables multivaluadas, el modelador debe descomponerlas en múltiples variables binarias. Hoey \textit{et al.} reconocen esta limitación al señalar que una variable ternaria debe expandirse en dos binarias, lo que aumenta el espacio de estados por un factor de $4/3$ por variable e introduce estados semánticamente imposibles \cite{hoey1999spudd}. Esta binarización forzada constituye precisamente la limitación que la presente tesina aborda en MDP-ProbLog.
 
-En el ámbito de los lenguajes de descripción para planificación, RDDL (\textit{Relational Dynamic Influence Diagram Language}) \cite{sanner2010rddl} sí contempla fluentes multivaluados de manera nativa, incluyendo variables enumeradas, enteras y continuas. No obstante, RDDL está fundamentado en redes bayesianas dinámicas proposicionales, lo que impide la representación de dependencias cíclicas que surgen naturalmente en dominios relacionales. MDP-ProbLog, en contraste, hereda de la programación lógica la capacidad de expresar este tipo de relaciones, pero carece del soporte multivaluado que RDDL ofrece.
+En el ámbito de los lenguajes de descripción para planificación, RDDL (\textit{Relational Dynamic Influence Diagram Language}) \cite{sanner2010rddl} sí contempla fluentes multivaluados de manera nativa, incluyendo variables enumeradas, enteras y continuas. No obstante, RDDL adopta un DBN estratificado por niveles como representación semántica, donde cada variable de un paso temporal sólo puede depender de variables de niveles anteriores \cite{sanner2010rddl}. Esta estructuración acíclica impide modelar dependencias cíclicas entre predicados aterrizados, como las que surgen en dominios con relaciones simétricas o transitivas; MDP-ProbLog resuelve este problema al heredar de Prolog la resolución SLD, capaz de manejar definiciones recursivas sobre el programa aterrizado \cite{bueno2016mdp}. 
 
 % ------------------------------------------------------------------
 \subsection{Programación Lógica Probabilística para la Resolución de MDPs}
 \label{sec:ea-plp-mdps}
 
-La Programación Lógica Probabilística (PLP) combina la capacidad de representación relacional de la lógica de primer orden con el manejo formal de la incertidumbre mediante la teoría de la probabilidad. De Raedt y Kimmig establecieron los fundamentos unificadores de este paradigma, demostrando cómo la \textit{semántica de distribución} permite definir una distribución de probabilidad sobre los mundos posibles de un programa lógico \cite{deraedt2015probabilistic}. Bajo esta semántica, cada hecho probabilístico actúa como una variable aleatoria independiente cuya realización determina un programa lógico determinista; la probabilidad de una consulta es entonces la suma de las probabilidades de todos los mundos en los que dicha consulta es verdadera.
+La comunidad de MDPs factorizados desarrolló representaciones cada vez más eficientes del espacio de estados. Años más tarde, la Programación Lógica Probabilística propuso lenguajes relacionales capaces de razonar bajo incertidumbre \cite{deraedt2015probabilistic}. La pregunta que eventualmente conectó ambas líneas de investigación fue si los motores de inferencia exacta de ProbLog podían adaptarse para resolver, en lugar de consultas estáticas, problemas de decisión secuencial en los que el agente debe optimizar su comportamiento a lo largo del tiempo.
 
-ProbLog, el lenguaje que implementa esta semántica, transforma el problema de inferencia probabilística en un problema de Conteo de Modelos Ponderados (WMC) sobre fórmulas booleanas \cite{fierens2015inference, deraedt2007problog}. Esto permite aprovechar técnicas de compilación de conocimiento para lograr inferencia exacta en tiempo polinomial respecto al tamaño del circuito compilado.
+La extensión de ProbLog hacia la toma de decisiones se materializó primero en DTProbLog \cite{vandenbroeck2010dtproblog}. Este sistema añadió al lenguaje la capacidad de modelar problemas de decisión episódicos mediante variables de decisión y atributos de utilidad, permitiendo encontrar la estrategia que maximiza la utilidad esperada. Sin embargo, DTProbLog está diseñado exclusivamente para problemas de un solo paso y no soporta la resolución de MDPs de horizonte infinito, donde es necesario optimizar una política completa a lo largo del tiempo. De esta forma, estableció la prueba de concepto de que ProbLog era extensible hacia la optimización bajo incertidumbre, aunque la resolución de MDPs requería un mecanismo adicional para propagar valor a través de horizontes de tiempo arbitrarios.
 
-La extensión de ProbLog hacia la toma de decisiones se materializó primero en DTProbLog \cite{vandenbroeck2010dtproblog}, que añadió al lenguaje la capacidad de modelar problemas de decisión episódicos: dado un conjunto de variables de decisión y atributos de utilidad, el sistema encuentra la estrategia que maximiza la utilidad esperada. Sin embargo, DTProbLog está diseñado para problemas de un solo paso y no soporta la resolución de MDPs de horizonte infinito, donde es necesario optimizar una política completa a lo largo del tiempo.
 
-Como derivado de este trabajo, Bueno \textit{et al.} propusieron MDP-ProbLog, el cual extiende la sintaxis de ProbLog con predicados reservados para declarar fluentes de estado, acciones y utilidades, y emplea programas de distribución de transición de dos pasos temporales para representar la dinámica del MDP \cite{bueno2016mdp}. El \textit{solver} implementa iteración de valor sobre el circuito compilado mediante WMC, demostrando formalmente la equivalencia entre ejecutar el programa probabilístico y realizar un \textit{backup} de Bellman. Una ventaja distintiva de MDP-ProbLog frente a lenguajes como RDDL es su capacidad de representar dependencias cíclicas entre predicados aterrizados gracias a la resolución SLD de Prolog \cite{bueno2016mdp}.
+Como derivado de este trabajo, Bueno \textit{et al.} propusieron MDP-ProbLog, que extiende la sintaxis de ProbLog con predicados reservados para declarar fluentes de estado, acciones y utilidades, y emplea programas de distribución de transición de dos pasos temporales para representar la dinámica del MDP \cite{bueno2016mdp}. El solver implementa iteración de valor sobre el circuito compilado mediante Weighted Model Counting (WMC), demostrando formalmente la equivalencia entre ejecutar el programa probabilístico y realizar un backup de Bellman. Esta equivalencia garantiza que la evaluación sobre el circuito produce exactamente las probabilidades de transición requeridas, permitiendo que el solver converja a políticas óptimas sin enumerar el espacio de estados. Una ventaja distintiva frente a lenguajes como RDDL es su capacidad para representar dependencias cíclicas entre predicados aterrizados gracias a la resolución SLD de Prolog \cite{bueno2016mdp}.
 
 % ------------------------------------------------------------------
-\subsection{Disyunciones Anotadas y Compilación de Conocimiento}
+\subsection{Disyunciones Anotadas como mecanismo de exclusión mutua}
 \label{sec:ea-ads-compilacion}
+\label{sec:ea-ads}
 
-El mecanismo que esta tesina propone para resolver la restricción binaria de MDP-ProbLog se fundamenta en las Disyunciones Anotadas (ADs). En la literatura de representación del conocimiento, Vennekens, Verbaeten y Bruynooghe introdujeron los Logic Programs with Annotated Disjunctions (LPADs) como una solución elegante para modelar eventos probabilísticos con múltiples resultados mutuamente excluyentes. El principal resultado de su trabajo demostró que es posible codificar la exclusión mutua de manera nativa en la cabeza de las reglas lógicas, eliminando la necesidad de escribir restricciones manuales complejas y mitigando la generación de estados semánticamente imposibles.
+En paralelo al desarrollo de los MDPs factorizados y de MDP-ProbLog, una línea independiente de investigación dentro de la Programación Lógica Probabilística se ocupaba de un problema distinto: cómo representar eventos con múltiples resultados mutuamente excluyentes sin imponer restricciones externas al programa. Vennekens, Verbaeten y Bruynooghe respondieron a este problema con los \textit{Logic Programs with Annotated Disjunctions} (LPADs) \cite{vennekens2004lpads}, demostrando que es posible codificar la exclusión mutua de manera nativa en la cabeza de las reglas lógicas. Esta propiedad elimina la necesidad de restricciones manuales y evita la generación de estados semánticamente imposibles, dos problemas que los enfoques booleanos independientes trasladan al modelador.
 
-Adicionalmente, Vennekens et al. demostraron empírica y formalmente que las ADs admiten una interpretación causal natural para problemas de toma de decisiones. Esta característica es crucial, ya que permite mapear de forma directa la semántica del lenguaje a las transiciones estocásticas de un MDP: dado un estado y una acción (la causa), el sistema transita hacia uno de múltiples estados posibles (los efectos). En esta misma línea, demostraron la equivalencia expresiva entre su propuesta y el Independent Choice Logic (ICL) de Poole, consolidando a las ADs como un estándar más natural para representar efectos indeterminados.
+En trabajo posterior, Vennekens, Denecker y Bruynooghe formalizaron una interpretación causal de las ADs mediante \textit{CP-Logic} \cite{vennekens2009cplogic}, demostrando que el cuerpo de cada regla representa una causa y los disyuntos en la cabeza sus posibles efectos, cada uno con una probabilidad de ocurrencia. Este alineamiento es directo con la dinámica estocástica de un MDP: dado un estado y una acción, el sistema transita hacia exactamente uno de varios estados siguientes posibles. Los autores demostraron además la equivalencia expresiva entre los LPADs y el Independent Choice Logic de Poole \cite{poole1997independent}, consolidando a las ADs como el mecanismo más natural para representar efectos indeterminados en programas lógicos probabilísticos.
 
-Ahora bien, para que la inferencia probabilística sobre programas con ADs sea computacionalmente tratable en la práctica, sistemas como ProbLog emplean un flujo de compilación de conocimiento. El programa lógico aterrizado se transforma primero en una fórmula proposicional ponderada, y posteriormente se compila en un circuito lógico. En este ámbito, Darwiche y Marquis establecieron la taxonomía de los lenguajes de compilación, identificando que estructuras como las d-DNNFs (Deterministic Decomposable Negation Normal Forms) permiten realizar inferencia exacta en tiempo lineal respecto al tamaño del circuito compilado \cite{darwiche2002knowledge}. Posteriormente, el mismo autor introdujo los Diagramas de Decisión Sentencial (SDDs), una representación canónica que generaliza los clásicos BDDs y resulta estrictamente más sucinta \cite{darwiche2011sdd}. En la práctica, el motor subyacente de ProbLog2, brinda la flexibilidad de compilar el modelo hacia cualquiera de estas dos estructuras \cite{vlasselaer2016problog2}. Es precisamente sobre estos circuitos donde el sistema ejecuta el Conteo de Modelos Ponderados (WMC) para calcular las probabilidades de transición. Por lo tanto, cualquier extensión a la capa de representación, como la integración de fluentes multivaluados propuesta en este trabajo, debe garantizar su compatibilidad con esta forma de compilación para preservar la eficiencia computacional.
+% ------------------------------------------------------------------
+\subsection{Compilación de conocimiento para inferencia eficiente}
+\label{sec:ea-compilacion}
 
-\clearpage
+Para que la inferencia probabilística sobre programas con átomos de decisión sea computacionalmente tratable, sistemas como ProbLog emplean un flujo de compilación de conocimiento. El programa lógico aterrizado se transforma en una fórmula proposicional ponderada que, a su vez, se compila en un circuito lógico. Sobre este circuito se ejecuta el Conteo de Modelos Ponderados (WMC). Darwiche y Marquis establecieron la taxonomía formal de los lenguajes de compilación e identificaron que estructuras como las d-DNNFs (\textit{Deterministic Decomposable Negation Normal Forms}) permiten realizar inferencia exacta en tiempo lineal respecto al tamaño del circuito compilado \cite{darwiche2002knowledge}. Posteriormente, Darwiche introdujo los Diagramas de Decisión Sentencial (SDDs), una representación canónica que generaliza los clásicos BDDs y resulta estrictamente más sucinta \cite{darwiche2011sdd}.
+
+Un avance directamente relevante para esta tesina es el algoritmo de diferenciación de circuitos propuesto por Darwiche \cite{darwiche2003differential}, que permite calcular todas las derivadas parciales de un circuito d-DNNF en dos pasadas lineales sobre el mismo. Esta técnica amortiza el costo de inferencia cuando se requieren múltiples evaluaciones simultáneas, como ocurre durante la iteración de valor en MDP-ProbLog, donde cada par estado-acción demanda calcular las probabilidades de transición de todos los fluentes del siguiente estado. ProbLog2 integra estas estructuras como backends de compilación, ofreciendo flexibilidad para seleccionar entre d-DNNFs y SDDs según las compensaciones de espacio y tiempo del dominio \cite{vlasselaer2015problog2}. Cualquier extensión a la capa de representación, como la integración de fluentes multivaluados propuesta en esta tesina, debe preservar la compatibilidad con este flujo de compilación para mantener las garantías de inferencia exacta.
 
 % ------------------------------------------------------------------
 \subsection{Análisis Comparativo}
 \label{sec:ea-comparativa}
 
-La Tabla~\ref{tab:estado_arte_comparativa} presenta una comparativa de los principales enfoques revisados en este capítulo. Se analizan diez trabajos representativos agrupados por familia metodológica. Para cada uno se evalúan cuatro dimensiones: el tipo de variables de estado que soporta, el mecanismo de inferencia empleado, la capacidad del lenguaje para expresar relaciones entre entidades, y la forma en que se garantiza la exclusión mutua entre los valores de una misma variable.
+La Tabla~\ref{tab:estado_arte_comparativa} compara los ocho enfoques revisados en este capítulo, agrupados por familia metodológica. Para cada uno se evalúan cuatro dimensiones: el tipo de variables de estado que soporta, la exactitud de la inferencia, la capacidad relacional del lenguaje, y el mecanismo de exclusión mutua.
 
 \begin{table}[H]
     \centering
-
-    \caption{Análisis comparativo del estado del arte. Se evalúan cuatro dimensiones para cada trabajo: el tipo de variables de estado soportadas, el mecanismo de inferencia, la capacidad relacional del lenguaje, y la garantía de exclusión mutua entre valores de una misma variable.}
+    \caption{Comparativa de los enfoques del estado del arte.}
     \label{tab:estado_arte_comparativa}
-    
-    \footnotesize 
-    \setlength{\tabcolsep}{4pt} 
-    \renewcommand{\arraystretch}{1.2} 
-    
-    \begin{tabularx}{\textwidth}{@{} 
-        >{\raggedright\arraybackslash}p{3cm} 
-        >{\raggedright\arraybackslash}X 
-        >{\raggedright\arraybackslash}X 
-        >{\raggedright\arraybackslash}X 
-        >{\raggedright\arraybackslash}p{2.5cm} @{}} 
+
+    \footnotesize
+    \setlength{\tabcolsep}{5pt}
+    \renewcommand{\arraystretch}{1.35}
+
+    \begin{tabularx}{\textwidth}{@{}
+        >{\raggedright\arraybackslash}p{3.2cm}
+        >{\raggedright\arraybackslash}X
+        >{\centering\arraybackslash}p{1.8cm}
+        >{\centering\arraybackslash}p{2.2cm}
+        >{\raggedright\arraybackslash}p{2.6cm}@{}}
         \toprule
         \textbf{Trabajo} &
         \textbf{Variables de estado} &
@@ -79,46 +82,43 @@ La Tabla~\ref{tab:estado_arte_comparativa} presenta una comparativa de los princ
         \textbf{Expresividad relacional} &
         \textbf{Exclusión mutua} \\
         \midrule
-        
-        \multicolumn{5}{@{}l}{\textbf{\textit{MDPs factorizados proposicionales}}} \\
-        Boutilier \textit{et al.} \cite{boutilier2000stochastic} & Booleanas & Exacta (árboles) & Proposicional (DBNs) & Manual \\
-        Boutilier, Dean y Hanks \cite{boutilier1999decision} & Booleanas & Exacta (prog. dinámica) & Proposicional & Manual \\
-        Hoey \textit{et al.} \cite{hoey1999spudd} & Booleanas (binarización) & Exacta (ADDs) & Proposicional (DBNs) & Manual \\
+
+        \multicolumn{5}{@{}l}{\textit{MDPs factorizados proposicionales}} \\[2pt]
+        Boutilier \textit{et al.} \cite{boutilier2000stochastic} & Booleanas    & Exacta         & Proposicional & Manual \\
+        Boutilier, Dean y Hanks \cite{boutilier1999decision}     & Booleanas    & Exacta         & Proposicional & Manual \\
+        Hoey \textit{et al.} \cite{hoey1999spudd}                & Booleanas & Exacta & Proposicional & Manual \\
         \addlinespace
-        
-        \multicolumn{5}{@{}l}{\textbf{\textit{Lenguajes de planificación}}} \\
-        Sanner \cite{sanner2010rddl} & Multival., continuas & Exacta / Aprox. & Relacional (DBNs) & Nativa por tipo \\
+
+        \multicolumn{5}{@{}l}{\textit{Lenguajes de planificación}} \\[2pt]
+        Sanner \cite{sanner2010rddl} & Multivaluadas / continuas & Aprox. & Relacional & Nativa por tipo \\
         \addlinespace
-        
-        \multicolumn{5}{@{}l}{\textbf{\textit{Programación Lógica Probabilística}}} \\
-        De Raedt y Kimmig \cite{deraedt2015probabilistic} & Booleanas & Exacta (WMC) & Relacional (ProbLog) & No aplica \\
-        Fierens \textit{et al.} \cite{fierens2015inference} & Booleanas & Exacta (WMC) & Relacional (ProbLog) & No aplica \\
-        Nitti \textit{et al.} \cite{nitti2016planning} & Discretas, continuas & Aprox. (muestreo) & Relacional (DDC) & Implícita \\
-        Riguzzi y Swift \cite{riguzzi2013well} & Booleanas & Exacta (tabling) & Relacional & No aplica \\
+
+        \multicolumn{5}{@{}l}{\textit{Programación Lógica Probabilística}} \\[2pt]
+        De Raedt y Kimmig \cite{deraedt2015probabilistic} & Booleanas & Exacta & Relacional & No aplica \\
+        Fierens \textit{et al.} \cite{fierens2015inference}      & Booleanas    & Exacta         & Relacional    & No aplica \\
         \addlinespace
-        
-        \multicolumn{5}{@{}l}{\textbf{\textit{Exclusión mutua y semántica causal}}} \\
-        Vennekens \textit{et al.} \cite{vennekens2009cplogic} & Multivaluadas (ADs) & Exacta & Relacional & Nativa  \\
-        Poole \cite{poole1997independent} & Booleanas (ICL) & Exacta & Relacional & Nativa (elecciones) \\
+
+        \multicolumn{5}{@{}l}{\textit{Exclusión mutua y semántica causal}} \\[2pt]
+        Vennekens \textit{et al.} \cite{vennekens2009cplogic}    & Multivaluadas & Exacta        & Relacional    & Nativa \\
         \addlinespace
-        
-        \multicolumn{5}{@{}l}{\textbf{\textit{MDP-ProbLog}}} \\
-        Bueno \textit{et al.} \cite{bueno2016mdp} & Booleanas & Exacta (WMC/SDDs) & Relacional (ProbLog) & Manual \\
-        \textbf{Propuesta} & \textbf{Multivaluadas} & \textbf{Exacta (WMC/SDDs)} & \textbf{Relacional (ProbLog)} & \textbf{Nativa (ADs)} \\
+
+        \multicolumn{5}{@{}l}{\textit{MDP-ProbLog}} \\[2pt]
+        Bueno \textit{et al.} \cite{bueno2016mdp}                & Booleanas    & Exacta         & Relacional    & Manual \\
+        \textbf{Propuesta}  & \textbf{Multivaluadas} & \textbf{Exacta} & \textbf{Relacional} & \textbf{Nativa} \\
         \bottomrule
     \end{tabularx}
 \end{table}
 
-Como se observa en la tabla, ninguno de los enfoques existentes integra simultáneamente las cuatro capacidades que la propuesta de esta tesina reúne: variables de estado multivaluadas con exclusión mutua nativa, inferencia exacta mediante WMC sobre circuitos compilados, y expresividad relacional completa heredada de la programación lógica.
+Como se observa, la propuesta reúne simultáneamente las cuatro capacidades: variables de estado multivaluadas, inferencia exacta, expresividad relacional y exclusión mutua nativa.
+
+\clearpage
 
 % ------------------------------------------------------------------
 \subsection{Conclusión del Estado del Arte}
 \label{sec:ea-conclusion}
 
-La revisión de la literatura permite identificar tres hallazgos principales. En primer lugar, la representación factorizada de MDPs ha demostrado ser una estrategia efectiva para mitigar la maldición de la dimensionalidad, permitiendo resolver problemas con millones de estados sin enumeración explícita \cite{boutilier2000stochastic, hoey1999spudd}. Sin embargo, los enfoques proposicionales más consolidados operan exclusivamente sobre variables booleanas, y cuando el dominio requiere variables multivaluadas, la binarización forzada introduce estados semánticamente imposibles y aumenta artificialmente el tamaño de los circuitos compilados.
+Los MDPs factorizados demostraron que la planificación a escala es viable mediante representaciones que explotan las independencias del dominio \cite{boutilier2000stochastic, hoey1999spudd}. MDP-ProbLog combinó expresividad relacional e inferencia exacta en un framework para MDPs de horizonte infinito \cite{bueno2016mdp}. Los LPADs y CP-Logic formalizaron la exclusión mutua nativa como propiedad semántica de los programas lógicos, alineada con la dinámica de las transiciones estocásticas \cite{vennekens2004lpads}. La compilación de conocimiento, por su parte, proporcionó las estructuras sobre las que este mecanismo puede ejecutarse en tiempo lineal \cite{darwiche2002knowledge, darwiche2003differential}.
 
-En segundo lugar, la Programación Lógica Probabilística ofrece ventajas significativas sobre los formalismos proposicionales al permitir representar relaciones simétricas, transitivas y cíclicas entre las variables del dominio \cite{bueno2016mdp, deraedt2015probabilistic}. El framework MDP-ProbLog materializó esta ventaja al combinar la expresividad de ProbLog con la resolución exacta de MDPs de horizonte infinito mediante WMC \cite{fierens2015inference}. No obstante, su arquitectura restringe los fluentes de estado a variables de Bernoulli independientes, lo que limita la naturalidad del proceso de modelado y delega en el usuario la responsabilidad de codificar manualmente las restricciones de exclusión mutua.
+Ninguno de estos trabajos consideró la representación de fluentes multivaluados con exclusión mutua nativa dentro de MDP-ProbLog. Cada uno de ellos persiguió objetivos específicos dentro de su ámbito pero la compatibilidad entre sus resultados hace viable la extensión propuesta.
 
-En tercer lugar, las Disyunciones Anotadas constituyen un mecanismo formal que garantiza la exclusión mutua de eventos probabilísticos a nivel semántico \cite{vennekens2009cplogic, poole1997independent}. Este constructo ya forma parte del lenguaje ProbLog y es utilizado internamente por su motor de inferencia \cite{vlasselaer2016problog2}, pero su integración en la capa de representación de fluentes de estado dentro de MDP-ProbLog no ha sido explorada ni implementada.
-
-En consecuencia, la presente tesina se posiciona en la intersección de estos tres ejes al proponer la extensión de MDP-ProbLog para soportar fluentes de estado multivaluados mediante Disyunciones Anotadas. Esta integración busca preservar las garantías de inferencia exacta del sistema, eliminar la necesidad de binarización manual, y habilitar una representación del espacio de estados que sea tanto más compacta como semánticamente íntegra. El siguiente capítulo establece los fundamentos formales --- desde la programación lógica hasta la compilación de conocimiento --- que el lector necesitará para comprender el diseño de la extensión propuesta.
+Sobre esta base, la presente tesina extiende MDP-ProbLog con soporte nativo para fluentes de estado multivaluados mediante Disyunciones Anotadas. El siguiente capítulo establece los fundamentos formales que sustentan esta integración: la programación lógica, la semántica de distribución de ProbLog, la iteración de valor sobre MDPs factorizados y las propiedades de los circuitos compilados que garantizan su viabilidad computacional.
