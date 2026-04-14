@@ -1,0 +1,11 @@
+{
+  "hostname": "jitomate-HP",
+  "os": "Linux 6.17.0-20-generic",
+  "cpu": "x86_64",
+  "python_version": "3.12.3",
+  "timestamp": "2026-04-13 04:50:47",
+  "problog_version": "unknown",
+  "n_configurations": 50,
+  "runs_per_config": 11,
+  "timeout_s": 400
+}

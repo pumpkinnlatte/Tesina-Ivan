@@ -1,2 +1,8 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Entorno de navegación en cuadrícula utilizado para la validación de la política óptima. Adaptado de Mitchell \blx@tocontentsinit {0}\cite {mitchell1997machine}.}}{34}{figure.caption.12}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Representación por coordenadas vs. codificación booleana con estados inalcanzables para el grid $2 \times 3$.}}{3}{figure.caption.6}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Grid de navegación 2x3 estocástico. Se incorporan transiciones probabilísticas.}}{14}{figure.caption.10}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Política óptima: (a) una flecha indica la acción óptima $\pi ^*(r,c)$; (b) muestra el valor $V^*(r,c)$ calculado por Iteración de Valor.}}{23}{figure.caption.13}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Diagrama de bloques de la arquitectura original del framework MDP-ProbLog.}}{27}{figure.caption.14}%
+\contentsline {figure}{\numberline {5}{\ignorespaces pipeline de clasificación. Se explica la ejecución del método \texttt {classify()}}}{34}{figure.caption.16}%
+\contentsline {figure}{\numberline {6}{\ignorespaces pipeline de preparación. Se explica la ejecución del método \texttt {\_\_prepare()}}}{36}{figure.caption.17}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Entorno de navegación en cuadrícula utilizado para la validación de la política óptima. Adaptado de Mitchell \blx@tocontentsinit {0}\cite {mitchell1997machine}.}}{49}{figure.caption.27}%

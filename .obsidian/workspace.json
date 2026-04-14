@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "af833e6f5d8006e9",
+    "type": "split",
+    "children": [
+      {
+        "id": "e99da4692260343d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b5138207945c1c35",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "GUIA_DE_SECCIONES.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "GUIA_DE_SECCIONES"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cba4ffb43609550e",
+    "type": "split",
+    "children": [
+      {
+        "id": "5e5d1859f072ceb4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0951df71e76f72c5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "68f1008962f712ee",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "f763e717953716a9",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "20aca95c318b6fd3",
+    "type": "split",
+    "children": [
+      {
+        "id": "dde52313746bfc87",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0d4107020dbbc79a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "GUIA_DE_SECCIONES.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for GUIA_DE_SECCIONES"
+            }
+          },
+          {
+            "id": "63c3df8b6a2594b4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "GUIA_DE_SECCIONES.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from GUIA_DE_SECCIONES"
+            }
+          },
+          {
+            "id": "fd14c4663742727d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "5c21717fa8255848",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "085aadd9a6eca04d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "GUIA_DE_SECCIONES.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of GUIA_DE_SECCIONES"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "b5138207945c1c35",
+  "lastOpenFiles": [
+    "out/main.synctex(busy)",
+    "out/pdflatex214716.fls",
+    "out/pdflatex214689.fls",
+    "out/pdflatex214576.fls",
+    "out/pdflatex214553.fls",
+    "out/pdflatex214494.fls",
+    "out/pdflatex214466.fls",
+    "out/pdflatex214438.fls",
+    "out/pdflatex214377.fls",
+    "out/pdflatex214310.fls",
+    "out/pdflatex214248.fls",
+    "figuras/TODO(2).png",
+    "figuras/pipeline-clasificacion.png",
+    "figuras/pipeline-preparacion.png.png",
+    "figuras/TODO(1).png",
+    "figuras/pipeline-preparacion.png",
+    "figuras/TODO.png",
+    "plan_experimental_final.md",
+    "figuras/arqui-original.png",
+    "figuras/arqui_original.png",
+    "figuras/image(3).png",
+    "figuras/politica_russell_2x3.png",
+    "GUIA_DE_SECCIONES.md",
+    "guia_narrativa.md",
+    "guia_escritura.md",
+    "GUIA_NARRATIVA.md",
+    "guia_escritura_tecnica.md",
+    "GUIA_ESCRITURA.md",
+    "guia_escritura_marco.md",
+    "INDEXADO_REFERENCIAS.md"
+  ]
+}

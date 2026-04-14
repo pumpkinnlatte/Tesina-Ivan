@@ -1,0 +1,500 @@
+======================================================================
+MDP-ProbLog Experiment Runner — Plan v1.1
+======================================================================
+  Model dir:  benchmark_models
+  Russell:    benchmark_models/russell_3x4_factorized.pl
+  Output:     experiment_output
+  Runs:       11 (1 warmup + 10 measured)
+  Timeout:    400s per run
+
+  Mitchell models discovered: 16
+    mitchell_12x12_binary
+    mitchell_16x16_binary
+    mitchell_2x3_binary
+    mitchell_32x32_binary
+    mitchell_3x3_binary
+    mitchell_4x4_binary
+    mitchell_6x6_binary
+    mitchell_8x8_binary
+    mitchell_12x12_factorized
+    mitchell_16x16_factorized
+    mitchell_2x3_factorized
+    mitchell_32x32_factorized
+    mitchell_3x3_factorized
+    mitchell_4x4_factorized
+    mitchell_6x6_factorized
+    mitchell_8x8_factorized
+
+  Total configurations: 50
+
+[1/50] mitchell_12x12_binary | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_12x12_binary  Backend: ddnnf  gamma=0.9  eps=0.01
+  TIMEOUT on first run (400s)
+
+[2/50] mitchell_12x12_binary | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_12x12_binary  Backend: darwiche  gamma=0.9  eps=0.01
+  ... completed 5/10 measured runs
+  ... completed 10/10 measured runs
+  |S|=256, |A|=5, iter=12, runs=10
+  t_build: 7.2634 ± 0.3006s
+  t_vi:    153.7831 ± 3.2511s
+  t_total: 161.0465 ± 3.4152s
+
+[3/50] mitchell_12x12_binary | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_12x12_binary  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=256, |A|=5, iter=12, runs=10
+  t_build: 4.6709 ± 0.3387s
+  t_vi:    15.7908 ± 1.0809s
+  t_total: 20.4617 ± 1.2899s
+
+[4/50] mitchell_16x16_binary | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_16x16_binary  Backend: ddnnf  gamma=0.9  eps=0.01
+  TIMEOUT on first run (400s)
+
+[5/50] mitchell_16x16_binary | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_16x16_binary  Backend: darwiche  gamma=0.9  eps=0.01
+  TIMEOUT on first run (400s)
+
+[6/50] mitchell_16x16_binary | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_16x16_binary  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=512, |A|=5, iter=16, runs=10
+  t_build: 14.1509 ± 0.9987s
+  t_vi:    80.0984 ± 9.4956s
+  t_total: 94.2493 ± 10.1565s
+
+[7/50] mitchell_2x3_binary | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_2x3_binary  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=8, |A|=5, iter=3, runs=10
+  t_build: 0.0811 ± 0.1192s
+  t_vi:    0.1370 ± 0.0092s
+  t_total: 0.2181 ± 0.1172s
+
+[8/50] mitchell_2x3_binary | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_2x3_binary  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=8, |A|=5, iter=3, runs=10
+  t_build: 0.0464 ± 0.0049s
+  t_vi:    0.0627 ± 0.0040s
+  t_total: 0.1091 ± 0.0051s
+
+
+[9/50] mitchell_2x3_binary | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_2x3_binary  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=8, |A|=5, iter=3, runs=10
+  t_build: 0.0451 ± 0.0033s
+  t_vi:    0.0107 ± 0.0002s
+  t_total: 0.0558 ± 0.0034s
+
+[10/50] mitchell_32x32_binary | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_32x32_binary  Backend: ddnnf  gamma=0.9  eps=0.01
+  TIMEOUT on first run (400s)
+
+[11/50] mitchell_32x32_binary | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_32x32_binary  Backend: darwiche  gamma=0.9  eps=0.01
+  TIMEOUT on first run (400s)
+
+[12/50] mitchell_32x32_binary | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_32x32_binary  Backend: sdd  gamma=0.9  eps=0.01
+  TIMEOUT on first run (400s)
+
+[13/50] mitchell_3x3_binary | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_3x3_binary  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=16, |A|=5, iter=3, runs=10
+  t_build: 0.0948 ± 0.0073s
+  t_vi:    0.7100 ± 0.0363s
+  t_total: 0.8048 ± 0.0370s
+
+
+[14/50] mitchell_3x3_binary | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_3x3_binary  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=16, |A|=5, iter=3, runs=10
+  t_build: 0.1058 ± 0.0088s
+  t_vi:    0.2728 ± 0.0138s
+  t_total: 0.3786 ± 0.0161s
+
+[15/50] mitchell_3x3_binary | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_3x3_binary  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=16, |A|=5, iter=3, runs=10
+  t_build: 0.0707 ± 0.0011s
+  t_vi:    0.0289 ± 0.0001s
+  t_total: 0.0995 ± 0.0011s
+
+[16/50] mitchell_4x4_binary | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_4x4_binary  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=32, |A|=5, iter=4, runs=10
+  t_build: 0.2536 ± 0.0078s
+  t_vi:    4.1139 ± 0.0465s
+  t_total: 4.3675 ± 0.0473s
+
+
+[17/50] mitchell_4x4_binary | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_4x4_binary  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=32, |A|=5, iter=4, runs=10
+  t_build: 0.2541 ± 0.0163s
+  t_vi:    1.2620 ± 0.0193s
+  t_total: 1.5161 ± 0.0307s
+
+
+[18/50] mitchell_4x4_binary | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_4x4_binary  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=32, |A|=5, iter=4, runs=10
+  t_build: 0.1897 ± 0.0272s
+  t_vi:    0.1249 ± 0.0126s
+  t_total: 0.3146 ± 0.0365s
+
+[19/50] mitchell_6x6_binary | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_6x6_binary  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=64, |A|=5, iter=6, runs=10
+  t_build: 0.7898 ± 0.1015s
+  t_vi:    27.0154 ± 2.5196s
+  t_total: 27.8052 ± 2.5883s
+
+[20/50] mitchell_6x6_binary | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_6x6_binary  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=64, |A|=5, iter=6, runs=10
+  t_build: 0.6901 ± 0.0247s
+  t_vi:    6.2876 ± 0.1162s
+  t_total: 6.9777 ± 0.1255s
+
+[21/50] mitchell_6x6_binary | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_6x6_binary  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=64, |A|=5, iter=6, runs=10
+  t_build: 0.5585 ± 0.0188s
+  t_vi:    0.5544 ± 0.0241s
+  t_total: 1.1128 ± 0.0419s
+
+[22/50] mitchell_8x8_binary | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_8x8_binary  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=128, |A|=5, iter=8, runs=10
+  t_build: 1.9694 ± 0.2185s
+  t_vi:    129.7974 ± 6.2948s
+  t_total: 131.7669 ± 6.4293s
+
+[23/50] mitchell_8x8_binary | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_8x8_binary  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=128, |A|=5, iter=8, runs=10
+  t_build: 2.0084 ± 0.3221s
+  t_vi:    30.9331 ± 1.3205s
+  t_total: 32.9415 ± 1.2451s
+
+[24/50] mitchell_8x8_binary | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_8x8_binary  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=128, |A|=5, iter=8, runs=10
+  t_build: 1.5238 ± 0.2496s
+  t_vi:    2.6747 ± 0.3345s
+  t_total: 4.1985 ± 0.5672s
+
+[25/50] mitchell_12x12_factorized | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_12x12_factorized  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=144, |A|=5, iter=12, runs=10
+  t_build: 0.2219 ± 0.0566s
+  t_vi:    68.6544 ± 3.0819s
+  t_total: 68.8763 ± 3.0962s
+
+[26/50] mitchell_12x12_factorized | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_12x12_factorized  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=144, |A|=5, iter=12, runs=10
+  t_build: 0.1955 ± 0.0132s
+  t_vi:    5.1650 ± 0.1278s
+  t_total: 5.3605 ± 0.1211s
+
+[27/50] mitchell_12x12_factorized | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_12x12_factorized  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=144, |A|=5, iter=12, runs=10
+  t_build: 0.1748 ± 0.0223s
+  t_vi:    1.6466 ± 0.0506s
+  t_total: 1.8214 ± 0.0492s
+
+[28/50] mitchell_16x16_factorized | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_16x16_factorized  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=256, |A|=5, iter=16, runs=10
+  t_build: 0.2772 ± 0.0212s
+  t_vi:    244.6264 ± 2.2749s
+  t_total: 244.9036 ± 2.2762s
+
+[29/50] mitchell_16x16_factorized | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_16x16_factorized  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=256, |A|=5, iter=16, runs=10
+  t_build: 0.2957 ± 0.0333s
+  t_vi:    14.5295 ± 0.5576s
+  t_total: 14.8252 ± 0.5698s
+
+[30/50] mitchell_16x16_factorized | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_16x16_factorized  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=256, |A|=5, iter=16, runs=10
+  t_build: 0.2667 ± 0.0432s
+  t_vi:    4.8476 ± 0.4328s
+  t_total: 5.1143 ± 0.4597s
+
+[31/50] mitchell_2x3_factorized | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_2x3_factorized  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=6, |A|=5, iter=3, runs=10
+  t_build: 0.0433 ± 0.0078s
+  t_vi:    0.1936 ± 0.0127s
+  t_total: 0.2369 ± 0.0143s
+
+[32/50] mitchell_2x3_factorized | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_2x3_factorized  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=6, |A|=5, iter=3, runs=10
+  t_build: 0.0440 ± 0.0075s
+  t_vi:    0.0586 ± 0.0016s
+  t_total: 0.1026 ± 0.0083s
+
+[33/50] mitchell_2x3_factorized | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_2x3_factorized  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=6, |A|=5, iter=3, runs=10
+  t_build: 0.0481 ± 0.0178s
+  t_vi:    0.0113 ± 0.0003s
+  t_total: 0.0594 ± 0.0179s
+
+[34/50] mitchell_32x32_factorized | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_32x32_factorized  Backend: ddnnf  gamma=0.9  eps=0.01
+  TIMEOUT on first run (400s)
+
+[35/50] mitchell_32x32_factorized | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_32x32_factorized  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=1024, |A|=5, iter=32, runs=10
+  t_build: 0.8182 ± 0.1100s
+  t_vi:    188.2856 ± 10.0801s
+  t_total: 189.1038 ± 10.0670s
+
+[36/50] mitchell_32x32_factorized | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_32x32_factorized  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=1024, |A|=5, iter=32, runs=10
+  t_build: 0.6663 ± 0.0803s
+  t_vi:    58.2703 ± 3.7797s
+  t_total: 58.9366 ± 3.7895s
+
+[37/50] mitchell_3x3_factorized | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_3x3_factorized  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=9, |A|=5, iter=3, runs=10
+  t_build: 0.0476 ± 0.0016s
+  t_vi:    0.4563 ± 0.0161s
+  t_total: 0.5039 ± 0.0153s
+
+[38/50] mitchell_3x3_factorized | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_3x3_factorized  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=9, |A|=5, iter=3, runs=10
+  t_build: 0.0572 ± 0.0289s
+  t_vi:    0.1173 ± 0.0032s
+  t_total: 0.1745 ± 0.0288s
+
+[39/50] mitchell_3x3_factorized | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_3x3_factorized  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=9, |A|=5, iter=3, runs=10
+  t_build: 0.0476 ± 0.0051s
+  t_vi:    0.0195 ± 0.0004s
+  t_total: 0.0671 ± 0.0052s
+
+[40/50] mitchell_4x4_factorized | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_4x4_factorized  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=16, |A|=5, iter=4, runs=10
+  t_build: 0.0633 ± 0.0137s
+  t_vi:    1.0796 ± 0.0253s
+  t_total: 1.1428 ± 0.0241s
+
+[41/50] mitchell_4x4_factorized | darwiche | γ=0.9 | ε=0.01
+
+
+[42/50] mitchell_4x4_factorized | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_4x4_factorized  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=16, |A|=5, iter=4, runs=10
+  t_build: 0.0577 ± 0.0021s
+  t_vi:    0.0425 ± 0.0017s
+  t_total: 0.1002 ± 0.0034s
+
+[43/50] mitchell_6x6_factorized | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_6x6_factorized  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=36, |A|=5, iter=6, runs=10
+  t_build: 0.0823 ± 0.0043s
+  t_vi:    4.1384 ± 0.1409s
+  t_total: 4.2207 ± 0.1417s
+
+[44/50] mitchell_6x6_factorized | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_6x6_factorized  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=36, |A|=5, iter=6, runs=10
+  t_build: 0.0809 ± 0.0024s
+  t_vi:    0.6205 ± 0.0320s
+  t_total: 0.7015 ± 0.0312s
+
+[45/50] mitchell_6x6_factorized | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_6x6_factorized  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=36, |A|=5, iter=6, runs=10
+  t_build: 0.0869 ± 0.0255s
+  t_vi:    0.1574 ± 0.0099s
+  t_total: 0.2443 ± 0.0278s
+
+[46/50] mitchell_8x8_factorized | ddnnf | γ=0.9 | ε=0.01
+
+  Model: mitchell_8x8_factorized  Backend: ddnnf  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=64, |A|=5, iter=8, runs=10
+  t_build: 0.1223 ± 0.0254s
+  t_vi:    10.6890 ± 0.5592s
+  t_total: 10.8113 ± 0.5654s
+
+[47/50] mitchell_8x8_factorized | darwiche | γ=0.9 | ε=0.01
+
+  Model: mitchell_8x8_factorized  Backend: darwiche  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=64, |A|=5, iter=8, runs=10
+  t_build: 0.1167 ± 0.0135s
+  t_vi:    1.2779 ± 0.0495s
+  t_total: 1.3947 ± 0.0445s
+
+
+[48/50] mitchell_8x8_factorized | sdd | γ=0.9 | ε=0.01
+
+  Model: mitchell_8x8_factorized  Backend: sdd  gamma=0.9  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=64, |A|=5, iter=8, runs=10
+  t_build: 0.1017 ± 0.0092s
+  t_vi:    0.4052 ± 0.0305s
+  t_total: 0.5070 ± 0.0327s
+
+[49/50] russell_3x4_factorized | ddnnf | γ=1.0 | ε=0.01
+
+  Model: russell_3x4_factorized  Backend: ddnnf  gamma=1.0  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=11, |A|=5, iter=43, runs=10
+  t_build: 0.0615 ± 0.0029s
+  t_vi:    1.0323 ± 0.0092s
+  t_total: 1.0938 ± 0.0093s
+
+[50/50] russell_3x4_factorized | darwiche | γ=1.0 | ε=0.01
+
+  Model: russell_3x4_factorized  Backend: darwiche  gamma=1.0  eps=0.01
+    ... completed 5/10 measured runs
+    ... completed 10/10 measured runs
+  |S|=11, |A|=5, iter=43, runs=10
+  t_build: 0.0640 ± 0.0060s
+  t_vi:    0.2161 ± 0.0009s
+  t_total: 0.2801 ± 0.0060s
+
+
+======================================================================
+EXPERIMENT COMPLETE
+======================================================================
+  OK:       30
+  Failed:   18
+  Timeout:  2
+  Output:   experiment_output/

@@ -49,95 +49,6 @@
     \field{year}{2007}
   \endentry
 
-  \entry{sato1995statistical}{inproceedings}{}{}
-    \name{author}{1}{}{%
-      {{hash=ST}{%
-         family={Sato},
-         familyi={S\bibinitperiod},
-         given={Taisuke},
-         giveni={T\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Citeseer}%
-    }
-    \strng{namehash}{ST1}
-    \strng{fullhash}{ST1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the 12th International Conference on Logic Programming (ICLP'95)}
-    \field{title}{A statistical learning method for logic programs with distribution semantics}
-    \field{year}{1995}
-  \endentry
-
-  \entry{fierens2015inference}{article}{}{}
-    \name{author}{8}{}{%
-      {{hash=FD}{%
-         family={Fierens},
-         familyi={F\bibinitperiod},
-         given={Daan},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=VdBG}{%
-         prefix={Van\bibnamedelima den},
-         prefixi={V\bibinitperiod\bibinitdelim d\bibinitperiod},
-         family={Broeck},
-         familyi={B\bibinitperiod},
-         given={Guy},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=RJ}{%
-         family={Renkens},
-         familyi={R\bibinitperiod},
-         given={Joris},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=SD}{%
-         family={Shterionov},
-         familyi={S\bibinitperiod},
-         given={Dimitar},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=GB}{%
-         family={Gutmann},
-         familyi={G\bibinitperiod},
-         given={Bernd},
-         giveni={B\bibinitperiod},
-      }}%
-      {{hash=TI}{%
-         family={Thon},
-         familyi={T\bibinitperiod},
-         given={Ingo},
-         giveni={I\bibinitperiod},
-      }}%
-      {{hash=JG}{%
-         family={Janssens},
-         familyi={J\bibinitperiod},
-         given={Gerda},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=DRL}{%
-         family={De\bibnamedelima Raedt},
-         familyi={D\bibinitperiod\bibinitdelim R\bibinitperiod},
-         given={Luc},
-         giveni={L\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Cambridge University Press}%
-    }
-    \strng{namehash}{FD+1}
-    \strng{fullhash}{FDBGVdRJSDGBTIJGDRL1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{3}
-    \field{pages}{358\bibrangedash 401}
-    \field{title}{Inference and learning in probabilistic logic programs using weighted Boolean formulas}
-    \field{volume}{15}
-    \field{journaltitle}{Theory and Practice of Logic Programming}
-    \field{year}{2015}
-  \endentry
-
   \entry{bellman1957dynamic}{book}{}{}
     \name{author}{1}{}{%
       {{hash=BR}{%
@@ -220,6 +131,222 @@
     \field{year}{2016}
   \endentry
 
+  \entry{boutilier1999decision}{article}{}{}
+    \name{author}{3}{}{%
+      {{hash=BC}{%
+         family={Boutilier},
+         familyi={B\bibinitperiod},
+         given={Craig},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=DT}{%
+         family={Dean},
+         familyi={D\bibinitperiod},
+         given={Thomas},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=HS}{%
+         family={Hanks},
+         familyi={H\bibinitperiod},
+         given={Steve},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BCDTHS1}
+    \strng{fullhash}{BCDTHS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{1\bibrangedash 94}
+    \field{title}{Decision-theoretic planning: Structural assumptions and computational leverage}
+    \field{volume}{11}
+    \field{journaltitle}{Journal of Artificial Intelligence Research}
+    \field{year}{1999}
+  \endentry
+
+  \entry{hoey1999spudd}{inproceedings}{}{}
+    \name{author}{4}{}{%
+      {{hash=HJ}{%
+         family={Hoey},
+         familyi={H\bibinitperiod},
+         given={Jesse},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SAR}{%
+         family={St-Aubin},
+         familyi={S\bibinithyphendelim A\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=HA}{%
+         family={Hu},
+         familyi={H\bibinitperiod},
+         given={Alan},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=BC}{%
+         family={Boutilier},
+         familyi={B\bibinitperiod},
+         given={Craig},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HJ+1}
+    \strng{fullhash}{HJSARHABC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 15th Conference on Uncertainty in Artificial Intelligence (UAI-99)}
+    \field{pages}{279\bibrangedash 288}
+    \field{title}{SPUDD: Stochastic Planning using Decision Diagrams}
+    \field{year}{1999}
+  \endentry
+
+  \entry{nitti2016planning}{article}{}{}
+    \name{author}{3}{}{%
+      {{hash=ND}{%
+         family={Nitti},
+         familyi={N\bibinitperiod},
+         given={Davide},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=BV}{%
+         family={Belle},
+         familyi={B\bibinitperiod},
+         given={Vaishak},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=DRL}{%
+         family={De\bibnamedelima Raedt},
+         familyi={D\bibinitperiod\bibinitdelim R\bibinitperiod},
+         given={Luc},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{NDBVDRL1}
+    \strng{fullhash}{NDBVDRL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{2-3}
+    \field{pages}{327\bibrangedash 342}
+    \field{title}{Planning in discrete and continuous Markov decision processes by probabilistic programming}
+    \field{volume}{104}
+    \field{journaltitle}{Machine Learning}
+    \field{year}{2016}
+  \endentry
+
+  \entry{Avilés31122024}{article}{}{}
+    \name{author}{7}{}{%
+      {{hash=AH}{%
+         family={Avilés},
+         familyi={A\bibinitperiod},
+         given={Héctor},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=NM}{%
+         family={Negrete},
+         familyi={N\bibinitperiod},
+         given={Marco},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=RA}{%
+         family={Reyes},
+         familyi={R\bibinitperiod},
+         given={Alberto},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MR}{%
+         family={Machucho},
+         familyi={M\bibinitperiod},
+         given={Rubén},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=RK}{%
+         family={Rivera},
+         familyi={R\bibinitperiod},
+         given={Karelly},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=dlGG}{%
+         prefix={de-la},
+         prefixi={d\bibinithyphendelim l\bibinitperiod},
+         family={Garza},
+         familyi={G\bibinitperiod},
+         given={Gloria},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=PA}{%
+         family={Petrilli},
+         familyi={P\bibinitperiod},
+         given={Alberto},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Taylor \& Francis}%
+    }
+    \strng{namehash}{AH+1}
+    \strng{fullhash}{AHNMRAMRRKGGdlPA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{2304942}
+    \field{title}{Autonomous Behavior Selection For Self-driving Cars Using Probabilistic Logic Factored Markov Decision Processes}
+    \field{volume}{38}
+    \field{journaltitle}{Applied Artificial Intelligence}
+    \field{year}{2024}
+  \endentry
+
+  \entry{mitchell1997machine}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=MTM}{%
+         family={Mitchell},
+         familyi={M\bibinitperiod},
+         given={Tom\bibnamedelima M.},
+         giveni={T\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {McGraw-Hill}%
+    }
+    \strng{namehash}{MTM1}
+    \strng{fullhash}{MTM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Machine Learning}
+    \list{location}{1}{%
+      {New York}%
+    }
+    \field{year}{1997}
+  \endentry
+
+  \entry{sutton2018reinforcement}{book}{}{}
+    \name{author}{2}{}{%
+      {{hash=SRS}{%
+         family={Sutton},
+         familyi={S\bibinitperiod},
+         given={Richard\bibnamedelima S},
+         giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=BAG}{%
+         family={Barto},
+         familyi={B\bibinitperiod},
+         given={Andrew\bibnamedelima G},
+         giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MIT press}%
+    }
+    \strng{namehash}{SRSBAG1}
+    \strng{fullhash}{SRSBAG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Reinforcement learning: An introduction}
+    \field{year}{2018}
+  \endentry
+
   \entry{vennekens2004lpads}{inproceedings}{}{}
     \name{author}{3}{}{%
       {{hash=VJ}{%
@@ -288,43 +415,6 @@
     \field{volume}{121}
     \field{journaltitle}{Artificial Intelligence}
     \field{year}{2000}
-  \endentry
-
-  \entry{hoey1999spudd}{inproceedings}{}{}
-    \name{author}{4}{}{%
-      {{hash=HJ}{%
-         family={Hoey},
-         familyi={H\bibinitperiod},
-         given={Jesse},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=SAR}{%
-         family={St-Aubin},
-         familyi={S\bibinithyphendelim A\bibinitperiod},
-         given={Robert},
-         giveni={R\bibinitperiod},
-      }}%
-      {{hash=HA}{%
-         family={Hu},
-         familyi={H\bibinitperiod},
-         given={Alan},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=BC}{%
-         family={Boutilier},
-         familyi={B\bibinitperiod},
-         given={Craig},
-         giveni={C\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{HJ+1}
-    \strng{fullhash}{HJSARHABC1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the 15th Conference on Uncertainty in Artificial Intelligence (UAI-99)}
-    \field{pages}{279\bibrangedash 288}
-    \field{title}{SPUDD: Stochastic Planning using Decision Diagrams}
-    \field{year}{1999}
   \endentry
 
   \entry{sanner2010rddl}{unpublished}{}{}
@@ -419,193 +509,6 @@
     \field{year}{2010}
   \endentry
 
-  \entry{darwiche2002knowledge}{article}{}{}
-    \name{author}{2}{}{%
-      {{hash=DA}{%
-         family={Darwiche},
-         familyi={D\bibinitperiod},
-         given={Adnan},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=MP}{%
-         family={Marquis},
-         familyi={M\bibinitperiod},
-         given={Pierre},
-         giveni={P\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{DAMP1}
-    \strng{fullhash}{DAMP1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{229\bibrangedash 264}
-    \field{title}{A knowledge compilation map}
-    \field{volume}{17}
-    \field{journaltitle}{Journal of Artificial Intelligence Research}
-    \field{year}{2002}
-  \endentry
-
-  \entry{darwiche2011sdd}{inproceedings}{}{}
-    \name{author}{1}{}{%
-      {{hash=DA}{%
-         family={Darwiche},
-         familyi={D\bibinitperiod},
-         given={Adnan},
-         giveni={A\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{DA1}
-    \strng{fullhash}{DA1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the 22nd International Joint Conference on Artificial Intelligence (IJCAI)}
-    \field{pages}{819\bibrangedash 826}
-    \field{title}{SDD: A New Canonical Representation of Propositional Knowledge Bases}
-    \field{year}{2011}
-  \endentry
-
-  \entry{vlasselaer2016problog2}{article}{}{}
-    \name{author}{4}{}{%
-      {{hash=VJ}{%
-         family={Vlasselaer},
-         familyi={V\bibinitperiod},
-         given={Jonas},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=RJ}{%
-         family={Renkens},
-         familyi={R\bibinitperiod},
-         given={Joris},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=VdBG}{%
-         prefix={Van\bibnamedelima den},
-         prefixi={V\bibinitperiod\bibinitdelim d\bibinitperiod},
-         family={Broeck},
-         familyi={B\bibinitperiod},
-         given={Guy},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=DRL}{%
-         family={De\bibnamedelima Raedt},
-         familyi={D\bibinitperiod\bibinitdelim R\bibinitperiod},
-         given={Luc},
-         giveni={L\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Cambridge University Press}%
-    }
-    \strng{namehash}{VJ+1}
-    \strng{fullhash}{VJRJBGVdDRL1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{5-6}
-    \field{pages}{673\bibrangedash 689}
-    \field{title}{ProbLog2: Inference and learning in a probabilistic logic programming language}
-    \field{volume}{16}
-    \field{journaltitle}{Theory and Practice of Logic Programming}
-    \field{year}{2016}
-  \endentry
-
-  \entry{boutilier1999decision}{article}{}{}
-    \name{author}{3}{}{%
-      {{hash=BC}{%
-         family={Boutilier},
-         familyi={B\bibinitperiod},
-         given={Craig},
-         giveni={C\bibinitperiod},
-      }}%
-      {{hash=DT}{%
-         family={Dean},
-         familyi={D\bibinitperiod},
-         given={Thomas},
-         giveni={T\bibinitperiod},
-      }}%
-      {{hash=HS}{%
-         family={Hanks},
-         familyi={H\bibinitperiod},
-         given={Steve},
-         giveni={S\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{BCDTHS1}
-    \strng{fullhash}{BCDTHS1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{1\bibrangedash 94}
-    \field{title}{Decision-theoretic planning: Structural assumptions and computational leverage}
-    \field{volume}{11}
-    \field{journaltitle}{Journal of Artificial Intelligence Research}
-    \field{year}{1999}
-  \endentry
-
-  \entry{nitti2016planning}{article}{}{}
-    \name{author}{3}{}{%
-      {{hash=ND}{%
-         family={Nitti},
-         familyi={N\bibinitperiod},
-         given={Davide},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=BV}{%
-         family={Belle},
-         familyi={B\bibinitperiod},
-         given={Vaishak},
-         giveni={V\bibinitperiod},
-      }}%
-      {{hash=DRL}{%
-         family={De\bibnamedelima Raedt},
-         familyi={D\bibinitperiod\bibinitdelim R\bibinitperiod},
-         given={Luc},
-         giveni={L\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Springer}%
-    }
-    \strng{namehash}{NDBVDRL1}
-    \strng{fullhash}{NDBVDRL1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{2-3}
-    \field{pages}{327\bibrangedash 342}
-    \field{title}{Planning in discrete and continuous Markov decision processes by probabilistic programming}
-    \field{volume}{104}
-    \field{journaltitle}{Machine Learning}
-    \field{year}{2016}
-  \endentry
-
-  \entry{riguzzi2013well}{article}{}{}
-    \name{author}{2}{}{%
-      {{hash=RF}{%
-         family={Riguzzi},
-         familyi={R\bibinitperiod},
-         given={Fabrizio},
-         giveni={F\bibinitperiod},
-      }}%
-      {{hash=ST}{%
-         family={Swift},
-         familyi={S\bibinitperiod},
-         given={Terrance},
-         giveni={T\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Cambridge University Press}%
-    }
-    \strng{namehash}{RFST1}
-    \strng{fullhash}{RFST1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{2}
-    \field{pages}{279\bibrangedash 302}
-    \field{title}{Well-definedness and efficient inference for probabilistic logic programming under the distribution semantics}
-    \field{volume}{13}
-    \field{journaltitle}{Theory and Practice of Logic Programming}
-    \field{year}{2013}
-  \endentry
-
   \entry{vennekens2009cplogic}{article}{}{}
     \name{author}{3}{}{%
       {{hash=VJ}{%
@@ -666,53 +569,310 @@
     \field{year}{1997}
   \endentry
 
-  \entry{sutton2018reinforcement}{book}{}{}
+  \entry{darwiche2002knowledge}{article}{}{}
     \name{author}{2}{}{%
-      {{hash=SRS}{%
-         family={Sutton},
-         familyi={S\bibinitperiod},
-         given={Richard\bibnamedelima S},
-         giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+      {{hash=DA}{%
+         family={Darwiche},
+         familyi={D\bibinitperiod},
+         given={Adnan},
+         giveni={A\bibinitperiod},
       }}%
-      {{hash=BAG}{%
-         family={Barto},
-         familyi={B\bibinitperiod},
-         given={Andrew\bibnamedelima G},
-         giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod},
+      {{hash=MP}{%
+         family={Marquis},
+         familyi={M\bibinitperiod},
+         given={Pierre},
+         giveni={P\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {MIT press}%
-    }
-    \strng{namehash}{SRSBAG1}
-    \strng{fullhash}{SRSBAG1}
+    \strng{namehash}{DAMP1}
+    \strng{fullhash}{DAMP1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{Reinforcement learning: An introduction}
-    \field{year}{2018}
+    \field{pages}{229\bibrangedash 264}
+    \field{title}{A knowledge compilation map}
+    \field{volume}{17}
+    \field{journaltitle}{Journal of Artificial Intelligence Research}
+    \field{year}{2002}
   \endentry
 
-  \entry{mitchell1997machine}{book}{}{}
+  \entry{darwiche2011sdd}{inproceedings}{}{}
     \name{author}{1}{}{%
-      {{hash=MTM}{%
-         family={Mitchell},
-         familyi={M\bibinitperiod},
-         given={Tom\bibnamedelima M.},
-         giveni={T\bibinitperiod\bibinitdelim M\bibinitperiod},
+      {{hash=DA}{%
+         family={Darwiche},
+         familyi={D\bibinitperiod},
+         given={Adnan},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DA1}
+    \strng{fullhash}{DA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 22nd International Joint Conference on Artificial Intelligence (IJCAI)}
+    \field{pages}{819\bibrangedash 826}
+    \field{title}{SDD: A New Canonical Representation of Propositional Knowledge Bases}
+    \field{year}{2011}
+  \endentry
+
+  \entry{darwiche2003differential}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=DA}{%
+         family={Darwiche},
+         familyi={D\bibinitperiod},
+         given={Adnan},
+         giveni={A\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
-      {McGraw-Hill}%
+      {ACM}%
     }
-    \strng{namehash}{MTM1}
-    \strng{fullhash}{MTM1}
+    \strng{namehash}{DA1}
+    \strng{fullhash}{DA1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{Machine Learning}
-    \list{location}{1}{%
-      {New York}%
+    \field{number}{3}
+    \field{pages}{280\bibrangedash 305}
+    \field{title}{A differential approach to inference in Bayesian networks}
+    \field{volume}{50}
+    \field{journaltitle}{Journal of the ACM}
+    \field{year}{2003}
+  \endentry
+
+  \entry{vlasselaer2015problog2}{inproceedings}{}{}
+    \name{author}{7}{}{%
+      {{hash=DA}{%
+         family={Dries},
+         familyi={D\bibinitperiod},
+         given={Anton},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KA}{%
+         family={Kimmig},
+         familyi={K\bibinitperiod},
+         given={Angelika},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MW}{%
+         family={Meert},
+         familyi={M\bibinitperiod},
+         given={Wannes},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=RJ}{%
+         family={Renkens},
+         familyi={R\bibinitperiod},
+         given={Joris},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=VdBG}{%
+         prefix={Van\bibnamedelima den},
+         prefixi={V\bibinitperiod\bibinitdelim d\bibinitperiod},
+         family={Broeck},
+         familyi={B\bibinitperiod},
+         given={Guy},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=VJ}{%
+         family={Vlasselaer},
+         familyi={V\bibinitperiod},
+         given={Jonas},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=DRL}{%
+         family={De\bibnamedelima Raedt},
+         familyi={D\bibinitperiod\bibinitdelim R\bibinitperiod},
+         given={Luc},
+         giveni={L\bibinitperiod},
+      }}%
     }
-    \field{year}{1997}
+    \name{editor}{8}{}{%
+      {{hash=BA}{%
+         family={Bifet},
+         familyi={B\bibinitperiod},
+         given={Albert},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={May},
+         familyi={M\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=ZB}{%
+         family={Zadrozny},
+         familyi={Z\bibinitperiod},
+         given={Bianca},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=GR}{%
+         family={Gavalda},
+         familyi={G\bibinitperiod},
+         given={Ricard},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=PD}{%
+         family={Pedreschi},
+         familyi={P\bibinitperiod},
+         given={Dino},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=BF}{%
+         family={Bonchi},
+         familyi={B\bibinitperiod},
+         given={Francesco},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=CJ}{%
+         family={Cardoso},
+         familyi={C\bibinitperiod},
+         given={Jaime},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Spiliopoulou},
+         familyi={S\bibinitperiod},
+         given={Myra},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer International Publishing}%
+    }
+    \strng{namehash}{DA+1}
+    \strng{fullhash}{DAKAMWRJBGVdVJDRL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Machine Learning and Knowledge Discovery in Databases}
+    \field{pages}{312\bibrangedash 315}
+    \field{title}{ProbLog2: Probabilistic Logic Programming}
+    \list{location}{1}{%
+      {Cham}%
+    }
+    \field{year}{2015}
+  \endentry
+
+  \entry{fierens2015inference}{article}{}{}
+    \name{author}{8}{}{%
+      {{hash=FD}{%
+         family={Fierens},
+         familyi={F\bibinitperiod},
+         given={Daan},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=VdBG}{%
+         prefix={Van\bibnamedelima den},
+         prefixi={V\bibinitperiod\bibinitdelim d\bibinitperiod},
+         family={Broeck},
+         familyi={B\bibinitperiod},
+         given={Guy},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=RJ}{%
+         family={Renkens},
+         familyi={R\bibinitperiod},
+         given={Joris},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SD}{%
+         family={Shterionov},
+         familyi={S\bibinitperiod},
+         given={Dimitar},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=GB}{%
+         family={Gutmann},
+         familyi={G\bibinitperiod},
+         given={Bernd},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=TI}{%
+         family={Thon},
+         familyi={T\bibinitperiod},
+         given={Ingo},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=JG}{%
+         family={Janssens},
+         familyi={J\bibinitperiod},
+         given={Gerda},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=DRL}{%
+         family={De\bibnamedelima Raedt},
+         familyi={D\bibinitperiod\bibinitdelim R\bibinitperiod},
+         given={Luc},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Cambridge University Press}%
+    }
+    \strng{namehash}{FD+1}
+    \strng{fullhash}{FDBGVdRJSDGBTIJGDRL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{3}
+    \field{pages}{358\bibrangedash 401}
+    \field{title}{Inference and learning in probabilistic logic programs using weighted Boolean formulas}
+    \field{volume}{15}
+    \field{journaltitle}{Theory and Practice of Logic Programming}
+    \field{year}{2015}
+  \endentry
+
+  \entry{russell2016artificial}{book}{}{}
+    \name{author}{2}{}{%
+      {{hash=RSJ}{%
+         family={Russell},
+         familyi={R\bibinitperiod},
+         given={Stuart\bibnamedelima Jonathan},
+         giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=NP}{%
+         family={Norvig},
+         familyi={N\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \list{language}{1}{%
+      {English}%
+    }
+    \list{publisher}{1}{%
+      {Pearson Education}%
+    }
+    \keyw{artificial-intelligence etextbook real textbook}
+    \strng{namehash}{RSJNP1}
+    \strng{fullhash}{RSJNP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{Third}
+    \field{isbn}{9781292153964}
+    \field{title}{Artificial Intelligence: A Modern Approach}
+    \list{location}{1}{%
+      {England}%
+    }
+    \field{year}{2016}
+  \endentry
+
+  \entry{sato1995statistical}{inproceedings}{}{}
+    \name{author}{1}{}{%
+      {{hash=ST}{%
+         family={Sato},
+         familyi={S\bibinitperiod},
+         given={Taisuke},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Citeseer}%
+    }
+    \strng{namehash}{ST1}
+    \strng{fullhash}{ST1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 12th International Conference on Logic Programming (ICLP'95)}
+    \field{title}{A statistical learning method for logic programs with distribution semantics}
+    \field{year}{1995}
   \endentry
 \enddatalist
 \endinput

@@ -70,6 +70,7 @@
 % Por defecto este documento utiliza el formato IEEEtr para formatear las referencias. Si algun asesor requiere formato APA, solo comente la siguiente linea y descomente la linea debajo. Tambien para que las citas funcionen de manera adecuada, el paquete label debe tener las opciones mostradas, o en su defecto, el año en el listado no lo muestra correctamente \usepackage[english, american]{babel}
 
 % Para utilizar el formato de citas IEEE y comentar los dos parrafos siguientes
+\usepackage{csquotes}
 \usepackage[backend=bibtex,sorting=none]{biblatex}
 % Para utilizar el formato APA, sugiero comentar la linea anterior y descomentar las dos proximas lineas
 %\usepackage[backend=biber,style=apa]{biblatex}
@@ -81,16 +82,17 @@
   \let\lbx@finalnamedelim=\lbx@es@smartand
   \let\lbx@finallistdelim=\lbx@es@smartand
 }
-\renewbibmacro*{name:delim:apa:family-given}[1]{%
-  \ifnumgreater{\value{listcount}}{\value{liststart}}
-    {\ifboolexpr{
-       test {\ifnumless{\value{listcount}}{\value{liststop}}}
-       or
-       test \ifmorenames
-     }
-       {\printdelim{multinamedelim}}
-       {\lbx@finalnamedelim{#1}}}
-    {}}
+% Esta macro aplica a estilo APA; para IEEE (backend=bibtex) se deja desactivada.
+% \renewbibmacro*{name:delim:apa:family-given}[1]{%
+%   \ifnumgreater{\value{listcount}}{\value{liststart}}
+%     {\ifboolexpr{
+%        test {\ifnumless{\value{listcount}}{\value{liststop}}}
+%        or
+%        test \ifmorenames
+%      }
+%        {\printdelim{multinamedelim}}
+%        {\lbx@finalnamedelim{#1}}}
+%     {}}
 \makeatother
 
 
@@ -531,7 +533,6 @@ This thesis reports the development of an extension to the core of the MDP-ProbL
 \clearpage
 \input{03marco_teorico.tex}
 
-\clearpage
 \input{04diseno.tex}
 
 \clearpage
