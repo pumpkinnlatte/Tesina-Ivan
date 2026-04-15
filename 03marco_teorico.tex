@@ -32,11 +32,11 @@
 \section{Marco Teórico}
 \label{ch:marco-teorico}
 
-El capítulo anterior estableció que MDP-ProbLog integra la programación lógica probabilística con la resolución de MDPs factorizados. Este capítulo presenta los fundamentos formales para comprender el \textit{framework} y la extensión propuesta. Los conceptos se organizan desde los fundamentos de la lógica hasta el planeamiento bajo incertidumbre.
+El capítulo anterior identificó que MDP-ProbLog carece de soporte nativo para variables de estado multivaluadas y que corregirlo requiere intervenir su arquitectura. Este capítulo recorre los formalismos necesarios para comprender esa intervención, organizados en tres líneas ascendentes.
 
-La Sección~\ref{sec:mt-pl} establece las nociones básicas de programación lógica. Sobre esa base, las Secciones~\ref{sec:mt-plp} y~\ref{sec:mt-problog} introducen la incertidumbre mediante la semántica de distribución y el lenguaje ProbLog. La Sección~\ref{sec:mt-ads} presenta las Disyunciones Anotadas, que incorporan la exclusión mutua como propiedad nativa del formalismo. La Sección~\ref{sec:mt-wmc} describe el Conteo de Modelos Ponderados y la compilación de conocimiento. Estos mecanismos transforman la inferencia probabilística en un cálculo tratable.
+La primera va de la programación lógica a ProbLog y establece las bases mínimas para entender cómo MDP-ProbLog construye y evalúa sus programas. La segunda introduce las Disyunciones Anotadas, que garantizan la exclusión mutua entre los valores de una variable por construcción semántica, y la compilación de conocimiento, que convierte la inferencia probabilística en un cálculo lineal. La tercera formaliza los MDPs y su representación factorizada, y culmina con MDP-ProbLog como punto de llegada natural de todo lo anterior.
 
-Las Secciones~\ref{sec:mt-mdps} y~\ref{sec:mt-factorizados} formalizan los Procesos de Decisión de Markov y su versión factorizada. Esta formalización hace visible el costo de representar variables categóricas con fluentes booleanos. Sobre esa base, la Sección~\ref{sec:mt-mdpproblog} presenta el \textit{framework} MDP-ProbLog. El Capítulo~\ref{ch:diseno-implementacion} describe la extensión de su arquitectura para soportar fluentes multivaluados.
+A lo largo del capítulo, los conceptos se anclan en el grid estocástico de la Sección~\ref{sec:mt-dominio}, el mismo dominio de referencia de la introducción. Los ejemplos escalan en complejidad conforme avanza el texto, de modo que el lector llega al Capítulo~\ref{ch:diseno-implementacion} con una imagen concreta del problema que la extensión resuelve.
 
 % EXPLICACION-FIG 3.1: Diagrama del grid 2x3 de Russell y Norvig adaptado.
 % Se muestra:
@@ -143,7 +143,7 @@ verdadero & 0.2 & falso     & \{\texttt{fallo\_norte}, \texttt{pos(1,1)}\} \\
 
 La probabilidad de éxito es $P(\texttt{pos(2,1)}) = 0.8$: la suma de las probabilidades de los mundos donde la consulta es verdadera. La incertidumbre del hecho probabilístico se transmite, a través de las reglas, hasta la consulta.
 
-La Ecuación~\ref{eq:success-probability} suma sobre $2^k$ realizaciones, con $k$ el número de hechos probabilísticos. Esta suma es \#P-difícil en el caso general~\cite{fierens2015inference}. La compilación de conocimiento, descrita en la Sección~\ref{sec:mt-wmc}, convierte esta suma en una operación tratable.
+La Ecuación~\ref{eq:success-probability} suma sobre $2^k$ realizaciones, con $k$ el número de hechos probabilísticos. Esta suma es \#P-Hard en el caso general~\cite{fierens2015inference}. La compilación de conocimiento, descrita en la Sección~\ref{sec:mt-wmc}, convierte esta suma en una operación tratable.
 
 La semántica de distribución requiere un lenguaje que la haga operacional. La Sección~\ref{sec:mt-problog} presenta ProbLog, que implementa esta semántica.
 

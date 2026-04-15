@@ -72,7 +72,7 @@ esta estructura; la responsabilidad de cada módulo se detalla a continuación.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{figuras/arqui-original.png}
+    \includegraphics[width=0.80\textwidth]{figuras/arqui-original.png}
     \caption{Diagrama de la arquitectura original del framework MDP-ProbLog.}
     \label{fig:arquitectura-original}
 \end{figure}
@@ -83,9 +83,6 @@ y \texttt{value\_iteration.py}. Los módulos \texttt{engine.py} y
 \texttt{fluent.py} son independientes entre sí. Esta organización delimita el
 alcance de la extensión: \texttt{fluent.py} y \texttt{mdp.py} son los
 candidatos a modificación; \texttt{engine.py} permanece inalterado.
-
-
-\clearpage
 
 \subsubsection{Flujo de ejecución}
 \label{sec:di-flujo-ejecucion}
@@ -125,6 +122,7 @@ inyecta hechos probabilísticos independientes para cada fluente, presuponiendo
 que cada variable de estado tiene dominio $\{0, 1\}$. La Fase~5 recorre un
 espacio de estados construido como el producto cartesiano de factores binarios.
 La extensión modifica estas dos fases y la estructura de datos que las sustenta.
+
 
 \subsubsection{Limitaciones en la gestión de fluentes}
 \label{sec:di-limitaciones-gestion}
@@ -244,8 +242,6 @@ garantiza que cada índice $I \in [0, |\mathcal{S}| - 1]$ corresponde a exactame
 una combinación semánticamente válida. Los estados espurios son imposibles: la codificación no genera índices para
 combinaciones inválidas.
 
-\clearpage
-
 \subsubsection{Ejemplo mixed-radix}
 \label{sec:di-mixed-radix-ejemplo}
 
@@ -307,8 +303,6 @@ resto del \textit{framework}:
         por el evaluador a su posición $v_k$ para acumular el índice global del
         estado sucesor.
 \end{description}
-
-\clearpage
 
 El \texttt{FluentSchema} centraliza la gestión del espacio de estados; los demás
 módulos acceden a él exclusivamente por estas dos operaciones. El
@@ -544,9 +538,9 @@ la Iteración de Valor.
 %     estructura produce cada fase: FluentSchema, ClauseDB con dummy, circuito.
 %   Label sugerido: fig:pipeline-preparacion
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{figuras/pipeline-preparacion.png} 
+    \includegraphics[width=0.80\textwidth]{figuras/pipeline-preparacion.png} 
     \caption{pipeline de preparación. Se explica la ejecución del método \texttt{\_\_prepare()}}
     \label{fig:pipeline-preparación}
 \end{figure}
@@ -745,6 +739,8 @@ contribuciones produce el valor esperado completo en exactamente
 $|\mathcal{F}_0| \times |\mathcal{F}_1| = 6$ hojas, que coincide con el número
 de estados válidos del espacio.
 
+\clearpage
+
 La poda por umbral $\epsilon$ reduce este recorrido en transiciones
 cuasi-deterministas. Si una sola rama por factor concentra casi toda la masa
 probabilística, el árbol efectivo tiene profundidad~$m$ y solo 1 hoja, frente a
@@ -787,10 +783,10 @@ El factor $Q$ multiplica el trabajo por el número de consultas en cada evaluaci
 A medida que el número de factores de estado crece, $Q$ crece con él, y el costo
 de cada iteración de Bellman aumenta proporcionalmente.
 
-\subsubsection{La idea central: derivadas como respuestas}
+\subsubsection{Derivadas como respuestas}
 \label{sec:di-idea-darwiche}
 
-La redundancia del evaluador estándar tiene una causa precisa. Cada uno de los
+La redundancia del evaluador estándar tiene una causa concreta. Cada uno de los
 $Q$ recorridos recorre el circuito entero para extraer un único valor numérico,
 descartando la información estructural acumulada en los demás nodos. Si se
 pudiera preservar esa información entre consultas, bastaría con un recorrido
@@ -913,6 +909,8 @@ derivada parcial del producto respecto de $c_1$. La regla del nodo OR es más
 directa: ambos hijos reciben el gradiente del padre sin modificar, pues la
 derivada de una suma respecto de cualquier sumando es siempre~1.
 
+\clearpage
+
 \subsubsection{Implementación y activación}
 \label{sec:di-implementacion-darwiche}
 
@@ -927,10 +925,12 @@ pasadas se reduzcan a bucles simples sin ordenación explícita.
 
 \texttt{DarwicheDDNNFEvaluator} es una subclase de \texttt{problog.evaluator.Evaluator}
 que implementa la interfaz estándar de ProbLog con el evaluador de diferenciación.
+\begin{sloppypar}
 Su método \texttt{propagate()} aplica la evidencia, ejecuta la pasada ascendente y
 luego la descendente. Su método \texttt{evaluate\_all\_queries(queries)} extrae
 todas las marginales en $O(Q)$ según la Ecuación~\ref{eq:extraccion-marginal},
 sin ningún recorrido adicional del circuito.
+\end{sloppypar}
 
 El evaluador se activa con el parámetro \texttt{darwiche=True} al instanciar
 el \texttt{MDP}. Su uso está restringido al \textit{backend} d-DNNF; no es
@@ -956,8 +956,10 @@ La ganancia es proporcional a $Q$. Para un modelo con 8 consultas por par
 estado-acción ($Q = 8$), el costo de cada evaluación se reduce en un factor~8
 respecto al evaluador estándar. En dominios con espacios de estados grandes o
 muchas utilidades, donde $Q$ puede superar las decenas, esta reducción tiene un
-impacto directo en el tiempo de convergencia de la Iteración de Valor.
+impacto d
+irecto en el tiempo de convergencia de la Iteración de Valor.
 
+\clearpage
 
 % ------------------------------------------------------------------
 \subsection{Herramientas auxiliares}
@@ -975,15 +977,11 @@ resuelto, la extensión incorpora dos módulos de soporte: \texttt{CSVExporter} 
 
 \texttt{CSVExporter} serializa las estructuras del MDP y los resultados de la
 Iteración de Valor a archivos en formato CSV. El exportador recibe como entradas
-el objeto \texttt{MDP} preparado y el objeto resultado de la Iteración de Valor.
-Expone un método por estructura exportada. Con esta organización, el usuario solicita únicamente las salidas que necesite
+el objeto \texttt{MDP} preparado y el objeto resultado de la Iteración de Valor y expone un método por estructura exportada.
+ Con esta organización, el usuario solicita únicamente las salidas que necesite
 en cada análisis. El método
 \texttt{export\_all(vi)} actúa como orquestador e invoca todos los métodos en
-secuencia, omitiendo las exportaciones opcionales cuando la estructura
-correspondiente no está disponible. Cada archivo generado comienza con un
-encabezado de metadatos formado por líneas con prefijo \texttt{\#} que registran
-el tipo de contenido y la marca de tiempo de generación. La
-Tabla~\ref{tab:csv-exportaciones} lista los métodos y las estructuras que producen.
+secuencia. La Tabla~\ref{tab:csv-exportaciones} lista los métodos y las estructuras que producen.
 
 \begin{table}[ht]
 \centering
@@ -1077,9 +1075,10 @@ promedio.
 factorizada que utiliza el solver. Esta consistencia garantiza que la expansión de
 transiciones del exportador y el muestreo del simulador sean coherentes con los
 cálculos de la Iteración de Valor. La Sección~\ref{sec:di-retrocompatibilidad}
-verifica que estas modificaciones preservan el comportamiento del
+abarca la discusión sobre cómo es que estas modificaciones preservan el comportamiento del
 \textit{framework} sobre modelos booleanos existentes.
 
+\clearpage
 
 % ------------------------------------------------------------------
 \subsection{Retrocompatibilidad}

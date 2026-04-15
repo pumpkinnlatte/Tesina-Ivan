@@ -5,90 +5,89 @@
 \contentsline {section}{Índice}{\es@scroman {x}}{section*.3}%
 \contentsline {section}{\numberline {1}Introducción}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Antecedentes}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Definición del Problema}{4}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Objetivos}{5}{subsection.1.3}%
-\contentsline {subsubsection}{\numberline {1.3.1}Objetivo General}{5}{subsubsection.1.3.1}%
-\contentsline {subsubsection}{\numberline {1.3.2}Objetivos Específicos}{5}{subsubsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.4}Justificación}{6}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Alcances y Limitaciones}{7}{subsection.1.5}%
-\contentsline {subsubsection}{\numberline {1.5.1}Alcances}{7}{subsubsection.1.5.1}%
-\contentsline {subsubsection}{\numberline {1.5.2}Limitaciones}{8}{subsubsection.1.5.2}%
-\contentsline {section}{\numberline {2}Estado del Arte}{9}{section.2}%
-\contentsline {subsection}{\numberline {2.1}MDPs Factorizados y el Problema de la Representación de Estados}{9}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Programación Lógica Probabilística para la Resolución de MDPs}{10}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Disyunciones Anotadas como mecanismo de exclusión mutua}{11}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Compilación de conocimiento para inferencia eficiente}{11}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Análisis Comparativo}{12}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Conclusión del Estado del Arte}{13}{subsection.2.6}%
-\contentsline {section}{\numberline {3}Marco Teórico}{14}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Grid Estocástico}{14}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Programación Lógica}{15}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Programación Lógica Probabilística}{16}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Semántica de distribución}{16}{subsubsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.4}Lenguaje ProbLog}{17}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Disyunciones Anotadas}{18}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Conteo de Modelos Ponderados y Compilación de Conocimiento}{20}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Procesos de Decisión de Markov}{21}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}MDPs Factorizados y Fluentes de Estado}{23}{subsection.3.8}%
-\contentsline {subsection}{\numberline {3.9}El framework MDP-ProbLog}{23}{subsection.3.9}%
-\contentsline {section}{\numberline {4}Diseño e Implementación}{25}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Análisis de la arquitectura original}{25}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Componentes del sistema original}{25}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}Flujo de ejecución}{27}{subsubsection.4.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.3}Limitaciones en la gestión de fluentes}{27}{subsubsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.2}Esquema factorizado del espacio de estados}{28}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Modelo de datos}{28}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}Codificación \textit {mixed-radix}}{29}{subsubsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.3}Ejemplo mixed-radix}{30}{subsubsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.4}Operaciones relevantes}{30}{subsubsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.3}Clasificador automático de fluentes}{31}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Modos de declaración}{31}{subsubsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.2}El índice invertido de Disyunciones Anotadas}{31}{subsubsection.4.3.2}%
-\contentsline {subsubsection}{\numberline {4.3.3}Pipeline de clasificación}{32}{subsubsection.4.3.3}%
-\contentsline {subsubsection}{\numberline {4.3.4}Inferencia implícita de tipo}{32}{subsubsection.4.3.4}%
-\contentsline {subsection}{\numberline {4.4}Pipeline de preparación del MDP}{34}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Fases del pipeline}{34}{subsubsection.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.2}Hechos \textit {dummy} y condicionamiento por evidencia}{34}{subsubsection.4.4.2}%
-\contentsline {subsubsection}{\numberline {4.4.3}Corrección de la compilación doble}{36}{subsubsection.4.4.3}%
-\contentsline {subsubsection}{\numberline {4.4.4}Declaración de fluentes multivaluados}{36}{subsubsection.4.4.4}%
-\contentsline {subsection}{\numberline {4.5}Adaptación de la Iteración de Valor}{37}{subsection.4.5}%
-\contentsline {paragraph}{Descripción del algoritmo.}{38}{section*.18}%
-\contentsline {paragraph}{Ejemplo de ejecución.}{38}{section*.19}%
-\contentsline {subsection}{\numberline {4.6}Evaluador de Darwiche}{39}{subsection.4.6}%
-\contentsline {subsubsection}{\numberline {4.6.1}El costo de la evaluación estándar}{39}{subsubsection.4.6.1}%
-\contentsline {subsubsection}{\numberline {4.6.2}La idea central: derivadas como respuestas}{39}{subsubsection.4.6.2}%
-\contentsline {subsubsection}{\numberline {4.6.3}El algoritmo de diferenciación en dos pasadas}{40}{subsubsection.4.6.3}%
-\contentsline {paragraph}{Pasada ascendente.}{40}{section*.20}%
-\contentsline {paragraph}{Pasada descendente.}{40}{section*.21}%
-\contentsline {paragraph}{Extracción de marginales.}{41}{section*.22}%
-\contentsline {paragraph}{Ilustración del paso descendente.}{41}{section*.23}%
-\contentsline {subsubsection}{\numberline {4.6.4}Implementación y activación}{41}{subsubsection.4.6.4}%
-\contentsline {subsection}{\numberline {4.7}Herramientas auxiliares}{42}{subsection.4.7}%
-\contentsline {subsubsection}{\numberline {4.7.1}Exportador de resultados}{42}{subsubsection.4.7.1}%
-\contentsline {subsubsection}{\numberline {4.7.2}Simulador de trayectorias}{43}{subsubsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.8}Retrocompatibilidad}{44}{subsection.4.8}%
-\contentsline {section}{\numberline {5}Experimentación y Resultados}{46}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Diseño experimental}{46}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Dominios de evaluación}{46}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}Variables independientes}{46}{subsubsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.3}Protocolo de medición}{46}{subsubsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.2}Entorno de evaluación}{47}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Corrección funcional}{47}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}Verificación en el dominio Mitchell}{47}{subsubsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.4}Simplificación del modelado}{48}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Impacto computacional}{50}{subsection.5.5}%
-\contentsline {subsubsection}{\numberline {5.5.1}Tiempos de ejecución}{50}{subsubsection.5.5.1}%
-\contentsline {subsubsection}{\numberline {5.5.2}Cociente de tiempos entre codificaciones}{51}{subsubsection.5.5.2}%
-\contentsline {subsubsection}{\numberline {5.5.3}Comparación de configuraciones de inferencia}{51}{subsubsection.5.5.3}%
-\contentsline {subsection}{\numberline {5.6}Dominio Russell}{53}{subsection.5.6}%
-\contentsline {subsubsection}{\numberline {5.6.1}Verificación de la función de valor óptima}{53}{subsubsection.5.6.1}%
-\contentsline {subsection}{\numberline {5.7}Discusión}{54}{subsection.5.7}%
-\contentsline {section}{\numberline {6}Conclusiones}{55}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Síntesis del trabajo realizado}{55}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Contribuciones}{55}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Limitaciones técnicas identificadas}{56}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Trabajo futuro}{57}{subsection.6.4}%
-\contentsline {section}{Índice de figuras}{58}{Item.47}%
-\contentsline {section}{Índice de cuadros}{59}{section*.34}%
-\contentsline {section}{Índice de algoritmos}{60}{section*.35}%
-\contentsline {section}{Referencias}{61}{section*.36}%
+\contentsline {subsection}{\numberline {1.2}Definición del Problema}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Objetivos}{4}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Objetivo General}{4}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Objetivos Específicos}{4}{subsubsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.4}Justificación}{5}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Alcances y Limitaciones}{6}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Alcances}{6}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Limitaciones}{7}{subsubsection.1.5.2}%
+\contentsline {section}{\numberline {2}Estado del Arte}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}MDPs Factorizados y el Problema de la Representación de Estados}{8}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Programación Lógica Probabilística para la Resolución de MDPs}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Disyunciones Anotadas como mecanismo de exclusión mutua}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Compilación de conocimiento para inferencia eficiente}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Análisis Comparativo}{11}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Conclusión del Estado del Arte}{12}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Marco Teórico}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Grid Estocástico}{13}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Programación Lógica}{14}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Programación Lógica Probabilística}{15}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Semántica de distribución}{15}{subsubsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.4}Lenguaje ProbLog}{16}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Disyunciones Anotadas}{17}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Conteo de Modelos Ponderados y Compilación de Conocimiento}{19}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Procesos de Decisión de Markov}{20}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}MDPs Factorizados y Fluentes de Estado}{22}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}El framework MDP-ProbLog}{22}{subsection.3.9}%
+\contentsline {section}{\numberline {4}Diseño e Implementación}{24}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Análisis de la arquitectura original}{24}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Componentes del sistema original}{24}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Flujo de ejecución}{25}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Limitaciones en la gestión de fluentes}{26}{subsubsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.2}Esquema factorizado del espacio de estados}{27}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Modelo de datos}{27}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Codificación \textit {mixed-radix}}{27}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Ejemplo mixed-radix}{28}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Operaciones relevantes}{29}{subsubsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.3}Clasificador automático de fluentes}{29}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Modos de declaración}{29}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}El índice invertido de Disyunciones Anotadas}{29}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Pipeline de clasificación}{30}{subsubsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.4}Inferencia implícita de tipo}{31}{subsubsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.4}Pipeline de preparación del MDP}{32}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Fases del pipeline}{32}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Hechos \textit {dummy} y condicionamiento por evidencia}{33}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}Corrección de la compilación doble}{34}{subsubsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.4}Declaración de fluentes multivaluados}{34}{subsubsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.5}Adaptación de la Iteración de Valor}{35}{subsection.4.5}%
+\contentsline {paragraph}{Descripción del algoritmo.}{35}{section*.18}%
+\contentsline {paragraph}{Ejemplo de ejecución.}{36}{section*.19}%
+\contentsline {subsection}{\numberline {4.6}Evaluador de Darwiche}{37}{subsection.4.6}%
+\contentsline {subsubsection}{\numberline {4.6.1}El costo de la evaluación estándar}{37}{subsubsection.4.6.1}%
+\contentsline {subsubsection}{\numberline {4.6.2}Derivadas como respuestas}{37}{subsubsection.4.6.2}%
+\contentsline {subsubsection}{\numberline {4.6.3}El algoritmo de diferenciación en dos pasadas}{38}{subsubsection.4.6.3}%
+\contentsline {paragraph}{Pasada ascendente.}{38}{section*.20}%
+\contentsline {paragraph}{Pasada descendente.}{38}{section*.21}%
+\contentsline {paragraph}{Extracción de marginales.}{38}{section*.22}%
+\contentsline {paragraph}{Ilustración del paso descendente.}{39}{section*.23}%
+\contentsline {subsubsection}{\numberline {4.6.4}Implementación y activación}{40}{subsubsection.4.6.4}%
+\contentsline {subsection}{\numberline {4.7}Herramientas auxiliares}{41}{subsection.4.7}%
+\contentsline {subsubsection}{\numberline {4.7.1}Exportador de resultados}{41}{subsubsection.4.7.1}%
+\contentsline {subsubsection}{\numberline {4.7.2}Simulador de trayectorias}{41}{subsubsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.8}Retrocompatibilidad}{43}{subsection.4.8}%
+\contentsline {section}{\numberline {5}Experimentación y Resultados}{44}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Diseño experimental}{44}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Dominios de evaluación}{44}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Variables independientes}{44}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Protocolo de medición}{44}{subsubsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.2}Entorno de evaluación}{45}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Verificación en el dominio Mitchell}{45}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Simplificación del modelado}{46}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Impacto computacional}{47}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1}Tiempos de ejecución}{47}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2}Cociente de tiempos entre codificaciones}{49}{subsubsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.3}Comparación de configuraciones de inferencia}{49}{subsubsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.6}Dominio Russell}{51}{subsection.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}Verificación de la función de valor óptima}{51}{subsubsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.7}Discusión}{53}{subsection.5.7}%
+\contentsline {section}{\numberline {6}Conclusiones}{54}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Síntesis del trabajo realizado}{54}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Contribuciones}{54}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Limitaciones técnicas identificadas}{55}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Trabajo futuro}{56}{subsection.6.4}%
+\contentsline {section}{Índice de figuras}{57}{Item.47}%
+\contentsline {section}{Índice de cuadros}{58}{section*.36}%
+\contentsline {section}{Índice de algoritmos}{59}{section*.37}%
+\contentsline {section}{Referencias}{60}{section*.38}%

@@ -1,16 +1,16 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {table}{\numberline {1}{\ignorespaces Codificación binaria de las 6 celdas de un grid de $2 \times 3$.}}{3}{table.caption.5}%
-\contentsline {table}{\numberline {2}{\ignorespaces Escalamiento de estados espurios en la codificación binaria por tamaño de grid.}}{4}{table.caption.7}%
-\contentsline {table}{\numberline {3}{\ignorespaces Codificación binaria forzada para una variable ternaria en el dominio \textit {Factory}.}}{5}{table.caption.8}%
-\contentsline {table}{\numberline {4}{\ignorespaces Comparativa de los enfoques del estado del arte.}}{12}{table.caption.9}%
-\contentsline {table}{\numberline {5}{\ignorespaces Mundos posibles inducidos por la semántica de distribución sobre el Código~\ref {lst:grid-plp-minimo}.}}{17}{table.caption.11}%
-\contentsline {table}{\numberline {6}{\ignorespaces Distribución generada por la AD del Código~\ref {lst:grid-ad-norte}. Cada selección corresponde a un único destino posible.}}{19}{table.caption.12}%
-\contentsline {table}{\numberline {7}{\ignorespaces Codificación \textit {mixed-radix} para el dominio color $\times $ velocidad.}}{30}{table.caption.15}%
-\contentsline {table}{\numberline {8}{\ignorespaces Comparación de costo asintótico entre los evaluadores de ProbLog.}}{42}{table.caption.24}%
-\contentsline {table}{\numberline {9}{\ignorespaces Métodos de exportación del \texttt {CSVExporter} y estructuras producidas.}}{43}{table.caption.25}%
-\contentsline {table}{\numberline {10}{\ignorespaces Parámetros del método \texttt {Simulator.run()}.}}{44}{table.caption.26}%
-\contentsline {table}{\numberline {11}{\ignorespaces Verificación cruzada de corrección funcional en el dominio Mitchell.}}{47}{table.caption.27}%
-\contentsline {table}{\numberline {12}{\ignorespaces Métricas del programa fuente por codificación y tamaño de \textit {grid}.}}{48}{table.caption.28}%
-\contentsline {table}{\numberline {13}{\ignorespaces Tiempo total de ejecución $t_{\text {total}}$ (segundos) por codificación y configuración de inferencia.}}{50}{table.caption.30}%
-\contentsline {table}{\numberline {14}{\ignorespaces Cociente de tiempos $t_{\text {total}}^{\text {bin}} / t_{\text {total}}^{\text {fac}}$ por configuración de inferencia.}}{51}{table.caption.31}%
-\contentsline {table}{\numberline {15}{\ignorespaces Verificación de $V^*(s)$ frente a la solución de referencia para el dominio Russell $3 \times 4$.}}{53}{table.caption.33}%
+\contentsline {table}{\numberline {1}{\ignorespaces Codificación binaria forzada para una variable ternaria en el dominio \textit {Factory}.}}{2}{table.caption.5}%
+\contentsline {table}{\numberline {2}{\ignorespaces Codificación binaria de las 6 celdas de un grid de $2 \times 3$.}}{3}{table.caption.6}%
+\contentsline {table}{\numberline {3}{\ignorespaces Escalamiento de estados espurios en la codificación binaria por tamaño de grid.}}{4}{table.caption.8}%
+\contentsline {table}{\numberline {4}{\ignorespaces Comparativa de los enfoques del estado del arte.}}{11}{table.caption.9}%
+\contentsline {table}{\numberline {5}{\ignorespaces Mundos posibles inducidos por la semántica de distribución sobre el Código~\ref {lst:grid-plp-minimo}.}}{16}{table.caption.11}%
+\contentsline {table}{\numberline {6}{\ignorespaces Distribución generada por la AD del Código~\ref {lst:grid-ad-norte}. Cada selección corresponde a un único destino posible.}}{18}{table.caption.12}%
+\contentsline {table}{\numberline {7}{\ignorespaces Codificación \textit {mixed-radix} para el dominio color $\times $ velocidad.}}{28}{table.caption.15}%
+\contentsline {table}{\numberline {8}{\ignorespaces Comparación de costo asintótico entre los evaluadores de ProbLog.}}{40}{table.caption.24}%
+\contentsline {table}{\numberline {9}{\ignorespaces Métodos de exportación del \texttt {CSVExporter} y estructuras producidas.}}{41}{table.caption.25}%
+\contentsline {table}{\numberline {10}{\ignorespaces Parámetros del método \texttt {Simulator.run()}.}}{42}{table.caption.26}%
+\contentsline {table}{\numberline {11}{\ignorespaces Verificación cruzada de corrección funcional en el dominio Mitchell.}}{45}{table.caption.27}%
+\contentsline {table}{\numberline {12}{\ignorespaces Métricas del programa fuente por codificación y tamaño de \textit {grid}.}}{46}{table.caption.29}%
+\contentsline {table}{\numberline {13}{\ignorespaces Tiempo total de ejecución $t_{\text {total}}$ (segundos) por codificación y configuración de inferencia.}}{48}{table.caption.31}%
+\contentsline {table}{\numberline {14}{\ignorespaces Cociente de tiempos $t_{\text {total}}^{\text {bin}} / t_{\text {total}}^{\text {fac}}$ por configuración de inferencia.}}{49}{table.caption.32}%
+\contentsline {table}{\numberline {15}{\ignorespaces Verificación de $V^*(s)$ frente a la solución de referencia para el dominio Russell $3 \times 4$.}}{51}{table.caption.34}%

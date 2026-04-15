@@ -1,9 +1,11 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Representación por coordenadas vs. codificación booleana con estados inalcanzables para el grid $2 \times 3$.}}{3}{figure.caption.6}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Grid de navegación $2\times 3$ con transiciones estocásticas.}}{14}{figure.caption.10}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Política óptima del grid 2×3. (a) Acción óptima $\pi ^*(r,c)$; (b) valor $V^*(r,c)$ calculado por Iteración de Valor con $\gamma =0.9$, $\varepsilon =0.1$.}}{22}{figure.caption.13}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Diagrama de la arquitectura original del framework MDP-ProbLog.}}{26}{figure.caption.14}%
-\contentsline {figure}{\numberline {5}{\ignorespaces pipeline de clasificación. Se explica la ejecución del método \texttt {classify()}}}{33}{figure.caption.16}%
-\contentsline {figure}{\numberline {6}{\ignorespaces pipeline de preparación. Se explica la ejecución del método \texttt {\_\_prepare()}}}{35}{figure.caption.17}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Número de reglas del programa fuente en función del número de celdas del \textit {grid}.}}{49}{figure.caption.29}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Tiempo total de ejecución en función del número de celdas del \textit {grid} para las seis combinaciones codificación~$\times $~\textit {backend}.}}{52}{figure.caption.32}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Representación por coordenadas vs. codificación booleana con estados inalcanzables para el grid $2 \times 3$.}}{3}{figure.caption.7}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Grid de navegación $2\times 3$ con transiciones estocásticas.}}{13}{figure.caption.10}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Política óptima del grid 2×3. (a) Acción óptima $\pi ^*(r,c)$; (b) valor $V^*(r,c)$ calculado por Iteración de Valor con $\gamma =0.9$, $\varepsilon =0.1$.}}{21}{figure.caption.13}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Diagrama de la arquitectura original del framework MDP-ProbLog.}}{25}{figure.caption.14}%
+\contentsline {figure}{\numberline {5}{\ignorespaces pipeline de clasificación. Se explica la ejecución del método \texttt {classify()}}}{31}{figure.caption.16}%
+\contentsline {figure}{\numberline {6}{\ignorespaces pipeline de preparación. Se explica la ejecución del método \texttt {\_\_prepare()}}}{33}{figure.caption.17}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Política óptima $\pi ^*$ sobre el grid $2\times 3$ de Mitchell calculada por MDP-ProbLog.}}{46}{figure.caption.28}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Número de reglas del programa fuente en función del número de celdas del \textit {grid}.}}{47}{figure.caption.30}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Tiempo total de ejecución en función del número de$3\times 4$ celdas del \textit {grid} para las seis combinaciones codificación~$\times $~\textit {backend}.}}{50}{figure.caption.33}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Política óptima $\pi ^*$ sobre el dominio Russell calculada por MDP-ProbLog.}}{52}{figure.caption.35}%

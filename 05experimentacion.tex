@@ -4,7 +4,7 @@
 \section{Experimentación y Resultados}
 \label{ch:experimentacion}
 
-Esta sección evalúa la extensión propuesta mediante experimentos diseñados para responder tres preguntas. ¿La codificación binaria y la codificación factorizada generan la misma función de valor óptima \(V^*\) y la misma política óptima \(\pi^*\) para un mismo MDP? ¿Reduce la codificación factorizada la complejidad del programa ProbLog que el modelador debe escribir respecto a la codificación binaria? ¿Cómo afecta la elección entre fluentes multivaluados o booleanos los tiempos de construcción del MDP y de resolución por Iteración de Valor?
+Se somete a evaluación la extensión propuesta mediante experimentos diseñados para responder tres preguntas. ¿La codificación binaria y la codificación factorizada generan la misma función de valor óptima \(V^*\) y la misma política óptima \(\pi^*\) para un mismo MDP? ¿Reduce la codificación factorizada la complejidad del programa ProbLog que el modelador debe escribir respecto a la codificación binaria? ¿Cómo afecta la elección entre fluentes multivaluados o booleanos los tiempos de construcción del MDP y de resolución por Iteración de Valor?
 
 % ------------------------------------------------------------------
 \subsection{Diseño experimental}
@@ -52,11 +52,8 @@ El experimento comprende $50$ configuraciones: $48$ del dominio Mitchell
 ($8$ tamaños $\times$ $2$ codificaciones $\times$ $3$ configuraciones de
 inferencia) y $2$ del dominio Russell (codificación factorizada con
 \textit{ddnnf} y darwiche). El pipeline completo se ejecuta en cada corrida
-desde cero: \textit{parsing}, clasificación de fluentes, \textit{grounding},
-compilación del circuito e Iteración de Valor. Cada configuración se repite
+desde cero. Cada configuración se repite
 $N = 10$ veces de forma independiente.
-
-\clearpage
 
 El límite de tiempo es de $400\,\text{s}$ por ejecución. Si una ejecución
 supera ese límite, se registra con estado \texttt{TIMEOUT} y los datos
@@ -74,14 +71,7 @@ Los experimentos se ejecutaron sobre un equipo Intel\textregistered{} Core\textt
 De las $50$ configuraciones, $43$ completaron las $10$ corridas dentro del límite de \textit{timeout}; las $7$ restantes registraron \texttt{TIMEOUT} en todas sus ejecuciones (Tabla~\ref{tab:exp-tiempos}).
 
 % ------------------------------------------------------------------
-\subsection{Corrección funcional}
-\label{sec:exp-rq1}
-
-Esta sección verifica que la extensión multivaluada produce la misma $V^*$
-y la misma $\pi^*$ que la codificación binaria para un mismo MDP, y que
-los resultados coinciden con la solución de referencia publicada.
-
-\subsubsection{Verificación en el dominio Mitchell}
+\subsection{Verificación en el dominio Mitchell}
 \label{sec:exp-rq1-mitchell}
 
 La Tabla~\ref{tab:exp-correccion} compara $V^*(s)$ y $\pi^*(s)$ para cada
@@ -90,7 +80,7 @@ reporta la diferencia máxima absoluta entre funciones de valor; la columna
 Iter.\ el número de iteraciones de Bellman hasta convergencia. La tolerancia
 de comparación es $10^{-6}$.
 
-\begin{table}[htbp]
+\begin{table}[H]
     \centering
     \caption{Verificación cruzada de corrección funcional en el dominio Mitchell.}
     \label{tab:exp-correccion}
@@ -116,15 +106,17 @@ Las diferencias son exactamente $0.0$ en todos los tamaños evaluados y las
 políticas coinciden en cada caso. Ambas codificaciones representan el mismo
 MDP; la estructura de transiciones y recompensas es idéntica, por lo que la
 Iteración de Valor converge en el mismo número de pasos con los mismos
-parámetros $\gamma$ y $\varepsilon$ \cite{puterman2014markov}. La
-verificación del dominio Russell se presenta en la
+parámetros $\gamma$ y $\varepsilon$ \cite{puterman2014markov}.
+La Figura~\ref{fig:politica-mitchell-2x3} exhibe la política obtenida para el
+grid $2\times3$. La verificación del dominio Russell se presenta en la
 Sección~\ref{sec:exp-russell}.
 
-% TODO [FIGURA]: Visualización de la política óptima π* sobre el grid 2×3 original de Mitchell.
-%   Tipo: Grid 2×3 con flechas de acción en cada celda no terminal.
-%   Contenido: 6 celdas, terminal en esquina superior derecha marcada con recompensa +100.
-%     Flecha por celda mostrando la acción óptima. Coincide con Mitchell (1997).
-%   Label sugerido: fig:politica-mitchell-2x3
+\begin{figure}[H]                                                            
+    \centering                                                                  
+    \includegraphics[width=0.75\textwidth]{figuras/politica-mitchell-2x3.png}                                                                            
+    \caption{Política óptima $\pi^*$ sobre el grid $2\times3$ de Mitchell calculada por MDP-ProbLog.}                                                                              
+    \label{fig:politica-mitchell-2x3}                                           
+\end{figure}   
 
 % ------------------------------------------------------------------
 \subsection{Simplificación del modelado}
@@ -138,7 +130,7 @@ de estados $|\mathcal{S}|$ y los estados espurios. Para la codificación
 binaria, la columna Cardinalidades indica el número de bits; para la
 factorizada, las cardinalidades de los dos fluentes multivaluados.
 
-\begin{table}[htbp]
+\begin{table}[H]
     \centering
     \caption{Métricas del programa fuente por codificación y tamaño de \textit{grid}.}
     \label{tab:exp-rq2}
@@ -185,25 +177,15 @@ factorizada, las cardinalidades de los dos fluentes multivaluados.
 \end{table}
 
 La codificación factorizada mantiene $21$ reglas para cualquier tamaño de
-\textit{grid}; la binaria escala de $42$ a $26\,623$ en el mismo rango. La
-codificación factorizada no genera estados espurios; la binaria los acumula
-con cada incremento de escala. La Figura~\ref{fig:reglas-celdas} ilustra
+\textit{grid} mientras que la binaria escala de $42$ a $26\,623$ en el mismo rango. La Figura~\ref{fig:reglas-celdas} ilustra
 esta divergencia.
 
-El \textit{grid} $4\times4$ presenta una restricción adicional. Sus $16$
-celdas requieren $4$ bits como mínimo, pero la implementación no puede usar
-el estado~$0$ para modelar transiciones, lo que fuerza el uso de $5$ bits y
-genera $16$ estados espurios. Esta restricción afecta cualquier \textit{grid}
-cuyo número de celdas sea una potencia exacta de~$2$.
-
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{figuras/reglas-celdas.pdf}
+    \includegraphics[width=0.75\textwidth]{figuras/reglas-celdas.pdf}
     \caption{Número de reglas del programa fuente en función del número de celdas del \textit{grid}.}
     \label{fig:reglas-celdas}
 \end{figure}
-
-\clearpage
 
 % ------------------------------------------------------------------
 \subsection{Impacto computacional}
@@ -308,7 +290,7 @@ La diferencia entre \textit{ddnnf} y \textit{darwiche} confirma el análisis de 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.92\textwidth]{figuras/tiempos-total.pdf}
-    \caption{Tiempo total de ejecución en función del número de celdas del \textit{grid} para las seis combinaciones codificación~$\times$~\textit{backend}.}
+    \caption{Tiempo total de ejecución en función del número de$3\times4$ celdas del \textit{grid} para las seis combinaciones codificación~$\times$~\textit{backend}.}
     \label{fig:tiempos-total}
 \end{figure}
 
@@ -317,7 +299,7 @@ La diferencia entre \textit{ddnnf} y \textit{darwiche} confirma el análisis de 
 \subsection{Dominio Russell}
 \label{sec:exp-russell}
 
-El dominio de Mitchell utiliza transiciones deterministas, lo que aísla el efecto de la representación pero no verifica la extensión bajo condiciones estocásticas. El dominio canónico $3 \times 4$ de Russell y Norvig \cite{russell2016artificial} complementa esta evaluación con transiciones probabilísticas, un estado trampa y un costo por paso. La evaluación se realiza con la codificación factorizada, que expresa la posición del agente como un fluente multivaluado \texttt{coor(X,Y)} con $11$ valores posibles y un programa fuente de $50$ reglas. Las configuraciones de inferencia evaluadas son \textit{ddnnf} y darwiche; la configuración \textit{sdd} produjo un error de compilación en este dominio y queda fuera del análisis cuantitativo.
+El dominio de Mitchell utiliza transiciones deterministas, lo que aísla el efecto de la representación pero no verifica la extensión bajo condiciones estocásticas. El dominio canónico de Russell y Norvig \cite{russell2016artificial} complementa esta evaluación con transiciones probabilísticas, un estado trampa y un costo por paso. La evaluación se realiza con la codificación factorizada, que expresa la posición del agente como un fluente multivaluado \texttt{coor(X,Y)} con $11$ valores posibles y un programa fuente de $50$ reglas. Las configuraciones de inferencia evaluadas son \textit{ddnnf} y darwiche; la configuración \textit{sdd} produjo un error de compilación en este dominio y queda fuera del análisis cuantitativo.
 
 \subsubsection{Verificación de la función de valor óptima}
 \label{sec:exp-russell-v}
@@ -352,12 +334,14 @@ La función de valor óptima $V^*(s)$ se verificó contra la Figura~17.3 de Russ
 \end{table}
 
 Los nueve estados no terminales presentan diferencias menores a $0.001$ respecto a los valores de referencia, y la política óptima $\pi^*$ obtenida coincide con la Figura~17.2 de Russell y Norvig \cite{russell2016artificial}. Los estados terminales tienen $V^* = 0$ en el solver, consistente con la semántica de absorción.
+La Figura~\ref{fig:russell-policy} exhibe la política obtenida sobre el dominio.
 
-% TODO [FIGURA]: Visualización de la política óptima π* sobre el grid 3×4 de Russell.
-%   Tipo: Grid con flechas de acción en cada celda no terminal.
-%   Contenido: 12 celdas, obstáculo en (2,2), meta en (3,4), trampa en (2,4).
-%   Flecha en cada celda no terminal y no obstáculo mostrando π*(s).
-%   Label sugerido: fig:russell-policy
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figuras/russell-policy.png}
+    \caption{Política óptima $\pi^*$ sobre el dominio Russell calculada por MDP-ProbLog.}
+    \label{fig:russell-policy}
+\end{figure}
 
 % ------------------------------------------------------------------
 
@@ -367,7 +351,7 @@ Los nueve estados no terminales presentan diferencias menores a $0.001$ respecto
 \label{sec:exp-discusion}
 
 La extensión preserva la semántica del MDP. Los resultados de las
-Secciones~\ref{sec:exp-rq1} y~\ref{sec:exp-russell} confirman que la
+Secciones~\ref{sec:exp-rq1-mitchell} y~\ref{sec:exp-russell} confirman que la
 codificación multivaluada produce la misma $V^*$ y la misma $\pi^*$ que
 la codificación binaria tanto en condiciones deterministas como estocásticas.
 Esta compatibilidad es consecuencia de que ambas codificaciones representan

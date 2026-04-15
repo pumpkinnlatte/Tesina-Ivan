@@ -37,16 +37,12 @@ problema.
 
 Se aporta un esquema factorizado del espacio de estados bajo una
 estructura \textit{mixed-radix} que asigna a cada fluente su cardinalidad
-real. A diferencia de la representación booleana original, donde el tamaño
-del espacio de estados crece como potencia de dos del número de bits
-independientemente de la semántica del dominio, la representación
-\textit{mixed-radix} garantiza que cada índice corresponda exactamente a un
-estado válido. Esta propiedad elimina por construcción los estados espurios
-que la codificación booleana introduce cuando el número de estados del
-dominio no es una potencia exacta de dos \cite{hoey1999spudd}. Junto con el
-esquema factorizado, se desarrolló un clasificador automático de fluentes
-que determina, a partir de un índice invertido sobre los nodos
-\texttt{choice} de la base de cláusulas, si un fluente declarado por el
+real, esto elimina por construcción los estados espurios. El sistema admite además modelos mixtos en los
+que fluentes booleanos y multivaluados coexisten en el mismo programa, lo
+que permite una adopción gradual sin reescribir los modelos existentes.
+
+Junto con el esquema factorizado, se desarrolló un clasificador automático de fluentes
+que determina si un fluente declarado por el
 usuario es booleano o multivaluado. El clasificador soporta tanto la
 inferencia implícita del tipo, mediante el análisis de las ADs presentes en
 el programa, como la declaración explícita mediante el predicado
@@ -64,14 +60,7 @@ de forma idéntica al de Bueno et al.\ \cite{bueno2016mdp}.
 Se implementó también el evaluador de diferenciación de circuitos de
 Darwiche \cite{darwiche2003differential}, que calcula todas las marginales
 requeridas durante la Iteración de Valor en dos pasadas lineales sobre el
-circuito compilado. Este evaluador reduce el costo de evaluar $Q$ consultas
-simultáneas de $\mathcal{O}(Q \times |C|)$ a $\mathcal{O}(|C|) +
-\mathcal{O}(Q)$, donde $|C|$ denota el tamaño del circuito. El beneficio es
-multiplicativo con el de la codificación factorizada: aquella reduce el
-número de pares estado-acción por iteración, mientras que este reduce el
-costo de procesar cada par. El sistema admite además modelos mixtos en los
-que fluentes booleanos y multivaluados coexisten en el mismo programa, lo
-que permite una adopción gradual sin reescribir los modelos existentes.
+circuito compilado. 
 
 % -----------------------------------------------------------------------
 \subsection{Limitaciones técnicas identificadas}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.15)  14 APR 2026 21:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.15)  15 APR 2026 01:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1253,12 +1253,12 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 193.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<logos/UTYP.png, id=355, 301.125pt x 156.585pt>
+<logos/UTYP.png, id=351, 301.125pt x 156.585pt>
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
 Package pdftex.def Info: logos/UTYP.png  used on input line 194.
 (pdftex.def)             Requested size: 123.11743pt x 64.01869pt.
-<logos/LogoUPV_2023.png, id=357, 438.9198pt x 166.7028pt>
+<logos/LogoUPV_2023.png, id=353, 438.9198pt x 166.7028pt>
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 195.
@@ -1268,7 +1268,7 @@ Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 195.
 [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logos/UTYP.png> <./logos/LogoUPV_2023.png>]
-<cartas/CartaPresentacion.pdf, id=367, 597.23125pt x 844.15375pt>
+<cartas/CartaPresentacion.pdf, id=363, 597.23125pt x 844.15375pt>
 File: cartas/CartaPresentacion.pdf Graphic file (type pdf)
 <use cartas/CartaPresentacion.pdf>
 Package pdftex.def Info: cartas/CartaPresentacion.pdf  used on input line 245.
@@ -1277,7 +1277,7 @@ File: cartas/CartaPresentacion.pdf Graphic file (type pdf)
 <use cartas/CartaPresentacion.pdf>
 Package pdftex.def Info: cartas/CartaPresentacion.pdf  used on input line 245.
 (pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
-<cartas/CartaPresentacion.pdf, id=370, page=1, 597.23125pt x 844.15375pt>
+<cartas/CartaPresentacion.pdf, id=366, page=1, 597.23125pt x 844.15375pt>
 File: cartas/CartaPresentacion.pdf Graphic file (type pdf)
 <use cartas/CartaPresentacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaPresentacion.pdf , page1 used on input line 245.
@@ -1310,7 +1310,7 @@ Package pdftex.def Info: cartas/CartaPresentacion.pdf , page1 used on input line
 
 
  <./cartas/CartaPresentacion.pdf>]
-<cartas/CartaAceptacion.pdf, id=377, 597.23125pt x 844.15375pt>
+<cartas/CartaAceptacion.pdf, id=373, 597.23125pt x 844.15375pt>
 File: cartas/CartaAceptacion.pdf Graphic file (type pdf)
 <use cartas/CartaAceptacion.pdf>
 Package pdftex.def Info: cartas/CartaAceptacion.pdf  used on input line 250.
@@ -1319,7 +1319,7 @@ File: cartas/CartaAceptacion.pdf Graphic file (type pdf)
 <use cartas/CartaAceptacion.pdf>
 Package pdftex.def Info: cartas/CartaAceptacion.pdf  used on input line 250.
 (pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
-<cartas/CartaAceptacion.pdf, id=380, page=1, 597.23125pt x 844.15375pt>
+<cartas/CartaAceptacion.pdf, id=376, page=1, 597.23125pt x 844.15375pt>
 File: cartas/CartaAceptacion.pdf Graphic file (type pdf)
 <use cartas/CartaAceptacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaAceptacion.pdf , page1 used on input line 250.
@@ -1346,7 +1346,7 @@ Package pdftex.def Info: cartas/CartaAceptacion.pdf , page1 used on input line 2
 
 
  <./cartas/CartaAceptacion.pdf>]
-<cartas/CartaLiberacion.pdf, id=388, 614.295pt x 794.97pt>
+<cartas/CartaLiberacion.pdf, id=384, 614.295pt x 794.97pt>
 File: cartas/CartaLiberacion.pdf Graphic file (type pdf)
 <use cartas/CartaLiberacion.pdf>
 Package pdftex.def Info: cartas/CartaLiberacion.pdf  used on input line 255.
@@ -1355,7 +1355,7 @@ File: cartas/CartaLiberacion.pdf Graphic file (type pdf)
 <use cartas/CartaLiberacion.pdf>
 Package pdftex.def Info: cartas/CartaLiberacion.pdf  used on input line 255.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-<cartas/CartaLiberacion.pdf, id=391, page=1, 614.295pt x 794.97pt>
+<cartas/CartaLiberacion.pdf, id=387, page=1, 614.295pt x 794.97pt>
 File: cartas/CartaLiberacion.pdf Graphic file (type pdf)
 <use cartas/CartaLiberacion.pdf, page 1>
 Package pdftex.def Info: cartas/CartaLiberacion.pdf , page1 used on input line 255.
@@ -1396,7 +1396,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 278--279
 
 
 pdfTeX warning: pdflatex (file ./membretes/membrete_UPV_08May25.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<membretes/membrete_UPV_08May25.pdf, id=405, 614.295pt x 794.97pt>
+<membretes/membrete_UPV_08May25.pdf, id=401, 614.295pt x 794.97pt>
 File: membretes/membrete_UPV_08May25.pdf Graphic file (type pdf)
 <use membretes/membrete_UPV_08May25.pdf>
 Package pdftex.def Info: membretes/membrete_UPV_08May25.pdf  used on input line 300.
@@ -1571,11 +1571,11 @@ Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 525.
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 10.
+Package pdftex.def Info: logos/UTYP.png  used on input line 42.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 10.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 42.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
 [1
 
@@ -1585,75 +1585,67 @@ Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 10.
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 27.
+Package pdftex.def Info: logos/UTYP.png  used on input line 109.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 27.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 109.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
 [2
 
 ]
-<figuras/2x3_grid_vs_boolean.png, id=592, 1379.1525pt x 426.09187pt>
+<figuras/2x3_grid_vs_boolean.png, id=590, 1379.1525pt x 426.09187pt>
 File: figuras/2x3_grid_vs_boolean.png Graphic file (type png)
 <use figuras/2x3_grid_vs_boolean.png>
-Package pdftex.def Info: figuras/2x3_grid_vs_boolean.png  used on input line 57.
+Package pdftex.def Info: figuras/2x3_grid_vs_boolean.png  used on input line 148.
 (pdftex.def)             Requested size: 472.03123pt x 145.83156pt.
 
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 81.
+Package pdftex.def Info: logos/UTYP.png  used on input line 177.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 81.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 177.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[3
-
- <./figuras/2x3_grid_vs_boolean.png>]
+[3 <./figuras/2x3_grid_vs_boolean.png>]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 111.
+Package pdftex.def Info: logos/UTYP.png  used on input line 213.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 111.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 213.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
 [4]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 138.
+Package pdftex.def Info: logos/UTYP.png  used on input line 228.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 138.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 228.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
 [5]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 146.
+Package pdftex.def Info: logos/UTYP.png  used on input line 258.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 146.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 258.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[6]
+[6
 
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 176.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 176.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[7
+]
 
-])
+LaTeX Warning: Reference `ch:estado_del_arte' on page 7 undefined on input line 277.
+
+)
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -1663,7 +1655,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 536.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[8
+[7
 
 ] (./02estado_del_arte.tex
 
@@ -1675,7 +1667,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 28.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[9
+[8
 
 ]
 
@@ -1687,18 +1679,18 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 46.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[10]
+[9]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 62.
+Package pdftex.def Info: logos/UTYP.png  used on input line 57.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 62.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 57.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[11]
-Overfull \hbox (2.787pt too wide) in paragraph at lines 109--109
+[10]
+Overfull \hbox (2.787pt too wide) in paragraph at lines 110--110
  []|\OT1/cmr/bx/n/10 Expresividad 
  []
 
@@ -1706,13 +1698,19 @@ Overfull \hbox (2.787pt too wide) in paragraph at lines 109--109
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 114.
+Package pdftex.def Info: logos/UTYP.png  used on input line 115.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 114.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 115.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[12])
+[11
+
+]
+
+LaTeX Warning: Reference `ch:marco_teorico' on page 12 undefined on input line 127.
+
+)
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -1722,10 +1720,10 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 539.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[13
+[12
 
 ] (./03marco_teorico.tex
-<figuras/grid_2x3_russell.png, id=741, 1143.52219pt x 563.10374pt>
+<figuras/grid_2x3_russell.png, id=723, 1143.52219pt x 563.10374pt>
 File: figuras/grid_2x3_russell.png Graphic file (type png)
 <use figuras/grid_2x3_russell.png>
 Package pdftex.def Info: figuras/grid_2x3_russell.png  used on input line 61.
@@ -1740,7 +1738,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 73.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[14
+[13
 
  <./figuras/grid_2x3_russell.png>]
 Overfull \hbox (23.37608pt too wide) in paragraph at lines 84--85
@@ -1757,7 +1755,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 90.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[15] (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
+[14] (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/05/25 1.10b listings language file
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2024/05/25 1.10b listings language file
@@ -1771,7 +1769,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 115.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[16]
+[15]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 115.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 117.
@@ -1791,7 +1789,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 159.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[17]
+[16]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -1801,7 +1799,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 192.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[18]
+[17]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -1811,7 +1809,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 233.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[19]
+[18]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -1821,7 +1819,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 254.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[20]
+[19]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -1831,8 +1829,8 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 275.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[21]
-<figuras/politica_russell_2x3.png, id=878, 1148.03906pt x 560.0925pt>
+[20]
+<figuras/politica_russell_2x3.png, id=860, 1148.03906pt x 560.0925pt>
 File: figuras/politica_russell_2x3.png Graphic file (type png)
 <use figuras/politica_russell_2x3.png>
 Package pdftex.def Info: figuras/politica_russell_2x3.png  used on input line 298.
@@ -1847,7 +1845,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 311.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[22{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./figuras/politica_russell_2x3.png>]
+[21{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./figuras/politica_russell_2x3.png>]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -1857,7 +1855,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 334.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[23]) (./04diseno.tex
+[22]) (./04diseno.tex
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -1867,14 +1865,14 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 18.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[24]
+[23]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 51.
-<figuras/arqui-original.png, id=935, 703.12688pt x 714.41907pt>
+<figuras/arqui-original.png, id=916, 703.12688pt x 714.41907pt>
 File: figuras/arqui-original.png Graphic file (type png)
 <use figuras/arqui-original.png>
 Package pdftex.def Info: figuras/arqui-original.png  used on input line 75.
-(pdftex.def)             Requested size: 401.22942pt x 407.67004pt.
+(pdftex.def)             Requested size: 377.62642pt x 383.68753pt.
 
 
 File: logos/UTYP.png Graphic file (type png)
@@ -1885,50 +1883,38 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 79.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[25]
+[24]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 88.
+Package pdftex.def Info: logos/UTYP.png  used on input line 108.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 88.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 108.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[26 <./figuras/arqui-original.png>]
+[25 <./figuras/arqui-original.png>]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 153.
+Package pdftex.def Info: logos/UTYP.png  used on input line 169.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 153.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 169.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[27
-
-]
+[26]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 214.
+Package pdftex.def Info: logos/UTYP.png  used on input line 224.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 214.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 224.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[28]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 247.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 247.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[29]
-Overfull \hbox (49.1449pt too wide) in paragraph at lines 252--257
+[27]
+Overfull \hbox (49.1449pt too wide) in paragraph at lines 248--253
 []\OT1/cmr/m/n/12 El ejem-plo si-guien-te usa un do-mi-nio con dos va-ria-bles de es-ta-do: \OT1/cmr/bx/sc/12 co-lor\OT1/cmr/m/n/12 , con va-lo-res $\OMS/cmsy/m/n/12 f[]\OML/cmm/m/it/12 ; []; []\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
  []
 
@@ -1936,16 +1922,24 @@ Overfull \hbox (49.1449pt too wide) in paragraph at lines 252--257
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 311.
+Package pdftex.def Info: logos/UTYP.png  used on input line 290.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 311.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 290.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[30
+[28]
 
-]
-Overfull \hbox (17.78714pt too wide) in paragraph at lines 374--378
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 352.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 352.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[29]
+Overfull \hbox (17.78714pt too wide) in paragraph at lines 368--372
 []\OT1/cmr/m/n/12 ProbLog pro-ce-sa es-ta AD y re-gis-tra tres no-dos \OT1/cmtt/m/n/12 choice \OT1/cmr/m/n/12 ba-jo el gru-po $\OML/cmm/m/it/12 g[]$\OT1/cmr/m/n/12 : uno pa-ra \OT1/cmtt/m/n/12 color(rojo,1)\OT1/cmr/m/n/12 ,
  []
 
@@ -1953,21 +1947,19 @@ Overfull \hbox (17.78714pt too wide) in paragraph at lines 374--378
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 378.
+Package pdftex.def Info: logos/UTYP.png  used on input line 416.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 378.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 416.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[31
-
-]
-<figuras/pipeline-clasificacion.png, id=992, 1278.27562pt x 507.39563pt>
+[30]
+<figuras/pipeline-clasificacion.png, id=979, 1278.27562pt x 507.39563pt>
 File: figuras/pipeline-clasificacion.png Graphic file (type png)
 <use figuras/pipeline-clasificacion.png>
-Package pdftex.def Info: figuras/pipeline-clasificacion.png  used on input line 433.
+Package pdftex.def Info: figuras/pipeline-clasificacion.png  used on input line 427.
 (pdftex.def)             Requested size: 472.03123pt x 187.36955pt.
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 455.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 449.
 
 
 File: logos/UTYP.png Graphic file (type png)
@@ -1978,260 +1970,13 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 476.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[32]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 496.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 496.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[33 <./figuras/pipeline-clasificacion.png>]
-<figuras/pipeline-preparacion.png.png, id=1013, 736.25063pt x 694.09312pt>
+[31 <./figuras/pipeline-clasificacion.png>]
+<figuras/pipeline-preparacion.png.png, id=990, 736.25063pt x 694.09312pt>
 File: figuras/pipeline-preparacion.png.png Graphic file (type png)
 <use figuras/pipeline-preparacion.png.png>
-Package pdftex.def Info: figuras/pipeline-preparacion.png.png  used on input line 549.
-(pdftex.def)             Requested size: 401.22942pt x 378.26796pt.
+Package pdftex.def Info: figuras/pipeline-preparacion.png.png  used on input line 543.
+(pdftex.def)             Requested size: 377.62642pt x 356.01628pt.
 
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 569.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 569.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[34]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 569.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 569.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[35 <./figuras/pipeline-preparacion.png.png>]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 625.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 625.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[36]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 682.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 682.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[37]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 747.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 747.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[38]
-Overfull \hbox (0.81107pt too wide) in paragraph at lines 799--803
-[]\OT1/cmr/m/n/12 Darwiche ob-serv^^So que el cir-cui-to com-pi-la-do re-pre-sen-ta un po-li-no-mio mul-ti-li-neal $\OML/cmm/m/it/12 F\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^U[]; [] ; ^^U[]\OT1/cmr/m/n/12 )$,
- []
-
-
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 803.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 803.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[39]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 857.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 857.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[40]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 927.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 927.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[41]
-Overfull \hbox (20.59026pt too wide) in paragraph at lines 928--934
-\OT1/cmr/m/n/12 men-ta la in-ter-faz est^^Sandar de Pro-bLog con el eva-lua-dor de di-fe-ren-cia-ci^^Son. Su m^^Seto-do \OT1/cmtt/m/n/12 propagate()
- []
-
-
-Overfull \hbox (120.91145pt too wide) in paragraph at lines 928--934
-\OT1/cmr/m/n/12 apli-ca la evi-den-cia, eje-cu-ta la pa-sa-da as-cen-den-te y lue-go la des-cen-den-te. Su m^^Seto-do \OT1/cmtt/m/n/12 evaluate[]all[]queries(queries)
- []
-
-
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 987.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 987.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[42]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 1060.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 1060.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[43]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 1105.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 1105.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[44])
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 544.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 544.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[45] (./05experimentacion.tex
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 59.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 59.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[46
-
-]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 140.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 140.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[47
-
-]
-<figuras/reglas-celdas.pdf, id=1152, 433.62pt x 289.08pt>
-File: figuras/reglas-celdas.pdf Graphic file (type pdf)
-<use figuras/reglas-celdas.pdf>
-Package pdftex.def Info: figuras/reglas-celdas.pdf  used on input line 201.
-(pdftex.def)             Requested size: 401.22942pt x 267.50067pt.
-
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 206.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 206.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[48]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 206.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 206.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[49 <./figuras/reglas-celdas.pdf>]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 268.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 268.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[50
-
-]
-<figuras/tiempos-total.pdf, id=1176, 505.89pt x 397.485pt>
-File: figuras/tiempos-total.pdf Graphic file (type pdf)
-<use figuras/tiempos-total.pdf>
-Package pdftex.def Info: figuras/tiempos-total.pdf  used on input line 310.
-(pdftex.def)             Requested size: 434.26787pt x 341.21785pt.
-
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 315.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 315.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[51
-
-]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 315.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 315.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[52 <./figuras/tiempos-total.pdf>]
-
-File: logos/UTYP.png Graphic file (type png)
-<use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 364.
-(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
-File: logos/LogoUPV_2023.png Graphic file (type png)
-<use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 364.
-(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[53
-
-])
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -2241,31 +1986,284 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 547.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[54
-
-] (./06conclusiones.tex
+[32]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 75.
+Package pdftex.def Info: logos/UTYP.png  used on input line 572.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 75.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 572.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[55
+[33 <./figuras/pipeline-preparacion.png.png>]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 630.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 630.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[34]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 683.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 683.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[35]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 742.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 742.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[36]
+Overfull \hbox (0.81107pt too wide) in paragraph at lines 795--799
+[]\OT1/cmr/m/n/12 Darwiche ob-serv^^So que el cir-cui-to com-pi-la-do re-pre-sen-ta un po-li-no-mio mul-ti-li-neal $\OML/cmm/m/it/12 F\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^U[]; [] ; ^^U[]\OT1/cmr/m/n/12 )$,
+ []
+
+
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 809.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 809.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[37
 
 ]
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
-Package pdftex.def Info: logos/UTYP.png  used on input line 107.
+Package pdftex.def Info: logos/UTYP.png  used on input line 895.
 (pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
 File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
-Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 107.
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 895.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[56])
+[38]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 912.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 912.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[39]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 962.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 962.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[40
+
+]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 1034.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 1034.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[41
+
+]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 1081.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 1081.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[42])
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 544.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 544.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[43
+
+] (./05experimentacion.tex
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 66.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 66.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[44
+
+]
+<figuras/politica-mitchell-2x3.png, id=1123, 1150.2975pt x 561.59813pt>
+File: figuras/politica-mitchell-2x3.png Graphic file (type png)
+<use figuras/politica-mitchell-2x3.png>
+Package pdftex.def Info: figuras/politica-mitchell-2x3.png  used on input line 116.
+(pdftex.def)             Requested size: 354.02342pt x 172.8425pt.
+
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 120.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 120.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[45]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 182.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 182.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[46 <./figuras/politica-mitchell-2x3.png>]
+<figuras/reglas-celdas.pdf, id=1138, 433.62pt x 289.08pt>
+File: figuras/reglas-celdas.pdf Graphic file (type pdf)
+<use figuras/reglas-celdas.pdf>
+Package pdftex.def Info: figuras/reglas-celdas.pdf  used on input line 185.
+(pdftex.def)             Requested size: 354.02342pt x 236.02818pt.
+
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 250.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 250.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[47 <./figuras/reglas-celdas.pdf>]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 250.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 250.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[48]
+<figuras/tiempos-total.pdf, id=1158, 505.89pt x 397.485pt>
+File: figuras/tiempos-total.pdf Graphic file (type pdf)
+<use figuras/tiempos-total.pdf>
+Package pdftex.def Info: figuras/tiempos-total.pdf  used on input line 292.
+(pdftex.def)             Requested size: 434.26787pt x 341.21785pt.
+
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 297.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 297.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[49
+
+]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 297.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 297.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[50 <./figuras/tiempos-total.pdf>]
+<figuras/russell-policy.png, id=1179, 1151.05031pt x 691.08188pt>
+File: figuras/russell-policy.png Graphic file (type png)
+<use figuras/russell-policy.png>
+Package pdftex.def Info: figuras/russell-policy.png  used on input line 341.
+(pdftex.def)             Requested size: 472.03123pt x 283.39812pt.
+
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 348.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 348.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[51
+
+]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 348.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 348.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[52 <./figuras/russell-policy.png>])
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 547.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 547.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[53
+
+] (./06conclusiones.tex
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 66.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 66.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[54
+
+]
+
+File: logos/UTYP.png Graphic file (type png)
+<use logos/UTYP.png>
+Package pdftex.def Info: logos/UTYP.png  used on input line 96.
+(pdftex.def)             Requested size: 54.71477pt x 28.45274pt.
+File: logos/LogoUPV_2023.png Graphic file (type png)
+<use logos/LogoUPV_2023.png>
+Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 96.
+(pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
+[55])
 
 File: logos/UTYP.png Graphic file (type png)
 <use logos/UTYP.png>
@@ -2275,7 +2273,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 550.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[57
+[56
 
 ] (out/main.lof
 LaTeX Info: Redefining \sptext on input line 1.
@@ -2295,7 +2293,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 556.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[58
+[57
 
 ] (out/main.lot
 LaTeX Info: Redefining \sptext on input line 1.
@@ -2315,7 +2313,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 561.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[59
+[58
 
 ] (out/main.loa)
 \tf@loa=\write10
@@ -2331,7 +2329,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 570.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[60
+[59
 
 ]
 LaTeX Font Info:    Trying to load font information for U+lasy on input line 576.
@@ -2347,7 +2345,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 576.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[61
+[60
 
 ]
 
@@ -2359,7 +2357,7 @@ File: logos/LogoUPV_2023.png Graphic file (type png)
 <use logos/LogoUPV_2023.png>
 Package pdftex.def Info: logos/LogoUPV_2023.png  used on input line 578.
 (pdftex.def)             Requested size: 93.6426pt x 35.56593pt.
-[62] (out/main.aux
+[61] (out/main.aux
 LaTeX Info: Redefining \sptext on input line 12.
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -2376,7 +2374,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E91F2E16ACEBE0F825823348F5E12FCB;17166.
+(rerunfilecheck)             Checksum: 1414F058C9B86218852570A77F2F1740;16898.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                main
@@ -2387,18 +2385,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47362 strings out of 473579
- 990088 string characters out of 5728234
+ 47381 strings out of 473579
+ 990733 string characters out of 5728234
  2080957 words of memory out of 5000000
- 69219 multiletter control sequences out of 15000+600000
+ 69238 multiletter control sequences out of 15000+600000
  574335 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,17n,121p,1888b,2288s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on out/main.pdf (75 pages, 1581552 bytes).
+Output written on out/main.pdf (74 pages, 1636963 bytes).
 PDF statistics:
- 1486 PDF objects out of 1728 (max. 8388607)
- 1278 compressed objects within 13 object streams
+ 1477 PDF objects out of 1728 (max. 8388607)
+ 1266 compressed objects within 13 object streams
  347 named destinations out of 1000 (max. 500000)
- 824 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 826 words of extra memory for PDF output out of 10000 (max. 10000000)
 
