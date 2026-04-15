@@ -39,6 +39,12 @@
 \renewcommand{\listalgorithmname}{Lista de algoritmos}
 \renewcommand{\algorithmicrequire}{\textbf{Entrada:}}
 \renewcommand{\algorithmicensure}{\textbf{Salida:}}
+\algrenewcommand\algorithmicif{\textbf{si}}
+\algrenewcommand\algorithmicthen{\textbf{entonces}}
+\algrenewcommand\algorithmicelse{\textbf{si no}}
+\algrenewcommand\algorithmicend{\textbf{fin}}
+\algrenewcommand\algorithmicfor{\textbf{para}}
+\algrenewcommand\algorithmicdo{\textbf{hacer}}
 
 % PARA CODIGOS QUE NO SON NECESARIAMENTE ALGORITMOS
 \renewcommand{\lstlistingname}{Código} % Lo llamamos "Código" con rigor técnico
@@ -471,7 +477,7 @@ Una vez concluido el proceso de evaluación, y con base a la rúbrica establecid
 \pagestyle{fancy}
 \section*{\centering Agradecimientos}
 \addcontentsline{toc}{section}{Agradecimientos}
-%\input{Agradecimientos.tex}
+\input{00Agradecimientos.tex}
 
 %-----------------------------------------------------------------------------------------------------------------
 % PAGINA 5 - RESUMEN EN ESPAÑOL
@@ -538,6 +544,8 @@ This thesis reports the development of an extension to the core of the MDP-ProbL
 \clearpage
 \input{05experimentacion.tex}
 
+\clearpage
+\input{06conclusiones.tex}
 
 \clearpage
 \addcontentsline{toc}{section}{Índice de figuras}

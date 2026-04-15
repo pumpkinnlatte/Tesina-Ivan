@@ -4,13 +4,7 @@
 \section{Experimentación y Resultados}
 \label{ch:experimentacion}
 
-El capítulo anterior presentó el diseño y la implementación de la extensión al \textit{framework} MDP-ProbLog. El presente capítulo somete dicha extensión a una evaluación empírica mediante un conjunto de experimentos diseñados para responder tres preguntas de investigación.
-
-\begin{enumerate}
-    \item \textbf{RQ1 --- Correctitud funcional.} ¿Producen la codificación binaria y la codificación factorizada la misma función de valor óptima $V^*$ y la misma política $\pi^*$ para el mismo MDP?
-    \item \textbf{RQ2 --- Simplificación del modelado.} ¿Reduce la codificación factorizada la complejidad del programa ProbLog que el modelador debe escribir respecto a la codificación binaria?
-    \item \textbf{RQ3 --- Impacto computacional.} ¿Cómo afecta la elección de codificación a los tiempos de construcción del MDP y de resolución por Iteración de Valor?
-\end{enumerate}
+Esta sección evalúa la extensión propuesta mediante experimentos diseñados para responder tres preguntas. ¿La codificación binaria y la codificación factorizada generan la misma función de valor óptima \(V^*\) y la misma política óptima \(\pi^*\) para un mismo MDP? ¿Reduce la codificación factorizada la complejidad del programa ProbLog que el modelador debe escribir respecto a la codificación binaria? ¿Cómo afecta la elección entre fluentes multivaluados o booleanos los tiempos de construcción del MDP y de resolución por Iteración de Valor?
 
 % ------------------------------------------------------------------
 \subsection{Diseño experimental}
@@ -19,55 +13,86 @@ El capítulo anterior presentó el diseño y la implementación de la extensión
 \subsubsection{Dominios de evaluación}
 \label{sec:exp-dominios}
 
-El dominio primario de evaluación es una familia de \textit{grids} basada en el \textit{grid world} de Mitchell \cite{mitchell1997machine}. En este dominio, un agente navega por una cuadrícula rectangular de $R$ filas y $C$ columnas. El agente dispone de cinco acciones: \texttt{left}, \texttt{right}, \texttt{up}, \texttt{down} y \texttt{stay}. Las transiciones son deterministas: cada acción produce el movimiento esperado si la celda destino existe dentro de los límites del \textit{grid}. Si el agente intenta moverse contra un muro, permanece en su celda. Una celda terminal absorbente en la esquina superior derecha otorga una recompensa de $+100$ al ser alcanzada. El dominio es escalable porque la estructura de las reglas de transición es independiente del tamaño del \textit{grid}.
+El dominio primario es la familia de \textit{grids} de Mitchell
+\cite{mitchell1997machine}, presentada en la Sección~\ref{sec:antecedentes}.
+Sus transiciones deterministas permiten aislar el efecto de la codificación
+sobre el tamaño del programa y el espacio de estados. Se evalúan ocho tamaños,
+de $2\times3$ a $32\times32$ (Tabla~\ref{tab:exp-rq2}); el $2\times3$ sirve
+como punto de verificación contra la solución publicada.
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.95\textwidth]{figuras/gird_mitchell_adaptado.png}
-    \caption{Entorno de navegación en cuadrícula utilizado para la validación de la política óptima. Adaptado de Mitchell \cite{mitchell1997machine}.}
-    \label{fig:mitchell-grid}
-\end{figure}
-
-Se seleccionaron ocho tamaños de \textit{grid} para el análisis de escalamiento: $2 \times 3$, $3 \times 3$, $4 \times 4$, $6 \times 6$, $8 \times 8$, $12 \times 12$, $16 \times 16$ y $32 \times 32$. El tamaño $2 \times 3$ es el \textit{grid} original de Mitchell y sirve como punto de verificación contra la solución publicada. Los tamaños intermedios permiten observar las tendencias de escalamiento. El tamaño $32 \times 32$ representa el límite superior evaluado, con $1\,024$ celdas.
-
-El dominio secundario es la instancia canónica del \textit{grid} de Russell y Norvig \cite{russell2016artificial}. Este dominio consiste en un \textit{grid} $3 \times 4$ con un obstáculo en la celda $(2,2)$, un estado meta en $(3,4)$ con recompensa $+1$, un estado trampa en $(2,4)$ con recompensa $-1$, y un costo por paso de $-0.04$ para todos los estados no terminales. Las transiciones son estocásticas: la acción elegida produce el movimiento deseado con probabilidad $0.80$, y con probabilidad $0.10$ el agente se desplaza hacia cada uno de los dos lados perpendiculares. Si el movimiento resultante choca con un muro, el agente permanece en su celda. El dominio Russell se evalúa en una única instancia canónica de $11$ estados para verificar la corrección de la extensión contra los valores publicados en la Figura~17.3 de Russell y Norvig \cite{russell2016artificial}.
+El dominio secundario es el \textit{grid} canónico $3\times4$ de Russell y
+Norvig \cite{russell2016artificial}: $11$ estados, transiciones estocásticas
+($0.80/0.10/0.10$), estado trampa en $(2,4)$ con recompensa $-1$ y costo por
+paso de $-0.04$. Complementa al dominio Mitchell al verificar la corrección
+de la extensión bajo distribuciones probabilísticas no triviales. Se evalúa en
+una única instancia contra la Figura~17.3 de \cite{russell2016artificial}.
 
 \subsubsection{Variables independientes}
 \label{sec:exp-variables}
 
-El experimento manipula dos variables independientes. La primera es la \textbf{codificación del espacio de estados}. La codificación binaria (BSF) representa la posición del agente mediante $\lceil \log_2(R \times C + 1) \rceil$ fluentes booleanos independientes. Cada fluente toma el valor $0$ o $1$, y la combinación de todos ellos identifica el estado. La codificación factorizada (AD) representa la posición mediante dos fluentes multivaluados, uno para la fila y uno para la columna, declarados como Disyunciones Anotadas. El espacio de estados resultante tiene exactamente $R \times C$ elementos sin estados espurios. La codificación binaria se aplica únicamente al dominio Mitchell; la codificación factorizada se aplica a ambos dominios.
+El experimento manipula dos variables independientes. La primera es la
+\textbf{codificación del espacio de estados}: binaria o factorizada. La
+codificación binaria se aplica únicamente al dominio Mitchell; la
+factorizada se aplica a ambos dominios.
 
-La segunda variable es el \textbf{\textit{backend} de compilación}. Se evalúan tres \textit{backends} disponibles en ProbLog. El \textit{backend} \textit{ddnnf} compila el programa aterrizado en un circuito d-DNNF y evalúa cada consulta $P(f \mid s,a)$ mediante un recorrido independiente del circuito, con costo $O(|\mathcal{S}| \times |\mathcal{A}|)$ por iteración de Bellman. El \textit{backend} darwiche compila el mismo circuito d-DNNF pero calcula todas las marginales de forma simultánea mediante el esquema de diferenciación de Darwiche \cite{darwiche2003differential}, reduciendo el costo por iteración a $O(|C|)$ independientemente del número de fluentes consultados. El \textit{backend} \textit{sdd} compila el programa en un Diagrama de Decisión Sentencial (SDD) \cite{darwiche2011sdd} y evalúa las consultas mediante el evaluador estándar de ProbLog.
+La segunda variable es la \textbf{configuración de inferencia}. ProbLog
+dispone de dos \textit{backends} de compilación: circuitos d-DNNF
+\cite{darwiche2003differential} y Diagramas de Decisión Sentencial (SDD)
+\cite{darwiche2011sdd}. Para los circuitos d-DNNF se comparan dos evaluadores:
+el estándar, que recorre el circuito una vez por consulta, y el diferencial de
+Darwiche \cite{darwiche2003differential}, que calcula todas las marginales en
+un único recorrido por diferenciación. El SDD usa el evaluador estándar de
+ProbLog. A lo largo del capítulo, las tres configuraciones se identifican como
+\textit{ddnnf}, \textit{darwiche} y \textit{sdd}, respectivamente.
 
 \subsubsection{Protocolo de medición}
 \label{sec:exp-protocolo}
 
-El experimento comprende $50$ configuraciones: $48$ del dominio Mitchell ($8$ tamaños $\times$ $2$ codificaciones $\times$ $3$ \textit{backends}) y $2$ del dominio Russell (codificación factorizada con \textit{backends} \textit{ddnnf} y darwiche). Cada configuración se ejecuta $N = 11$ veces de forma independiente. La primera ejecución se descarta como calentamiento para estabilizar el entorno de ejecución. Las $10$ ejecuciones restantes constituyen las mediciones efectivas. En cada ejecución se ejecuta el pipeline completo desde cero: \textit{parsing}, clasificación de fluentes, \textit{grounding}, compilación del circuito e Iteración de Valor.
+El experimento comprende $50$ configuraciones: $48$ del dominio Mitchell
+($8$ tamaños $\times$ $2$ codificaciones $\times$ $3$ configuraciones de
+inferencia) y $2$ del dominio Russell (codificación factorizada con
+\textit{ddnnf} y darwiche). El pipeline completo se ejecuta en cada corrida
+desde cero: \textit{parsing}, clasificación de fluentes, \textit{grounding},
+compilación del circuito e Iteración de Valor. Cada configuración se repite
+$N = 10$ veces de forma independiente.
 
-El límite de \textit{timeout} es de $400\,\text{s}$ por ejecución individual. Si una ejecución supera ese límite, se registra con estado \texttt{TIMEOUT} y los datos parciales disponibles. Los parámetros del solver se fijan en $\gamma = 0.9$ para el dominio Mitchell y $\gamma = 1.0$ para el dominio Russell, con $\varepsilon = 0.01$ y $\varepsilon_{\text{thr}} = 10^{-6}$. Estos parámetros se mantienen constantes en todas las configuraciones de cada dominio. Los tiempos se miden con \texttt{time.perf\_counter()} dentro de cada ejecución.
+\clearpage
+
+El límite de tiempo es de $400\,\text{s}$ por ejecución. Si una ejecución
+supera ese límite, se registra con estado \texttt{TIMEOUT} y los datos
+parciales disponibles. Los parámetros del solver se fijan en $\gamma = 0.9$
+para el dominio Mitchell y $\gamma = 1.0$ para el dominio Russell, con
+$\varepsilon = 0.01$ y $\varepsilon_{\text{thr}} = 10^{-6}$. Los tiempos
+se miden con \texttt{time.perf\_counter()} dentro de cada corrida.
 
 % ------------------------------------------------------------------
 \subsection{Entorno de evaluación}
 \label{sec:exp-entorno}
 
-Los experimentos se ejecutaron sobre un equipo con arquitectura x86\_64 y sistema operativo Linux~6.17.0-20-generic. El intérprete utilizado fue Python~3.12.3. Las mediciones se realizaron en ejecuciones seriales sin paralelismo; en cada ejecución el proceso disponía de todos los recursos del equipo sin competencia de otros procesos.
+Los experimentos se ejecutaron sobre un equipo Intel\textregistered{} Core\texttrademark{} Ultra~7 155U (14 núcleos) con 16\,GB de RAM y sistema operativo Linux~6.17.0-20-generic. El intérprete fue Python~3.12.3. Las mediciones se realizaron en ejecuciones seriales; el proceso disponía de todos los recursos del equipo en cada corrida.
 
-El experimento comprende $50$ configuraciones y $550$ ejecuciones totales ($50 \times 11$). De las $50$ configuraciones, $43$ completaron al menos $10$ ejecuciones exitosas dentro del límite de \textit{timeout}. Las $7$ configuraciones restantes registraron estado \texttt{TIMEOUT} en todas sus ejecuciones medidas. Las configuraciones que alcanzaron el \textit{timeout} corresponden a la codificación binaria en \textit{grids} de $12 \times 12$ o mayores (con \textit{backend} \textit{ddnnf}) y a la codificación factorizada en el \textit{grid} $32 \times 32$ con \textit{backend} \textit{ddnnf}. El \textit{timeout} es un resultado experimental válido que documenta los límites de escalabilidad de cada configuración.
+De las $50$ configuraciones, $43$ completaron las $10$ corridas dentro del límite de \textit{timeout}; las $7$ restantes registraron \texttt{TIMEOUT} en todas sus ejecuciones (Tabla~\ref{tab:exp-tiempos}).
 
 % ------------------------------------------------------------------
-\subsection{RQ1 --- Corrección funcional}
+\subsection{Corrección funcional}
 \label{sec:exp-rq1}
 
-El primer objetivo de la evaluación es demostrar que la extensión multivaluada produce resultados correctos. Para ello se comparan las soluciones obtenidas por ambas codificaciones entre sí y, en el dominio Russell, contra la solución publicada de referencia.
+Esta sección verifica que la extensión multivaluada produce la misma $V^*$
+y la misma $\pi^*$ que la codificación binaria para un mismo MDP, y que
+los resultados coinciden con la solución de referencia publicada.
 
 \subsubsection{Verificación en el dominio Mitchell}
 \label{sec:exp-rq1-mitchell}
 
-La Tabla~\ref{tab:exp-correccion} presenta los resultados de la verificación cruzada entre codificaciones para el dominio Mitchell. Para cada tamaño de \textit{grid} donde ambas codificaciones completaron, se comparan los valores numéricos de $V^*(s)$ para todos los estados del espacio de la codificación factorizada, y se verifica si las políticas $\pi^*(s)$ son idénticas. La tolerancia de comparación numérica es $10^{-6}$.
+La Tabla~\ref{tab:exp-correccion} compara $V^*(s)$ y $\pi^*(s)$ para cada
+tamaño donde ambas codificaciones completaron. La columna $\max|\Delta V^*|$
+reporta la diferencia máxima absoluta entre funciones de valor; la columna
+Iter.\ el número de iteraciones de Bellman hasta convergencia. La tolerancia
+de comparación es $10^{-6}$.
 
 \begin{table}[htbp]
     \centering
-    \caption{Verificación cruzada de corrección funcional en el dominio Mitchell. La columna $\max|\Delta V^*|$ reporta la diferencia máxima absoluta entre las funciones de valor de ambas codificaciones. La columna Iter. reporta el número de iteraciones de Bellman hasta convergencia, que es idéntico para ambas codificaciones en cada tamaño.}
+    \caption{Verificación cruzada de corrección funcional en el dominio Mitchell.}
     \label{tab:exp-correccion}
     \small
     \begin{tabular}{l r r c c r}
@@ -84,10 +109,16 @@ La Tabla~\ref{tab:exp-correccion} presenta los resultados de la verificación cr
         \bottomrule
     \end{tabular}
     \smallskip\\
-    \footnotesize{El \textit{grid} $32 \times 32$ no aparece porque la codificación binaria alcanzó el \textit{timeout} en las tres combinaciones de \textit{backend} evaluadas; la verificación cruzada requiere que ambas codificaciones completen.}
+    \footnotesize{El \textit{grid} $32 \times 32$ no aparece porque la codificación binaria superó el \textit{timeout} en las tres configuraciones de inferencia; la verificación cruzada requiere que ambas codificaciones completen.}
 \end{table}
 
-Las diferencias máximas entre ambas codificaciones son exactamente $0.0$ en todos los tamaños evaluados, y las políticas son idénticas en cada caso. El número de iteraciones de Bellman hasta convergencia es igual para ambas codificaciones en cada tamaño. Esta igualdad se sigue de que ambas codificaciones representan el mismo MDP: la estructura de transiciones y recompensas es idéntica, y el algoritmo de Iteración de Valor aplicado a estructuras isomorfas converge en el mismo número de pasos con los mismos parámetros $\gamma$ y $\varepsilon$ \cite{puterman2014markov}. La verificación del dominio Russell se presenta en la Sección~\ref{sec:exp-russell}.
+Las diferencias son exactamente $0.0$ en todos los tamaños evaluados y las
+políticas coinciden en cada caso. Ambas codificaciones representan el mismo
+MDP; la estructura de transiciones y recompensas es idéntica, por lo que la
+Iteración de Valor converge en el mismo número de pasos con los mismos
+parámetros $\gamma$ y $\varepsilon$ \cite{puterman2014markov}. La
+verificación del dominio Russell se presenta en la
+Sección~\ref{sec:exp-russell}.
 
 % TODO [FIGURA]: Visualización de la política óptima π* sobre el grid 2×3 original de Mitchell.
 %   Tipo: Grid 2×3 con flechas de acción en cada celda no terminal.
@@ -96,16 +127,20 @@ Las diferencias máximas entre ambas codificaciones son exactamente $0.0$ en tod
 %   Label sugerido: fig:politica-mitchell-2x3
 
 % ------------------------------------------------------------------
-\subsection{RQ2 --- Simplificación del modelado}
+\subsection{Simplificación del modelado}
 \label{sec:exp-rq2}
 
-La segunda pregunta de investigación evalúa si la codificación factorizada reduce la complejidad del programa ProbLog que el modelador debe escribir. Las métricas consideradas son el número de fluentes declarados, las cardinalidades de sus dominios, el número de reglas en el programa fuente, el tamaño del espacio de estados $|\mathcal{S}|$ y la cantidad de estados espurios generados.
-
-La Tabla~\ref{tab:exp-rq2} presenta estas métricas estáticas para las dos codificaciones en los ocho tamaños de \textit{grid} evaluados.
+Esta sección evalúa la reducción de complejidad en el
+programa ProbLog. La Tabla~\ref{tab:exp-rq2} compara, para ambas
+codificaciones y los ocho tamaños de \textit{grid}, el número de fluentes,
+las cardinalidades de sus dominios, el número de reglas, el tamaño del espacio
+de estados $|\mathcal{S}|$ y los estados espurios. Para la codificación
+binaria, la columna Cardinalidades indica el número de bits; para la
+factorizada, las cardinalidades de los dos fluentes multivaluados.
 
 \begin{table}[htbp]
     \centering
-    \caption{Métricas estáticas de los programas ProbLog generados por cada codificación. Para la codificación binaria, la columna Cardinalidades indica el número de fluentes booleanos. Para la factorizada, indica las cardinalidades de los dos fluentes multivaluados.}
+    \caption{Métricas del programa fuente por codificación y tamaño de \textit{grid}.}
     \label{tab:exp-rq2}
     \small
     \begin{tabular}{l l r c r r r}
@@ -141,39 +176,49 @@ La Tabla~\ref{tab:exp-rq2} presenta estas métricas estáticas para las dos codi
             & Fac. & 2 & $16 \times 16$  &    21 &  256 &   0 \\
         \addlinespace
         \multirow{2}{*}{$32 \times 32$}
-            & Bin.† & 11 & $11$ bits     & $26\,623$ & $2\,048$† & $1\,024$† \\
+            & Bin. & 11 & $11$ bits     & $26\,623$ & $2\,048$ & $1\,024$ \\
             & Fac.  &  2 & $32 \times 32$ &    21 & $1\,024$ &   0 \\
         \bottomrule
     \end{tabular}
     \smallskip\\
-    \footnotesize{† Las métricas $|\mathcal{S}|$ y espurios de la fila $32 \times 32$ binario son valores teóricos derivados del número de bits ($2^{11} = 2\,048$ estados, $2\,048 - 1\,024 = 1\,024$ espurios). Las tres configuraciones de \textit{backend} alcanzaron el \textit{timeout} de $400\,\text{s}$ sin producir resultados de tiempo.}
+
 \end{table}
 
-Los datos revelan tres regularidades. La primera es la constancia de la codificación factorizada. Independientemente del tamaño del \textit{grid}, la codificación factorizada genera siempre un programa con $2$ fluentes y $21$ reglas. Las cardinalidades de los dos fluentes coinciden exactamente con las dimensiones del \textit{grid} ($R \times C$), lo que hace explícita la correspondencia entre la representación lógica y la estructura del dominio. Esta constancia se debe a que las reglas de transición están parametrizadas por variables lógicas y aritmética, de modo que el mismo programa describe la dinámica para cualquier dimensión del \textit{grid}.
+La codificación factorizada mantiene $21$ reglas para cualquier tamaño de
+\textit{grid}; la binaria escala de $42$ a $26\,623$ en el mismo rango. La
+codificación factorizada no genera estados espurios; la binaria los acumula
+con cada incremento de escala. La Figura~\ref{fig:reglas-celdas} ilustra
+esta divergencia.
 
-La segunda regularidad es el crecimiento superlineal de la codificación binaria. El número de reglas crece de $42$ (en $2 \times 3$) a $5\,376$ (en $16 \times 16$), un factor de $128\times$ para un incremento de $43\times$ en el número de celdas. Este crecimiento proviene de que cada transición requiere reglas individuales por estado, y el número de estados crece exponencialmente con el número de bits.
+El \textit{grid} $4\times4$ presenta una restricción adicional. Sus $16$
+celdas requieren $4$ bits como mínimo, pero la implementación no puede usar
+el estado~$0$ para modelar transiciones, lo que fuerza el uso de $5$ bits y
+genera $16$ estados espurios. Esta restricción afecta cualquier \textit{grid}
+cuyo número de celdas sea una potencia exacta de~$2$.
 
-La tercera regularidad concierne al \textit{grid} $4 \times 4$. La codificación binaria utiliza $5$ bits para representar $16$ celdas, generando un espacio de $2^5 = 32$ estados con $16$ estados espurios. El mínimo teórico sería $4$ bits ($2^4 = 16$ estados exactos). La discrepancia se debe a que la implementación reserva el estado $0$ (todos los fluentes a cero) para uso interno, desplazando todos los índices de celda en una unidad. Esta restricción produce siempre al menos un estado espurio adicional sobre el mínimo teórico cuando el número de celdas es una potencia exacta de $2$.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{figuras/reglas-celdas.pdf}
+    \caption{Número de reglas del programa fuente en función del número de celdas del \textit{grid}.}
+    \label{fig:reglas-celdas}
+\end{figure}
 
-% TODO [FIGURA]: Gráfica de líneas con escala logarítmica en el eje Y mostrando el número
-%   de reglas vs. número de celdas del grid, con dos series (binaria y factorizada).
-%   La serie factorizada es una línea horizontal constante en 21.
-%   Label sugerido: fig:reglas-celdas
+\clearpage
 
 % ------------------------------------------------------------------
-\subsection{RQ3 --- Impacto computacional}
+\subsection{Impacto computacional}
 \label{sec:exp-rq3}
 
-La tercera pregunta de investigación evalúa cómo influye la elección de codificación sobre el rendimiento del solver. Cada configuración combina una de las dos codificaciones con uno de los tres \textit{backends}. El tiempo de ejecución se descompone en dos fases. La fase de construcción ($t_{\text{build}}$) abarca el \textit{parsing} del programa fuente, la clasificación de fluentes, el \textit{grounding} y la compilación del circuito. La fase de Iteración de Valor ($t_{\text{VI}}$) ejecuta las actualizaciones de Bellman hasta convergencia. La métrica primaria reportada es el tiempo total $t_{\text{total}} = t_{\text{build}} + t_{\text{VI}}$.
+Esta sección evalúa cómo influye la elección de codificación sobre el rendimiento del solver. La fase de construcción ($t_{\text{build}}$) abarca \textit{parsing}, clasificación de fluentes, \textit{grounding} y compilación del circuito. La fase de Iteración de Valor ($t_{\text{VI}}$) ejecuta las actualizaciones de Bellman hasta convergencia. El tiempo total es $t_{\text{total}} = t_{\text{build}} + t_{\text{VI}}$.
 
 \subsubsection{Tiempos de ejecución}
 \label{sec:exp-tiempos}
 
-La Tabla~\ref{tab:exp-tiempos} presenta $t_{\text{total}}$ para cada combinación de codificación y \textit{backend}. Las configuraciones que excedieron el límite de $400\,\text{s}$ se marcan como T.O. Para las configuraciones que completaron, se reporta la media y la desviación estándar sobre $10$ ejecuciones independientes.
+La Tabla~\ref{tab:exp-tiempos} presenta $t_{\text{total}}$ para cada combinación de codificación y configuración de inferencia. Las configuraciones que completaron reportan media y desviación estándar sobre $10$ ejecuciones independientes.
 
 \begin{table}[htbp]
     \centering
-    \caption{Tiempo total de ejecución $t_{\text{total}}$ (segundos) por codificación y \textit{backend}. Se reporta media~$\pm$~desviación estándar sobre $10$ ejecuciones. T.O.\ indica que la configuración superó el límite de $400\,\text{s}$.}
+    \caption{Tiempo total de ejecución $t_{\text{total}}$ (segundos) por codificación y configuración de inferencia.}
     \label{tab:exp-tiempos}
     \footnotesize
     \begin{tabular}{l l r r r}
@@ -204,32 +249,32 @@ La Tabla~\ref{tab:exp-tiempos} presenta $t_{\text{total}}$ para cada combinació
             & Fac. & $10.8 \pm 0.6$    & $1.40 \pm 0.04$   & $0.507 \pm 0.033$ \\
         \addlinespace
         \multirow{2}{*}{$12 \times 12$}
-            & Bin. & T.O.              & $161 \pm 3.4$     & $20.5 \pm 1.3$    \\
+            & Bin. & \texttt{TIMEOUT}.              & $161 \pm 3.4$     & $20.5 \pm 1.3$    \\
             & Fac. & $68.9 \pm 3.1$    & $5.36 \pm 0.12$   & $1.82 \pm 0.05$   \\
         \addlinespace
         \multirow{2}{*}{$16 \times 16$}
-            & Bin. & T.O.              & T.O.              & $94.2 \pm 10.2$   \\
+            & Bin. & \texttt{TIMEOUT}.              & \texttt{TIMEOUT}.              & $94.2 \pm 10.2$   \\
             & Fac. & $245 \pm 2.3$     & $14.8 \pm 0.6$    & $5.11 \pm 0.46$   \\
         \addlinespace
         \multirow{2}{*}{$32 \times 32$}
-            & Bin. & T.O.              & T.O.              & T.O.              \\
-            & Fac. & T.O.              & $189 \pm 10$      & $58.9 \pm 3.8$    \\
+            & Bin. & \texttt{TIMEOUT}.              & \texttt{TIMEOUT}.              & \texttt{TIMEOUT}.              \\
+            & Fac. & \texttt{TIMEOUT}.              & $189 \pm 10$      & $58.9 \pm 3.8$    \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-Los tiempos de la codificación binaria crecen más rápido que los de la factorizada a medida que aumenta el tamaño del \textit{grid}. Para el \textit{backend} darwiche, la codificación binaria pasa de $0.109\,\text{s}$ en $2 \times 3$ a $161\,\text{s}$ en $12 \times 12$, un factor de $1\,477\times$. En ese mismo rango, la codificación factorizada crece de $0.103\,\text{s}$ a $5.36\,\text{s}$, un factor de $52\times$.
+Los tiempos de la codificación binaria crecen más rápido que los de la factorizada a medida que aumenta el tamaño del grid. La Iteración de Valor domina $t_{\text{total}}$ en la mayoría de las configuraciones. 
 
-La fase de Iteración de Valor domina $t_{\text{total}}$ en la mayoría de las configuraciones. Para la codificación factorizada con \textit{backend} darwiche, el tiempo de construcción representa el $15.7\%$ del total en $2 \times 3$ y el $2.0\%$ en $16 \times 16$. La proporción decrece con el tamaño del \textit{grid} porque el número de evaluaciones de $Q(s,a)$ durante la Iteración de Valor crece con $|\mathcal{S}| \times |\mathcal{A}|$, mientras que el costo de construcción del circuito crece más lentamente.
+\clearpage
 
 \subsubsection{Cociente de tiempos entre codificaciones}
 \label{sec:exp-speedup}
 
-La Tabla~\ref{tab:exp-speedup} presenta el cociente $t_{\text{total}}^{\text{bin}} / t_{\text{total}}^{\text{fac}}$ para los pares de configuraciones donde ambas codificaciones completaron. Un valor mayor que $1.0$ indica que la codificación factorizada finalizó en menos tiempo.
+La Tabla~\ref{tab:exp-speedup} presenta el cociente $t_{\text{total}}^{\text{bin}} / t_{\text{total}}^{\text{fac}}$ para los pares donde ambas codificaciones completaron. \texttt{TIMEOUT} indica que la codificación binaria superó el límite de tiempo mientras que la factorizada no. Un valor menor que $1.0$ indica que la binaria fue más rápida.
 
 \begin{table}[htbp]
     \centering
-    \caption{Cociente $t_{\text{total}}^{\text{bin}} / t_{\text{total}}^{\text{fac}}$ por \textit{backend}. El símbolo $\infty$ indica que la codificación binaria superó el \textit{timeout} mientras la factorizada completó. Un valor $< 1$ indica que la binaria fue más rápida.}
+    \caption{Cociente de tiempos $t_{\text{total}}^{\text{bin}} / t_{\text{total}}^{\text{fac}}$ por configuración de inferencia.}
     \label{tab:exp-speedup}
     \small
     \begin{tabular}{l r r r}
@@ -241,112 +286,47 @@ La Tabla~\ref{tab:exp-speedup} presenta el cociente $t_{\text{total}}^{\text{bin
         $4 \times 4$   & $3.82\times$ & $5.36\times$ & $3.15\times$ \\
         $6 \times 6$   & $6.59\times$ & $9.96\times$ & $4.56\times$ \\
         $8 \times 8$   & $12.2\times$ & $23.6\times$ & $8.28\times$ \\
-        $12 \times 12$ & $\infty$      & $30.0\times$ & $11.2\times$ \\
-        $16 \times 16$ & $\infty$      & $\infty$      & $18.4\times$ \\
+        $12 \times 12$ & \texttt{TIMEOUT}.   & $30.0\times$ & $11.2\times$ \\
+        $16 \times 16$ & \texttt{TIMEOUT}.   & \texttt{TIMEOUT}.   & $18.4\times$ \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-Para el \textit{grid} $2 \times 3$, la codificación binaria es ligeramente más rápida o comparable en \textit{ddnnf} y \textit{sdd} ($0.92\times$ y $0.95\times$ respectivamente). Para \textit{darwiche}, la codificación factorizada ya es $1.06\times$ más rápida en ese tamaño. A partir del \textit{grid} $3 \times 3$, la codificación factorizada es más rápida en las tres combinaciones de \textit{backend}, y el cociente crece de forma monotónica con el tamaño.
+Para el \textit{grid} $2\times3$, las configuraciones \textit{ddnnf} y \textit{sdd} muestran cocientes menores a $1.0$. A partir de $3\times3$, la codificación factorizada supera a la binaria en las tres configuraciones de inferencia..
 
-El cociente máximo observado en pares donde ambas codificaciones completaron es $30.0\times$, para el \textit{backend} darwiche en $12 \times 12$. La inversión de rendimiento entre $2 \times 3$ y $3 \times 3$ responde al costo fijo de las Disyunciones Anotadas. Para \textit{grids} pequeños, el \textit{overhead} de construir y compilar los nodos \textit{choice} supera la ventaja de un espacio de estados reducido. Para \textit{grids} de $3 \times 3$ en adelante, la reducción del espacio de estados y del número de cláusulas compensa ese costo fijo.
+La inversión de rendimiento entre $2\times3$ y $3\times3$ refleja el costo fijo de las Disyunciones Anotadas. Para el tamaño mínimo, el \textit{overhead} de compilar los nodos \textit{choice} supera la ventaja de un espacio de estados reducido; a partir de $3\times3$, la reducción de estados y cláusulas lo compensa.
 
-\subsubsection{Frontera de escalabilidad}
-\label{sec:exp-frontera}
-
-La Tabla~\ref{tab:exp-frontera} resume el tamaño máximo de \textit{grid} para el que cada combinación de codificación y \textit{backend} completó dentro del límite de \textit{timeout}.
-
-\begin{table}[htbp]
-    \centering
-    \caption{Tamaño máximo de \textit{grid} que completó dentro del límite de $400\,\text{s}$, por codificación y \textit{backend}. Entre paréntesis se indica el número de estados del espacio de estados correspondiente.}
-    \label{tab:exp-frontera}
-    \small
-    \begin{tabular}{l c c c}
-        \toprule
-        \textbf{Codificación} & \textbf{ddnnf} & \textbf{darwiche} & \textbf{sdd} \\
-        \midrule
-        Binaria
-            & $8 \times 8$\;($128$)
-            & $12 \times 12$\;($256$)
-            & $16 \times 16$\;($512$) \\[2pt]
-        Factorizada
-            & $16 \times 16$\;($256$)
-            & $32 \times 32$\;($1\,024$)
-            & $32 \times 32$\;($1\,024$) \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-La codificación factorizada extiende la frontera de escalabilidad en todos los \textit{backends}. Para \textit{ddnnf}, la frontera pasa de $8 \times 8$ (binaria) a $16 \times 16$ (factorizada), duplicando el número máximo de estados. Para darwiche y \textit{sdd}, la codificación factorizada permite resolver el \textit{grid} $32 \times 32$ con $1\,024$ estados, cuatro veces más que el máximo alcanzado por la codificación binaria con esos \textit{backends}.
-
-La codificación binaria para el \textit{grid} $32 \times 32$ genera $11$ fluentes booleanos y un espacio de $2^{11} = 2\,048$ estados, con $1\,024$ estados espurios. Las $26\,623$ reglas del programa resultan en un programa aterrizado de tamaño suficiente como para que los tres \textit{backends} superen el límite de $400\,\text{s}$ sin completar la Iteración de Valor.
-
-\subsubsection{Comparación de \textit{backends}}
+\subsubsection{Comparación de configuraciones de inferencia}
 \label{sec:exp-backends}
 
-Los tres \textit{backends} difieren en velocidad absoluta y en la tasa de crecimiento con el tamaño del \textit{grid}. El análisis se realiza sobre la codificación factorizada, que ofrece el mayor número de configuraciones completadas.
+Las tres configuraciones de inferencia difieren en su velocidad y en la tasa de crecimiento con el tamaño del \textit{grid}. El análisis se realiza sobre la codificación factorizada, que ofrece el mayor número de configuraciones completadas.
 
-Para la codificación factorizada, el \textit{backend} \textit{sdd} produce los tiempos más bajos en todos los tamaños evaluados. El \textit{backend} darwiche es entre $1.75\times$ y $3.2\times$ más lento que \textit{sdd}, con la diferencia creciendo lentamente con el tamaño. El \textit{backend} \textit{ddnnf} muestra la tasa de crecimiento más alta. En el \textit{grid} $4 \times 4$, \textit{ddnnf} es $4.0\times$ más lento que darwiche; en el \textit{grid} $16 \times 16$, esa diferencia es $16.5\times$.
+La configuración \textit{sdd} produce los tiempos más bajos en todos los tamaños evaluados. La configuración darwiche es entre $1.75\times$ y $3.2\times$ más lenta que \textit{sdd}. La configuración \textit{ddnnf} muestra la tasa de crecimiento más alta: en $4 \times 4$ es $4.0\times$ más lenta que darwiche, y en $16 \times 16$ esa diferencia es $16.5\times$.
 
-La divergencia entre \textit{ddnnf} y los otros dos \textit{backends} se explica por la estructura computacional de cada uno. El \textit{backend} \textit{ddnnf} requiere compilar un circuito d-DNNF separado para cada par $(s,a)$ consultado durante la Iteración de Valor. Los \textit{backends} darwiche y \textit{sdd} compilan el circuito una sola vez y derivan todas las probabilidades de transición mediante diferenciación o consulta dirigida sobre esa misma estructura. Esta diferencia reduce el número de compilaciones de $O(|\mathcal{S}| \times |\mathcal{A}|)$ a $O(1)$ por iteración de Bellman.
+La diferencia entre \textit{ddnnf} y \textit{darwiche} confirma el análisis de la Sección~\ref{sec:di-darwiche}. La ventaja de \textit{sdd} frente a d-DNNF excede el alcance de este trabajo. Los tiempos se reportan solo como observación empírica. La Figura~\ref{fig:tiempos-total} presenta las seis series.
 
-% TODO [FIGURA]: Gráfica de líneas log-log mostrando t_total vs. celdas del grid
-%   para las 6 combinaciones codificación × backend (solo configs OK).
-%   Tres series binarias (continuas) y tres factorizadas (discontinuas).
-%   Marcar T.O. = 400s con línea horizontal punteada.
-%   Label sugerido: fig:tiempos-total
-
-\subsubsection{Desglose de la fase de construcción}
-\label{sec:exp-subfases}
-
-La fase de construcción $t_{\text{build}}$ se divide en cuatro subfases: \textit{parsing} del programa fuente ($t_{\text{parse}}$), clasificación de fluentes ($t_{\text{classify}}$), \textit{grounding} del programa ($t_{\text{ground}}$) y compilación del circuito ($t_{\text{compile}}$). La Tabla~\ref{tab:exp-subfases} presenta estas subfases para la codificación factorizada con el \textit{backend} darwiche.
-
-\begin{table}[htbp]
+\begin{figure}[htbp]
     \centering
-    \caption{Desglose de $t_{\text{build}}$ en subfases (segundos) para la codificación factorizada con \textit{backend} darwiche. Se reportan medias sobre $10$ ejecuciones.}
-    \label{tab:exp-subfases}
-    \small
-    \begin{tabular}{l r r r r r}
-        \toprule
-        \textbf{Grid}  & $t_{\text{parse}}$ & $t_{\text{classify}}$ & $t_{\text{ground}}$ & $t_{\text{compile}}$ & $t_{\text{build}}$ \\
-        \midrule
-        $2 \times 3$   & 0.0039 & 0.0006 & 0.0237 & 0.0150 & 0.044 \\
-        $3 \times 3$   & 0.0038 & 0.0006 & 0.0245 & 0.0274 & 0.057 \\
-        $4 \times 4$   & 0.0037 & 0.0007 & 0.0372 & 0.0206 & 0.063 \\
-        $6 \times 6$   & 0.0039 & 0.0008 & 0.0516 & 0.0237 & 0.081 \\
-        $8 \times 8$   & 0.0041 & 0.0011 & 0.0825 & 0.0280 & 0.117 \\
-        $12 \times 12$ & 0.0041 & 0.0014 & 0.1434 & 0.0456 & 0.196 \\
-        $16 \times 16$ & 0.0044 & 0.0017 & 0.2165 & 0.0720 & 0.296 \\
-        $32 \times 32$ & 0.0051 & 0.0031 & 0.6028 & 0.2058 & 0.818 \\
-        \bottomrule
-    \end{tabular}
-\end{table}
+    \includegraphics[width=0.92\textwidth]{figuras/tiempos-total.pdf}
+    \caption{Tiempo total de ejecución en función del número de celdas del \textit{grid} para las seis combinaciones codificación~$\times$~\textit{backend}.}
+    \label{fig:tiempos-total}
+\end{figure}
 
-El \textit{grounding} es la subfase dominante de $t_{\text{build}}$. Su participación relativa crece del $53.8\%$ en $2 \times 3$ al $73.7\%$ en $32 \times 32$. El tiempo de \textit{grounding} pasa de $0.024\,\text{s}$ en $2 \times 3$ a $0.603\,\text{s}$ en $32 \times 32$, un factor de $25\times$ para un incremento de $171\times$ en $|\mathcal{S}|$. Esta sublinealidad se debe a que el programa fuente contiene exactamente $21$ reglas en todos los tamaños. El \textit{grounding} solo debe instanciar esas reglas para los valores concretos de fila y columna del \textit{grid}.
-
-El \textit{parsing} y la clasificación permanecen prácticamente constantes en todos los tamaños evaluados. El tiempo de \textit{parsing} varía entre $0.0037\,\text{s}$ y $0.0051\,\text{s}$, y el de clasificación entre $0.0006\,\text{s}$ y $0.0031\,\text{s}$. La compilación crece de $0.015\,\text{s}$ a $0.206\,\text{s}$, representando entre el $25.2\%$ y el $34.1\%$ de $t_{\text{build}}$.
-
-% TODO [FIGURA]: Gráfica de barras apiladas mostrando la composición de t_build
-%   (parse, classify, ground, compile) para la codificación factorizada con darwiche.
-%   Un grupo de barras por tamaño de grid (8 grids), cuatro segmentos de color.
-%   Incluir etiquetas de porcentaje en los segmentos ground y compile
-%   para los grids extremos (2×3 y 32×32).
-%   Label sugerido: fig:subfases-build
-
+\clearpage
 % ------------------------------------------------------------------
 \subsection{Dominio Russell}
 \label{sec:exp-russell}
 
-El dominio de Mitchell utiliza transiciones deterministas, lo que aísla el efecto de la representación sobre el rendimiento pero no prueba la extensión en condiciones estocásticas. El dominio de Russell complementa esta evaluación: el \textit{grid} canónico $3 \times 4$ de Russell y Norvig \cite{russell2016artificial} incorpora transiciones probabilísticas, un estado trampa y un costo por paso, ofreciendo un escenario de complejidad cualitativa distinta. La evaluación se realiza exclusivamente con la codificación factorizada, que expresa la posición del agente como un único fluente multivaluado \texttt{coor(X,Y)} con $11$ valores posibles. El programa fuente para este dominio contiene $50$ reglas y $66$ líneas. Los \textit{backends} evaluados son \textit{ddnnf} y darwiche; el \textit{backend} \textit{sdd} produjo un error de compilación en este dominio y no se incluye en el análisis cuantitativo.
+El dominio de Mitchell utiliza transiciones deterministas, lo que aísla el efecto de la representación pero no verifica la extensión bajo condiciones estocásticas. El dominio canónico $3 \times 4$ de Russell y Norvig \cite{russell2016artificial} complementa esta evaluación con transiciones probabilísticas, un estado trampa y un costo por paso. La evaluación se realiza con la codificación factorizada, que expresa la posición del agente como un fluente multivaluado \texttt{coor(X,Y)} con $11$ valores posibles y un programa fuente de $50$ reglas. Las configuraciones de inferencia evaluadas son \textit{ddnnf} y darwiche; la configuración \textit{sdd} produjo un error de compilación en este dominio y queda fuera del análisis cuantitativo.
 
 \subsubsection{Verificación de la función de valor óptima}
 \label{sec:exp-russell-v}
 
-La función de valor óptima $V^*(s)$ se verificó comparando los valores producidos por MDP-ProbLog contra los valores de referencia publicados en la Figura~17.3 de Russell y Norvig \cite{russell2016artificial}. El \textit{grid} $3 \times 4$ utiliza los parámetros canónicos del libro: $\gamma = 1.0$, costo por paso $R = {-0.04}$, transiciones con probabilidad $0.80$ en la dirección deseada y $0.10$ hacia cada lado perpendicular. La Tabla~\ref{tab:exp-russell-v} presenta los $9$ estados no terminales del dominio con sus valores de referencia y las diferencias absolutas respecto al valor obtenido por el solver.
+La función de valor óptima $V^*(s)$ se verificó contra la Figura~17.3 de Russell y Norvig \cite{russell2016artificial}, con los parámetros canónicos del dominio ($\gamma = 1.0$, $R = -0.04$). La columna $|\Delta V^*|$ reporta la diferencia absoluta entre el valor obtenido por el solver y el valor de referencia.
 
 \begin{table}[htbp]
     \centering
-    \caption{Verificación de $V^*(s)$ para el dominio Russell $3 \times 4$. Los valores de referencia corresponden a la Figura~17.3 de Russell y Norvig \cite{russell2016artificial}. La columna $|\Delta V^*|$ reporta la diferencia absoluta entre el valor obtenido por MDP-ProbLog y el valor de referencia.}
+    \caption{Verificación de $V^*(s)$ frente a la solución de referencia para el dominio Russell $3 \times 4$.}
     \label{tab:exp-russell-v}
     \small
     \begin{tabular}{c c r r}
@@ -368,12 +348,10 @@ La función de valor óptima $V^*(s)$ se verificó comparando los valores produc
         \bottomrule
     \end{tabular}
     \smallskip\\
-    \footnotesize{Las coordenadas $(X, Y)$ siguen la convención del modelo: fila $X = 1$ en la base del \textit{grid}, columna $Y = 1$ a la izquierda. El estado $(2,2)$ es un obstáculo y no pertenece al espacio de estados. Los estados terminales tienen $V^* = 0$ por convención de estado absorbente: la recompensa $\pm 1$ se recibe al entrar al estado, no al permanecer en él.}
+    \footnotesize{Las coordenadas $(X, Y)$ siguen la convención del modelo: fila $X = 1$ en la base del \textit{grid}, columna $Y = 1$ a la izquierda. El estado $(2,2)$ es un obstáculo y no pertenece al espacio de estados.}
 \end{table}
 
-Los nueve estados no terminales presentan diferencias menores a $0.001$ respecto a los valores de referencia. Los estados terminales tienen $V^* = 0$ en el solver, consistente con la semántica de absorción. La política óptima $\pi^*$ obtenida coincide con la Figura~17.2 de Russell y Norvig \cite{russell2016artificial}: los estados de las filas superiores dirigen al agente hacia el estado meta, mientras que los estados de la fila inferior evitan el estado trampa desplazándose hacia la izquierda.
-
-El número de iteraciones de Bellman hasta convergencia fue $43$. Este valor es considerablemente mayor que el observado en los \textit{grids} de Mitchell de tamaño comparable, donde el \textit{grid} $4 \times 4$ convergió en $4$ iteraciones. La diferencia se explica por dos factores. El primero es el factor de descuento: Russell usa $\gamma = 1.0$, lo que elimina el amortiguamiento geométrico de los valores entre iteraciones. El segundo es el criterio de convergencia: con $\gamma = 1$ y el criterio $\text{max\_residual} \leq 2\varepsilon(1-\gamma)/\gamma$, el umbral se reduce a $0$, exigiendo convergencia exacta al punto fijo \cite{puterman2014markov}.
+Los nueve estados no terminales presentan diferencias menores a $0.001$ respecto a los valores de referencia, y la política óptima $\pi^*$ obtenida coincide con la Figura~17.2 de Russell y Norvig \cite{russell2016artificial}. Los estados terminales tienen $V^* = 0$ en el solver, consistente con la semántica de absorción.
 
 % TODO [FIGURA]: Visualización de la política óptima π* sobre el grid 3×4 de Russell.
 %   Tipo: Grid con flechas de acción en cada celda no terminal.
@@ -381,79 +359,54 @@ El número de iteraciones de Bellman hasta convergencia fue $43$. Este valor es 
 %   Flecha en cada celda no terminal y no obstáculo mostrando π*(s).
 %   Label sugerido: fig:russell-policy
 
-\subsubsection{Tiempos de ejecución}
-\label{sec:exp-russell-t}
-
-La Tabla~\ref{tab:exp-russell-t} presenta los tiempos de construcción, Iteración de Valor y total para los dos \textit{backends} evaluados en el dominio Russell.
-
-\begin{table}[htbp]
-    \centering
-    \caption{Tiempos de ejecución para el dominio Russell $3 \times 4$ con codificación factorizada. Se reporta media~$\pm$~desviación estándar sobre $10$ ejecuciones.}
-    \label{tab:exp-russell-t}
-    \small
-    \begin{tabular}{l r r r}
-        \toprule
-        \textbf{Backend} & $t_{\text{build}}$ (s) & $t_{\text{VI}}$ (s) & $t_{\text{total}}$ (s) \\
-        \midrule
-        ddnnf    & $0.061 \pm 0.003$ & $1.032 \pm 0.009$ & $1.094 \pm 0.009$ \\
-        darwiche & $0.064 \pm 0.006$ & $0.216 \pm 0.001$ & $0.280 \pm 0.006$ \\
-        \midrule
-        Cociente ddnnf/darwiche & $0.95\times$ & $4.78\times$ & $3.91\times$ \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-El \textit{backend} darwiche completa la ejecución en $0.280\,\text{s}$, frente a $1.094\,\text{s}$ del \textit{backend} \textit{ddnnf}, un cociente de $3.91\times$. La diferencia se origina casi exclusivamente en la fase de Iteración de Valor: $t_{\text{VI}}$ es $4.78\times$ menor con darwiche. Los tiempos de construcción son equivalentes para ambos \textit{backends} ($0.061\,\text{s}$ frente a $0.064\,\text{s}$), lo que confirma que los dos comparten el mismo compilador d-DNNF y difieren únicamente en el evaluador.
-
-El cociente de rendimiento entre \textit{backends} para Russell ($3.91\times$) es inferior al observado en \textit{grids} de Mitchell de tamaño comparable. El \textit{grid} $4 \times 4$ de Mitchell con codificación factorizada mostró un cociente \textit{ddnnf}/darwiche de $4.04\times$, y el \textit{grid} $8 \times 8$ de $7.75\times$. Esta diferencia se debe a que el número de evaluaciones por iteración en Russell es $|\mathcal{S}| \times |\mathcal{A}| = 11 \times 5 = 55$, menor que el de los \textit{grids} de Mitchell con espacio de estados equivalente. El circuito compilado del dominio Russell es más complejo por la naturaleza estocástica de las transiciones, pero el número de consultas por iteración es más reducido.
-
 % ------------------------------------------------------------------
+
+\clearpage
+
 \subsection{Discusión}
 \label{sec:exp-discusion}
 
-\subsubsection{RQ1 --- Correctitud funcional}
-\label{sec:disc-rq1}
+La extensión preserva la semántica del MDP. Los resultados de las
+Secciones~\ref{sec:exp-rq1} y~\ref{sec:exp-russell} confirman que la
+codificación multivaluada produce la misma $V^*$ y la misma $\pi^*$ que
+la codificación binaria tanto en condiciones deterministas como estocásticas.
+Esta compatibilidad es consecuencia de que ambas codificaciones representan
+el mismo MDP subyacente. La estructura de transiciones y recompensas es
+idéntica, de modo que la Iteración de Valor converge en el mismo número de
+pasos con los mismos parámetros \cite{puterman2014markov}.
 
-Ambas codificaciones producen la misma función de valor óptima $V^*$ y la misma política $\pi^*$ para todos los tamaños de \textit{grid} evaluados en el dominio Mitchell. Las diferencias máximas entre codificaciones son exactamente $0.0$ en todos los casos (Tabla~\ref{tab:exp-correccion}). RQ1 se responde afirmativamente: la extensión multivaluada preserva la semántica del MDP subyacente sin introducir desviaciones en la solución.
+Los datos de la Tabla~\ref{tab:exp-rq2} muestran que la codificación
+factorizada reduce el tamaño del programa fuente de manera consistente en
+todos los tamaños evaluados. El número de reglas se mantiene en $21$
+independientemente de la escala del dominio, mientras que la codificación
+binaria escala de $42$ reglas en el grid $2 \times 3$ hasta $26\,623$ en
+el grid $32 \times 32$. Esta constancia es una consecuencia directa de que
+la codificación multivaluada describe la dinámica en términos de los valores
+naturales del dominio, sin necesidad de expandir cada variable en múltiples
+predicados booleanos. La reducción del número de reglas va acompañada de
+la eliminación de los estados espurios, lo que reduce el número de pares
+$(s, a)$ que el \textit{solver} evalúa en cada iteración de Bellman.
 
-Un aspecto no evidente de este resultado es la igualdad en el número de iteraciones de Bellman hasta convergencia. Para cada tamaño de \textit{grid}, ambas codificaciones convergen en el mismo número de iteraciones, desde $3$ en $2 \times 3$ hasta $16$ en $16 \times 16$. Esta igualdad se sigue de que ambas codificaciones representan el mismo MDP. La estructura del proceso de decisión, es decir, el conjunto de estados, las funciones de transición y las recompensas, es idéntica en las dos formulaciones porque la representación cambia la etiqueta de los estados pero no la geometría del proceso. Con los mismos parámetros $\gamma$ y $\varepsilon$, el algoritmo de Iteración de Valor aplicado a dos formulaciones isomorfas del mismo MDP converge en el mismo número de pasos \cite{puterman2014markov}.
+La codificación multivaluada y el evaluador de Darwiche producen efectos
+que se amplifican mutuamente. La codificación factorizada reduce $|\mathcal{S}|$
+y, con ello, el número de pares $(s, a)$ por iteración. El evaluador de
+Darwiche \cite{darwiche2003differential} elimina el factor $Q$ del costo de
+cada par al calcular todas las marginales en dos pasadas lineales sobre el
+circuito. Ambos efectos escalan con el tamaño del \textit{grid}, lo que
+explica el crecimiento del cociente en la Tabla~\ref{tab:exp-speedup}. El
+grid $2 \times 3$ constituye un caso límite donde la diferencia entre espacios
+de estados ($8$ frente a $6$~estados) no compensa el costo fijo de compilar
+los nodos \textit{choice} que implementan las Disyunciones Anotadas; a partir
+del grid $3 \times 3$, la reducción del espacio de estados domina el
+\textit{overhead} de compilación y la codificación factorizada supera a la
+binaria en las tres configuraciones de inferencia evaluadas.
 
-La verificación en el dominio Russell extiende este resultado a transiciones estocásticas. Los nueve estados no terminales del \textit{grid} canónico $3 \times 4$ mostraron diferencias menores a $0.001$ respecto a la solución de referencia de AIMA (Tabla~\ref{tab:exp-russell-v}). La política obtenida coincide con la Figura~17.2 de Russell y Norvig \cite{russell2016artificial}. Este resultado confirma que la extensión maneja correctamente las Disyunciones Anotadas bajo distribuciones de probabilidad no triviales, incluyendo la redistribución de masa hacia muros adyacentes.
-
-\subsubsection{RQ2 --- Simplificación del modelado}
-\label{sec:disc-rq2}
-
-La codificación factorizada produce un programa de tamaño constante en todos los tamaños de \textit{grid} evaluados. El programa tiene $2$ fluentes y $21$ reglas independientemente del tamaño, desde $2 \times 3$ hasta $32 \times 32$ (Tabla~\ref{tab:exp-rq2}). Esta constancia es consecuencia directa de la naturaleza paramétrica de las reglas de transición. Al expresar la dinámica en términos de coordenadas y aritmética sobre variables lógicas, una sola regla captura el comportamiento de una acción a través de todas las celdas del \textit{grid}. El modelador no necesita modificar el programa al escalar el dominio. RQ2 se responde afirmativamente.
-
-La codificación binaria, en contraste, requiere enumeración explícita. El número de reglas crece de $42$ en $2 \times 3$ a $5\,376$ en $16 \times 16$, un factor de $128\times$ para un incremento de $43\times$ en el número de celdas. Este crecimiento superlineal se origina en que cada transición debe describirse en términos de qué bits se activan, y el número de bits necesarios crece logarítmicamente con el número de celdas. Al escalar el dominio, el modelador debe reescribir el programa completo para cada nuevo tamaño.
-
-Un caso particular ilustra una restricción de la codificación binaria. El \textit{grid} $4 \times 4$ tiene $16$ celdas, para las que el mínimo teórico es $4$ bits. La implementación usa $5$ bits y genera $32$ estados con $16$ espurios porque el estado $0$ no puede emplearse. Esta restricción implica que la codificación binaria siempre produce al menos un estado espurio adicional sobre el mínimo teórico cuando el número de celdas es exactamente una potencia de $2$. La codificación factorizada no tiene esta limitación porque el dominio de cada fluente se declara explícitamente y no requiere un valor de reserva.
-
-\subsubsection{RQ3 --- Impacto computacional}
-\label{sec:disc-rq3}
-
-El efecto de la codificación sobre el rendimiento sigue un patrón consistente en los tres \textit{backends}. Para el \textit{grid} $2 \times 3$, la codificación binaria es comparable o ligeramente más rápida (cocientes de $0.92\times$, $1.06\times$ y $0.95\times$ para \textit{ddnnf}, darwiche y \textit{sdd} respectivamente). A partir del \textit{grid} $3 \times 3$, la codificación factorizada es más rápida en todas las combinaciones. El punto de inversión refleja el costo fijo de las Disyunciones Anotadas: para \textit{grids} pequeños, el \textit{overhead} de compilar los nodos \textit{choice} supera la ventaja de un espacio de estados reducido. A partir de ese umbral, la reducción del espacio de estados y del número de cláusulas compensa ese costo fijo y el cociente crece de forma monotónica con el tamaño. RQ3 se responde afirmativamente para \textit{grids} de $3 \times 3$ en adelante.
-
-El cociente de rendimiento es mayor para el \textit{backend} darwiche que para \textit{sdd} o \textit{ddnnf} a igual tamaño de \textit{grid} (Tabla~\ref{tab:exp-speedup}). Esta amplificación se debe a la interacción entre la codificación factorizada y el evaluador de diferenciación. El evaluador darwiche calcula todas las marginales del circuito en dos recorridos por par $(s,a)$, independientemente del número de fluentes consultados. Con la codificación factorizada, el espacio de estados es menor que con la binaria, por lo que el número de pares $(s,a)$ evaluados por iteración es también menor. Los dos efectos se combinan: menos pares a evaluar, y cada par evaluado con igual eficiencia. El \textit{backend} \textit{sdd} logra tiempos absolutos menores, pero el efecto de la codificación sobre el cociente es más pronunciado con darwiche.
-
-La consecuencia más directa de la ventaja computacional es la extensión de la frontera de escalabilidad. Con el \textit{backend} darwiche, la codificación binaria alcanza como máximo el \textit{grid} $12 \times 12$ ($256$ estados) mientras que la factorizada resuelve el \textit{grid} $32 \times 32$ ($1\,024$ estados) dentro del mismo límite de tiempo (Tabla~\ref{tab:exp-frontera}). Esta diferencia no es consecuencia de ninguna optimización del solver de Iteración de Valor sino exclusivamente del tamaño del espacio de estados y del programa que cada codificación genera.
-
-\subsubsection{Análisis de cuellos de botella}
-\label{sec:disc-bottleneck}
-
-El tiempo total de ejecución está dominado por la Iteración de Valor en la mayoría de las configuraciones. Para la codificación factorizada con \textit{backend} darwiche, $t_{\text{VI}}$ representa el $84.3\%$ del total en $2 \times 3$ y el $98.0\%$ en $16 \times 16$. Esta proporción crece con el tamaño del \textit{grid} porque el número de evaluaciones de $Q(s,a)$ por iteración escala con $|\mathcal{S}| \times |\mathcal{A}|$, mientras que el costo de construcción del circuito crece más lentamente.
-
-Dentro de la fase de construcción, el \textit{grounding} es la subfase dominante. Su participación crece del $53.8\%$ de $t_{\text{build}}$ en $2 \times 3$ al $73.7\%$ en $32 \times 32$ (Tabla~\ref{tab:exp-subfases}). El tiempo de \textit{grounding} pasa de $0.024\,\text{s}$ a $0.603\,\text{s}$ para un incremento de $171\times$ en $|\mathcal{S}|$, lo que indica que la fase es sublineal en el número de estados. El \textit{parsing} y la clasificación son prácticamente constantes porque operan sobre el programa fuente, que tiene $21$ reglas en todos los tamaños.
-
-La estructura de los cuellos de botella identifica las oportunidades prioritarias de optimización. Reducir el costo de cada evaluación $Q(s,a)$ durante la Iteración de Valor tendría el mayor impacto sobre $t_{\text{total}}$, y el \textit{backend} darwiche ya aborda este punto mediante diferenciación simultánea. Reducir el costo del \textit{grounding} tendría el mayor impacto sobre $t_{\text{build}}$, que en las configuraciones factorizadas representa entre el $2\%$ y el $15.7\%$ del tiempo total. El \textit{parsing} y la clasificación no representan cuellos de botella en ningún tamaño evaluado.
-
-\subsubsection{Limitaciones de la evaluación}
-\label{sec:disc-limitaciones}
-
-La evaluación cubre un conjunto representativo de escenarios pero no es exhaustiva en la variedad de dominios. Todas las instancias del dominio Mitchell son \textit{grids} rectangulares sin obstáculos, con transiciones deterministas y una única fuente de recompensa. Este diseño aísla efectivamente el efecto de la codificación, pero no permite generalizar los resultados a dominios con múltiples fluentes de estado, transiciones estocásticas entre estados no adyacentes, o funciones de recompensa dependientes del contexto.
-
-El dominio Russell introduce estocasticidad pero se evalúa en una sola instancia canónica de $11$ estados. No es posible derivar tendencias de escalamiento para ese dominio a partir de los datos recopilados. Generar instancias Russell de mayor tamaño requeriría redistribuir las probabilidades de transición celda por celda según los obstáculos adyacentes, lo que introduce fuentes de variación adicionales respecto a la solución de referencia publicada.
-
-La incompatibilidad del \textit{backend} \textit{sdd} con el dominio Russell no se diagnosticó en el marco de este experimento. Los circuitos SDD producidos para dominios con Disyunciones Anotadas estocásticas pueden tener propiedades estructurales distintas a los circuitos d-DNNF, y la causa específica del fallo no fue identificada. Dado que \textit{sdd} es el \textit{backend} más rápido para el dominio Mitchell, el comportamiento de ese \textit{backend} en dominios estocásticos queda como cuestión abierta.
-
-Finalmente, los resultados del dominio Mitchell corresponden a una única instancia por tamaño de \textit{grid}. No se evalúan variaciones en la posición del estado meta, la presencia de obstáculos, el número de acciones disponibles, ni la función de recompensa. Estos factores podrían afectar el número de iteraciones hasta convergencia, el tamaño del circuito compilado, o la relación de rendimiento entre codificaciones para \textit{grids} del mismo tamaño. El capítulo siguiente integra los resultados de la evaluación con el diseño de la extensión para formular las conclusiones del trabajo y plantear las líneas de investigación futura.
+Los resultados son válidos dentro del alcance evaluado. Los dominios Mitchell
+son \textit{grids} regulares sin obstáculos, con transiciones deterministas y
+un único fluente; la generalización a dominios con múltiples fluentes
+dependientes, transiciones complejas u obstáculos requiere evaluación
+adicional. El dominio Russell aporta verificación estocástica en una única
+instancia de $11$ estados, insuficiente para derivar tendencias de
+escalamiento. El comportamiento de la configuración \textit{sdd} en dominios
+estocásticos queda como cuestión abierta; el error de compilación observado
+en el dominio Russell no fue diagnosticado en este trabajo.

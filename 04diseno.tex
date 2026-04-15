@@ -4,17 +4,17 @@
 \section{Diseño e Implementación}
 \label{ch:diseno-implementacion}
 
-El capítulo anterior estableció los formalismos que fundamentan la extensión los cuales son la
-Programación Lógica Probabilística como base de razonamiento, las Disyunciones
-Anotadas y el Conteo de Modelos Ponderados. El presente capítulo transforma estos conceptos en artefactos de
-software, comenzando por el análisis de la arquitectura original
-(Sección~\ref{sec:di-analisis-arquitectura}) y culminando en la demostración de
-retrocompatibilidad con los modelos booleanos existentes
-(Sección~\ref{sec:di-retrocompatibilidad}). Entre ambos, las
+El capítulo anterior estableció los formalismos que fundamentan la extensión:
+la Programación Lógica Probabilística, las Disyunciones Anotadas y el Conteo
+de Modelos Ponderados. Este capítulo transforma esos conceptos en artefactos
+de software. La Sección~\ref{sec:di-analisis-arquitectura} analiza la
+arquitectura original; la Sección~\ref{sec:di-retrocompatibilidad} demuestra
+la retrocompatibilidad con los modelos booleanos existentes. Las
 Secciones~\ref{sec:di-fluentschema} a~\ref{sec:di-herramientas} describen el
-esquema factorizado del espacio de estados, el clasificador automático de fluentes,
-el \textit{pipeline} de preparación del MDP, la adaptación del algoritmo de
-Iteración de Valor, el evaluador de Darwiche y los módulos de soporte.
+esquema factorizado del espacio de estados, el clasificador automático de
+fluentes, el \textit{pipeline} de preparación del MDP, la adaptación del
+algoritmo de Iteración de Valor, el evaluador de Darwiche y los módulos de
+soporte.
 
 % ------------------------------------------------------------------
 \subsection{Análisis de la arquitectura original}
@@ -44,8 +44,8 @@ restricción booleana y qué módulos requiere modificar la extensión.
 
 La arquitectura original separa las responsabilidades del \textit{framework} en
 cuatro módulos. Cada módulo tiene una función delimitada y las dependencias fluyen
-en una sola dirección. La Figura~\ref{fig:arquitectura-original} muestra esta
-estructura; a continuación se describe la responsabilidad de cada módulo:
+en una sola dirección. La Figura~\ref{fig:arquitectura-original} exhibe
+esta estructura; la responsabilidad de cada módulo se detalla a continuación.
 
 \begin{description}
     \item[\texttt{engine.py}] Implementa un adaptador sobre el motor interno de
@@ -70,15 +70,19 @@ estructura; a continuación se describe la responsabilidad de cada módulo:
         la función de valor óptima mediante la ecuación de optimalidad de Bellman.
 \end{description}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.90\textwidth]{figuras/arqui-original.png}
-    \caption{Diagrama de bloques de la arquitectura original del framework MDP-ProbLog.}
+    \includegraphics[width=0.85\textwidth]{figuras/arqui-original.png}
+    \caption{Diagrama de la arquitectura original del framework MDP-ProbLog.}
     \label{fig:arquitectura-original}
 \end{figure}
 
 
-El módulo \texttt{mdp.py} depende de \texttt{engine.py}, \texttt{fluent.py} y \texttt{value\_iteration.py}. Los módulos \texttt{engine.py} y \texttt{fluent.py} son independientes entre sí. Esta organización delimita con claridad el alcance de la extensión propuesta. Los componentes que gestionan la estructura del espacio de estados y la orquestación del MDP constituyen los principales candidatos a modificación. Por su parte, el motor de inferencia encapsulado en \texttt{engine.py} permanece inalterado.
+El módulo \texttt{mdp.py} depende de \texttt{engine.py}, \texttt{fluent.py}
+y \texttt{value\_iteration.py}. Los módulos \texttt{engine.py} y
+\texttt{fluent.py} son independientes entre sí. Esta organización delimita el
+alcance de la extensión: \texttt{fluent.py} y \texttt{mdp.py} son los
+candidatos a modificación; \texttt{engine.py} permanece inalterado.
 
 
 \clearpage
@@ -117,24 +121,30 @@ La interacción entre estos módulos sigue un flujo de cinco fases:
 \end{enumerate}
 
 Dos de estas cinco fases asumen implícitamente un dominio booleano. La Fase~3
-inyecta hechos probabilísticos independientes para cada fluente, presuponiendoque
-cada variable de estado tiene dominio $\{0, 1\}$. La Fase~5 recorre un espacio de
-estados construido como el producto cartesiano de factores binarios. La extensión
-modifica precisamente estas dos fases, junto con la estructura de datos que las
-sustenta.
+inyecta hechos probabilísticos independientes para cada fluente, presuponiendo
+que cada variable de estado tiene dominio $\{0, 1\}$. La Fase~5 recorre un
+espacio de estados construido como el producto cartesiano de factores binarios.
+La extensión modifica estas dos fases y la estructura de datos que las sustenta.
 
 \subsubsection{Limitaciones en la gestión de fluentes}
 \label{sec:di-limitaciones-gestion}
 
-Como se estableció en el Capítulo~\ref{ch:marco-teorico}, forzar fluentes categóricos en variables de Bernoulli degrada tanto el modelado lógico como la eficiencia computacional debido a la explosión de estados espurios. 
+Forzar fluentes categóricos en variables de Bernoulli degrada el modelado
+lógico y la eficiencia computacional por la explosión de estados espurios,
+como se estableció en el Capítulo~\ref{ch:marco-teorico}.
 
-El diseño original implementa la clase \texttt{StateSpace} como un iterador combinatorio plano que procesa las declaraciones \texttt{state\_fluent/1} y generando mecánicamente el producto cartesiano completo del dominio binario sin tener en cuenta la noción de agrupamiento o exclusión mutua.
+El diseño original implementa \texttt{StateSpace} como un iterador combinatorio
+plano que procesa las declaraciones \texttt{state\_fluent/1} y genera
+mecánicamente el producto cartesiano del dominio binario sin considerar el
+agrupamiento ni la exclusión mutua.
 
-Lo anterior demuestra que la solución no requiere alterar
-el motor de inferencia probabilística de ProbLog ya que la compilación a circuitos lógicos
-y el WMC pueden permanecer intactos como mecanismo de evaluacón únicamente haciendo intervención en la intermedia donde las declaraciones lógicas se transforman en variables de estado evaluables para el \textit{solver}. 
+La solución no requiere alterar el motor de inferencia de ProbLog. La
+compilación a circuitos y el WMC permanecen intactos. La intervención ocurre
+en la capa intermedia donde las declaraciones lógicas se transforman en
+variables de estado evaluables para el \textit{solver}.
 
-Concretamente se pueden establecer tres puntos de extensión para integrar el soporte de fluentes multivaluados:
+Se identifican tres puntos de extensión para integrar el soporte de fluentes
+multivaluados:
 
 \begin{enumerate}
     \item \textbf{Representación del espacio de estados.} Reemplazar \texttt{StateSpace}
@@ -154,12 +164,10 @@ Concretamente se pueden establecer tres puntos de extensión para integrar el so
 \subsection{Esquema factorizado del espacio de estados}
 \label{sec:di-fluentschema}
 
-Una vez identificados los tres puntos de extensión, el primer componente a diseñar
-es la estructura de datos que reemplaza a \texttt{StateSpace}. Esta estructura debe
-cumplir dos condiciones: representar factores de cardinalidad arbitraria y proveer
-operaciones de indexación y decodificación que el resto del \textit{framework}
-pueda invocar de forma uniforme. La clase \texttt{FluentSchema} satisface ambas
-condiciones.
+El primer componente a diseñar es la estructura de datos que reemplaza a
+\texttt{StateSpace}. La clase \texttt{FluentSchema} admite factores de
+cardinalidad arbitraria y expone operaciones uniformes de indexación y
+decodificación accesibles desde cualquier módulo del \textit{framework}.
 
 \subsubsection{Modelo de datos}
 \label{sec:di-fluentschema-modelo}
@@ -183,29 +191,26 @@ La clase mantiene tres estructuras internas:
         base~2; los factores multivaluados tienen base $N \geq 2$.
 
     \item \textbf{Lista aplanada.} La concatenación de todos los términos en orden
-        de registro. Esta lista permite localizar el término completo a partir del
-        índice global sin recorrer todos los factores.
+        de registro. Esta lista localiza cualquier término desde su índice global
+        sin recorrer todos los factores.
 \end{enumerate}
 
 Dos categorías de factor se distinguen semánticamente. Un \textbf{factor booleano}
 tiene base~2 y sus dos términos corresponden a los valores $\{0, 1\}$ de un fluente
 de Bernoulli. Un \textbf{factor multivaluado} tiene base $N \geq 2$ y sus $N$
-términos son los valores de una variable categórica, codificados internamente en
-representación \textit{one-hot} sobre las opciones del grupo. Esta distinción
-determina cómo se inyectan los hechos durante el \textit{pipeline} de preparación
-del MDP: los factores booleanos se representan como hechos probabilísticos
-independientes, mientras que los factores multivaluados se representan como
-Disyunciones Anotadas.
+términos codifican los valores de una variable categórica en formato
+\textit{one-hot}. Esta distinción determina la forma de inyección de hechos en
+el \textit{pipeline} de preparación. Los factores booleanos se inyectan como
+hechos probabilísticos independientes; los multivaluados, como Disyunciones
+Anotadas.
 
 \subsubsection{Codificación \textit{mixed-radix}}
 \label{sec:di-mixed-radix}
 
-Con los factores registrados, el \texttt{FluentSchema} asigna a cada configuración
-del espacio de estados un índice entero $I \in [0, |\mathcal{S}| - 1]$ mediante
-codificación de base mixta (\textit{mixed-radix}). Esta codificación es la
-generalización natural de la codificación binaria: donde la representación booleana
-utiliza base~2 uniforme, la codificación \textit{mixed-radix} admite una base
-distinta por posición.
+El \texttt{FluentSchema} asigna a cada configuración un índice entero
+$I \in [0, |\mathcal{S}| - 1]$ con codificación de base mixta
+(\textit{mixed-radix}). Esta codificación generaliza la codificación binaria;
+en lugar de base~2 uniforme, cada factor $k$ usa su propia base $b_k$.
 
 El tamaño total del espacio de estados es el producto de todas las bases:
 \begin{equation}
@@ -227,8 +232,8 @@ el índice global se obtiene como:
     \label{eq:codificacion}
 \end{equation}
 
-La decodificación recupera la valuación a partir del índice extrayendo sucesivamente
-el residuo módulo la base de cada factor:
+La decodificación extrae el valor local $v_k$ de cada factor como el residuo de
+$I$ módulo $b_k$:
 \begin{equation}
     v_k = I \bmod b_k, \quad I \leftarrow \left\lfloor \frac{I}{b_k} \right\rfloor
     \label{eq:decodificacion}
@@ -236,24 +241,24 @@ el residuo módulo la base de cada factor:
 
 Ambas operaciones recorren los $m$ factores en tiempo $O(m)$. La codificación
 garantiza que cada índice $I \in [0, |\mathcal{S}| - 1]$ corresponde a exactamente
-una combinación semánticamente válida. Los estados espurios del diseño original
-no pueden generarse porque no existe un índice que los represente.
+una combinación semánticamente válida. Los estados espurios son imposibles: la codificación no genera índices para
+combinaciones inválidas.
 
 \clearpage
 
 \subsubsection{Ejemplo mixed-radix}
 \label{sec:di-mixed-radix-ejemplo}
 
-Para ilustrar el esquema, considérese un dominio con dos variables de estado: el
-\textbf{color} de un objeto, con valores en $\{\texttt{rojo}, \texttt{verde},
-\texttt{azul}\}$, y la \textbf{velocidad} del sistema, con valores en
-$\{\texttt{lenta}, \texttt{rápida}\}$. El \texttt{FluentSchema} registra dos
-factores: el primero de base~3 (color) y el segundo de base~2 (velocidad).
+El ejemplo siguiente usa un dominio con dos variables de estado: \textbf{color},
+con valores $\{\texttt{rojo}, \texttt{verde}, \texttt{azul}\}$, y
+\textbf{velocidad}, con valores $\{\texttt{lenta}, \texttt{rápida}\}$. El
+\texttt{FluentSchema} registra un factor de base~3 para color y uno de base~2
+para velocidad.
 
 El tamaño del espacio es $|\mathcal{S}| = 3 \times 2 = 6$, frente a los $2^5 = 32$
 estados que generaría la codificación booleana equivalente con cinco fluentes
 independientes. Los \textit{strides} son $S_1 = 1$ y $S_2 = 3$. La
-Tabla~\ref{tab:mixed-radix-ejemplo} muestra los seis estados resultantes.
+Tabla~\ref{tab:mixed-radix-ejemplo} lista los seis estados resultantes.
 
 \begin{table}[ht]
 \centering
@@ -277,7 +282,7 @@ Por ejemplo, el estado con \texttt{azul} y \texttt{rápida} se codifica como
 $I = 2 \times 1 + 1 \times 3 = 5$. La decodificación parte de $I = 5$: el color
 se extrae como $5 \bmod 3 = 2$ (\texttt{azul}) y se actualiza $I \leftarrow
 \lfloor 5 / 3 \rfloor = 1$; la velocidad se extrae como $1 \bmod 2 = 1$
-(\texttt{rápida}). El proceso termina al agotar los factores.
+(\texttt{rápida}). La decodificación concluye al agotar los factores.
 
 \subsubsection{Operaciones relevantes}
 \label{sec:di-fluentschema-ops}
@@ -287,61 +292,54 @@ resto del \textit{framework}:
 
 \begin{description}
     \item[\texttt{get\_factors\_at(timestep)}] Retorna la lista de factores con los
-        términos marcados con la estampa de tiempo indicada. Esta operación es
-        utilizada por \texttt{mdp.py} para obtener los factores del estado actual
-        ($t = 0$) y del estado siguiente ($t = 1$) durante la preparación del
-        \textit{pipeline}. 
-        
-        El marcado temporal se realiza añadiendo el argumento
-        entero como último argumento de cada término; por ejemplo, el término
-        \texttt{color(rojo)} a tiempo $t = 1$ se convierte en
-        \texttt{color(rojo, 1)}.
+        términos marcados con la estampa de tiempo indicada. \texttt{mdp.py} la
+        invoca para obtener los factores del estado actual ($t = 0$) y del
+        siguiente ($t = 1$) durante la preparación del \textit{pipeline}.
+
+        El marcado temporal agrega el argumento entero $t$ como último argumento
+        de cada término; el término \texttt{color(rojo)} a tiempo $t = 1$ se
+        convierte en \texttt{color(rojo, 1)}.
 
     \item[\texttt{get\_local\_index(k, term)}] Dado el índice de factor $k$ y un
         término lógico aterrizado, retorna su posición $v_k$ dentro de ese factor.
-        Esta operación es el núcleo del cálculo del valor esperado
-        (Sección~\ref{sec:di-value-iteration}): durante el recorrido recursivo de
-        los factores de transición, cada término devuelto por el evaluador debe
-        traducirse a su índice local para acumular el índice global del estado
-        sucesor.
+        La Sección~\ref{sec:di-value-iteration} la invoca durante el recorrido
+        recursivo de los factores. En cada nivel, traduce el término retornado
+        por el evaluador a su posición $v_k$ para acumular el índice global del
+        estado sucesor.
 \end{description}
 
 \clearpage
 
-El \texttt{FluentSchema} centraliza la lógica de representación del espacio de
-estados para que el resto del \textit{framework} pueda acceder al espacio exclusivamente a través
-de estos procedimientos. La
-sección siguiente describe cómo el \texttt{FluentClassifier} construye este esquema
-automáticamente a partir de las declaraciones del programa lógico.
+El \texttt{FluentSchema} centraliza la gestión del espacio de estados; los demás
+módulos acceden a él exclusivamente por estas dos operaciones. El
+\texttt{FluentClassifier} (Sección~\ref{sec:di-fluentclassifier}) lee las
+declaraciones del programa lógico y construye el esquema de forma automática.
 
 
 % ------------------------------------------------------------------
 \subsection{Clasificador automático de fluentes}
 \label{sec:di-fluentclassifier}
 
-El \texttt{FluentSchema} descrito en la sección anterior necesita ser construido
-antes de que el \textit{framework} pueda ejecutar ninguna otra etapa. Su
-construcción requiere conocer, para cada fluente declarado, si debe representarse
-como factor booleano o como factor multivaluado. El predicado \texttt{state\_fluent/1}
-no transporta esta información: declara un fluente, pero no su tipo. El módulo
-\texttt{FluentClassifier} obtiene esa información analizando la estructura interna
-de la \texttt{ClauseDB}, específicamente los nodos que las Disyunciones Anotadas del
-programa han dejado registrados. A partir de esta evidencia estructural, el
-clasificador decide el tipo de cada fluente y construye el esquema sin intervención
-del usuario.
+El \texttt{FluentSchema} debe construirse antes de que el \textit{framework}
+ejecute cualquier otra etapa. Su construcción requiere conocer, para cada fluente
+declarado, si pertenece a un factor booleano o a uno multivaluado. El predicado
+\texttt{state\_fluent/1} declara la existencia del fluente, pero no su tipo. El
+módulo \texttt{FluentClassifier} obtiene esa información de los nodos
+\texttt{choice} que las Disyunciones Anotadas del programa dejan registrados en
+la \texttt{ClauseDB}. El clasificador examina esos nodos, infiere el tipo de cada
+fluente y construye el esquema sin intervención del usuario.
 
 \subsubsection{Modos de declaración}
 \label{sec:di-modos-declaracion}
 
 El clasificador admite dos formas de declarar fluentes de estado. En el
 \textbf{modo implícito}, el usuario escribe \texttt{state\_fluent(f(X))} y el
-\textit{framework} infiere el tipo analizando si los valores que toma el argumento
-de \texttt{f} provienen de una Disyunción Anotada. En el \textbf{modo explícito},
-el usuario escribe \texttt{state\_fluent(f(X),~multivalued)} o
-\texttt{state\_fluent(f(X),~bool)} e indica el tipo directamente. El modo
-explícito tiene prioridad sobre el implícito: si un fluente aparece en ambas
-formas, el \textit{framework} emite una advertencia y conserva la declaración
-explícita.
+\textit{framework} infiere el tipo desde la estructura de la \texttt{ClauseDB}.
+En el \textbf{modo explícito}, el usuario escribe
+\texttt{state\_fluent(f(X),~multivalued)} o \texttt{state\_fluent(f(X),~bool)}
+e indica el tipo directamente. El modo explícito tiene prioridad. Si un fluente
+aparece en ambas formas, el \textit{framework} emite una advertencia y conserva
+la declaración explícita.
 
 El modo implícito es suficiente para la mayoría de los dominios. El modo
 explícito es necesario en dominios con familias de variables indexadas por
@@ -350,33 +348,32 @@ entidad, como se discute al final de esta sección.
 \subsubsection{El índice invertido de Disyunciones Anotadas}
 \label{sec:di-indice-invertido}
 
-La inferencia implícita depende de una estructura auxiliar llamada
-\textbf{índice invertido}. Este índice se construye recorriendo la tabla de nodos
-de la \texttt{ClauseDB} e identificando todos los nodos de tipo \texttt{choice},
-que son las ramas estocásticas que ProbLog registra al procesar una Disyunción
-Anotada. Por cada nodo \texttt{choice}, el clasificador extrae el término asociado
-y registra cada uno de sus argumentos constantes como clave del índice, apuntando
-al identificador del grupo AD al que pertenece ese nodo.
+La inferencia implícita depende de una estructura auxiliar denominada
+\textbf{índice invertido}. El clasificador recorre la tabla de nodos de la
+\texttt{ClauseDB} e identifica los nodos de tipo \texttt{choice}: las ramas
+estocásticas que ProbLog genera para cada Disyunción Anotada. Por cada nodo
+\texttt{choice}, extrae el término asociado y registra cada argumento constante
+como clave del índice, bajo el identificador del grupo AD al que pertenece ese
+nodo.
 
 El resultado es un diccionario de la forma:
 \begin{equation*}
     \mathcal{I} : \Sigma \to \mathcal{P}(\Gamma)
 \end{equation*}
 donde $\Sigma$ es el conjunto de valores constantes y $\Gamma$ es el conjunto de
-identificadores de grupos AD. La interpretación es directa: $\mathcal{I}(v)$ es
-el conjunto de grupos AD que han producido el valor $v$.
+identificadores de grupos AD. $\mathcal{I}(v)$ reúne los identificadores de los grupos AD que produjeron el
+valor $v$.
 
-Para ilustrarlo, considérese un programa que incluye la siguiente regla de
-transición para el fluente \texttt{color}:
+La regla de transición siguiente ilustra la construcción del índice:
 
 \begin{lstlisting}[language=Prolog]
 0.7::color(rojo,1); 0.2::color(verde,1); 0.1::color(azul,1)
     :- color(rojo,0), cambiar.
 \end{lstlisting}
 
-Al procesar esta AD, ProbLog registra tres nodos \texttt{choice} bajo un mismo
-grupo $g_1$: uno para \texttt{color(rojo,1)}, uno para \texttt{color(verde,1)} y
-uno para \texttt{color(azul,1)}. El clasificador extrae los argumentos constantes
+ProbLog procesa esta AD y registra tres nodos \texttt{choice} bajo el grupo
+$g_1$: uno para \texttt{color(rojo,1)}, uno para \texttt{color(verde,1)} y uno
+para \texttt{color(azul,1)}. El clasificador extrae los argumentos constantes
 de cada término y construye:
 \[
     \mathcal{I}(\texttt{rojo}) = \{g_1\}, \quad
@@ -404,22 +401,23 @@ El método \texttt{classify()} ejecuta seis pasos secuenciales para construir el
 
     \item \textbf{Registro de fluentes implícitos.} Los fluentes declarados con
         \texttt{state\_fluent/1} se agrupan por \texttt{(functor, aridad)}. Para
-        cada grupo, se invoca \texttt{\_infer\_fluent\_type()} (descrito a
-        continuación) para determinar si el fluente es booleano o multivaluado.
+        cada grupo, se invoca \texttt{\_infer\_fluent\_type()}
+        (Sección~\ref{sec:di-inferencia-tipo}) para determinar si el fluente es
+        booleano o multivaluado.
 
-    \item \textbf{Fusión de registros.} Se construye un registro unificado
-        combinando los resultados de los pasos~2 y~3. Las declaraciones explícitas
+    \item \textbf{Fusión de registros.} Los resultados de los pasos~2 y~3 se
+        fusionan en un registro unificado. Las declaraciones explícitas
         sobrescriben las implícitas cuando coinciden en la misma clave.
 
     \item \textbf{Separación por tipo.} El registro se recorre en orden alfabético.
-        Los fluentes booleanos se añaden al esquema directamente mediante
+        Los fluentes booleanos se añaden al esquema con
         \texttt{schema.add\_bool(term)}. Los fluentes multivaluados se acumulan por
         \textit{functor} en un buffer temporal.
 
     \item \textbf{Validación de cardinalidad.} Cada grupo multivaluado acumulado
         en el paso~5 se verifica: si contiene menos de dos opciones, se lanza un
         \texttt{FluentCardinalityError}, pues un factor de exclusión mutua requiere
-        al menos dos alternativas. Los grupos válidos se registran mediante
+        al menos dos alternativas. Los grupos válidos se registran con
         \texttt{schema.add\_group(terms)}.
 \end{enumerate}
 
@@ -432,7 +430,7 @@ El método \texttt{classify()} ejecuta seis pasos secuenciales para construir el
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.85\textwidth]{figuras/pipeline-clasificacion.png} 
+    \includegraphics[width=1.0\textwidth]{figuras/pipeline-clasificacion.png} 
     \caption{pipeline de clasificación. Se explica la ejecución del método \texttt{classify()}}
     \label{fig:pipeline-clasificacion}
 \end{figure}
@@ -441,17 +439,15 @@ El método \texttt{classify()} ejecuta seis pasos secuenciales para construir el
 \subsubsection{Inferencia implícita de tipo}
 \label{sec:di-inferencia-tipo}
 
-El paso~3 del \textit{pipeline} delega la decisión de tipo en la función
-\texttt{\_infer\_fluent\_type()}, cuya lógica se resume a determinar si es booleano comprobando si el
-fluente tiene aridad~0, esto debido a que los fluentes proposicionales no tienen
-argumentos, por lo tanto no pueden representar variables categóricas. Si el fluente tiene
-aridad~$\geq 1$, la función examina cada posición argumental $p$ del término.
-Para la posición $p$, extrae el conjunto $V_p$ de todos los valores que ese
-argumento toma en los términos aterrizados. Luego computa la intersección de los
-grupos AD asociados a cada valor en $V_p$ mediante el índice invertido. Si esa
-intersección es no vacía, significa que todos los valores de la posición $p$
-provienen de un mismo grupo AD; en ese caso, el fluente es multivaluado. Si ninguna
-posición pasa esta prueba, el fluente es booleano.
+El paso~3 del \textit{pipeline} delega la decisión de tipo en
+\texttt{\_infer\_fluent\_type()}. La función clasifica como booleano cualquier
+fluente de aridad~0. Los fluentes proposicionales carecen de argumentos y son
+binarios por definición. Si el fluente tiene aridad~$\geq 1$, la función examina
+cada posición argumental $p$ del término. Para cada posición, extrae el conjunto
+$V_p$ de valores que ese argumento toma en los términos aterrizados e intersecta
+los grupos AD de cada valor. Una intersección no vacía indica que todos los valores
+de la posición $p$ provienen de un mismo grupo AD; el fluente es multivaluado. Si
+ninguna posición pasa esta prueba, el fluente es booleano.
 
 El Algoritmo~\ref{alg:infer-type} formaliza esta lógica.
 
@@ -479,8 +475,7 @@ El Algoritmo~\ref{alg:infer-type} formaliza esta lógica.
 \end{algorithmic}
 \end{algorithm}
 
-Para verificar la intuición del algoritmo, aplíquese al fluente \texttt{color}
-del ejemplo anterior. Los términos aterrizados son \texttt{color(rojo)},
+Aplíquese el algoritmo al fluente \texttt{color} del ejemplo anterior. Los términos aterrizados son \texttt{color(rojo)},
 \texttt{color(verde)} y \texttt{color(azul)}, todos de aridad~1. En la
 posición~0, los valores son $V_0 = \{\texttt{rojo}, \texttt{verde},
 \texttt{azul}\}$. La intersección es:
@@ -491,54 +486,52 @@ posición~0, los valores son $V_0 = \{\texttt{rojo}, \texttt{verde},
 El algoritmo retorna \texttt{multivalued}. El fluente se registra como un factor de
 base~3 en el esquema.
 
-El agrupamiento del paso~5 es correcto para variables categóricas globales, donde
-todos los términos con el mismo \textit{functor} representan opciones de una única
-variable de estado. Para dominios donde múltiples entidades comparten predicado
-pero deben mantener independencia estocástica, el agrupamiento por \textit{functor}
-puede producir factores incorrectamente fusionados; en esos casos, la declaración
-explícita con \texttt{state\_fluent/2} permite definir cada factor de forma
-independiente, evitando que el clasificador los consolide.
+El agrupamiento del paso~5 es correcto para variables categóricas globales. En
+esos dominios, todos los términos con el mismo \textit{functor} corresponden a
+opciones de una única variable de estado. Cuando múltiples entidades comparten
+predicado pero requieren independencia estocástica, el agrupamiento puede fusionar
+factores que deberían ser independientes. En esos casos, la declaración explícita
+con \texttt{state\_fluent/2} define cada factor por separado y evita la
+consolidación automática.
 
 Con el \texttt{FluentSchema} construido y validado, el \textit{framework} dispone
-de la representación del espacio de estados necesaria para ejecutar el
-\textit{pipeline} de preparación del MDP, que se describe en la sección siguiente.
+del espacio de estados necesario para el \textit{pipeline} de preparación del MDP
+(Sección~\ref{sec:di-pipeline-mdp}).
 
 
 % ------------------------------------------------------------------
 \subsection{Pipeline de preparación del MDP}
 \label{sec:di-pipeline-mdp}
 
-Con el \texttt{FluentSchema} construido, el \textit{framework} dispone de la
-descripción formal del espacio de estados. El siguiente problema es traducir ese
-esquema en una forma que el motor de inferencia pueda evaluar bajo
-condicionamiento. Esta traducción es responsabilidad del método
-\texttt{\_\_prepare()} de la clase \texttt{MDP}, que ejecuta cinco fases antes de
-que comience la Iteración de Valor.
+El \textit{pipeline} de preparación transforma el \texttt{FluentSchema} en una
+base de cláusulas evaluable bajo condicionamiento. Esta transformación ocurre en
+el método \texttt{\_\_prepare()} de la clase \texttt{MDP}, antes de que comience
+la Iteración de Valor.
 
 \subsubsection{Fases del pipeline}
 \label{sec:di-fases-pipeline}
 
 \begin{enumerate}
-    \item \textbf{Clasificación.} Se instancia el \texttt{FluentClassifier}, que
-        lee las declaraciones del programa y construye el \texttt{FluentSchema}.
-        El resultado queda disponible para el resto de las fases.
+    \item \textbf{Clasificación.} Se instancia el \texttt{FluentClassifier} para
+        construir el \texttt{FluentSchema}. El resultado queda disponible para
+        las fases siguientes.
 
-    \item \textbf{Inyección de hechos \textit{dummy}.} Para cada factor del
-        esquema se insertan hechos probabilísticos en la \texttt{ClauseDB} que
-        representan el estado actual en $t = 0$. Estos hechos son
-        \textit{dummy}: sus probabilidades son valores neutrales que serán
-        sustituidos en cada evaluación individual.
+    \item \textbf{Inyección de hechos \textit{dummy}.} Los hechos probabilísticos
+        del estado actual ($t = 0$) se insertan en la \texttt{ClauseDB}, uno por
+        factor del esquema. Estos hechos son \textit{dummy}: sus probabilidades
+        son valores neutrales que serán sustituidos en cada evaluación
+        individual.
 
     \item \textbf{Inyección de acciones.} Las acciones del modelo se inyectan
-        como una Disyunción Anotada con distribución uniforme, garantizando
-        exclusión mutua entre ellas.
+        como una Disyunción Anotada con distribución uniforme; la exclusión
+        mutua queda garantizada por construcción.
 
     \item \textbf{Aterrizado relevante.} Se ejecuta un \textit{grounding}
         limitado a las consultas de interés: fluentes del siguiente estado
         ($t = 1$), utilidades, acciones y fluentes del estado actual ($t = 0$).
         Incluir los fluentes en $t = 0$ entre las consultas preserva sus
-        identificadores en el circuito compilado, lo que permite localizarlos al
-        sustituir evidencia.
+        identificadores en el circuito compilado; sin ellos, la sustitución de
+        evidencia no podría localizar los nodos correctos.
 
     \item \textbf{Compilación del circuito.} Los fluentes del siguiente estado y
         las utilidades se compilan en un único circuito d-DNNF o SDD. El
@@ -558,30 +551,26 @@ que comience la Iteración de Valor.
     \label{fig:pipeline-preparación}
 \end{figure}
 
-\subsubsection{Hechos \textit{dummy} y mecanismo de evidencia}
+\subsubsection{Hechos \textit{dummy} y condicionamiento por evidencia}
 \label{sec:di-dummy-evidencia}
 
-La Fase~2 introduce el mecanismo técnico más relevante del \textit{pipeline}: la
-inyección de hechos \textit{dummy}. Para entender por qué es necesaria, conviene
-primero examinar cómo el \textit{framework} implementa el condicionamiento por
+La Fase~2 inyecta hechos \textit{dummy} en la \texttt{ClauseDB}. Su propósito
+deriva del modo en que el \textit{framework} implementa el condicionamiento por
 evidencia.
 
-Durante la Iteración de Valor, el solver necesita evaluar $P(s' \mid s, a)$ para
+Durante la Iteración de Valor, el \textit{solver} evalúa $P(s' \mid s, a)$ para
 cada par estado-acción. Evaluar bajo un estado concreto significa fijar el valor
-de cada fluente en $t = 0$ a su valor en ese estado. ProbLog ofrece dos formas de
-condicionar: la primera propaga evidencia lógica a través del programa mediante
-el predicado \texttt{evidence/2}; la segunda sustituye directamente los pesos de
-los nodos probabilísticos en el circuito compilado, asignando peso 1 al literal
-verdadero y peso 0 al falso. El \textit{framework} utiliza la segunda vía porque
-opera sobre el circuito compilado de forma directa y no requiere interpretar el
-programa de nuevo.
+de cada fluente en $t = 0$. ProbLog ofrece dos formas de condicionar evidencia:
+propagación lógica con el predicado \texttt{evidence/2} y sustitución directa de
+pesos en el circuito compilado, donde el literal verdadero recibe peso~1 y el
+falso, peso~0. El \textit{framework} usa la segunda vía porque opera sobre el
+circuito compilado y no recompila el programa.
 
-La sustitución de pesos impone una restricción: el nodo que se quiere condicionar
-debe existir como variable probabilística en el circuito. Un hecho determinista
-no tiene un peso que sustituir y no puede condicionarse por esta vía. Los hechos
-\textit{dummy} resuelven esta restricción insertando cada fluente de estado en
-$t = 0$ como hecho probabilístico antes de la compilación, de modo que el
-compilador incluya cada fluente como un nodo con pesos en el circuito.
+La sustitución de pesos requiere que el nodo condicionado exista en el circuito
+como variable probabilística. Un hecho determinista carece de pesos y no puede
+condicionarse por esta vía. Los hechos \textit{dummy} resuelven esta restricción:
+cada fluente de estado en $t = 0$ se inserta como hecho probabilístico antes de
+la compilación, y el compilador lo incluye como nodo con pesos en el circuito.
 
 Los \textit{dummies} se inyectan de forma distinta según el tipo de factor:
 
@@ -598,36 +587,30 @@ Los \textit{dummies} se inyectan de forma distinta según el tipo de factor:
         \]
 \end{itemize}
 
-Las probabilidades neutrales de los \textit{dummies} no afectan los resultados
-porque se reemplazan antes de cada consulta. Para condicionar sobre el estado
-$\texttt{color} = \texttt{rojo}$, el evaluador reemplaza los pesos del nodo
-\texttt{color(rojo,0)} por $(1.0,\; 0.0)$ y los de los nodos restantes por
-$(0.0,\; 1.0)$. El circuito calcula entonces $P(s' \mid \texttt{color=rojo}, a)$
-exactamente, sin que sea necesario recompilarlo.
+Las probabilidades neutrales de los \textit{dummies} no afectan los resultados;
+se reemplazan antes de cada consulta. El evaluador condiciona
+$\texttt{color} = \texttt{rojo}$ asignando peso $(1.0,\; 0.0)$ al nodo
+\texttt{color(rojo,0)} y peso $(0.0,\; 1.0)$ a los demás. El circuito calcula
+entonces $P(s' \mid \texttt{color=rojo}, a)$ sin recompilarse.
 
 \subsubsection{Corrección de la compilación doble}
 \label{sec:di-compilacion-unica}
 
-La versión original compilaba el circuito dos veces: una para los fluentes del
-siguiente estado ($t = 1$) y otra para las utilidades. Cada llamada al compilador
-sobrescribía el circuito almacenado en la clase \texttt{Engine}. En consecuencia,
-el mapa de nodos construido para los fluentes del siguiente estado quedaba
-invalidado por la segunda compilación, y las evaluaciones de transición operaban
-sobre el circuito de utilidades. Los valores de transición calculados eran
-incorrectos.
+La versión original compilaba los fluentes del siguiente estado ($t = 1$) y las
+utilidades en invocaciones separadas. Cada llamada sobrescribía el circuito
+almacenado en \texttt{Engine}. En consecuencia, el mapa de nodos de los fluentes
+del siguiente estado quedaba sobreescrito por el de las utilidades.
 
-La extensión corrige este problema compilando ambos conjuntos de términos en una
-única invocación. Los fluentes del siguiente estado y las utilidades quedan
-mapeados al mismo circuito desde el inicio, y ese circuito permanece inalterado
-durante toda la Iteración de Valor.
+La extensión corrige este problema con una compilación unificada. Los fluentes
+del siguiente estado y las utilidades quedan mapeados al mismo circuito desde el
+inicio, y ese circuito permanece inalterado durante toda la Iteración de Valor.
 
 \subsubsection{Declaración de fluentes multivaluados}
 \label{sec:di-nueva-sintaxis}
 
 La extensión del \textit{pipeline} habilita una sintaxis de modelado más directa
-para variables categóricas. El Código~\ref{lst:sintaxis-booleana} muestra cómo
-se representaba la variable \texttt{color} con tres valores bajo el diseño
-original.
+para variables categóricas. El Código~\ref{lst:sintaxis-booleana} exhibe el
+modelo original para la variable \texttt{color} con tres valores.
 
 \begin{lstlisting}[language=Prolog,
     caption={Modelado booleano de una variable categórica con tres valores.},
@@ -645,7 +628,7 @@ state_fluent(color_azul).
 \end{lstlisting}
 
 Con la codificación booleana, el espacio de estados para esta sola variable
-tiene $2^3 = 8$ combinaciones. El Código~\ref{lst:sintaxis-multivaluada} muestra el modelo equivalente con la
+tiene $2^3 = 8$ combinaciones. El Código~\ref{lst:sintaxis-multivaluada} presenta el modelo equivalente con la
 extensión.
 
 \begin{lstlisting}[language=Prolog,
@@ -660,26 +643,20 @@ val(rojo). val(verde). val(azul).
     :- color(rojo,0), cambiar.
 \end{lstlisting}
 
-La declaración multivaluada produce un único factor de base~3. El espacio de
-estados tiene exactamente 3 combinaciones, todas válidas. La Disyunción Anotada
-de la regla de transición garantiza por construcción que exactamente una opción
-es verdadera en cada estado sucesor y que la suma de probabilidades es 1. No se
-requieren restricciones adicionales de exclusión mutua.
+La declaración multivaluada produce un único factor de base~3 por lo que su espacio de estados tiene exactamente 3 combinaciones. La Disyunción Anotada de la regla de transición garantiza por construcción que exactamente una opción es verdadera en cada estado sucesor y que la suma de probabilidades es 1. No se requieren restricciones adicionales de exclusión mutua.
 
 
 % ------------------------------------------------------------------
 \subsection{Adaptación de la Iteración de Valor}
 \label{sec:di-value-iteration}
 
-La representación \textit{mixed-radix} del espacio de estados necesita que el
-cálculo del valor esperado durante las actualizaciones de Bellman sea capaz de
-recorrer la estructura factorizada. En el diseño original, ese cálculo enumeraba
-las $2^n$ combinaciones binarias del espacio. La nueva implementación recorre los
-factores del esquema de forma recursiva, explotando la independencia condicional
-entre ellos para evitar la enumeración explícita.
+La codificación \textit{mixed-radix} del espacio de estados exige que el cálculo
+del valor esperado recorra la estructura factorizada. En el diseño original, ese
+cálculo enumeraba las $2^n$ combinaciones binarias del espacio. La nueva
+implementación recorre los factores del esquema de forma recursiva y explota la
+independencia condicional entre ellos para evitar la enumeración explícita.
 
-La conexión con el cálculo del valor esperado se establece así. La ecuación de
-Bellman requiere evaluar, para cada par $(s, a)$:
+La ecuación de Bellman requiere evaluar, para cada par $(s, a)$:
 \begin{equation}
     \mathbb{E}_{s'}[V(s') \mid s, a]
     = \sum_{s'} P(s' \mid s, a)\, V(s')
@@ -693,8 +670,8 @@ distribución de transición se descompone como:
 \end{equation}
 donde $P(x'_k \mid s, a)$ es la distribución marginal del factor $k$. El
 evaluador devuelve directamente estas distribuciones marginales para cada factor.
-La suma sobre todos los estados sucesores se convierte entonces en el producto
-cartesiano de estas distribuciones, que el algoritmo recorre factor a factor.
+La suma sobre todos los estados sucesores equivale al producto cartesiano de
+estas distribuciones; el algoritmo lo recorre factor a factor.
 
 \paragraph{Descripción del algoritmo.}
 El recorrido comienza en el factor $k = 0$ con el índice global acumulado $I = 0$
@@ -705,7 +682,7 @@ marginal. Para cada rama activa (con $p > \epsilon$), el algoritmo:
 
 \begin{enumerate}
     \item Obtiene el índice local $v_k$ de ese valor dentro del factor $k$
-        mediante \texttt{get\_local\_index}.
+        con \texttt{get\_local\_index}.
     \item Actualiza el índice global acumulado con la contribución del factor:
         $I' = I + v_k \times S_k$.
     \item Actualiza la probabilidad conjunta del camino: $P' = P \times p$.
@@ -714,8 +691,8 @@ marginal. Para cada rama activa (con $p > \epsilon$), el algoritmo:
 
 Cuando $k = m$ (todos los factores han sido procesados), el índice acumulado $I$
 identifica el estado sucesor $s'$ en la codificación
-\textit{mixed-radix}. El algoritmo retorna $P \times V[I]$, que es la
-contribución de ese camino al valor esperado. La suma de estas contribuciones
+\textit{mixed-radix}. El algoritmo retorna $P \times V[I]$, la contribución de ese camino al valor
+esperado. La suma de estas contribuciones
 sobre todos los caminos produce $\mathbb{E}[V(s') \mid s, a]$.
 
 \begin{algorithm}[H]
@@ -762,7 +739,7 @@ se exploran tres ramas; para la rama \texttt{rojo}: $v_0 = 0$, $I' = 0 + 0
 \times 1 = 0$, se recurre a $\textsc{ValorEsperado}(1,\; 0,\; 0.7)$. En el nivel
 $k=1$, rama \texttt{lenta}: $v_1 = 0$, $I' = 0 + 0 \times 3 = 0$, se retorna
 $0.7 \times 0.6 \times V[0]$. Rama \texttt{rápida}: $v_1 = 1$, $I' = 0 + 1
-\times 3 = 3$, se retorna $0.7 \times 0.4 \times V[3]$. El proceso continúa para
+\times 3 = 3$, se retorna $0.7 \times 0.4 \times V[3]$. El recorrido continúa para
 las ramas \texttt{verde} y \texttt{azul} del nivel $k=0$. La suma de todas las
 contribuciones produce el valor esperado completo en exactamente
 $|\mathcal{F}_0| \times |\mathcal{F}_1| = 6$ hojas, que coincide con el número
@@ -778,19 +755,21 @@ las $\prod_k |\mathcal{F}_k|$ hojas del caso general.
 \subsection{Evaluador de Darwiche}
 \label{sec:di-darwiche}
 
-Al finalizar la Fase~5 del \textit{pipeline} de preparación, el circuito está
-compilado y listo para ser evaluado. Durante la Iteración de Valor, el solver
-invoca ese circuito en cada par estado-acción para obtener las distribuciones de
-transición y las recompensas. Esta evaluación repetida es el cuello de botella
-computacional del \textit{framework}. La presente sección describe el evaluador
-alternativo, basado en el algoritmo de diferenciación de circuitos de Darwiche
-(\citeyear{darwiche2003differential}), que reduce ese costo de forma asintótica.
+Tras la Fase~5 del \textit{pipeline}, el circuito queda compilado y disponible
+para su evaluación. En cada par estado-acción, el solver lanza $Q$ consultas independientes sobre
+ese circuito. Cada consulta corresponde a un fluente del estado sucesor
+($t = 1$) o a un término de utilidad. El evaluador estándar recorre el circuito
+completo por cada consulta; con $Q = 50$ consultas activas, el costo se
+multiplica por $50$ aunque todas compartan la misma evidencia. Esta sección
+describe el evaluador alternativo de Darwiche
+(\citeyear{darwiche2003differential}), que resuelve las $Q$ consultas en
+exactamente dos recorridos del circuito, independientemente del valor de~$Q$.
 
 \subsubsection{El costo de la evaluación estándar}
 \label{sec:di-costo-estandar}
 
-El evaluador estándar de ProbLog (\texttt{SimpleDDNNFEvaluator}) resuelve cada
-consulta realizando un recorrido completo del circuito, con costo $O(|C|)$ donde
+El evaluador estándar de ProbLog (\texttt{SimpleDDNNFEvaluator}) dedica un
+recorrido completo del circuito a cada consulta, con costo $O(|C|)$ donde
 $|C|$ es el número de nodos. Cuando el motor necesita resolver $Q$ consultas
 simultáneas, ejecuta $Q$ recorridos independientes, con un costo total de
 $O(Q \times |C|)$ por par estado-acción.
@@ -943,18 +922,17 @@ La implementación separa la estructura del circuito de su evaluación en dos cl
 su lista de hijos y su número total. Se calcula una sola vez por circuito
 compilado y se comparte entre todas las evaluaciones posteriores. Su construcción
 verifica que los nodos estén en orden topológico estricto: para todo nodo interno,
-todos sus hijos tienen índice menor. Esta propiedad está garantizada por los
-compiladores de ProbLog y permite que ambas pasadas se implementen como bucles
-simples sin necesidad de ordenación explícita.
+todos sus hijos tienen índice menor. Esta propiedad, garantizada por los compiladores de ProbLog, hace que ambas
+pasadas se reduzcan a bucles simples sin ordenación explícita.
 
 \texttt{DarwicheDDNNFEvaluator} es una subclase de \texttt{problog.evaluator.Evaluator}
 que implementa la interfaz estándar de ProbLog con el evaluador de diferenciación.
 Su método \texttt{propagate()} aplica la evidencia, ejecuta la pasada ascendente y
 luego la descendente. Su método \texttt{evaluate\_all\_queries(queries)} extrae
-todas las marginales en $O(Q)$ mediante la Ecuación~\ref{eq:extraccion-marginal},
+todas las marginales en $O(Q)$ según la Ecuación~\ref{eq:extraccion-marginal},
 sin ningún recorrido adicional del circuito.
 
-El evaluador se activa mediante el parámetro \texttt{darwiche=True} al instanciar
+El evaluador se activa con el parámetro \texttt{darwiche=True} al instanciar
 el \texttt{MDP}. Su uso está restringido al \textit{backend} d-DNNF; no es
 compatible con SDD. La Tabla~\ref{tab:costo-evaluadores} resume la comparación de
 costo entre los dos evaluadores.
@@ -998,8 +976,8 @@ resuelto, la extensión incorpora dos módulos de soporte: \texttt{CSVExporter} 
 \texttt{CSVExporter} serializa las estructuras del MDP y los resultados de la
 Iteración de Valor a archivos en formato CSV. El exportador recibe como entradas
 el objeto \texttt{MDP} preparado y el objeto resultado de la Iteración de Valor.
-Expone un método por estructura exportada. Esta organización permite al usuario
-solicitar únicamente las salidas que necesite en cada análisis. El método
+Expone un método por estructura exportada. Con esta organización, el usuario solicita únicamente las salidas que necesite
+en cada análisis. El método
 \texttt{export\_all(vi)} actúa como orquestador e invoca todos los métodos en
 secuencia, omitiendo las exportaciones opcionales cuando la estructura
 correspondiente no está disponible. Cada archivo generado comienza con un
@@ -1027,8 +1005,7 @@ Tabla~\ref{tab:csv-exportaciones} lista los métodos y las estructuras que produ
 \end{table}
 
 La exportación de la matriz de transición requiere un paso de expansión que las
-demás exportaciones no necesitan. El \textit{framework} almacena transiciones en
-representación factorizada. Para cada par $(s,a)$, el motor devuelve distribuciones
+demás exportaciones no necesitan. El \textit{framework} almacena transiciones en formato factorizado. Para cada par $(s,a)$, el motor devuelve distribuciones
 marginales independientes por factor. La matriz $P(s' \mid s, a)$, en cambio,
 requiere la probabilidad conjunta sobre todos los estados sucesores. Para obtenerla,
 el método \texttt{\_expand\_transitions()} computa el producto cartesiano de las
@@ -1047,7 +1024,7 @@ La política óptima $\pi^*(s)$ es un resultado analítico obtenido por programa
 dinámica. Una forma de verificar su calidad de forma independiente es ejecutarla
 contra la dinámica estocástica del modelo. El retorno acumulado que se obtiene en
 la práctica permite contrastar el resultado analítico con el comportamiento empírico.
-\texttt{Simulator} realiza esta verificación mediante rollouts.
+\texttt{Simulator} realiza esta verificación con rollouts.
 
 \texttt{Simulator} recibe como entradas el MDP preparado y la política
 $\pi^* : \mathcal{S} \to \mathcal{A}$ como diccionario. El método principal es
@@ -1080,9 +1057,9 @@ En cada paso de tiempo, el simulador ejecuta cuatro operaciones en secuencia:
         actual $s$.
     \item Invoca \texttt{structured\_transition(s, a)} para obtener las distribuciones
         factorizadas $[\mathcal{F}_0, \ldots, \mathcal{F}_{m-1}]$.
-    \item Para cada factor $k$, muestrea el valor del estado sucesor mediante
+    \item Para cada factor $k$, muestrea el valor del estado sucesor por
         selección categórica ponderada sobre las ramas de $\mathcal{F}_k$.
-    \item Reconstruye la representación del estado sucesor usando
+    \item Reconstruye la codificación del estado sucesor con
         \texttt{get\_local\_index}: los factores booleanos producen un valor en
         $\{0, 1\}$; los factores multivaluados producen la codificación
         \textit{one-hot} del valor muestreado.
@@ -1093,15 +1070,15 @@ válida bajo el supuesto de independencia condicional entre factores establecido
 la Ecuación~\ref{eq:factorizacion-transicion}: el valor sucesor de cada variable de
 estado es estadísticamente independiente del de las demás, dado el par $(s, a)$.
 El método devuelve la recompensa promedio sobre todos los ensayos, la lista de
-recompensas individuales y las trayectorias completas. Las trayectorias individuales
-permiten al usuario examinar episodios concretos y no solo el retorno promedio.
+recompensas individuales y las trayectorias completas. Las trayectorias individuales exponen episodios concretos, no solo el retorno
+promedio.
 
-\texttt{CSVExporter} y \texttt{Simulator} operan sobre la misma representación
+\texttt{CSVExporter} y \texttt{Simulator} operan sobre la misma estructura
 factorizada que utiliza el solver. Esta consistencia garantiza que la expansión de
 transiciones del exportador y el muestreo del simulador sean coherentes con los
-cálculos de la Iteración de Valor. La sección siguiente establece que el conjunto de
-modificaciones introducido en este capítulo preserva el comportamiento del
-\textit{framework} sobre los modelos booleanos existentes.
+cálculos de la Iteración de Valor. La Sección~\ref{sec:di-retrocompatibilidad}
+verifica que estas modificaciones preservan el comportamiento del
+\textit{framework} sobre modelos booleanos existentes.
 
 
 % ------------------------------------------------------------------
@@ -1131,13 +1108,12 @@ otros son multivaluados. El \texttt{FluentClassifier} trata cada tipo de forma
 independiente. Los fluentes booleanos se registran como factores de base~2 y los
 multivaluados como factores de base~$N$. El usuario puede incorporar fluentes
 multivaluados en un programa existente añadiendo únicamente las nuevas declaraciones.
-Las reglas de transición booleanas no requieren modificación. Esta característica
-permite adoptar la sintaxis multivaluada de manera gradual, sin necesidad de
+Las reglas de transición booleanas no requieren modificación. Esta propiedad habilita una adopción gradual de la sintaxis multivaluada, sin
 reescribir las partes del programa que ya son correctas.
 
 Con la arquitectura, los algoritmos y la implementación definidos, el sistema cuenta
 con la capacidad de modelar y resolver MDPs con fluentes multivaluados de manera
 nativa. La propiedad de retrocompatibilidad garantiza que esta extensión no invalida
 ningún modelo booleano existente. El siguiente capítulo somete la extensión a una
-evaluación empírica mediante casos de estudio que cuantifican su impacto tanto en
+evaluación empírica con casos de estudio que cuantifican su impacto tanto en
 la simplificación del modelado como en el comportamiento computacional del solver.

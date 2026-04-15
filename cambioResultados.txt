@@ -1,0 +1,1556 @@
+ ▐▛███▜▌   Claude Code v2.1.105
+▝▜█████▛▘  Sonnet 4.6 · Claude Pro
+  ▘▘ ▝▝    ~/Escritorio/Tesina-Ivan
+
+✻ Conversation compacted (ctrl+o for history)
+
+
+❯ /compact   Principios clave para las secciones restantes                      
+                                                                                
+  1. El texto complementa la tabla; no la repite.                               
+  Después de cada tabla, el párrafo debe añadir la interpretación, la           
+  implicación práctica o el mecanismo causal — lo que los números no pueden     
+  decir solos. Si una oración puede escribirse leyendo directamente la          
+  tabla, sobra.                                                                 
+                                                                                
+  2. Una idea por oración, sin colon como atajo.                                
+  El colon tiende a comprimir dos oraciones en una, creando densidad            
+  innecesaria. Si la segunda cláusula merece decirse, merece su propio          
+  punto.                                                                        
+                                                                                
+  3. Sin re-explicar lo que capítulos anteriores establecieron.                 
+  Los dominios, la codificación booleana, las Disyunciones Anotadas, la         
+  Iteración de Valor: el lector ya los conoce. Solo entra información nueva:    
+   números, decisiones experimentales, hallazgos específicos.                   
+                                                                                
+  4. Captions breves; explicaciones de columnas en el cuerpo.                   
+  El caption identifica el contenido. Todo lo que ayude a leer la tabla va      
+  en el párrafo previo.                                                         
+                                                                                
+  5. Consistencia terminológica.                                                
+  "Configuraciones de inferencia" (no "backends") para las tres variantes;      
+  "corrida" y "ejecución" no en la misma oración.                               
+                                                                                
+  6. Estructuras artificiales solo si añaden valor real.                        
+  "Tres regularidades", "primera/segunda/tercera" — funcionan cuando cada       
+  punto es genuinamente distinto. Si el primero y el segundo dicen lo mismo     
+  con distintas palabras, se fusionan.                                          
+  ⎿  Compacted (ctrl+o to see full summary)
+     Tip: You have access to Sonnet 1M with 5x more context
+  ⎿  Referenced file 05experimentacion.tex
+  ⎿  Referenced file ../../.claude/skills/thesis-advisor-cs/SKILL.md
+  ⎿  Referenced file 01introduccion.tex
+  ⎿  Referenced file 03marco_teorico.tex
+  ⎿  Read ../../.claude/projects/-home-jitomate-Escritorio-Tesina-Ivan/memory/feedback_captions.md (12 lines)
+  ⎿  Skills restored (thesis-advisor-cs)
+
+❯ Hola, estoy actualmente en la tarea de revisar y pulir detalles dentro de mi  
+  tesina. Por cuestiones practicas por ahora solamente trataremos el capítulo   
+  de resultados ya que he detectado bastantes vicios y puntos de mejora         
+  /thesis-advisor-cs Necesito que comencemos a iterar sobre la sección 5        
+  correspondiente a la experimentación y resultados @05experimentacion.tex . En 
+   general la narrativa está bien pero hay que pulir detalles en la escritura   
+  apegados a los sigueintes lineamientos junto con los tuyos internos propios:  
+  1. El texto complementa la tabla; no la repite.                               
+    Después de cada tabla, el párrafo debe añadir la interpretación, la         
+                                                                                
+    implicación práctica o el mecanismo causal — lo que los números no pueden   
+                                                                                
+    decir solos. Si una oración puede escribirse leyendo directamente la        
+                                                                                
+    tabla, sobra.                                                               
+                                                                                
+                                                                                
+    2. Una idea por oración, sin colon como atajo.                              
+                                                                                
+    El colon tiende a comprimir dos oraciones en una, creando densidad          
+    innecesaria. Si la segunda cláusula merece decirse, merece su propio        
+                                                                                
+    punto.                                                                      
+                                                                                
+                                                                                
+    3. Sin re-explicar lo que capítulos anteriores establecieron.               
+                                                                                
+    Los dominios, la codificación booleana, las Disyunciones Anotadas, la       
+    Iteración de Valor: el lector ya los conoce. Solo entra información         
+  nueva:                                                                        
+     números, decisiones experimentales, hallazgos específicos.                 
+                                                                                
+                                                                                
+    4. Captions breves; explicaciones de columnas en el cuerpo.                 
+                                                                                
+    El caption identifica el contenido. Todo lo que ayude a leer la tabla va    
+    en el párrafo previo.                                                       
+                                                                                
+                                                                                
+    5. Consistencia terminológica.                                              
+                                                                                
+    "Configuraciones de inferencia" (no "backends") para las tres variantes;    
+    "corrida" y "ejecución" no en la misma oración.                             
+                                                                                
+                                                                                
+    6. Estructuras artificiales solo si añaden valor real.                      
+                                                                                
+    "Tres regularidades", "primera/segunda/tercera" — funcionan cuando cada     
+    punto es genuinamente distinto. Si el primero y el segundo dicen lo mismo   
+                                                                                
+    con distintas palabras, se fusionan.. La idea es reducir esta sección a     
+  unas 8 páginas a lo mucho. Por el momento solo hemos reducido hasta la        
+  sección 5.4 así que la siguiene es la 5.5                                     
+
+● Skill(thesis-advisor-cs)
+  ⎿  Successfully loaded skill
+
+  Read 1 file (ctrl+o to expand)
+
+● Déjame leer la sección 5.5 en adelante del archivo actual.
+
+  Read 1 file (ctrl+o to expand)
+
+● Tengo el texto completo. Aquí está el análisis de §5.5:
+
+  ---
+  Problemas encontrados en §5.5:
+
+  1. Título: "RQ3 --- Impacto computacional" — prefijo "RQ3 ---" no existe en
+  §5.3 ni §5.4; inconsistencia.
+  2. Intro: Re-explica la combinación codificación × configuración (ya dicho en
+  §5.1.2–5.1.3). "La métrica primaria reportada" es formulación artificial.
+  3. Captions de las 4 tablas: Contienen metodología (media ± SD, definición de
+  T.O., instrucciones de lectura del símbolo ∞) que pertenece a los párrafos
+  previos.
+  4. Terminología: "backend" aparece repetidamente donde debe decir
+  "configuración de inferencia". También aparece en el título de §5.5.4.
+  5. §5.5.2 post-tabla: Lee directamente los valores de la tabla ($0.92\times$,
+  $0.95\times$, $1.06\times$) en lugar de interpretar.
+  6. §5.5.3 post-tabla párr. 1: Enumera los tamaños de la tabla (8×8, 16×16,
+  32×32) en lugar de dar la tendencia.
+  7. §5.5.5 párr. 2: Repite valores de tabla para parsing y clasificación; el
+  punto (son constantes) no necesita los números exactos.
+
+  ---
+  Propuesta de §5.5 revisada (solo las partes que cambian; tablas sin tocar):
+
+  % ------------------------------------------------------------------
+  \subsection{Impacto computacional}
+  \label{sec:exp-rq3}
+
+  Esta sección evalúa cómo influye la elección de codificación sobre el
+  rendimiento del solver. El tiempo de ejecución se descompone en dos fases:
+  la fase de construcción ($t_{\text{build}}$), que abarca \textit{parsing},
+  clasificación de fluentes, \textit{grounding} y compilación del circuito,
+  y la fase de Iteración de Valor ($t_{\text{VI}}$), que ejecuta las
+  actualizaciones de Bellman hasta convergencia. El tiempo total es
+  $t_{\text{total}} = t_{\text{build}} + t_{\text{VI}}$.
+
+  \subsubsection{Tiempos de ejecución}
+  \label{sec:exp-tiempos}
+
+  La Tabla~\ref{tab:exp-tiempos} presenta $t_{\text{total}}$ para cada
+  combinación de codificación y configuración de inferencia. Las
+  configuraciones que completaron reportan media y desviación estándar sobre
+  $10$ ejecuciones independientes; las que excedieron el límite de
+  $400\,\text{s}$ se marcan como T.O.
+
+  \begin{table}[htbp]
+      \centering
+      \caption{Tiempo total de ejecución $t_{\text{total}}$ (segundos) por
+               codificación y configuración de inferencia.}
+      \label{tab:exp-tiempos}
+      % ... tabla sin cambios ...
+  \end{table}
+
+  Los tiempos de la codificación binaria crecen más rápido que los de la
+  factorizada a medida que aumenta el tamaño del \textit{grid}. Con la
+  configuración darwiche, la codificación binaria pasa de $0.109\,\text{s}$
+  en $2 \times 3$ a $161\,\text{s}$ en $12 \times 12$, un factor de
+  $1\,477\times$; la factorizada crece de $0.103\,\text{s}$ a $5.36\,\text{s}$,
+  un factor de $52\times$ en ese mismo rango.
+
+  La Iteración de Valor domina $t_{\text{total}}$ en la mayoría de las
+  configuraciones. Para la codificación factorizada con configuración darwiche,
+  el tiempo de construcción representa el $15.7\%$ del total en $2 \times 3$
+  y el $2.0\%$ en $16 \times 16$; la proporción disminuye porque el número
+  de evaluaciones de $Q(s,a)$ crece con $|\mathcal{S}| \times |\mathcal{A}|$
+  mientras que el costo de construcción crece más lentamente. El desglose por
+  subfase se presenta en la Sección~\ref{sec:exp-subfases}.
+
+  \subsubsection{Cociente de tiempos entre codificaciones}
+  \label{sec:exp-speedup}
+
+  La Tabla~\ref{tab:exp-speedup} presenta el cociente
+  $t_{\text{total}}^{\text{bin}} / t_{\text{total}}^{\text{fac}}$ para los
+  pares donde ambas codificaciones completaron. El símbolo $\infty$ indica
+  que la codificación binaria superó el \textit{timeout} mientras la
+  factorizada completó; un valor menor que $1.0$ indica que la binaria fue
+  más rápida.
+
+  \begin{table}[htbp]
+      \centering
+      \caption{Cociente de tiempos $t_{\text{total}}^{\text{bin}} /
+               t_{\text{total}}^{\text{fac}}$ por configuración de inferencia.}
+      \label{tab:exp-speedup}
+      % ... tabla sin cambios ...
+  \end{table}
+
+  Para el \textit{grid} $2\times3$, las configuraciones \textit{ddnnf} y
+  \textit{sdd} muestran cocientes menores a $1.0$; la codificación binaria
+  es marginalmente más rápida en ese tamaño mínimo. A partir de $3\times3$,
+  la codificación factorizada supera a la binaria en las tres configuraciones
+  de inferencia y el cociente crece de forma monotónica con el tamaño.
+
+  La inversión de rendimiento entre $2\times3$ y $3\times3$ refleja el costo
+  fijo de las Disyunciones Anotadas. Para el tamaño mínimo, el
+  \textit{overhead} de compilar los nodos \textit{choice} supera la ventaja
+  de un espacio de estados reducido; a partir de $3\times3$, la reducción
+  de estados y cláusulas lo compensa y el cociente crece monotónicamente.
+
+  \subsubsection{Frontera de escalabilidad}
+  \label{sec:exp-frontera}
+
+  La Tabla~\ref{tab:exp-frontera} resume el tamaño máximo de \textit{grid}
+  que completó dentro del límite de \textit{timeout} para cada combinación
+  de codificación y configuración de inferencia.
+
+  \begin{table}[htbp]
+      \centering
+      \caption{Tamaño máximo de \textit{grid} que completó dentro del límite
+               de $400\,\text{s}$ por codificación y configuración de
+               inferencia. Entre paréntesis se indica $|\mathcal{S}|$.}
+      \label{tab:exp-frontera}
+      % ... tabla sin cambios ...
+  \end{table}
+
+  La codificación factorizada extiende la frontera en las tres configuraciones
+  de inferencia. Para \textit{ddnnf}, duplica el número máximo de estados;
+  para darwiche y \textit{sdd}, lo cuadruplica.
+
+  El caso extremo es la codificación binaria en $32 \times 32$: $11$ fluentes
+  booleanos, $2^{11} = 2\,048$ estados ($1\,024$ espurios) y $26\,623$ reglas
+  producen un programa aterrizado que supera el límite de $400\,\text{s}$ en
+  las tres configuraciones sin completar la Iteración de Valor.
+
+  \subsubsection{Comparación de configuraciones de inferencia}
+  \label{sec:exp-backends}
+
+  Las tres configuraciones de inferencia difieren en velocidad absoluta y en
+  la tasa de crecimiento con el tamaño del \textit{grid}. El análisis se
+  realiza sobre la codificación factorizada, que ofrece el mayor número de
+  configuraciones completadas.
+
+  La configuración \textit{sdd} produce los tiempos más bajos en todos los
+  tamaños evaluados. La configuración darwiche es entre $1.75\times$ y
+  $3.2\times$ más lenta que \textit{sdd}, con la diferencia creciendo
+  lentamente con el tamaño. La configuración \textit{ddnnf} muestra la tasa
+  de crecimiento más alta: en $4 \times 4$ es $4.0\times$ más lenta que
+  darwiche, y en $16 \times 16$ esa diferencia es $16.5\times$.
+
+  La divergencia entre \textit{ddnnf} y las otras dos configuraciones se
+  explica por su estructura computacional. La configuración \textit{ddnnf}
+  compila un circuito d-DNNF separado para cada par $(s,a)$ consultado
+  durante la Iteración de Valor. Las configuraciones darwiche y \textit{sdd}
+  compilan el circuito una sola vez y derivan todas las probabilidades de
+  transición mediante diferenciación o consulta dirigida sobre esa misma
+  estructura. Esta diferencia reduce el número de compilaciones de
+  $O(|\mathcal{S}| \times |\mathcal{A}|)$ a $O(1)$ por iteración de Bellman.
+
+  % TODO [FIGURA]: ... (sin cambios)
+
+  \subsubsection{Desglose de la fase de construcción}
+  \label{sec:exp-subfases}
+
+  La fase de construcción $t_{\text{build}}$ se divide en cuatro subfases:
+  \textit{parsing} del programa fuente ($t_{\text{parse}}$), clasificación
+  de fluentes ($t_{\text{classify}}$), \textit{grounding} del programa
+  ($t_{\text{ground}}$) y compilación del circuito ($t_{\text{compile}}$).
+  La Tabla~\ref{tab:exp-subfases} presenta estas subfases para la codificación
+  factorizada con la configuración darwiche, con medias sobre $10$ ejecuciones.
+
+  \begin{table}[htbp]
+      \centering
+      \caption{Desglose de $t_{\text{build}}$ en subfases (segundos) para la
+               codificación factorizada con la configuración darwiche.}
+      \label{tab:exp-subfases}
+      % ... tabla sin cambios ...
+  \end{table}
+
+  El \textit{grounding} es la subfase dominante de $t_{\text{build}}$. Su
+  participación relativa crece del $53.8\%$ en $2 \times 3$ al $73.7\%$ en
+  $32 \times 32$. El tiempo de \textit{grounding} crece $25\times$ para un
+  incremento de $171\times$ en $|\mathcal{S}|$. Esta sublinealidad se debe a
+  que el programa fuente contiene exactamente $21$ reglas en todos los tamaños;
+  el \textit{grounding} solo instancia esas reglas para los valores concretos
+  de fila y columna del \textit{grid}.
+
+  El \textit{parsing} y la clasificación son prácticamente constantes porque
+  operan sobre el programa fuente, independientemente del tamaño del
+  \textit{grid}. La compilación crece junto con el \textit{grounding}, aunque
+  a menor ritmo, y representa entre el $25.2\%$ y el $34.1\%$ de
+  $t_{\text{build}}$.
+
+  ¿Aplico los cambios?
+
+✻ Crunched for 4m 41s
+
+❯ Si, apliquemos los cambios, en general tambien he determinado que por ejemplo 
+   la subsección sección "Frontera de escalabilidad" no es relevante y es       
+  información que ya se mostró antes. En la sección 5.5.2 hay que cambiar el    
+  simbolo para el timeout, ya que en general si pudiera haber obtenido          
+  resultados si se daba mas tiempo de timeout y el infinito pareciera que       
+  presentara un problema irresoluble. Usemos mejor --                           
+
+● Perfecto. Aplico todo de una vez: cambios de §5.5, elimino §5.5.3 (Frontera) y
+   cambio $\infty$ por -- en la tabla de cocientes.
+
+● Update(05experimentacion.tex)
+  ⎿  Added 2 lines, removed 2 lines
+      204  %   La serie factorizada es una línea horizontal constante en 
+           21.
+      205  %   Label sugerido: fig:reglas-celdas
+      206  % ------------------------------------------------------------
+           ------
+      207 -\subsection{RQ3 --- Impacto computacional}                    
+      207 +\subsection{Impacto computacional}                            
+      208  \label{sec:exp-rq3}
+      209  
+      210 -La tercera pregunta de investigación evalúa cómo influye la el
+          -ección de codificación sobre el rendimiento del solver. Cada c
+          -onfiguración combina una de las dos codificaciones con uno de 
+          -los tres \textit{backends}. El tiempo de ejecución se descompo
+          -ne en dos fases. La fase de construcción ($t_{\text{build}}$) 
+          -abarca el \textit{parsing} del programa fuente, la clasificaci
+          -ón de fluentes, el \textit{grounding} y la compilación del cir
+          -cuito. La fase de Iteración de Valor ($t_{\text{VI}}$) ejecuta
+          - las actualizaciones de Bellman hasta convergencia. La métrica
+          - primaria reportada es el tiempo total $t_{\text{total}} = t_{
+          -\text{build}} + t_{\text{VI}}$.                               
+      210 +Esta sección evalúa cómo influye la elección de codificación s
+          +obre el rendimiento del solver. El tiempo de ejecución se desc
+          +ompone en dos fases: la fase de construcción ($t_{\text{build}
+          +}$), que abarca \textit{parsing}, clasificación de fluentes, \
+          +textit{grounding} y compilación del circuito, y la fase de Ite
+          +ración de Valor ($t_{\text{VI}}$), que ejecuta las actualizaci
+          +ones de Bellman hasta convergencia. El tiempo total es $t_{\te
+          +xt{total}} = t_{\text{build}} + t_{\text{VI}}$.               
+      211  
+      212  \subsubsection{Tiempos de ejecución}
+      213  \label{sec:exp-tiempos}
+
+❯ Mi observación en esta correción es el uso de los dos puntos.                 
+
+● Tienes razón. El colon comprime en una sola oración lo que son dos ideas
+  distintas. La solución es simple: una oración por fase, como estaba
+  originalmente.
+
+  Propuesta corregida del párrafo introductorio:
+
+  Esta sección evalúa cómo influye la elección de codificación sobre el
+  rendimiento del solver. La fase de construcción ($t_{\text{build}}$)
+  abarca \textit{parsing}, clasificación de fluentes, \textit{grounding}
+  y compilación del circuito. La fase de Iteración de Valor ($t_{\text{VI}}$)
+  ejecuta las actualizaciones de Bellman hasta convergencia. El tiempo
+  total es $t_{\text{total}} = t_{\text{build}} + t_{\text{VI}}$.
+
+  ¿Aplico?
+
+❯ Si                                                                            
+
+● Update(05experimentacion.tex)
+  ⎿  Added 1 line, removed 1 line
+      207  \subsection{Impacto computacional}
+      208  \label{sec:exp-rq3}
+      209  
+      210 -Esta sección evalúa cómo influye la elección de codificación s
+          -obre el rendimiento del solver. El tiempo de ejecución se desc
+          -ompone en dos fases: la fase de construcción ($t_{\text{build}
+          -}$), que abarca \textit{parsing}, clasificación de fluentes, \
+          -textit{grounding} y compilación del circuito, y la fase de Ite
+          -ración de Valor ($t_{\text{VI}}$), que ejecuta las actualizaci
+          -ones de Bellman hasta convergencia. El tiempo total es $t_{\te
+          -xt{total}} = t_{\text{build}} + t_{\text{VI}}$.               
+      210 +Esta sección evalúa cómo influye la elección de codificación s
+          +obre el rendimiento del solver. La fase de construcción ($t_{\
+          +text{build}}$) abarca \textit{parsing}, clasificación de fluen
+          +tes, \textit{grounding} y compilación del circuito. La fase de
+          + Iteración de Valor ($t_{\text{VI}}$) ejecuta las actualizacio
+          +nes de Bellman hasta convergencia. El tiempo total es $t_{\tex
+          +t{total}} = t_{\text{build}} + t_{\text{VI}}$.                
+      211  
+      212  \subsubsection{Tiempos de ejecución}
+      213  \label{sec:exp-tiempos}
+
+● Listo. Ahora aplico el resto de los cambios de §5.5: pre-tabla y caption de
+  §5.5.1, luego §5.5.2, §5.5.4 y §5.5.5. También elimino §5.5.3 y cambio
+  $\infty$ por --.
+
+● Update(05experimentacion.tex)
+  ⎿  Added 2 lines, removed 2 lines
+      212  \subsubsection{Tiempos de ejecución}
+      213  \label{sec:exp-tiempos}
+      214  
+      215 -La Tabla~\ref{tab:exp-tiempos} presenta $t_{\text{total}}$ par
+          -a cada combinación de codificación y \textit{backend}. Las con
+          -figuraciones que excedieron el límite de $400\,\text{s}$ se ma
+          -rcan como T.O. Para las configuraciones que completaron, se re
+          -porta la media y la desviación estándar sobre $10$ ejecuciones
+          - independientes.                                              
+      215 +La Tabla~\ref{tab:exp-tiempos} presenta $t_{\text{total}}$ par
+          +a cada combinación de codificación y configuración de inferenc
+          +ia. Las configuraciones que completaron reportan media y desvi
+          +ación estándar sobre $10$ ejecuciones independientes; las que 
+          +excedieron el límite de $400\,\text{s}$ se marcan como T.O.   
+      216  
+      217  \begin{table}[htbp]
+      218      \centering
+      219 -    \caption{Tiempo total de ejecución $t_{\text{total}}$ (seg
+          -undos) por codificación y \textit{backend}. Se reporta media~$
+          -\pm$~desviación estándar sobre $10$ ejecuciones. T.O.\ indica 
+          -que la configuración superó el límite de $400\,\text{s}$.}    
+      219 +    \caption{Tiempo total de ejecución $t_{\text{total}}$ (seg
+          +undos) por codificación y configuración de inferencia.}       
+      220      \label{tab:exp-tiempos}
+      221      \footnotesize
+      222      \begin{tabular}{l l r r r}
+
+● Update(05experimentacion.tex)
+  ⎿  Added 2 lines, removed 2 lines
+      261      \end{tabular}
+      262  \end{table}
+      263  
+      264 -Los tiempos de la codificación binaria crecen más rápido que l
+          -os de la factorizada a medida que aumenta el tamaño del \texti
+          -t{grid}. Para el \textit{backend} darwiche, la codificación bi
+          -naria pasa de $0.109\,\text{s}$ en $2 \times 3$ a $161\,\text{
+          -s}$ en $12 \times 12$, un factor de $1\,477\times$. En ese mis
+          -mo rango, la codificación factorizada crece de $0.103\,\text{s
+          -}$ a $5.36\,\text{s}$, un factor de $52\times$.               
+      264 +Los tiempos de la codificación binaria crecen más rápido que l
+          +os de la factorizada a medida que aumenta el tamaño del \texti
+          +t{grid}. Con la configuración darwiche, la codificación binari
+          +a pasa de $0.109\,\text{s}$ en $2 \times 3$ a $161\,\text{s}$ 
+          +en $12 \times 12$, un factor de $1\,477\times$; la factorizada
+          + crece de $0.103\,\text{s}$ a $5.36\,\text{s}$, un factor de $
+          +52\times$ en ese mismo rango.                                 
+      265  
+      266 -La fase de Iteración de Valor domina $t_{\text{total}}$ en la 
+          -mayoría de las configuraciones. Para la codificación factoriza
+          -da con \textit{backend} darwiche, el tiempo de construcción re
+          -presenta el $15.7\%$ del total en $2 \times 3$ y el $2.0\%$ en
+          - $16 \times 16$. La proporción decrece con el tamaño del \text
+          -it{grid} porque el número de evaluaciones de $Q(s,a)$ durante 
+          -la Iteración de Valor crece con $|\mathcal{S}| \times |\mathca
+          -l{A}|$, mientras que el costo de construcción del circuito cre
+          -ce más lentamente.                                            
+      266 +La Iteración de Valor domina $t_{\text{total}}$ en la mayoría 
+          +de las configuraciones. Para la codificación factorizada con c
+          +onfiguración darwiche, el tiempo de construcción representa el
+          + $15.7\%$ del total en $2 \times 3$ y el $2.0\%$ en $16 \times
+          + 16$; la proporción disminuye porque el número de evaluaciones
+          + de $Q(s,a)$ crece con $|\mathcal{S}| \times |\mathcal{A}|$ mi
+          +entras que el costo de construcción crece más lentamente. El d
+          +esglose por subfase se presenta en la Sección~\ref{sec:exp-sub
+          +fases}.                                                       
+      267  
+      268  \subsubsection{Cociente de tiempos entre codificaciones}
+      269  \label{sec:exp-speedup}
+
+● Update(05experimentacion.tex)
+  ⎿  Added 2 lines, removed 2 lines
+      268  \subsubsection{Cociente de tiempos entre codificaciones}
+      269  \label{sec:exp-speedup}
+      270  
+      271 -La Tabla~\ref{tab:exp-speedup} presenta el cociente $t_{\text{
+          -total}}^{\text{bin}} / t_{\text{total}}^{\text{fac}}$ para los
+          - pares de configuraciones donde ambas codificaciones completar
+          -on. Un valor mayor que $1.0$ indica que la codificación factor
+          -izada finalizó en menos tiempo.                               
+      271 +La Tabla~\ref{tab:exp-speedup} presenta el cociente $t_{\text{
+          +total}}^{\text{bin}} / t_{\text{total}}^{\text{fac}}$ para los
+          + pares donde ambas codificaciones completaron. El símbolo \tex
+          +ttt{--} indica que la codificación binaria superó el \textit{t
+          +imeout} mientras la factorizada completó; un valor menor que $
+          +1.0$ indica que la binaria fue más rápida.                    
+      272  
+      273  \begin{table}[htbp]
+      274      \centering
+      275 -    \caption{Cociente $t_{\text{total}}^{\text{bin}} / t_{\tex
+          -t{total}}^{\text{fac}}$ por \textit{backend}. El símbolo $\inf
+          -ty$ indica que la codificación binaria superó el \textit{timeo
+          -ut} mientras la factorizada completó. Un valor $< 1$ indica qu
+          -e la binaria fue más rápida.}                                 
+      275 +    \caption{Cociente de tiempos $t_{\text{total}}^{\text{bin}
+          +} / t_{\text{total}}^{\text{fac}}$ por configuración de infere
+          +ncia.}                                                        
+      276      \label{tab:exp-speedup}
+      277      \small
+      278      \begin{tabular}{l r r r}
+
+● Ahora cambio los $\infty$ por \texttt{--} en la tabla de speedup:
+● Update(05experimentacion.tex)
+  ⎿  Added 2 lines, removed 2 lines
+      284          $4 \times 4$   & $3.82\times$ & $5.36\times$ & $3.15\t
+           imes$ \\
+      285          $6 \times 6$   & $6.59\times$ & $9.96\times$ & $4.56\t
+           imes$ \\
+      286          $8 \times 8$   & $12.2\times$ & $23.6\times$ & $8.28\t
+           imes$ \\
+      287 -        $12 \times 12$ & $\infty$      & $30.0\times$ & $11.2\
+          -times$ \\                                                     
+      288 -        $16 \times 16$ & $\infty$      & $\infty$      & $18.4
+          -\times$ \\                                                    
+      287 +        $12 \times 12$ & \texttt{--}   & $30.0\times$ & $11.2\
+          +times$ \\                                                     
+      288 +        $16 \times 16$ & \texttt{--}   & \texttt{--}   & $18.4
+          +\times$ \\                                                    
+      289          \bottomrule
+      290      \end{tabular}
+      291  \end{table}
+
+● Ahora corrijo el párrafo post-tabla de §5.5.2 y elimino §5.5.3 completa:
+
+● Update(05experimentacion.tex)
+  ⎿  Error editing file
+
+  Read 1 file (ctrl+o to expand)
+
+● Ahora sí puedo hacer las ediciones precisas:
+
+● Update(05experimentacion.tex)
+  ⎿  Added 2 lines, removed 2 lines
+      290      \end{tabular}
+      291  \end{table}
+      292  
+      293 -Para el \textit{grid} $2 \times 3$, la codificación binaria es
+          - ligeramente más rápida o comparable en \textit{ddnnf} y \text
+          -it{sdd} ($0.92\times$ y $0.95\times$ respectivamente). Para \t
+          -extit{darwiche}, la codificación factorizada ya es $1.06\times
+          -$ más rápida en ese tamaño. A partir del \textit{grid} $3 \tim
+          -es 3$, la codificación factorizada es más rápida en las tres c
+          -ombinaciones de \textit{backend}, y el cociente crece de forma
+          - monotónica con el tamaño.                                    
+      293 +Para el \textit{grid} $2\times3$, las configuraciones \textit{
+          +ddnnf} y \textit{sdd} muestran cocientes menores a $1.0$; la c
+          +odificación binaria es marginalmente más rápida en ese tamaño 
+          +mínimo. A partir de $3\times3$, la codificación factorizada su
+          +pera a la binaria en las tres configuraciones de inferencia y 
+          +el cociente crece de forma monotónica con el tamaño.          
+      294  
+      295 -El cociente máximo observado en pares donde ambas codificacion
+          -es completaron es $30.0\times$, para el \textit{backend} darwi
+          -che en $12 \times 12$. La inversión de rendimiento entre $2 \t
+          -imes 3$ y $3 \times 3$ responde al costo fijo de las Disyuncio
+          -nes Anotadas. Para \textit{grids} pequeños, el \textit{overhea
+          -d} de construir y compilar los nodos \textit{choice} supera la
+          - ventaja de un espacio de estados reducido. Para \textit{grids
+          -} de $3 \times 3$ en adelante, la reducción del espacio de est
+          -ados y del número de cláusulas compensa ese costo fijo.       
+      295 +La inversión de rendimiento entre $2\times3$ y $3\times3$ refl
+          +eja el costo fijo de las Disyunciones Anotadas. Para el tamaño
+          + mínimo, el \textit{overhead} de compilar los nodos \textit{ch
+          +oice} supera la ventaja de un espacio de estados reducido; a p
+          +artir de $3\times3$, la reducción de estados y cláusulas lo co
+          +mpensa y el cociente crece monotónicamente.                   
+      296  
+      297  \subsubsection{Frontera de escalabilidad}
+      298  \label{sec:exp-frontera}
+
+● Ahora elimino §5.5.3 completa (tabla + texto):
+
+● Update(05experimentacion.tex)
+  ⎿  Removed 29 lines
+      294  
+      295  La inversión de rendimiento entre $2\times3$ y $3\times3$ refl
+           eja el costo fijo de las Disyunciones Anotadas. Para el tamaño
+            mínimo, el \textit{overhead} de compilar los nodos \textit{ch
+           oice} supera la ventaja de un espacio de estados reducido; a p
+           artir de $3\times3$, la reducción de estados y cláusulas lo co
+           mpensa y el cociente crece monotónicamente.
+      296  
+      297 -\subsubsection{Frontera de escalabilidad}                     
+      298 -\label{sec:exp-frontera}                                      
+      297  
+      300 -La Tabla~\ref{tab:exp-frontera} resume el tamaño máximo de \te
+          -xtit{grid} para el que cada combinación de codificación y \tex
+          -tit{backend} completó dentro del límite de \textit{timeout}.  
+      301 -                                                              
+      302 -\begin{table}[htbp]                                           
+      303 -    \centering                                                
+      304 -    \caption{Tamaño máximo de \textit{grid} que completó dentr
+          -o del límite de $400\,\text{s}$, por codificación y \textit{ba
+          -ckend}. Entre paréntesis se indica el número de estados del es
+          -pacio de estados correspondiente.}                            
+      305 -    \label{tab:exp-frontera}                                  
+      306 -    \small                                                    
+      307 -    \begin{tabular}{l c c c}                                  
+      308 -        \toprule                                              
+      309 -        \textbf{Codificación} & \textbf{ddnnf} & \textbf{darwi
+          -che} & \textbf{sdd} \\                                        
+      310 -        \midrule                                              
+      311 -        Binaria                                               
+      312 -            & $8 \times 8$\;($128$)                           
+      313 -            & $12 \times 12$\;($256$)                         
+      314 -            & $16 \times 16$\;($512$) \\[2pt]                 
+      315 -        Factorizada                                           
+      316 -            & $16 \times 16$\;($256$)                         
+      317 -            & $32 \times 32$\;($1\,024$)                      
+      318 -            & $32 \times 32$\;($1\,024$) \\                   
+      319 -        \bottomrule                                           
+      320 -    \end{tabular}                                             
+      321 -\end{table}                                                   
+      322 -                                                              
+      323 -La codificación factorizada extiende la frontera de escalabili
+          -dad en todos los \textit{backends}. Para \textit{ddnnf}, la fr
+          -ontera pasa de $8 \times 8$ (binaria) a $16 \times 16$ (factor
+          -izada), duplicando el número máximo de estados. Para darwiche 
+          -y \textit{sdd}, la codificación factorizada permite resolver e
+          -l \textit{grid} $32 \times 32$ con $1\,024$ estados, cuatro ve
+          -ces más que el máximo alcanzado por la codificación binaria co
+          -n esos \textit{backends}.                                     
+      324 -                                                              
+      325 -La codificación binaria para el \textit{grid} $32 \times 32$ g
+          -enera $11$ fluentes booleanos y un espacio de $2^{11} = 2\,048
+          -$ estados, con $1\,024$ estados espurios. Las $26\,623$ reglas
+          - del programa resultan en un programa aterrizado de tamaño suf
+          -iciente como para que los tres \textit{backends} superen el lí
+          -mite de $400\,\text{s}$ sin completar la Iteración de Valor.  
+      326 -                                                              
+      298  \subsubsection{Comparación de \textit{backends}}
+      299  \label{sec:exp-backends}
+      300  
+
+● Ahora §5.5.4: título y párrafos:
+
+● Update(05experimentacion.tex)
+  ⎿  Added 4 lines, removed 4 lines
+      295  La inversión de rendimiento entre $2\times3$ y $3\times3$ refl
+           eja el costo fijo de las Disyunciones Anotadas. Para el tamaño
+            mínimo, el \textit{overhead} de compilar los nodos \textit{ch
+           oice} supera la ventaja de un espacio de estados reducido; a p
+           artir de $3\times3$, la reducción de estados y cláusulas lo co
+           mpensa y el cociente crece monotónicamente.
+      296  
+      297  
+      298 -\subsubsection{Comparación de \textit{backends}}              
+      298 +\subsubsection{Comparación de configuraciones de inferencia}  
+      299  \label{sec:exp-backends}
+      300  
+      301 -Los tres \textit{backends} difieren en velocidad absoluta y en
+          - la tasa de crecimiento con el tamaño del \textit{grid}. El an
+          -álisis se realiza sobre la codificación factorizada, que ofrec
+          -e el mayor número de configuraciones completadas.             
+      301 +Las tres configuraciones de inferencia difieren en velocidad a
+          +bsoluta y en la tasa de crecimiento con el tamaño del \textit{
+          +grid}. El análisis se realiza sobre la codificación factorizad
+          +a, que ofrece el mayor número de configuraciones completadas. 
+      302  
+      303 -Para la codificación factorizada, el \textit{backend} \textit{
+          -sdd} produce los tiempos más bajos en todos los tamaños evalua
+          -dos. El \textit{backend} darwiche es entre $1.75\times$ y $3.2
+          -\times$ más lento que \textit{sdd}, con la diferencia creciend
+          -o lentamente con el tamaño. El \textit{backend} \textit{ddnnf}
+          - muestra la tasa de crecimiento más alta. En el \textit{grid} 
+          -$4 \times 4$, \textit{ddnnf} es $4.0\times$ más lento que darw
+          -iche; en el \textit{grid} $16 \times 16$, esa diferencia es $1
+          -6.5\times$.                                                   
+      303 +La configuración \textit{sdd} produce los tiempos más bajos en
+          + todos los tamaños evaluados. La configuración darwiche es ent
+          +re $1.75\times$ y $3.2\times$ más lenta que \textit{sdd}, con 
+          +la diferencia creciendo lentamente con el tamaño. La configura
+          +ción \textit{ddnnf} muestra la tasa de crecimiento más alta: e
+          +n $4 \times 4$ es $4.0\times$ más lenta que darwiche, y en $16
+          + \times 16$ esa diferencia es $16.5\times$.                   
+      304  
+      305 -La divergencia entre \textit{ddnnf} y los otros dos \textit{ba
+          -ckends} se explica por la estructura computacional de cada uno
+          -. El \textit{backend} \textit{ddnnf} requiere compilar un circ
+          -uito d-DNNF separado para cada par $(s,a)$ consultado durante 
+          -la Iteración de Valor. Los \textit{backends} darwiche y \texti
+          -t{sdd} compilan el circuito una sola vez y derivan todas las p
+          -robabilidades de transición mediante diferenciación o consulta
+          - dirigida sobre esa misma estructura. Esta diferencia reduce e
+          -l número de compilaciones de $O(|\mathcal{S}| \times |\mathcal
+          -{A}|)$ a $O(1)$ por iteración de Bellman.                     
+      305 +La divergencia entre \textit{ddnnf} y las otras dos configurac
+          +iones se explica por su estructura computacional. La configura
+          +ción \textit{ddnnf} compila un circuito d-DNNF separado para c
+          +ada par $(s,a)$ consultado durante la Iteración de Valor. Las 
+          +configuraciones darwiche y \textit{sdd} compilan el circuito u
+          +na sola vez y derivan todas las probabilidades de transición m
+          +ediante diferenciación o consulta dirigida sobre esa misma est
+          +ructura. Esta diferencia reduce el número de compilaciones de 
+          +$O(|\mathcal{S}| \times |\mathcal{A}|)$ a $O(1)$ por iteración
+          + de Bellman.                                                  
+      306  
+      307  % TODO [FIGURA]: Gráfica de líneas log-log mostrando t_total v
+           s. celdas del grid
+      308  %   para las 6 combinaciones codificación × backend (solo conf
+           igs OK).
+
+● Finalmente §5.5.5: pre-tabla, caption y párrafos:
+
+● Update(05experimentacion.tex)
+  ⎿  Added 2 lines, removed 2 lines
+      313  \subsubsection{Desglose de la fase de construcción}
+      314  \label{sec:exp-subfases}
+      315  
+      316 -La fase de construcción $t_{\text{build}}$ se divide en cuatro
+          - subfases: \textit{parsing} del programa fuente ($t_{\text{par
+          -se}}$), clasificación de fluentes ($t_{\text{classify}}$), \te
+          -xtit{grounding} del programa ($t_{\text{ground}}$) y compilaci
+          -ón del circuito ($t_{\text{compile}}$). La Tabla~\ref{tab:exp-
+          -subfases} presenta estas subfases para la codificación factori
+          -zada con el \textit{backend} darwiche.                        
+      316 +La fase de construcción $t_{\text{build}}$ se divide en cuatro
+          + subfases: \textit{parsing} del programa fuente ($t_{\text{par
+          +se}}$), clasificación de fluentes ($t_{\text{classify}}$), \te
+          +xtit{grounding} del programa ($t_{\text{ground}}$) y compilaci
+          +ón del circuito ($t_{\text{compile}}$). La Tabla~\ref{tab:exp-
+          +subfases} presenta estas subfases para la codificación factori
+          +zada con la configuración darwiche, con medias sobre $10$ ejec
+          +uciones.                                                      
+      317  
+      318  \begin{table}[htbp]
+      319      \centering
+      320 -    \caption{Desglose de $t_{\text{build}}$ en subfases (segun
+          -dos) para la codificación factorizada con \textit{backend} dar
+          -wiche. Se reportan medias sobre $10$ ejecuciones.}            
+      320 +    \caption{Desglose de $t_{\text{build}}$ en subfases (segun
+          +dos) para la codificación factorizada con la configuración dar
+          +wiche.}                                                       
+      321      \label{tab:exp-subfases}
+      322      \small
+      323      \begin{tabular}{l r r r r r}
+
+● Update(05experimentacion.tex)
+  ⎿  Added 2 lines, removed 2 lines
+      336      \end{tabular}
+      337  \end{table}
+      338  
+      339 -El \textit{grounding} es la subfase dominante de $t_{\text{bui
+          -ld}}$. Su participación relativa crece del $53.8\%$ en $2 \tim
+          -es 3$ al $73.7\%$ en $32 \times 32$. El tiempo de \textit{grou
+          -nding} pasa de $0.024\,\text{s}$ en $2 \times 3$ a $0.603\,\te
+          -xt{s}$ en $32 \times 32$, un factor de $25\times$ para un incr
+          -emento de $171\times$ en $|\mathcal{S}|$. Esta sublinealidad s
+          -e debe a que el programa fuente contiene exactamente $21$ regl
+          -as en todos los tamaños. El \textit{grounding} solo debe insta
+          -nciar esas reglas para los valores concretos de fila y columna
+          - del \textit{grid}.                                           
+      339 +El \textit{grounding} es la subfase dominante de $t_{\text{bui
+          +ld}}$. Su participación relativa crece del $53.8\%$ en $2 \tim
+          +es 3$ al $73.7\%$ en $32 \times 32$. El tiempo de \textit{grou
+          +nding} crece $25\times$ para un incremento de $171\times$ en $
+          +|\mathcal{S}|$. Esta sublinealidad se debe a que el programa f
+          +uente contiene exactamente $21$ reglas en todos los tamaños; e
+          +l \textit{grounding} solo instancia esas reglas para los valor
+          +es concretos de fila y columna del \textit{grid}.             
+      340  
+      341 -El \textit{parsing} y la clasificación permanecen prácticament
+          -e constantes en todos los tamaños evaluados. El tiempo de \tex
+          -tit{parsing} varía entre $0.0037\,\text{s}$ y $0.0051\,\text{s
+          -}$, y el de clasificación entre $0.0006\,\text{s}$ y $0.0031\,
+          -\text{s}$. La compilación crece de $0.015\,\text{s}$ a $0.206\
+          -,\text{s}$, representando entre el $25.2\%$ y el $34.1\%$ de $
+          -t_{\text{build}}$.                                            
+      341 +El \textit{parsing} y la clasificación son prácticamente const
+          +antes porque operan sobre el programa fuente, independientemen
+          +te del tamaño del \textit{grid}. La compilación crece junto co
+          +n el \textit{grounding}, aunque a menor ritmo, y representa en
+          +tre el $25.2\%$ y el $34.1\%$ de $t_{\text{build}}$.          
+      342  
+      343  % TODO [FIGURA]: Gráfica de barras apiladas mostrando la compo
+           sición de t_build
+      344  %   (parse, classify, ground, compile) para la codificación fa
+           ctorizada con darwiche.
+
+● Todos los cambios de §5.5 aplicados. Resumen de lo hecho:
+
+  - Título: "RQ3 --- Impacto computacional" → "Impacto computacional"
+  - Intro: eliminada re-explicación de configuraciones; tres oraciones simples
+  sin colon
+  - §5.5.1: pre-tabla y caption limpios; "backend" → "configuración de
+  inferencia"; segundo párrafo con forward ref a §5.5.5
+  - §5.5.2: caption reducido; $\infty$ → \texttt{--}; párrafos post-tabla
+  interpretan en lugar de leer la tabla
+  - §5.5.3: eliminada completa
+  - §5.5.4: título y párrafos con "configuraciones de inferencia"; explicación
+  O(|S|×|A|) intacta
+  - §5.5.5: caption y pre-tabla limpios; párrafo de parsing/clasificación sin
+  valores redundantes de tabla
+
+  ¿Continuamos con §5.6 Dominio Russell?
+
+✻ Worked for 2m 9s
+
+❯ Si                                                                            
+
+  Read 1 file (ctrl+o to expand)
+
+● Aquí el análisis de §5.6:
+
+  Problemas encontrados:
+
+  1. Intro: Colon "complementa esta evaluación: el grid..." comprime dos ideas;
+  gerundio "ofreciendo un escenario"; "backends evaluados" → "configuraciones de
+   inferencia".
+  2. §5.6.1 pre-tabla: Colon "parámetros canónicos del libro: γ=1.0...";
+  descripción de columna va en párrafo, no en caption.
+  3. §5.6.1 caption: Tres oraciones — solo la primera pertenece al caption;
+  citar la referencia en caption es innecesario si está en el párrafo previo.
+  4. §5.6.1 post-table párr. 1: Colon antes de describir el contenido de la
+  figura ("coincide... : los estados de las filas superiores dirigen...") — eso
+  es describir la figura, no interpretar.
+  5. §5.6.1 post-table párr. 2: "considerablemente mayor" (adverbio vago; los
+  números hablan solos); dos colons en "El primero es...: / El segundo es...:".
+  6. §5.6.2 pre-tabla + caption: "backends" → "configuraciones de inferencia";
+  metodología en caption.
+  7. §5.6.2 tabla header: "\textbf{Backend}" → "\textbf{Conf.}"
+  8. §5.6.2 post-table párr. 1: Lee la tabla ($0.280,\text{s}$,
+  $1.094,\text{s}$, $0.061,\text{s}$, $0.064,\text{s}$); colon "en la Iteración
+  de Valor: $t_{\text{VI}}$...".
+  9. §5.6.2 post-table párr. 2: Cita cocientes de Mitchell calculados
+  externamente sin necesidad; "backends" dos veces.
+
+  ---
+  Propuesta de §5.6 revisada:
+
+  % ------------------------------------------------------------------
+  \subsection{Dominio Russell}
+  \label{sec:exp-russell}
+
+  El dominio de Mitchell utiliza transiciones deterministas, lo que aísla el
+  efecto de la representación pero no verifica la extensión bajo condiciones
+  estocásticas. El dominio canónico $3 \times 4$ de Russell y Norvig
+  \cite{russell2016artificial} complementa esta evaluación con transiciones
+  probabilísticas, un estado trampa y un costo por paso. La evaluación se
+  realiza con la codificación factorizada, que expresa la posición del agente
+  como un fluente multivaluado \texttt{coor(X,Y)} con $11$ valores posibles y
+  un programa fuente de $50$ reglas. Las configuraciones de inferencia evaluadas
+  son \textit{ddnnf} y darwiche; la configuración \textit{sdd} produjo un error
+  de compilación en este dominio y queda fuera del análisis cuantitativo.
+
+  \subsubsection{Verificación de la función de valor óptima}
+  \label{sec:exp-russell-v}
+
+  La función de valor óptima $V^*(s)$ se verificó contra la Figura~17.3 de
+  Russell y Norvig \cite{russell2016artificial}, con los parámetros canónicos
+  del dominio ($\gamma = 1.0$, $R = -0.04$). La columna $|\Delta V^*|$ reporta
+  la diferencia absoluta entre el valor obtenido por el solver y el valor de
+  referencia.
+
+  \begin{table}[htbp]
+      \centering
+      \caption{Verificación de $V^*(s)$ frente a la solución de referencia
+               para el dominio Russell $3 \times 4$.}
+      % ... tabla sin cambios ...
+  \end{table}
+
+  Los nueve estados no terminales presentan diferencias menores a $0.001$
+  respecto a los valores de referencia, y la política óptima $\pi^*$ obtenida
+  coincide con la Figura~17.2 de Russell y Norvig \cite{russell2016artificial}.
+  Los estados terminales tienen $V^* = 0$ en el solver, consistente con la
+  semántica de absorción.
+
+  El número de iteraciones de Bellman hasta convergencia fue $43$, frente a
+  $4$ del \textit{grid} $4 \times 4$ de Mitchell con codificación factorizada.
+  La diferencia tiene dos causas. El factor de descuento $\gamma = 1.0$ elimina
+  el amortiguamiento geométrico de los valores entre iteraciones. Además, con
+  $\gamma = 1$, el criterio $\text{max\_residual} \leq
+  2\varepsilon(1-\gamma)/\gamma$
+  se reduce a $0$, exigiendo convergencia exacta al punto fijo
+  \cite{puterman2014markov}.
+
+  \subsubsection{Tiempos de ejecución}
+  \label{sec:exp-russell-t}
+
+  La Tabla~\ref{tab:exp-russell-t} presenta los tiempos de construcción,
+  Iteración de Valor y total para las dos configuraciones de inferencia
+  evaluadas. Se reporta media y desviación estándar sobre $10$ ejecuciones.
+
+  \begin{table}[htbp]
+      \centering
+      \caption{Tiempos de ejecución en el dominio Russell $3 \times 4$
+               con codificación factorizada.}
+      \label{tab:exp-russell-t}
+      \small
+      \begin{tabular}{l r r r}
+          \toprule
+          \textbf{Conf.} & $t_{\text{build}}$ (s) & $t_{\text{VI}}$ (s) &
+              $t_{\text{total}}$ (s) \\
+          % ... filas sin cambios ...
+      \end{tabular}
+  \end{table}
+
+  La diferencia entre configuraciones se origina en la fase de Iteración de
+  Valor. La configuración darwiche es $4.78\times$ más rápida que \textit{ddnnf}
+  en $t_{\text{VI}}$, con tiempos de construcción equivalentes. Esto confirma
+  que ambas configuraciones comparten el mismo compilador d-DNNF y difieren
+  únicamente en el evaluador.
+
+  El cociente entre configuraciones para Russell ($3.91\times$) es inferior al
+  observado en \textit{grids} de Mitchell de tamaño comparable porque el número
+  de evaluaciones por iteración es $|\mathcal{S}| \times |\mathcal{A}| = 11
+  \times 5 = 55$, menor que el de \textit{grids} con espacios de estados
+  equivalentes. El circuito es más complejo por las transiciones estocásticas,
+  pero el número de consultas por iteración es más reducido.
+
+  ¿Aplico?
+
+✻ Crunched for 2m 11s
+
+❯ Si                                                                            
+
+● Update(05experimentacion.tex)
+  ⎿  Error editing file
+
+  Read 1 file (ctrl+o to expand)
+
+● Ahora aplico todos los cambios de §5.6 en secuencia:
+
+● Update(05experimentacion.tex)
+  ⎿  Added 1 line, removed 1 line
+      313  \subsection{Dominio Russell}
+      314  \label{sec:exp-russell}
+      315  
+      316 -El dominio de Mitchell utiliza transiciones deterministas, lo 
+          -que aísla el efecto de la representación sobre el rendimiento 
+          -pero no prueba la extensión en condiciones estocásticas. El do
+          -minio de Russell complementa esta evaluación: el \textit{grid}
+          - canónico $3 \times 4$ de Russell y Norvig \cite{russell2016ar
+          -tificial} incorpora transiciones probabilísticas, un estado tr
+          -ampa y un costo por paso, ofreciendo un escenario de complejid
+          -ad cualitativa distinta. La evaluación se realiza exclusivamen
+          -te con la codificación factorizada, que expresa la posición de
+          -l agente como un único fluente multivaluado \texttt{coor(X,Y)}
+          - con $11$ valores posibles. El programa fuente para este domin
+          -io contiene $50$ reglas y $66$ líneas. Los \textit{backends} e
+          -valuados son \textit{ddnnf} y darwiche; el \textit{backend} \t
+          -extit{sdd} produjo un error de compilación en este dominio y n
+          -o se incluye en el análisis cuantitativo.                     
+      316 +El dominio de Mitchell utiliza transiciones deterministas, lo 
+          +que aísla el efecto de la representación pero no verifica la e
+          +xtensión bajo condiciones estocásticas. El dominio canónico $3
+          + \times 4$ de Russell y Norvig \cite{russell2016artificial} co
+          +mplementa esta evaluación con transiciones probabilísticas, un
+          + estado trampa y un costo por paso. La evaluación se realiza c
+          +on la codificación factorizada, que expresa la posición del ag
+          +ente como un fluente multivaluado \texttt{coor(X,Y)} con $11$ 
+          +valores posibles y un programa fuente de $50$ reglas. Las conf
+          +iguraciones de inferencia evaluadas son \textit{ddnnf} y darwi
+          +che; la configuración \textit{sdd} produjo un error de compila
+          +ción en este dominio y queda fuera del análisis cuantitativo. 
+      317  
+      318  \subsubsection{Verificación de la función de valor óptima}
+      319  \label{sec:exp-russell-v}
+
+● Update(05experimentacion.tex)
+  ⎿  Added 1 line, removed 1 line
+      318  \subsubsection{Verificación de la función de valor óptima}
+      319  \label{sec:exp-russell-v}
+      320  
+      321 -La función de valor óptima $V^*(s)$ se verificó comparando los
+          - valores producidos por MDP-ProbLog contra los valores de refe
+          -rencia publicados en la Figura~17.3 de Russell y Norvig \cite{
+          -russell2016artificial}. El \textit{grid} $3 \times 4$ utiliza 
+          -los parámetros canónicos del libro: $\gamma = 1.0$, costo por 
+          -paso $R = {-0.04}$, transiciones con probabilidad $0.80$ en la
+          - dirección deseada y $0.10$ hacia cada lado perpendicular. La 
+          -Tabla~\ref{tab:exp-russell-v} presenta los $9$ estados no term
+          -inales del dominio con sus valores de referencia y las diferen
+          -cias absolutas respecto al valor obtenido por el solver.      
+      321 +La función de valor óptima $V^*(s)$ se verificó contra la Figu
+          +ra~17.3 de Russell y Norvig \cite{russell2016artificial}, con 
+          +los parámetros canónicos del dominio ($\gamma = 1.0$, $R = -0.
+          +04$). La columna $|\Delta V^*|$ reporta la diferencia absoluta
+          + entre el valor obtenido por el solver y el valor de referenci
+          +a.                                                            
+      322  
+      323  \begin{table}[htbp]
+      324      \centering
+● Update(05experimentacion.tex)
+  ⎿  Added 1 line, removed 1 line
+      322  
+      323  \begin{table}[htbp]
+      324      \centering
+      325 -    \caption{Verificación de $V^*(s)$ para el dominio Russell 
+          -$3 \times 4$. Los valores de referencia corresponden a la Figu
+          -ra~17.3 de Russell y Norvig \cite{russell2016artificial}. La c
+          -olumna $|\Delta V^*|$ reporta la diferencia absoluta entre el 
+          -valor obtenido por MDP-ProbLog y el valor de referencia.}     
+      325 +    \caption{Verificación de $V^*(s)$ frente a la solución de 
+          +referencia para el dominio Russell $3 \times 4$.}             
+      326      \label{tab:exp-russell-v}
+      327      \small
+      328      \begin{tabular}{c c r r}
+
+● Update(05experimentacion.tex)
+  ⎿  Added 2 lines, removed 2 lines
+      347      \footnotesize{Las coordenadas $(X, Y)$ siguen la convenció
+           n del modelo: fila $X = 1$ en la base del \textit{grid}, colum
+           na $Y = 1$ a la izquierda. El estado $(2,2)$ es un obstáculo y
+            no pertenece al espacio de estados.}
+      348  \end{table}
+      349  
+      350 -Los nueve estados no terminales presentan diferencias menores 
+          -a $0.001$ respecto a los valores de referencia. Los estados te
+          -rminales tienen $V^* = 0$ en el solver, consistente con la sem
+          -ántica de absorción. La política óptima $\pi^*$ obtenida coinc
+          -ide con la Figura~17.2 de Russell y Norvig \cite{russell2016ar
+          -tificial}: los estados de las filas superiores dirigen al agen
+          -te hacia el estado meta, mientras que los estados de la fila i
+          -nferior evitan el estado trampa desplazándose hacia la izquier
+          -da.                                                           
+      350 +Los nueve estados no terminales presentan diferencias menores 
+          +a $0.001$ respecto a los valores de referencia, y la política 
+          +óptima $\pi^*$ obtenida coincide con la Figura~17.2 de Russell
+          + y Norvig \cite{russell2016artificial}. Los estados terminales
+          + tienen $V^* = 0$ en el solver, consistente con la semántica d
+          +e absorción.                                                  
+      351  
+      352 -El número de iteraciones de Bellman hasta convergencia fue $43
+          -$. Este valor es considerablemente mayor que el observado en l
+          -os \textit{grids} de Mitchell de tamaño comparable, donde el \
+          -textit{grid} $4 \times 4$ convergió en $4$ iteraciones. La dif
+          -erencia se explica por dos factores. El primero es el factor d
+          -e descuento: Russell usa $\gamma = 1.0$, lo que elimina el amo
+          -rtiguamiento geométrico de los valores entre iteraciones. El s
+          -egundo es el criterio de convergencia: con $\gamma = 1$ y el c
+          -riterio $\text{max\_residual} \leq 2\varepsilon(1-\gamma)/\gam
+          -ma$, el umbral se reduce a $0$, exigiendo convergencia exacta 
+          -al punto fijo \cite{puterman2014markov}.                      
+      352 +El número de iteraciones de Bellman hasta convergencia fue $43
+          +$, frente a $4$ del \textit{grid} $4 \times 4$ de Mitchell con
+          + codificación factorizada. La diferencia tiene dos causas. El 
+          +factor de descuento $\gamma = 1.0$ elimina el amortiguamiento 
+          +geométrico de los valores entre iteraciones. Además, con $\gam
+          +ma = 1$, el criterio $\text{max\_residual} \leq 2\varepsilon(1
+          +-\gamma)/\gamma$ se reduce a $0$, exigiendo convergencia exact
+          +a al punto fijo \cite{puterman2014markov}.                    
+      353  
+      354  % TODO [FIGURA]: Visualización de la política óptima π* sobre 
+           el grid 3×4 de Russell.
+      355  %   Tipo: Grid con flechas de acción en cada celda no terminal
+           .
+
+● Update(05experimentacion.tex)
+  ⎿  Added 3 lines, removed 3 lines
+      360  \subsubsection{Tiempos de ejecución}
+      361  \label{sec:exp-russell-t}
+      362  
+      363 -La Tabla~\ref{tab:exp-russell-t} presenta los tiempos de const
+          -rucción, Iteración de Valor y total para los dos \textit{backe
+          -nds} evaluados en el dominio Russell.                         
+      363 +La Tabla~\ref{tab:exp-russell-t} presenta los tiempos de const
+          +rucción, Iteración de Valor y total para las dos configuracion
+          +es de inferencia evaluadas. Se reporta media y desviación está
+          +ndar sobre $10$ ejecuciones.                                  
+      364  
+      365  \begin{table}[htbp]
+      366      \centering
+      367 -    \caption{Tiempos de ejecución para el dominio Russell $3 \
+          -times 4$ con codificación factorizada. Se reporta media~$\pm$~
+          -desviación estándar sobre $10$ ejecuciones.}                  
+      367 +    \caption{Tiempos de ejecución en el dominio Russell $3 \ti
+          +mes 4$ con codificación factorizada.}                         
+      368      \label{tab:exp-russell-t}
+      369      \small
+      370      \begin{tabular}{l r r r}
+      371          \toprule
+      372 -        \textbf{Backend} & $t_{\text{build}}$ (s) & $t_{\text{
+          -VI}}$ (s) & $t_{\text{total}}$ (s) \\                         
+      372 +        \textbf{Conf.} & $t_{\text{build}}$ (s) & $t_{\text{VI
+          +}}$ (s) & $t_{\text{total}}$ (s) \\                           
+      373          \midrule
+      374          ddnnf    & $0.061 \pm 0.003$ & $1.032 \pm 0.009$ & $1.
+           094 \pm 0.009$ \\
+      375          darwiche & $0.064 \pm 0.006$ & $0.216 \pm 0.001$ & $0.
+           280 \pm 0.006$ \\
+
+● Update(05experimentacion.tex)
+  ⎿  Added 2 lines, removed 2 lines
+      379      \end{tabular}
+      380  \end{table}
+      381  
+      382 -El \textit{backend} darwiche completa la ejecución en $0.280\,
+          -\text{s}$, frente a $1.094\,\text{s}$ del \textit{backend} \te
+          -xtit{ddnnf}, un cociente de $3.91\times$. La diferencia se ori
+          -gina casi exclusivamente en la fase de Iteración de Valor: $t_
+          -{\text{VI}}$ es $4.78\times$ menor con darwiche. Los tiempos d
+          -e construcción son equivalentes para ambos \textit{backends} (
+          -$0.061\,\text{s}$ frente a $0.064\,\text{s}$), lo que confirma
+          - que los dos comparten el mismo compilador d-DNNF y difieren ú
+          -nicamente en el evaluador.                                    
+      382 +La diferencia entre configuraciones se origina en la fase de I
+          +teración de Valor. La configuración darwiche es $4.78\times$ m
+          +ás rápida que \textit{ddnnf} en $t_{\text{VI}}$, con tiempos d
+          +e construcción equivalentes. Esto confirma que ambas configura
+          +ciones comparten el mismo compilador d-DNNF y difieren únicame
+          +nte en el evaluador.                                          
+      383  
+      384 -El cociente de rendimiento entre \textit{backends} para Russel
+          -l ($3.91\times$) es inferior al observado en \textit{grids} de
+          - Mitchell de tamaño comparable. El \textit{grid} $4 \times 4$ 
+          -de Mitchell con codificación factorizada mostró un cociente \t
+          -extit{ddnnf}/darwiche de $4.04\times$, y el \textit{grid} $8 \
+          -times 8$ de $7.75\times$. Esta diferencia se debe a que el núm
+          -ero de evaluaciones por iteración en Russell es $|\mathcal{S}|
+          - \times |\mathcal{A}| = 11 \times 5 = 55$, menor que el de los
+          - \textit{grids} de Mitchell con espacio de estados equivalente
+          -. El circuito compilado del dominio Russell es más complejo po
+          -r la naturaleza estocástica de las transiciones, pero el númer
+          -o de consultas por iteración es más reducido.                 
+      384 +El cociente entre configuraciones para Russell ($3.91\times$) 
+          +es inferior al observado en \textit{grids} de Mitchell de tama
+          +ño comparable porque el número de evaluaciones por iteración e
+          +s $|\mathcal{S}| \times |\mathcal{A}| = 11 \times 5 = 55$, men
+          +or que el de \textit{grids} con espacios de estados equivalent
+          +es. El circuito es más complejo por las transiciones estocásti
+          +cas, pero el número de consultas por iteración es más reducido
+          +.                                                             
+      385  
+      386  % ------------------------------------------------------------
+           ------
+      387  \subsection{Discusión}
+
+● §5.6 completo. Continuamos con §5.7 Discusión, que es el mayor candidato a
+  compresión ya que repite en prosa lo que las secciones anteriores ya
+  presentaron con datos. ¿Continuamos?
+
+✻ Worked for 1m 22s
+
+❯ Si. En esta sección no escatimemos en la compresión, todo lo que no sea una   
+  aportación sobre los resultados debe de ser descartado.                       
+
+● Aquí el diagnóstico de §5.7 por subsección:
+
+  ┌──────────────────┬─────────────┬────────────────────────────────────────┐
+  │    Subsección    │  Veredicto  │                 Razón                  │
+  ├──────────────────┼─────────────┼────────────────────────────────────────┤
+  │ §5.7.1           │ Comprimir a │ Solo es nueva la explicación del       │
+  │ Correctitud      │  1 párrafo  │ isomorfismo (mismas iteraciones). Lo   │
+  │                  │             │ demás repite §5.3 y §5.6.1.            │
+  ├──────────────────┼─────────────┼────────────────────────────────────────┤
+  │ §5.7.2           │ Eliminar    │ Repite literalmente §5.4 sin añadir    │
+  │ Simplificación   │             │ nada.                                  │
+  ├──────────────────┼─────────────┼────────────────────────────────────────┤
+  │                  │             │ Solo es nuevo el efecto combinado      │
+  │ §5.7.3           │ Comprimir a │ factorizada + darwiche. Lo demás       │
+  │ Computacional    │  1 párrafo  │ repite §5.5.2 y la referencia a        │
+  │                  │             │ tab:exp-frontera (tabla ya eliminada). │
+  ├──────────────────┼─────────────┼────────────────────────────────────────┤
+  │                  │             │ Eliminar las cifras repetidas de       │
+  │ §5.7.4 Cuellos   │ Comprimir   │ §5.5.1 y §5.5.5; conservar el párrafo  │
+  │ de botella       │             │ de prioridades de optimización         │
+  │                  │             │ (genuino).                             │
+  ├──────────────────┼─────────────┼────────────────────────────────────────┤
+  │ §5.7.5           │ Conservar   │ Contenido nuevo. Solo corregir         │
+  │ Limitaciones     │             │ "backend" → "configuración".           │
+  └──────────────────┴─────────────┴────────────────────────────────────────┘
+
+  ---
+  Propuesta de §5.7 comprimida:
+
+  % ------------------------------------------------------------------
+  \subsection{Discusión}
+  \label{sec:exp-discusion}
+
+  \subsubsection{Correctitud funcional}
+  \label{sec:disc-rq1}
+
+  Un aspecto destacable de los resultados es la igualdad en el número de
+  iteraciones de Bellman hasta convergencia. Para cada tamaño de \textit{grid},
+  ambas codificaciones convergen en el mismo número de pasos con los mismos
+  parámetros $\gamma$ y $\varepsilon$. Esto se sigue de que ambas formulaciones
+  representan el mismo MDP: el conjunto de estados, las funciones de transición
+  y las recompensas son idénticos, con etiquetas distintas. El algoritmo de
+  Iteración de Valor aplicado a dos MDPs isomorfos converge en el mismo número
+  de pasos \cite{puterman2014markov}.
+
+  \subsubsection{Impacto computacional}
+  \label{sec:disc-rq3}
+
+  La codificación factorizada amplifica el beneficio del evaluador darwiche.
+  Al reducir el espacio de estados, disminuye el número de pares $(s,a)$
+  evaluados por iteración; el evaluador calcula todas las marginales en un
+  único recorrido del circuito. Los dos efectos se combinan: menos pares a
+  evaluar, y cada par evaluado con mayor eficiencia que con \textit{ddnnf}.
+
+  \subsubsection{Análisis de cuellos de botella}
+  \label{sec:disc-bottleneck}
+
+  La estructura de cuellos de botella identifica las oportunidades prioritarias
+  de optimización. Reducir el costo de cada evaluación $Q(s,a)$ durante la
+  Iteración de Valor tendría el mayor impacto sobre $t_{\text{total}}$; el
+  evaluador darwiche ya aborda este punto mediante diferenciación simultánea.
+  Reducir el costo del \textit{grounding} tendría el mayor impacto sobre
+  $t_{\text{build}}$, que en las configuraciones factorizadas representa entre
+  el $2\%$ y el $15.7\%$ del tiempo total. El \textit{parsing} y la
+  clasificación no representan cuellos de botella en ningún tamaño evaluado.
+
+  \subsubsection{Limitaciones de la evaluación}
+  \label{sec:disc-limitaciones}
+
+  La evaluación cubre un conjunto representativo de escenarios pero no es
+  exhaustiva en la variedad de dominios. Todas las instancias del dominio
+  Mitchell son \textit{grids} rectangulares sin obstáculos, con transiciones
+  deterministas y una única fuente de recompensa. Este diseño aísla
+  efectivamente el efecto de la codificación, pero no permite generalizar los
+  resultados a dominios con múltiples fluentes de estado, transiciones
+  estocásticas entre estados no adyacentes, o funciones de recompensa
+  dependientes del contexto.
+
+  El dominio Russell introduce estocasticidad pero se evalúa en una sola
+  instancia canónica de $11$ estados. No es posible derivar tendencias de
+  escalamiento para ese dominio a partir de los datos recopilados. Generar
+  instancias Russell de mayor tamaño requeriría redistribuir las probabilidades
+  de transición celda por celda según los obstáculos adyacentes, lo que
+  introduce fuentes de variación adicionales respecto a la solución de
+  referencia publicada.
+
+  La incompatibilidad de la configuración \textit{sdd} con el dominio Russell
+  no se diagnosticó en el marco de este experimento. Los circuitos SDD
+  producidos para dominios con Disyunciones Anotadas estocásticas pueden tener
+  propiedades estructurales distintas a los circuitos d-DNNF, y la causa
+  específica del fallo no fue identificada. Dado que \textit{sdd} es la
+  configuración más rápida para el dominio Mitchell, su comportamiento en
+  dominios estocásticos queda como cuestión abierta.
+
+  Finalmente, los resultados del dominio Mitchell corresponden a una única
+  instancia por tamaño de \textit{grid}. No se evalúan variaciones en la
+  posición del estado meta, la presencia de obstáculos, el número de acciones
+  disponibles, ni la función de recompensa. Estos factores podrían afectar el
+  número de iteraciones hasta convergencia, el tamaño del circuito compilado,
+  o la relación de rendimiento entre codificaciones para \textit{grids} del
+  mismo tamaño. El capítulo siguiente integra los resultados de la evaluación
+  con el diseño de la extensión para formular las conclusiones del trabajo y
+  plantear las líneas de investigación futura.
+
+  ¿Aplico?
+
+✻ Sautéed for 1m 34s
+
+❯ Esa es la versión condensada? Creo que el verdadero valor de esta discusión   
+  es en explorar los puntos favorables e interesantes de la propuesta. Creo que 
+   mas de una cuartilla de contenido en donde todo esté por subsecciones es     
+  demasiado.                                                                    
+
+● Tienes razón — la estructura de subsecciones fragmenta lo que debe ser una
+  síntesis fluida. La discusión debe destacar los puntos más interesantes del
+  trabajo en prosa continua, sin repetir resultados.
+
+  Propuesta: tres párrafos, sin subsecciones
+
+  % ------------------------------------------------------------------
+  \subsection{Discusión}
+  \label{sec:exp-discusion}
+
+  La convergencia en el mismo número de iteraciones de Bellman no es un
+  resultado trivial. Ambas codificaciones representan el mismo MDP: el mismo
+  conjunto de estados, las mismas funciones de transición y las mismas
+  recompensas, con etiquetas distintas. El algoritmo de Iteración de Valor
+  aplicado a dos MDPs isomorfos con los mismos parámetros converge en el
+  mismo número de pasos \cite{puterman2014markov}, lo que explica tanto la
+  coincidencia de $V^*$ como la de iteraciones.
+
+  La codificación factorizada y el evaluador darwiche producen un beneficio
+  combinado. Al reducir el espacio de estados, la codificación factorizada
+  disminuye el número de pares $(s,a)$ evaluados por iteración; el evaluador,
+  a su vez, calcula todas las marginales en un único recorrido del circuito.
+  Los dos efectos se amplifican mutuamente, lo que explica por qué el cociente
+  de tiempos es mayor con darwiche que con \textit{sdd} o \textit{ddnnf} a
+  igual tamaño de \textit{grid}. En términos de optimización, reducir el costo
+  de cada evaluación $Q(s,a)$ tiene el mayor impacto posible sobre
+  $t_{\text{total}}$; el evaluador darwiche ya aborda este punto, y la
+  codificación factorizada lo amplifica.
+
+  La evaluación tiene limitaciones que acotan la generalización. Todas las
+  instancias Mitchell son \textit{grids} sin obstáculos, con transiciones
+  deterministas y una sola fuente de recompensa; el diseño aísla el efecto de
+  la codificación, pero no cubre dominios con múltiples fluentes o transiciones
+  más complejas. El dominio Russell se evalúa en una única instancia de $11$
+  estados, lo que impide derivar tendencias de escalamiento. La incompatibilidad
+  de la configuración \textit{sdd} con el dominio Russell no fue diagnosticada;
+  dado que \textit{sdd} es la configuración más rápida en Mitchell, su
+  comportamiento en dominios estocásticos queda como cuestión abierta. El
+  capítulo siguiente formula las conclusiones del trabajo y plantea las líneas
+  de investigación futura.
+
+  Tres párrafos: el insight del isomorfismo, el beneficio combinado factorizada
+  + darwiche, y las limitaciones. ¿Aplico?
+
+✻ Worked for 43s
+
+❯ Si                                                                            
+
+● Update(05experimentacion.tex)
+  ⎿  Error editing file
+
+  Read 1 file (ctrl+o to expand)
+
+● Ahora tengo todo el texto. Aplico el reemplazo completo de §5.7:
+
+● Update(05experimentacion.tex)
+  ⎿  Added 28 lines, removed 44 lines
+      364  \subsection{Discusión}
+      365  \label{sec:exp-discusion}
+      366  
+      367 -\subsubsection{Correctitud funcional}                         
+      368 -\label{sec:disc-rq1}                                          
+      367 +La convergencia en el mismo número de iteraciones de Bellman n
+          +o es un                                                       
+      368 +resultado trivial. Ambas codificaciones representan el mismo M
+          +DP: el mismo                                                  
+      369 +conjunto de estados, las mismas funciones de transición y las 
+          +mismas                                                        
+      370 +recompensas, con etiquetas distintas. El algoritmo de Iteració
+          +n de Valor                                                    
+      371 +aplicado a dos MDPs isomorfos con los mismos parámetros conver
+          +ge en el                                                      
+      372 +mismo número de pasos \cite{puterman2014markov}, lo que explic
+          +a tanto la                                                    
+      373 +coincidencia de $V^*$ como la de iteraciones.                 
+      374  
+      370 -Ambas codificaciones producen la misma función de valor óptima
+          - $V^*$ y la misma política $\pi^*$ para todos los tamaños de \
+          -textit{grid} evaluados en el dominio Mitchell. Las diferencias
+          - máximas entre codificaciones son exactamente $0.0$ en todos l
+          -os casos (Tabla~\ref{tab:exp-correccion}). RQ1 se responde afi
+          -rmativamente: la extensión multivaluada preserva la semántica 
+          -del MDP subyacente sin introducir desviaciones en la solución.
+      375 +La codificación factorizada y el evaluador darwiche producen u
+          +n beneficio                                                   
+      376 +combinado. Al reducir el espacio de estados, la codificación f
+          +actorizada                                                    
+      377 +disminuye el número de pares $(s,a)$ evaluados por iteración; 
+          +el evaluador,                                                 
+      378 +a su vez, calcula todas las marginales en un único recorrido d
+          +el circuito.                                                  
+      379 +Los dos efectos se amplifican mutuamente, lo que explica por q
+          +ué el cociente                                                
+      380 +de tiempos es mayor con darwiche que con \textit{sdd} o \texti
+          +t{ddnnf} a                                                    
+      381 +igual tamaño de \textit{grid}. En términos de optimización, re
+          +ducir el costo                                                
+      382 +de cada evaluación $Q(s,a)$ tiene el mayor impacto posible sob
+          +re                                                            
+      383 +$t_{\text{total}}$; el evaluador darwiche ya aborda este punto
+          +, y la                                                        
+      384 +codificación factorizada lo amplifica.                        
+      385  
+      372 -Un aspecto no evidente de este resultado es la igualdad en el 
+          -número de iteraciones de Bellman hasta convergencia. Para cada
+          - tamaño de \textit{grid}, ambas codificaciones convergen en el
+          - mismo número de iteraciones, desde $3$ en $2 \times 3$ hasta 
+          -$16$ en $16 \times 16$. Esta igualdad se sigue de que ambas co
+          -dificaciones representan el mismo MDP. La estructura del proce
+          -so de decisión, es decir, el conjunto de estados, las funcione
+          -s de transición y las recompensas, es idéntica en las dos form
+          -ulaciones porque la representación cambia la etiqueta de los e
+          -stados pero no la geometría del proceso. Con los mismos paráme
+          -tros $\gamma$ y $\varepsilon$, el algoritmo de Iteración de Va
+          -lor aplicado a dos formulaciones isomorfas del mismo MDP conve
+          -rge en el mismo número de pasos \cite{puterman2014markov}.    
+      373 -                                                              
+      374 -La verificación en el dominio Russell extiende este resultado 
+          -a transiciones estocásticas. Los nueve estados no terminales d
+          -el \textit{grid} canónico $3 \times 4$ mostraron diferencias m
+          -enores a $0.001$ respecto a la solución de referencia de AIMA 
+          -(Tabla~\ref{tab:exp-russell-v}). La política obtenida coincide
+          - con la Figura~17.2 de Russell y Norvig \cite{russell2016artif
+          -icial}. Este resultado confirma que la extensión maneja correc
+          -tamente las Disyunciones Anotadas bajo distribuciones de proba
+          -bilidad no triviales, incluyendo la redistribución de masa hac
+          -ia muros adyacentes.                                          
+      375 -                                                              
+      376 -\subsubsection{Simplificación del modelado}                   
+      377 -\label{sec:disc-rq2}                                          
+      378 -                                                              
+      379 -La codificación factorizada produce un programa de tamaño cons
+          -tante en todos los tamaños de \textit{grid} evaluados. El prog
+          -rama tiene $2$ fluentes y $21$ reglas independientemente del t
+          -amaño, desde $2 \times 3$ hasta $32 \times 32$ (Tabla~\ref{tab
+          -:exp-rq2}). Esta constancia es consecuencia directa de la natu
+          -raleza paramétrica de las reglas de transición. Al expresar la
+          - dinámica en términos de coordenadas y aritmética sobre variab
+          -les lógicas, una sola regla captura el comportamiento de una a
+          -cción a través de todas las celdas del \textit{grid}. El model
+          -ador no necesita modificar el programa al escalar el dominio. 
+          -RQ2 se responde afirmativamente.                              
+      380 -                                                              
+      381 -La codificación binaria, en contraste, requiere enumeración ex
+          -plícita. El número de reglas crece de $42$ en $2 \times 3$ a $
+          -5\,376$ en $16 \times 16$, un factor de $128\times$ para un in
+          -cremento de $43\times$ en el número de celdas. Este crecimient
+          -o superlineal se origina en que cada transición debe describir
+          -se en términos de qué bits se activan, y el número de bits nec
+          -esarios crece logarítmicamente con el número de celdas. Al esc
+          -alar el dominio, el modelador debe reescribir el programa comp
+          -leto para cada nuevo tamaño.                                  
+      382 -                                                              
+      383 -Un caso particular ilustra una restricción de la codificación 
+          -binaria. El \textit{grid} $4 \times 4$ tiene $16$ celdas, para
+          - las que el mínimo teórico es $4$ bits. La implementación usa 
+          -$5$ bits y genera $32$ estados con $16$ espurios porque el est
+          -ado $0$ no puede emplearse. Esta restricción implica que la co
+          -dificación binaria siempre produce al menos un estado espurio 
+          -adicional sobre el mínimo teórico cuando el número de celdas e
+          -s exactamente una potencia de $2$. La codificación factorizada
+          - no tiene esta limitación porque el dominio de cada fluente se
+          - declara explícitamente y no requiere un valor de reserva.    
+      384 -                                                              
+      385 -\subsubsection{Impacto computacional}                         
+      386 -\label{sec:disc-rq3}                                          
+      387 -                                                              
+      388 -El efecto de la codificación sobre el rendimiento sigue un pat
+          -rón consistente en los tres \textit{backends}. Para el \textit
+          -{grid} $2 \times 3$, la codificación binaria es comparable o l
+          -igeramente más rápida (cocientes de $0.92\times$, $1.06\times$
+          - y $0.95\times$ para \textit{ddnnf}, darwiche y \textit{sdd} r
+          -espectivamente). A partir del \textit{grid} $3 \times 3$, la c
+          -odificación factorizada es más rápida en todas las combinacion
+          -es. El punto de inversión refleja el costo fijo de las Disyunc
+          -iones Anotadas: para \textit{grids} pequeños, el \textit{overh
+          -ead} de compilar los nodos \textit{choice} supera la ventaja d
+          -e un espacio de estados reducido. A partir de ese umbral, la r
+          -educción del espacio de estados y del número de cláusulas comp
+          -ensa ese costo fijo y el cociente crece de forma monotónica co
+          -n el tamaño. RQ3 se responde afirmativamente para \textit{grid
+          -s} de $3 \times 3$ en adelante.                               
+      389 -                                                              
+      390 -El cociente de rendimiento es mayor para el \textit{backend} d
+          -arwiche que para \textit{sdd} o \textit{ddnnf} a igual tamaño 
+          -de \textit{grid} (Tabla~\ref{tab:exp-speedup}). Esta amplifica
+          -ción se debe a la interacción entre la codificación factorizad
+          -a y el evaluador de diferenciación. El evaluador darwiche calc
+          -ula todas las marginales del circuito en dos recorridos por pa
+          -r $(s,a)$, independientemente del número de fluentes consultad
+          -os. Con la codificación factorizada, el espacio de estados es 
+          -menor que con la binaria, por lo que el número de pares $(s,a)
+          -$ evaluados por iteración es también menor. Los dos efectos se
+          - combinan: menos pares a evaluar, y cada par evaluado con igua
+          -l eficiencia. El \textit{backend} \textit{sdd} logra tiempos a
+          -bsolutos menores, pero el efecto de la codificación sobre el c
+          -ociente es más pronunciado con darwiche.                      
+      391 -                                                              
+      392 -La consecuencia más directa de la ventaja computacional es la 
+          -extensión de la frontera de escalabilidad. Con el \textit{back
+          -end} darwiche, la codificación binaria alcanza como máximo el 
+          -\textit{grid} $12 \times 12$ ($256$ estados) mientras que la f
+          -actorizada resuelve el \textit{grid} $32 \times 32$ ($1\,024$ 
+          -estados) dentro del mismo límite de tiempo (Tabla~\ref{tab:exp
+          --frontera}). Esta diferencia no es consecuencia de ninguna opt
+          -imización del solver de Iteración de Valor sino exclusivamente
+          - del tamaño del espacio de estados y del programa que cada cod
+          -ificación genera.                                             
+      393 -                                                              
+      394 -\subsubsection{Análisis de cuellos de botella}                
+      395 -\label{sec:disc-bottleneck}                                   
+      396 -                                                              
+      397 -El tiempo total de ejecución está dominado por la Iteración de
+          - Valor en la mayoría de las configuraciones. Para la codificac
+          -ión factorizada con \textit{backend} darwiche, $t_{\text{VI}}$
+          - representa el $84.3\%$ del total en $2 \times 3$ y el $98.0\%
+          -$ en $16 \times 16$. Esta proporción crece con el tamaño del \
+          -textit{grid} porque el número de evaluaciones de $Q(s,a)$ por 
+          -iteración escala con $|\mathcal{S}| \times |\mathcal{A}|$, mie
+          -ntras que el costo de construcción del circuito crece más lent
+          -amente.                                                       
+      398 -                                                              
+      399 -Dentro de la fase de construcción, el \textit{grounding} es la
+          - subfase dominante. Su participación crece del $53.8\%$ de $t_
+          -{\text{build}}$ en $2 \times 3$ al $73.7\%$ en $32 \times 32$ 
+          -(Tabla~\ref{tab:exp-subfases}). El tiempo de \textit{grounding
+          -} pasa de $0.024\,\text{s}$ a $0.603\,\text{s}$ para un increm
+          -ento de $171\times$ en $|\mathcal{S}|$, lo que indica que la f
+          -ase es sublineal en el número de estados. El \textit{parsing} 
+          -y la clasificación son prácticamente constantes porque operan 
+          -sobre el programa fuente, que tiene $21$ reglas en todos los t
+          -amaños.                                                       
+      400 -                                                              
+      401 -La estructura de los cuellos de botella identifica las oportun
+          -idades prioritarias de optimización. Reducir el costo de cada 
+          -evaluación $Q(s,a)$ durante la Iteración de Valor tendría el m
+          -ayor impacto sobre $t_{\text{total}}$, y el \textit{backend} d
+          -arwiche ya aborda este punto mediante diferenciación simultáne
+          -a. Reducir el costo del \textit{grounding} tendría el mayor im
+          -pacto sobre $t_{\text{build}}$, que en las configuraciones fac
+          -torizadas representa entre el $2\%$ y el $15.7\%$ del tiempo t
+          -otal. El \textit{parsing} y la clasificación no representan cu
+          -ellos de botella en ningún tamaño evaluado.                   
+      402 -                                                              
+      403 -\subsubsection{Limitaciones de la evaluación}                 
+      404 -\label{sec:disc-limitaciones}                                 
+      405 -                                                              
+      406 -La evaluación cubre un conjunto representativo de escenarios p
+          -ero no es exhaustiva en la variedad de dominios. Todas las ins
+          -tancias del dominio Mitchell son \textit{grids} rectangulares 
+          -sin obstáculos, con transiciones deterministas y una única fue
+          -nte de recompensa. Este diseño aísla efectivamente el efecto d
+          -e la codificación, pero no permite generalizar los resultados 
+          -a dominios con múltiples fluentes de estado, transiciones esto
+          -cásticas entre estados no adyacentes, o funciones de recompens
+          -a dependientes del contexto.                                  
+      407 -                                                              
+      408 -El dominio Russell introduce estocasticidad pero se evalúa en 
+          -una sola instancia canónica de $11$ estados. No es posible der
+          -ivar tendencias de escalamiento para ese dominio a partir de l
+          -os datos recopilados. Generar instancias Russell de mayor tama
+          -ño requeriría redistribuir las probabilidades de transición ce
+          -lda por celda según los obstáculos adyacentes, lo que introduc
+          -e fuentes de variación adicionales respecto a la solución de r
+          -eferencia publicada.                                          
+      409 -                                                              
+      410 -La incompatibilidad del \textit{backend} \textit{sdd} con el d
+          -ominio Russell no se diagnosticó en el marco de este experimen
+          -to. Los circuitos SDD producidos para dominios con Disyuncione
+          -s Anotadas estocásticas pueden tener propiedades estructurales
+          - distintas a los circuitos d-DNNF, y la causa específica del f
+          -allo no fue identificada. Dado que \textit{sdd} es el \textit{
+          -backend} más rápido para el dominio Mitchell, el comportamient
+          -o de ese \textit{backend} en dominios estocásticos queda como 
+          -cuestión abierta.                                             
+      411 -                                                              
+      412 -Finalmente, los resultados del dominio Mitchell corresponden a
+          - una única instancia por tamaño de \textit{grid}. No se evalúa
+          -n variaciones en la posición del estado meta, la presencia de 
+          -obstáculos, el número de acciones disponibles, ni la función d
+          -e recompensa. Estos factores podrían afectar el número de iter
+          -aciones hasta convergencia, el tamaño del circuito compilado, 
+          -o la relación de rendimiento entre codificaciones para \textit
+          -{grids} del mismo tamaño. El capítulo siguiente integra los re
+          -sultados de la evaluación con el diseño de la extensión para f
+          -ormular las conclusiones del trabajo y plantear las líneas de 
+          -investigación futura.                                         
+      386 +La evaluación tiene limitaciones que acotan la generalización.
+          + Todas las                                                    
+      387 +instancias Mitchell son \textit{grids} sin obstáculos, con tra
+          +nsiciones                                                     
+      388 +deterministas y una sola fuente de recompensa; el diseño aísla
+          + el efecto de                                                 
+      389 +la codificación, pero no cubre dominios con múltiples fluentes
+          + o transiciones                                               
+      390 +más complejas. El dominio Russell se evalúa en una única insta
+          +ncia de $11$                                                  
+      391 +estados, lo que impide derivar tendencias de escalamiento. La 
+          +incompatibilidad                                              
+      392 +de la configuración \textit{sdd} con el dominio Russell no fue
+          + diagnosticada;                                               
+      393 +dado que \textit{sdd} es la configuración más rápida en Mitche
+          +ll, su                                                        
+      394 +comportamiento en dominios estocásticos queda como cuestión ab
+          +ierta. El                                                     
+      395 +capítulo siguiente formula las conclusiones del trabajo y plan
+          +tea las líneas                                                
+      396 +de investigación futura.                                      
+
+● Listo. El capítulo 5 está completo. La §5.7 pasó de 5 subsecciones y ~600
+  palabras a 3 párrafos con los únicos aportes genuinos:
+
+  1. El argumento del isomorfismo (mismas iteraciones, no solo mismo $V^*$)
+  2. El efecto combinado factorizada + darwiche y su implicación de optimización
+  3. Las limitaciones en tres oraciones compactas
+
+  ¿Revisamos el PDF compilado para verificar el resultado final, o pasamos
+  directamente a otro capítulo?
+
+✻ Baked for 2m 32s

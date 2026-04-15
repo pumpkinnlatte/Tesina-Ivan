@@ -1,0 +1,143 @@
+
+\section{Conclusiones}
+\label{sec:conclusiones}
+
+% -----------------------------------------------------------------------
+\subsection{Síntesis del trabajo realizado}
+\label{sec:conclusiones-sintesis}
+
+MDP-ProbLog se extendió para representar fluentes de estado multivaluados
+mediante Disyunciones Anotadas (ADs), un constructo nativo de la
+Programación Lógica Probabilística que garantiza la exclusión mutua entre
+los posibles valores de una variable por construcción semántica
+\cite{vennekens2004lpads}. Bajo esta representación, el espacio de estados
+adopta una estructura en base mixta donde cada fluente opera con su
+cardinalidad real, lo que elimina los estados espurios generados por la
+binarización forzada de la versión original y traslada la responsabilidad
+de la exclusión mutua del modelador al motor lógico.
+
+La intervención se limita a la capa de representación que alimenta al
+compilador de ProbLog, sin alterar los algoritmos de inferencia ni los
+circuitos compilados. Ello preserva la compatibilidad con todos los modelos
+booleanos existentes y las garantías formales de Bueno et al.\
+\cite{bueno2016mdp}.
+
+La evaluación empírica sobre los dominios de Mitchell \cite{mitchell1997machine}
+y Russell y Norvig \cite{russell2016artificial} confirmó que ambas
+codificaciones producen la misma $V^*$ y la misma $\pi^*$ para un mismo
+MDP, en condiciones deterministas y estocásticas. Los experimentos mostraron
+además que la codificación multivaluada mantiene el tamaño del programa
+fuente constante respecto al tamaño del dominio y elimina los estados
+espurios. La mejora computacional resultante crece con la escala del
+problema.
+
+% -----------------------------------------------------------------------
+\subsection{Contribuciones}
+\label{sec:conclusiones-contribuciones}
+
+Se aporta un esquema factorizado del espacio de estados bajo una
+estructura \textit{mixed-radix} que asigna a cada fluente su cardinalidad
+real. A diferencia de la representación booleana original, donde el tamaño
+del espacio de estados crece como potencia de dos del número de bits
+independientemente de la semántica del dominio, la representación
+\textit{mixed-radix} garantiza que cada índice corresponda exactamente a un
+estado válido. Esta propiedad elimina por construcción los estados espurios
+que la codificación booleana introduce cuando el número de estados del
+dominio no es una potencia exacta de dos \cite{hoey1999spudd}. Junto con el
+esquema factorizado, se desarrolló un clasificador automático de fluentes
+que determina, a partir de un índice invertido sobre los nodos
+\texttt{choice} de la base de cláusulas, si un fluente declarado por el
+usuario es booleano o multivaluado. El clasificador soporta tanto la
+inferencia implícita del tipo, mediante el análisis de las ADs presentes en
+el programa, como la declaración explícita mediante el predicado
+\texttt{state\_fluent/2}.
+
+La integración opera en la fase de inyección de hechos, donde
+sustituye los hechos probabilísticos independientes por ADs uniformes para
+los fluentes multivaluados. Ello preserva las garantías de inferencia exacta
+sobre circuitos d-DNNF y SDD establecidas por Darwiche y Marquis
+\cite{darwiche2002knowledge, fierens2015inference}. El sistema conserva
+además la retrocompatibilidad con los modelos booleanos existentes. Cuando
+el programa del usuario no contiene ADs, el \textit{pipeline} se comporta
+de forma idéntica al de Bueno et al.\ \cite{bueno2016mdp}.
+
+Se implementó también el evaluador de diferenciación de circuitos de
+Darwiche \cite{darwiche2003differential}, que calcula todas las marginales
+requeridas durante la Iteración de Valor en dos pasadas lineales sobre el
+circuito compilado. Este evaluador reduce el costo de evaluar $Q$ consultas
+simultáneas de $\mathcal{O}(Q \times |C|)$ a $\mathcal{O}(|C|) +
+\mathcal{O}(Q)$, donde $|C|$ denota el tamaño del circuito. El beneficio es
+multiplicativo con el de la codificación factorizada: aquella reduce el
+número de pares estado-acción por iteración, mientras que este reduce el
+costo de procesar cada par. El sistema admite además modelos mixtos en los
+que fluentes booleanos y multivaluados coexisten en el mismo programa, lo
+que permite una adopción gradual sin reescribir los modelos existentes.
+
+% -----------------------------------------------------------------------
+\subsection{Limitaciones técnicas identificadas}
+\label{sec:conclusiones-limitaciones}
+
+Durante el desarrollo e implementación se identificaron limitaciones técnicas
+distintas de las restricciones de diseño anticipadas en la
+Sección~\ref{subsec:limitaciones}.
+
+\begin{enumerate}
+    \item \textbf{Agrupamiento global de fluentes.} El clasificador agrupa
+    bajo un único fluente multivaluado todos los términos que comparten
+    predicado y aridad. Esta convención impide representar dominios en los
+    que múltiples entidades independientes comparten el mismo predicado con
+    valores distintos.
+
+    \item \textbf{Incompatibilidad entre la configuración SDD y dominios
+    estocásticos.} La configuración de inferencia \textit{sdd} generó un
+    error de compilación en el dominio Russell, que presenta transiciones
+    estocásticas no triviales. La causa no fue diagnosticada; se presume una
+    restricción del \textit{backend} SDD de ProbLog2 ante ciertos patrones
+    de ADs.
+
+    \item \textbf{Supuesto de independencia condicional no verificado en
+    tiempo de ejecución.} El cálculo del valor esperado factorizado asume
+    que las distribuciones de transición de cada fluente son condicionalmente
+    independientes dado el estado y la acción actuales. El sistema no
+    detecta ni advierte si las reglas del usuario introducen dependencias
+    entre fluentes que violan este supuesto, lo que puede producir
+    resultados incorrectos sin aviso.
+\end{enumerate}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Trabajo futuro}
+\label{sec:conclusiones-futuro}
+
+Las limitaciones identificadas y la estructura de la extensión propuesta
+sugieren las siguientes líneas de desarrollo e investigación.
+
+\begin{enumerate}
+    \item \textbf{Fluentes con múltiples entidades.} La limitación de
+    agrupamiento global impide modelar con naturalidad dominios en los que
+    varias entidades independientes comparten el mismo predicado de fluente.
+    Extender el clasificador para operar por entidad, diferenciando
+    instancias a partir de sus argumentos de identificación, cubriría una
+    clase más amplia de dominios sin requerir declaraciones adicionales del
+    usuario.
+
+    \item \textbf{Resolución simbólica del espacio de estados.} Esta
+    extensión no modificó la estrategia de resolución enumerativa de
+    MDP-ProbLog; el algoritmo de Iteración de Valor continúa recorriendo
+    todos los pares estado-acción en cada iteración. Vale la pena explorar la
+    viabilidad de adaptar ideas historicamente aplicadas a otro tipo de representaciones
+    simbólicas, como los Diagramas de Decisión Algebraicos de SPUDD \cite{hoey1999spudd}
+    y extraporalas a los Diagramas de Decisión Sentenciales o los d-DNNFs. 
+    Esto permitiría manipular la función de valor sin
+    enumerar el espacio de estados y superaría los límites de escalamiento
+    observados en los experimentos.
+
+    \item \textbf{Impacto de las Disyunciones Anotadas en el tamaño del
+    circuito compilado.} Los experimentos mostraron que la codificación
+    factorizada produce tiempos de resolución menores, pero el mecanismo por
+    el cual las ADs afectan el tamaño del circuito d-DNNF o SDD no fue
+    modelado teóricamente. Cuantificar esta relación permitiría predecir el
+    comportamiento del compilador ante distintas estructuras de fluentes
+    multivaluados y orientar decisiones de diseño de modelos.
+\end{enumerate}

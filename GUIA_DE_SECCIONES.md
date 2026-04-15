@@ -524,39 +524,39 @@ Sintetizar lo logrado, vincular resultados con objetivos, y proyectar el trabajo
 
 Tabla de consulta rápida para el Paso 4 del pipeline. Para cada concepto que aparece en las secciones pendientes, se lista la referencia primaria y las complementarias.
 
-| Concepto | Sección(es) | Referencia primaria | Complementarias |
-|----------|-------------|--------------------|-----------------| 
-| Programación lógica (hechos, reglas, SLD) | §3.1 | `russell2016artificial` | `deraedt2007problog` |
-| Semántica de distribución | §3.2 | `sato1995statistical` | `deraedt2015probabilistic`, `riguzzi2013well` |
-| Hechos probabilísticos | §3.2, §3.3 | `deraedt2007problog` | `deraedt2015probabilistic` |
-| Complejidad de inferencia (#P-hard) | §3.2 | `chandrasekaran2008complexity` | `fierens2015inference` |
-| Sintaxis y semántica de ProbLog | §3.3 | `deraedt2007problog` | `fierens2015inference`, `vlasselaer2015problog2` |
-| Pipeline de inferencia ProbLog | §3.3, §4.4 | `fierens2015inference` | `vlasselaer2015problog2` |
-| Disyunciones Anotadas (definición) | §3.4 | `vennekens2004lpads` | `deraedt2015probabilistic` |
-| Semántica causal / CP-Logic | §3.4 | `vennekens2009cplogic` | `vennekens2004lpads` |
-| ICL (equivalencia con LPADs) | §3.4 | `poole1997independent` | `vennekens2004lpads` |
-| Nodos `choice` en ProbLog | §3.4, §4.3 | `fierens2015inference` | `documentacion_tecnica_mdpproblog` |
-| WMC (definición y uso) | §3.5 | `fierens2015inference` | `darwiche2002knowledge` |
-| d-DNNF (propiedades) | §3.5, §4.6 | `darwiche2002knowledge` | `fierens2015inference` |
-| SDD (representación canónica) | §3.5 | `darwiche2011sdd` | `vlasselaer2015problog2` |
-| Diferenciación de circuitos | §3.5, §4.6 | `darwiche2003differential` | `darwiche2002knowledge` |
-| MDP (definición formal, Bellman) | §3.6 | `puterman2014markov` | `bellman1957dynamic` |
-| Iteración de valor | §3.6, §4.5 | `puterman2014markov` | `sutton2018reinforcement` |
-| MDPs factorizados (DBNs, ADDs) | §3.6 | `boutilier2000stochastic` | `hoey1999spudd` |
-| MDP-ProbLog (framework original) | §3.7, §4.1 | `bueno2016mdp` | `documentacion_tecnica_mdpproblog` |
-| DTProbLog (predecesor) | §3.7 | `vandenbroeck2010dtproblog` | `bueno2016mdp` |
-| FluentSchema (mixed-radix) | §4.2 | `documentacion_tecnica_mdpproblog` | `boutilier2000stochastic` |
-| FluentClassifier (índice invertido) | §4.3 | `documentacion_tecnica_mdpproblog` | `vennekens2004lpads`, `fierens2015inference` |
-| Pipeline de 5 fases | §4.4 | `documentacion_tecnica_mdpproblog` | `bueno2016mdp` |
-| `_expected_value` recursivo | §4.5 | `documentacion_tecnica_mdpproblog` | `puterman2014markov` |
-| Evaluador de Darwiche | §4.6 | `darwiche2003differential` | `documentacion_tecnica_mdpproblog` |
-| Exportador CSV / Simulador | §4.7 | `documentacion_tecnica_mdpproblog` | — |
-| Dominio Mitchell (grid) | §5.1 | `mitchell1997machine` | `sutton2018reinforcement` |
-| Dominio Russell (grid estocástico) | §5.5 | `russell2016artificial` | `sutton2018reinforcement` |
-| Binarización forzada (SPUDD) | §5.4 | `hoey1999spudd` | `boutilier2000stochastic` |
-| Vehículos autónomos (aplicación) | §6.5 | `Aviles31122024` | `bueno2016mdp` |
-| RDDL (fluentes nativos) | §6.5 | `sanner2010rddl` | — |
-| Muestreo / planificación aproximada | §6.5 | `nitti2016planning` | — |
+| Concepto                                  | Sección(es) | Referencia primaria                | Complementarias                                  |
+| ----------------------------------------- | ----------- | ---------------------------------- | ------------------------------------------------ |
+| Programación lógica (hechos, reglas, SLD) | §3.1        | `russell2016artificial`            | `deraedt2007problog`                             |
+| Semántica de distribución                 | §3.2        | `sato1995statistical`              | `deraedt2015probabilistic`, `riguzzi2013well`    |
+| Hechos probabilísticos                    | §3.2, §3.3  | `deraedt2007problog`               | `deraedt2015probabilistic`                       |
+| Complejidad de inferencia (#P-hard)       | §3.2        | `chandrasekaran2008complexity`     | `fierens2015inference`                           |
+| Sintaxis y semántica de ProbLog           | §3.3        | `deraedt2007problog`               | `fierens2015inference`, `vlasselaer2015problog2` |
+| Pipeline de inferencia ProbLog            | §3.3, §4.4  | `fierens2015inference`             | `vlasselaer2015problog2`                         |
+| Disyunciones Anotadas (definición)        | §3.4        | `vennekens2004lpads`               | `deraedt2015probabilistic`                       |
+| Semántica causal / CP-Logic               | §3.4        | `vennekens2009cplogic`             | `vennekens2004lpads`                             |
+| ICL (equivalencia con LPADs)              | §3.4        | `poole1997independent`             | `vennekens2004lpads`                             |
+| Nodos `choice` en ProbLog                 | §3.4, §4.3  | `fierens2015inference`             | `documentacion_tecnica_mdpproblog`               |
+| WMC (definición y uso)                    | §3.5        | `fierens2015inference`             | `darwiche2002knowledge`                          |
+| d-DNNF (propiedades)                      | §3.5, §4.6  | `darwiche2002knowledge`            | `fierens2015inference`                           |
+| SDD (representación canónica)             | §3.5        | `darwiche2011sdd`                  | `vlasselaer2015problog2`                         |
+| Diferenciación de circuitos               | §3.5, §4.6  | `darwiche2003differential`         | `darwiche2002knowledge`                          |
+| MDP (definición formal, Bellman)          | §3.6        | `puterman2014markov`               | `bellman1957dynamic`                             |
+| Iteración de valor                        | §3.6, §4.5  | `puterman2014markov`               | `sutton2018reinforcement`                        |
+| MDPs factorizados (DBNs, ADDs)            | §3.6        | `boutilier2000stochastic`          | `hoey1999spudd`                                  |
+| MDP-ProbLog (framework original)          | §3.7, §4.1  | `bueno2016mdp`                     | `documentacion_tecnica_mdpproblog`               |
+| DTProbLog (predecesor)                    | §3.7        | `vandenbroeck2010dtproblog`        | `bueno2016mdp`                                   |
+| FluentSchema (mixed-radix)                | §4.2        | `documentacion_tecnica_mdpproblog` | `boutilier2000stochastic`                        |
+| FluentClassifier (índice invertido)       | §4.3        | `documentacion_tecnica_mdpproblog` | `vennekens2004lpads`, `fierens2015inference`     |
+| Pipeline de 5 fases                       | §4.4        | `documentacion_tecnica_mdpproblog` | `bueno2016mdp`                                   |
+| `_expected_value` recursivo               | §4.5        | `documentacion_tecnica_mdpproblog` | `puterman2014markov`                             |
+| Evaluador de Darwiche                     | §4.6        | `darwiche2003differential`         | `documentacion_tecnica_mdpproblog`               |
+| Exportador CSV / Simulador                | §4.7        | `documentacion_tecnica_mdpproblog` | —                                                |
+| Dominio Mitchell (grid)                   | §5.1        | `mitchell1997machine`              | `sutton2018reinforcement`                        |
+| Dominio Russell (grid estocástico)        | §5.5        | `russell2016artificial`            | `sutton2018reinforcement`                        |
+| Binarización forzada (SPUDD)              | §5.4        | `hoey1999spudd`                    | `boutilier2000stochastic`                        |
+| Vehículos autónomos (aplicación)          | §6.5        | `Aviles31122024`                   | `bueno2016mdp`                                   |
+| RDDL (fluentes nativos)                   | §6.5        | `sanner2010rddl`                   | —                                                |
+| Muestreo / planificación aproximada       | §6.5        | `nitti2016planning`                | —                                                |
 
 ---
 
